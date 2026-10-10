@@ -31,6 +31,8 @@ int cScenario_setCam(cScenario *self, const char *name) {
 }
 #include "include_asm.h"
 #include "godhand/cCoreSave.h"
+#include "godhand/vu0.h"
+#include "godhand/cOmBase.h"
 
 __attribute__((section(".text.cScenario_taskExec")))
 /* Start entry(arg) as a script task in `slot`; returns its index or -1. */
@@ -73,9 +75,87 @@ void cScenario_endCasinoBattle(void)
 }
 
 
-INCLUDE_ASM("nonmatching", cScenario_beginKurohukuBattle);
+/* The scenario keeps the return point of a battle at its start: a position, a heading (0x10) and a room
+ * number (0x16). */
+#define SCENARIO_RETURN_POS(s)    ((cVec *)(s))
+#define SCENARIO_RETURN_ANGLE(s)  (*(float *)((char *)(s) + 0x10))
+#define SCENARIO_RETURN_ROOM(s)   (*(short *)((char *)(s) + 0x16))
 
-INCLUDE_ASM("nonmatching", cScenario_endKurohukuBattle);
+extern unsigned int D_00568240;
+extern void cSaveManager_setCheckPoint(int mgr, int a1, int a2, int a3);
+extern void cScenario_beginRoomJump_2C4548(cScenario *self, int room, float angle, void *pos, int a3, unsigned int t0, int t1);
+
+/* cScenario_beginKurohukuBattle: start the Kurohuku battle: mark it in D_00568240, remember the return
+ * point (4.2, 0, -44.2, heading -pi/2, room 0), set a checkpoint, set bit 0x8000000 of D_00747A24 and jump to
+ * room 0x4F at the origin. */
+__attribute__((section(".text.cScenario_beginKurohukuBattle")))
+void cScenario_beginKurohukuBattle(void)
+{
+    cVec ret;
+    cVec dest;
+    cVec *d;
+    float one;
+
+    D_00568240 = D_00568240 | 0x8;
+    ret.x = 4.2f;
+    ret.y = 0.0f;
+    ret.z = -44.2f;
+    one = 1.0f;
+    ret.w = one;
+    SCENARIO_RETURN_ROOM(D_003C2F84) = 0;
+    cVec_copy3(SCENARIO_RETURN_POS(D_003C2F84), &ret);
+    SCENARIO_RETURN_ANGLE(D_003C2F84) = -1.5707964f;
+    cSaveManager_setCheckPoint(D_003C264C, 0, 0, 0);
+    D_00747A24 = D_00747A24 | 0x8000000;
+    d = &dest;
+    dest.x = 0.0f;
+    dest.y = 0.0f;
+    dest.z = 0.0f;
+    d->w = one;
+    cScenario_beginRoomJump_2C4548(D_003C2F84, 0x4F, 0.0f, d, 0, 0x80000000, 1);
+}
+
+/* A room-jump target: the arrival position, the heading and the room number. */
+typedef struct RoomJumpTarget {
+    float pos[4];               /* 0x00 */
+    float angle;                /* 0x10 */
+    char unk14[2];
+    unsigned short roomNo;      /* 0x16 */
+} RoomJumpTarget;
+
+extern void func_002C02E8(int a0);
+
+/* cScenario_endKurohukuBattle: leave the Kurohuku battle: jump to the target room (fade-in kind 2 when bit 4
+ * of D_00568240 is set, 0 otherwise), clear bit 0x8000000 of D_00747A24, then clear the battle bits 0x8 and
+ * 0x10 of D_00568240. */
+__attribute__((section(".text.cScenario_endKurohukuBattle")))
+void cScenario_endKurohukuBattle(RoomJumpTarget *target)
+{
+    float pos[4];
+    unsigned short room;
+    float angle;
+    long t;
+    long x;
+    int v;
+
+    room = target->roomNo;
+    VU0_LQC2(4, target, 0);
+    VU0_SQC2(4, pos, 0);
+    angle = target->angle;
+    func_002C02E8(D_003C264C);
+    x = D_00568240;
+    t = (x >> 4) & 1;
+    if (t != 0) {
+        cScenario_beginRoomJump_2C4548(D_003C2F84, room, angle, pos, 0, 2, 1);
+    } else {
+        cScenario_beginRoomJump_2C4548(D_003C2F84, room, angle, pos, 0, 0, 1);
+    }
+    D_00747A24 = D_00747A24 & 0xF7FFFFFF;
+    v = D_00568240;
+    v = v & ~0x8;
+    v = v & ~0x10;
+    D_00568240 = v;
+}
 
 /* The object name is packed into a 64-bit key one byte at a time, then looked
    up.  The table base must be bound at block top: it stays live across the

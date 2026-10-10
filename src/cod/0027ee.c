@@ -1,62 +1,21 @@
 #include "godhand/vu0.h"
 
-#include "include_asm.h"
-extern void func_0028EB00(void *obj);
-
-/* Vtable pointer (loaded into obj+0x214). Lives in .rodata at 0x00448598. */
 extern int D_00448598;
-
-/* Type-name string (loaded into obj+0x4AC). Lives in .rodata at 0x004484B0. */
 extern int D_004484B0;
+extern void *func_0028EB00(void *self);
 
-/* InitObjVtableAndTypeFull_27EE68 — sq + VU0 object constructor (84 B / 21 insns); see file header.
- *
- * Retail (asm/cod/000000.s, 0x0027EE68..0x0027EEBB, 84 B):
- *
- *   addiu  $sp, $sp, -0x20
- *   sq     $s0, 0x10($sp)
- *   sd     $ra, 0x0($sp)
- *   jal    func_0028EB00
- *    daddu $s0, $a0, $zero
- *   lui    $v1, %hi(D_00448598)
- *   addiu  $v1, $v1, %lo(D_00448598)
- *   sw     $v1, 0x214($s0)
- *   sqc2   $vf0, 0x1530($s0)
- *   sqc2   $vf0, 0x1540($s0)
- *   sqc2   $vf0, 0x1550($s0)
- *   sqc2   $vf0, 0x1590($s0)
- *   sqc2   $vf0, 0x15A0($s0)
- *   lui    $v1, %hi(D_004484B0)
- *   daddu  $v0, $s0, $zero
- *   addiu  $v1, $v1, %lo(D_004484B0)
- *   ld     $ra, 0x0($sp)
- *   sw     $v1, 0x4AC($s0)
- *   lq     $s0, 0x10($sp)
- *   jr     $ra
- *    addiu $sp, $sp, 0x20
- */
-/* Clean-C body kept behind NON_MATCHING; the #else INCLUDE_ASM fallback keeps the
- * default (byte-identical) build exact. scripts/score_nm.sh compiles this body and
- * scores it as a fuzzy partial in the published progress report. */
-#ifdef NON_MATCHING
+/* InitObjVtableAndTypeFull_27EE68: enemy constructor. Runs the cEm00 base constructor, sets the method
+ * table and the kind name, clears five vectors of the derived tail. */
 __attribute__((section(".text.InitObjVtableAndTypeFull_27EE68")))
-void *InitObjVtableAndTypeFull_27EE68(void *obj) {
-    int *vtable;
-    int *type_name;
-
-    func_0028EB00(obj);
-    vtable = &D_00448598;
-    *(int **)((char *)obj + 0x214) = vtable;
-    VU0_SQC2_VF0(obj, 0x1530);
-    VU0_SQC2_VF0(obj, 0x1540);
-    VU0_SQC2_VF0(obj, 0x1550);
-    VU0_SQC2_VF0(obj, 0x1590);
-    VU0_SQC2_VF0(obj, 0x15A0);
-    type_name = &D_004484B0;
-    *(int **)((char *)obj + 0x4AC) = type_name;
-    return obj;
+void *InitObjVtableAndTypeFull_27EE68(char *self)
+{
+    func_0028EB00(self);
+    *(int **)(self + 0x214) = &D_00448598;
+    VU0_SQC2_VF0(self, 0x1530);
+    VU0_SQC2_VF0(self, 0x1540);
+    VU0_SQC2_VF0(self, 0x1550);
+    VU0_SQC2_VF0(self, 0x1590);
+    VU0_SQC2_VF0(self, 0x15A0);
+    *(int **)(self + 0x4AC) = &D_004484B0;
+    return self;
 }
-#else
-INCLUDE_ASM("nonmatching", InitObjVtableAndTypeFull_27EE68);
-#endif
-

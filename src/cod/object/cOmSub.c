@@ -1,5 +1,6 @@
 /* TU: cOmSub [object] - recovered C++ class. */
 #include "include_asm.h"
+#include "godhand/cOmSub.h"
 
 struct cOmSub_move_entry { short off; short pad; int (*fn)(); };
 extern struct cOmSub_move_entry D_00429D80[3];
@@ -124,4 +125,38 @@ void cOmSub_initMove1_ang(char *dst, char *obj, int idx, int a3, int a4, int a5)
 
 INCLUDE_ASM("nonmatching", cOmSub_setEndPos);
 
-INCLUDE_ASM("nonmatching", cOmSub_setReverse);
+/* Set the walking direction of the move record (1 = backwards): store the
+ * flag, load the current pair from the end pair (swapped when reversed), run
+ * the two recompute steps, then recalculate the model parts. */
+
+extern void func_001C7138(cOmSub *self);
+extern void func_001C7310(cOmSub *self);
+extern void cModel_calcParts(void *model);
+
+__attribute__((section(".text.cOmSub_setReverse")))
+void cOmSub_setReverse(cOmSub *self, int reverse) {
+    unsigned int i;
+    void **part;
+    if (reverse == COMSUB_REVERSED)
+        self->reverse = reverse;
+    else
+        self->reverse = 0;
+    self->mode = 0;
+    if (reverse == COMSUB_REVERSED) {
+        self->curA = self->endB;
+        self->curB = self->endA;
+    } else {
+        self->curA = self->endA;
+        self->curB = self->endB;
+    }
+    func_001C7138(self);
+    func_001C7310(self);
+    if (self->obj != 0) {
+        cModel_calcParts(self->obj);
+        part = self->part;
+        for (i = 0; i < COMSUB_PART_COUNT; i++, part++) {
+            if (*part != 0)
+                cModel_calcParts(*part);
+        }
+    }
+}

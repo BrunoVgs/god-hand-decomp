@@ -1,72 +1,28 @@
 #include "godhand/vu0.h"
 
-#include "include_asm.h"
-/* Sibling init helper — shared with R-VU0, R-VU0-2, R-VU0-3 (same
- * func_0028EB00 instance). */
-extern void func_0028EB00(void *obj);
+/* The derived part of the enemy record: only the fields this constructor sets. */
+typedef struct EmDerived {
+    char unk000[0x214];
+    const void *vt;                     /* 0x214 method table of the second base */
+    char unk218[0x294];
+    const char *name;                   /* 0x4AC type name string */
+} EmDerived;
 
-/* Vtable pointer (loaded into obj+0x214 by Setup_278068).
- * Lives in .rodata at 0x00447D48 as a sequence of `.word` function
- * pointers.  Declared `extern int` per the vtable-pointer-store
- * convention (the `int **` LHS cast pattern from R-VU0 / R-VU0-2 /
- * R-VU0-3).
- */
-extern int D_00447D48;
+extern const unsigned char D_00447D48[];    /* method table */
+extern const char D_00447CB0[];             /* type name */
+extern void *func_0028EB00(void *self);     /* enemy base constructor */
 
-/* Type-name string (loaded into obj+0x4AC by Setup_278068).
- * Lives in .rodata at 0x00447CB0; the per-rep type-info asciz
- * label (typical 5-7 byte name + NUL).
- */
-extern int D_00447CB0;
-
-/* Setup_278068 — sq + VU0 object constructor (84 B / 21 insns); see file header.
- *
- * Retail (asm/cod/000000.s, 0x00278068..0x002780BB, 84 B):
- *
- *   addiu  $sp, $sp, -0x20
- *   sq     $s0, 0x10($sp)        # sq callee-save
- *   sd     $ra, 0x0($sp)
- *   jal    func_0028EB00
- *    daddu $s0, $a0, $zero       # delay: save obj
- *   lui    $v1, %hi(D_00447D48)
- *   addiu  $v1, $v1, %lo(D_00447D48)
- *   sw     $v1, 0x214($s0)       # vtable
- *   sqc2   $vf0, 0x1530($s0)
- *   sqc2   $vf0, 0x1540($s0)
- *   sqc2   $vf0, 0x1550($s0)
- *   sqc2   $vf0, 0x1590($s0)
- *   sqc2   $vf0, 0x15A0($s0)
- *   lui    $v1, %hi(D_00447CB0)
- *   daddu  $v0, $s0, $zero       # return value = obj
- *   addiu  $v1, $v1, %lo(D_00447CB0)
- *   ld     $ra, 0x0($sp)
- *   sw     $v1, 0x4AC($s0)       # type-name
- *   lq     $s0, 0x10($sp)
- *   jr     $ra
- *    addiu $sp, $sp, 0x20
- */
-/* Clean-C body kept behind NON_MATCHING; the #else INCLUDE_ASM fallback keeps the
- * default (byte-identical) build exact. scripts/score_nm.sh compiles this body and
- * scores it as a fuzzy partial in the published progress report. */
-#ifdef NON_MATCHING
+/* Enemy constructor: base setup, method table, five zeroed vectors and the type name. */
 __attribute__((section(".text.Setup_278068")))
-void *Setup_278068(void *obj) {
-    int *vtable;
-    int *type_name;
-
-    func_0028EB00(obj);
-    vtable = &D_00447D48;
-    *(int **)((char *)obj + 0x214) = vtable;
-    VU0_SQC2_VF0(obj, 0x1530);
-    VU0_SQC2_VF0(obj, 0x1540);
-    VU0_SQC2_VF0(obj, 0x1550);
-    VU0_SQC2_VF0(obj, 0x1590);
-    VU0_SQC2_VF0(obj, 0x15A0);
-    type_name = &D_00447CB0;
-    *(int **)((char *)obj + 0x4AC) = type_name;
-    return obj;
+EmDerived *Setup_278068(EmDerived *self)
+{
+    func_0028EB00(self);
+    self->vt = D_00447D48;
+    VU0_SQC2_VF0(self, 0x1530);
+    VU0_SQC2_VF0(self, 0x1540);
+    VU0_SQC2_VF0(self, 0x1550);
+    VU0_SQC2_VF0(self, 0x1590);
+    VU0_SQC2_VF0(self, 0x15A0);
+    self->name = D_00447CB0;
+    return self;
 }
-#else
-INCLUDE_ASM("nonmatching", Setup_278068);
-#endif
-
