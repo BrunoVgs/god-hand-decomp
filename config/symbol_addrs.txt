@@ -50397,3 +50397,7 @@ func_00199CC8 = 0x00199CC8; // type:func
 func_0019FDB0 = 0x0019FDB0; // type:func
 func_001746B0 = 0x001746B0; // type:func
 func_001754B0 = 0x001754B0; // type:func
+func_00179C60 = 0x00179C60; // type:func
+func_0017A9E0 = 0x0017A9E0; // type:func
+func_0017D2E0 = 0x0017D2E0; // type:func
+func_001824E8 = 0x001824E8; // type:func
