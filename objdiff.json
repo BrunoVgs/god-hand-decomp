@@ -86526,6 +86526,72 @@
       }
     },
     {
+      "name": "asm/cod/000000.part8072",
+      "target_path": "expected/build/asm/cod/000000.part8072.o",
+      "base_path": "build/asm/cod/000000.part8072.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8073",
+      "target_path": "expected/build/asm/cod/000000.part8073.o",
+      "base_path": "build/asm/cod/000000.part8073.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8074",
+      "target_path": "expected/build/asm/cod/000000.part8074.o",
+      "base_path": "build/asm/cod/000000.part8074.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8075",
+      "target_path": "expected/build/asm/cod/000000.part8075.o",
+      "base_path": "build/asm/cod/000000.part8075.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8076",
+      "target_path": "expected/build/asm/cod/000000.part8076.o",
+      "base_path": "build/asm/cod/000000.part8076.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8077",
+      "target_path": "expected/build/asm/cod/000000.part8077.o",
+      "base_path": "build/asm/cod/000000.part8077.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
       "name": "asm/cod/000000.part808",
       "target_path": "expected/build/asm/cod/000000.part808.o",
       "base_path": "build/asm/cod/000000.part808.o",
@@ -91669,6 +91735,18 @@
       "name": "src/cod/00143598",
       "target_path": "expected/build/src/cod/00143598.o",
       "base_path": "build/src/cod/00143598.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ],
+        "complete": true
+      }
+    },
+    {
+      "name": "src/cod/001450a0",
+      "target_path": "expected/build/src/cod/001450a0.o",
+      "base_path": "build/src/cod/001450a0.o",
       "metadata": {
         "auto_generated": true,
         "progress_categories": [
