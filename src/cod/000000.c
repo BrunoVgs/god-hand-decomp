@@ -2342,7 +2342,6 @@ INCLUDE_ASM("nonmatching", MotionGetParam);
 INCLUDE_ASM("nonmatching", SetEv61HumanAlive);
 INCLUDE_ASM("nonmatching", Dest_ck);
 INCLUDE_ASM("nonmatching", displayOmLayer);
-INCLUDE_ASM("nonmatching", SetEventCutEffect);
 INCLUDE_ASM("nonmatching", setPlayerPos);
 
 INCLUDE_ASM("nonmatching", pl00_CkSubScreen);
@@ -2387,6 +2386,7 @@ void cObjSimple_R0_Init(cObjSimple *self) {
 INCLUDE_ASM("nonmatching", KeyStop);
 
 INCLUDE_ASM("nonmatching", SearchData);
+
 
 
 
