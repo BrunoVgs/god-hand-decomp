@@ -50379,3 +50379,4 @@ FadeOverlay_tick = 0x00160C48; // type:func
 ScrElem_selectModeByState = 0x002B3AD0; // type:func
 cOmBase_startKnockStep = 0x0019D248; // type:func
 FlashDriver_resetFlash = 0x001FD448; // type:func
+func_002E0DA8 = 0x002E0DA8; // type:func
