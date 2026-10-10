@@ -33,7 +33,7 @@ void *GetSlotInstanceB_1FE5E0(void) {
 
 extern void cDataHolder_systemInit(cDataSlot *slot);
 extern void func_001FF448(cDataSlot *slot);
-extern void func_001FF470(cDataSlot *slot, int kind, void *buf);
+extern void InitRec_start(cDataSlot *slot, int kind, void *buf);
 extern int cDataManager_freeKind(cDataManager *self, int kind);
 /* Re-init every slot, then set the state word. */
 __attribute__((section(".text.ResetSlotArray_1FE6C8")))
@@ -69,7 +69,7 @@ int cDataManager_addPinnedData(cDataManager *self, int kind, void *buf) {
         cDataManager_freeKind(self, kind);
     i = cDataManager_findFreeSlot(self);
     if (i < 0) return 0;
-    func_001FF470(&self->slot[i], kind, buf);
+    InitRec_start(&self->slot[i], kind, buf);
     self->slot[i].useCount = CDATA_USE_PINNED;
     return 1;
 }

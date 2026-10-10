@@ -7,7 +7,7 @@ extern void cOmDoor_setObjCollision(void *self);
 extern void ClearField90_13E400(void *);
 extern void ResetBlendFields_13C930(void *);
 extern void ResetAnimSlotArray_13F510(void *);
-extern void func_0013E908(void *);
+extern void IdHolder_releaseAnim(void *);
 extern void ClearActiveSlot_147188(void *);
 extern void cCockPlBar_initData(void *);
 
@@ -38,8 +38,8 @@ typedef struct DoorObj {
 
 #define DOOR_FLAG_BOX  0x2
 
-__attribute__((section(".text.func_001A8200")))
-int func_001A8200(DoorObj *self) {
+__attribute__((section(".text.DoorObj_construct")))
+int DoorObj_construct(DoorObj *self) {
     float f[8];
     float *t;
     int hp;
@@ -86,12 +86,12 @@ int func_001A8200(DoorObj *self) {
 
 
 
-__attribute__((section(".text.func_00141628")))
-void func_00141628(char *work) {
+__attribute__((section(".text.cPlayer_resetWorkRecords")))
+void cPlayer_resetWorkRecords(char *work) {
     ClearField90_13E400(work + WORK_FIELD90_OFFSET);
     ResetBlendFields_13C930(work + WORK_BLEND_OFFSET);
     ResetAnimSlotArray_13F510(work + WORK_ANIM_SLOTS_OFFSET);
-    func_0013E908(work + WORK_UNK2220_OFFSET);
+    IdHolder_releaseAnim(work + WORK_UNK2220_OFFSET);
     ClearActiveSlot_147188(work + WORK_ACTIVE_OFFSET);
     cCockPlBar_initData(work + WORK_COCKBAR_OFFSET);
 }

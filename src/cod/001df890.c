@@ -30,11 +30,11 @@ extern unsigned char D_005FEA60[];
 extern int FindEntityAtPosition_2C2638(void *mgr, void *shape, void *centerOut, float *extentOut);
 extern void func_002E83D8(int a0, int a1, int a2, int a3, int t0);
 
-/* func_001F3D38: two-step start of the enemy-select screen, each step waiting for the fade-done bit
+/* ColiseumBattle_stepEmSelectStart: two-step start of the enemy-select screen, each step waiting for the fade-done bit
  * (bit 2 of D_0074748C). State 0 closes the select window and starts a fade; state 1 clears the
  * select record, marks the screen entered and starts the next stage. */
-__attribute__((section(".text.func_001F3D38")))
-void func_001F3D38(ColiseumBattle *self)
+__attribute__((section(".text.ColiseumBattle_stepEmSelectStart")))
+void ColiseumBattle_stepEmSelectStart(ColiseumBattle *self)
 {
     switch (self->state) {
     case 0:
@@ -58,10 +58,10 @@ void func_001F3D38(ColiseumBattle *self)
     }
 }
 
-/* func_001F0978: phase 0 defeats every enemy and moves on; phase 1 clears each of the first three entry
+/* ColiseumBattle_stepEntryWait: phase 0 defeats every enemy and moves on; phase 1 clears each of the first three entry
  * handles whose entry reports active. */
-__attribute__((section(".text.func_001F0978")))
-void func_001F0978(ColiseumBattle *self)
+__attribute__((section(".text.ColiseumBattle_stepEntryWait")))
+void ColiseumBattle_stepEntryWait(ColiseumBattle *self)
 {
     switch (self->phase) {
     case 0:
@@ -88,11 +88,11 @@ void func_001F0978(ColiseumBattle *self)
     }
 }
 
-/* func_001DF890: load the ID data file of this screen (set number 0x12) from disc, then initialise the
+/* IdScreen_loadIdData: load the ID data file of this screen (set number 0x12) from disc, then initialise the
  * owner and
  * the work area at 0x25B0. */
-__attribute__((section(".text.func_001DF890")))
-void func_001DF890(char *self)
+__attribute__((section(".text.IdScreen_loadIdData")))
+void IdScreen_loadIdData(char *self)
 {
     char name[0x40];
     int size;
@@ -132,13 +132,13 @@ typedef struct KeyFollower {
 
 
 
-/* func_001FC988: take a key slot from the table (-1 when none is left), register it, and start both
+/* KeyFollower_attach: take a key slot from the table (-1 when none is left), register it, and start both
  * position copies from the holder's position. Returns the object id. */
-__attribute__((section(".text.func_001FC988")))
-int func_001FC988(KeyFollower *self, int a1, int a2, int a3, int t0, int t1, int key)
+__attribute__((section(".text.KeyFollower_attach")))
+int KeyFollower_attach(KeyFollower *self, int a1, int a2, int a3, int t0, int t1, int key)
 {
     char *slot;
-    slot = func_002BA020(D_005E8040);
+    slot = Pool_createObjWithVt(D_005E8040);
     self->link = (KeyLink *)slot;
     if (slot == 0) {
         return -1;
@@ -150,10 +150,10 @@ int func_001FC988(KeyFollower *self, int a1, int a2, int a3, int t0, int t1, int
     return self->id;
 }
 
-/* func_00274E98: in mode 0x700, for any enemy except 0x220 to 0x223, look for a type-0xC hit unit at the
+/* cEm00_startHitUnitAim: in mode 0x700, for any enemy except 0x220 to 0x223, look for a type-0xC hit unit at the
  * enemy's position; when found, aim at its centre (unk580) and extent (unk590.z) and switch to phase 0x88. */
-__attribute__((section(".text.func_00274E98")))
-int func_00274E98(cEm00 *self)
+__attribute__((section(".text.cEm00_startHitUnitAim")))
+int cEm00_startHitUnitAim(cEm00 *self)
 {
     cVec center;
     float extent;
@@ -189,10 +189,10 @@ extern void func_002E8B38(Panel *self, int a1, int a2);
 
 extern void func_002E8EE8(Panel *self, int a1, int a2, int a3);
 
-/* func_002E8318: one-time panel setup, skipped once bit 0x800000 of the state word is set. Runs three
+/* Panel_setupOnce: one-time panel setup, skipped once bit 0x800000 of the state word is set. Runs three
  * calls on column 4 with modes 2, 1 and 0, then the border, two ramp calls and the last cell. */
-__attribute__((section(".text.func_002E8318")))
-void func_002E8318(Panel *self)
+__attribute__((section(".text.Panel_setupOnce")))
+void Panel_setupOnce(Panel *self)
 {
     if ((self->state & 0x800000) == 0) {
         func_002E9808(self, 4, 12, 2);

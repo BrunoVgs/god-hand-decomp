@@ -36,7 +36,7 @@ extern void cModel_calcWorldParts(void *a0);
 extern int D_00747A78;
 extern void cSnd_BattleBgmAllPause(void *a0, float f12);
 extern void cSnd_BgmEventFade(void *a0, int a1, float f12, float f13, float f14);
-extern void func_001F6A80(void *a0);
+extern void SlotList_selectPrev(void *a0);
 extern void func_001F6AF8(void *a0);
 extern char D_007474A0[];
 extern int *D_003BF0C0[];
@@ -417,7 +417,7 @@ void func_001F6208(void *a0)
         }
         cSnd_SeCall_2CB8A0(D_005FEE00, 0, 0x15F, -1, -1, 0, 0);
     } else if (b & 0x1000000000) {
-        func_001F6A80(s0);
+        SlotList_selectPrev(s0);
         if (D_003BF0D0[*(int *)(s0 + 0xC)] - 1 < *(int *)(s0 + 0x20))
             *(int *)(s0 + 0x20) = D_003BF0D0[*(int *)(s0 + 0xC)] - 1;
         cSnd_SeCall_2CB8A0(D_005FEE00, 0, 0x15F, -1, -1, 0, 0);

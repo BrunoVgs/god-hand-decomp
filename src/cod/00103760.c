@@ -6,7 +6,7 @@
 extern void CustomIDWork_SetLocalPosY(char *work, int y);
 extern void SetCustomIDDispOneOrAll_1F4778(char *self, int id, int on);
 extern void StoreVecFromFieldB0_2B6160(float *out, void *obj);
-extern void func_002B5FC8(void *self, float *pos);
+extern void cNode_setTranslationFromWorld(void *self, float *pos);
 extern void func_002FBED0(void *self);
 extern int cOmBase_checkDamage(void *self, void *damage);
 extern int cSnd_SeCall_2CBA48(void *snd, int a1, int a2, void *a3, int a4, int a5, int a6, int a7);
@@ -24,8 +24,8 @@ extern PosTbl D_0042BFB0;               /* local Y of the first work entry per i
 extern PosTbl D_0042BFD0;               /* local Y of the second work entry per index */
 
 /* Place the two work entries at the Y values of position `idx` (0..6) and set the visibility of ids 8 and 9. */
-__attribute__((section(".text.func_001F52A0")))
-void func_001F52A0(char *self, unsigned short idx, int on)
+__attribute__((section(".text.CustomIDWork_placeByIndex")))
+void CustomIDWork_placeByIndex(char *self, unsigned short idx, int on)
 {
     PosTbl a;
     PosTbl b;
@@ -50,8 +50,8 @@ extern Vec4 D_00462F00[4];              /* corners of the unit square in the z =
 #define NO_CUT  0xFFFF
 
 /* When the cut is unset and enable is nonzero, fill the corner tables of the unit cube and the unit square. */
-__attribute__((section(".text.func_00133670")))
-void func_00133670(int enable, int cut)
+__attribute__((section(".text.CornerTables_init")))
+void CornerTables_init(int enable, int cut)
 {
     if (cut == NO_CUT && enable != 0) {
         Vec4 *cube = D_00462F40;
@@ -129,8 +129,8 @@ typedef struct WrapObj {
 #define PLAYER_POS_OFFSET  0x210
 
 /* Place the object at its own position wrapped into a box of half extent `radius` around the player: a coordinate below the box jumps to the far side and one above it to the near side. Then run the base update. */
-__attribute__((section(".text.func_002F6E20")))
-void func_002F6E20(WrapObj *self)
+__attribute__((section(".text.WrapObj_wrapIntoBox")))
+void WrapObj_wrapIntoBox(WrapObj *self)
 {
     float center[4] __attribute__((aligned(16)));
     float pos[4] __attribute__((aligned(16)));
@@ -155,7 +155,7 @@ void func_002F6E20(WrapObj *self)
     dst = out;
     VU0_LQC2(4, pos, 0);
     VU0_SQC2(4, center, 0x20);
-    func_002B5FC8(self, dst);
+    cNode_setTranslationFromWorld(self, dst);
     func_002FBED0(self);
 }
 
@@ -174,8 +174,8 @@ typedef struct HitPhaseObj {
 } HitPhaseObj;
 
 /* Phase tick: on a damage hit cap the displayed health at 1000, flash and play sound 0x2D and enter phase 1; then run the handler the phase picks from the table and the two shared post steps. */
-__attribute__((section(".text.func_001B0838")))
-void func_001B0838(HitPhaseObj *self)
+__attribute__((section(".text.HitPhaseObj_tickPhase")))
+void HitPhaseObj_tickPhase(HitPhaseObj *self)
 {
     char *s0 = (char *)self;
     char *e;
@@ -297,8 +297,8 @@ typedef struct FollowObj {
 } FollowObj;
 
 /* Snap the object to the player's position, then enter phase 7 (held, with a timer) when mode is 1 and phase 6 (released) otherwise. */
-__attribute__((section(".text.func_00103760")))
-void func_00103760(FollowObj *self, int mode)
+__attribute__((section(".text.FollowObj_snapToPlayer")))
+void FollowObj_snapToPlayer(FollowObj *self, int mode)
 {
     cVec_copy3(self->base.pos, Getplayer()->pos);
     cVec_copy3(&self->base.posA, self->base.pos);

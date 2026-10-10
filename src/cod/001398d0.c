@@ -123,7 +123,7 @@ __attribute__((section(".text.InitSubBufferPool_2C3280")))
 void InitSubBufferPool_2C3280(char *a0)
 {
 	char *p = a0 + 0x1C;
-	func_002D50E8(p, 0x10, 0x1800, 0x30);
+	EntTable_init(p, 0x10, 0x1800, 0x30);
 	func_002D51F0(p);
 }
 
@@ -157,7 +157,7 @@ void FreeResourceNode_2D3710(int *a0)
 __attribute__((section(".text.EffectEventEndProc")))
 void EffectEventEndProc(void)
 {
-	KillEventEsp();
+	Esp_killFlaggedExceptEvent();
 	KillEventEmitter();
 	espSys_sstClearSetFlag(&D_007419A0);
 	func_00305C20(&D_007419A0);

@@ -36,8 +36,8 @@ typedef struct ShapeObj {
 extern void cCollisionShape_setOffsetPos(ShapeObj *self, void *offset);
 extern void func_002BB298(ShapeObj *self, void *pos);
 
-__attribute__((section(".text.func_002BB160")))
-ShapeObj *func_002BB160(ShapeObj *self, void *owner, void *offset, void *pos) {
+__attribute__((section(".text.cCollisionShape_construct")))
+ShapeObj *cCollisionShape_construct(ShapeObj *self, void *owner, void *offset, void *pos) {
     self->vt = D_0044BED0;
     self->flags = 0;
     VU0_SQC2_VF0(self, 0x50);
@@ -89,8 +89,8 @@ typedef struct ActorMove {
 extern void func_002B22E0(ActorMove *self, int arg);
 extern void func_002B21F0(ActorMove *self, int move);
 
-__attribute__((section(".text.func_002B2158")))
-void func_002B2158(ActorMove *self, unsigned short move, unsigned char mode, int arg) {
+__attribute__((section(".text.ActorMove_resetMotion")))
+void ActorMove_resetMotion(ActorMove *self, unsigned short move, unsigned char mode, int arg) {
     self->flags |= ACT_FLAG_RESET;
     func_002B22E0(self, arg);
     self->mode = mode;
@@ -133,8 +133,8 @@ typedef struct StunObj {
 
 
 
-__attribute__((section(".text.func_001B5430")))
-void func_001B5430(StunObj *self) {
+__attribute__((section(".text.StunObj_startStun")))
+void StunObj_startStun(StunObj *self) {
     float v;
     cSnd_SeCall_2CBA48(D_005FEE00, 0, 10, self, 0, 0, 0, 0);
     cOmBase_setMeshColorFromLayer(self, 0, 1.0f, 0.0f, 0.0f);
@@ -170,8 +170,8 @@ typedef struct BufOwner {
 
 #define FREE_BUF(p) if ((p) != 0) cHeap_free(*(void **)((char *)(p) - 0x20), (p))
 
-__attribute__((section(".text.func_002E3500")))
-void func_002E3500(BufOwner *self, int flags) {
+__attribute__((section(".text.BufOwner_deletingDtor")))
+void BufOwner_deletingDtor(BufOwner *self, int flags) {
     self->vt = D_0044E300;
     FREE_BUF(self->buf330);
     FREE_BUF(self->buf334);
@@ -194,8 +194,8 @@ void func_002E3500(BufOwner *self, int flags) {
 
 
 
-__attribute__((section(".text.func_00144B50")))
-void func_00144B50(char *self) {
+__attribute__((section(".text.cIDBaseScreen_init")))
+void cIDBaseScreen_init(char *self) {
     unsigned short i = 0;
     do {
         cIDBase_initialize(self + 0x100 + i * ENTRY_SIZE, 1, 5);

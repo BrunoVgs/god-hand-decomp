@@ -3,7 +3,7 @@
 extern unsigned char D_003C3CFC;
 extern void func_0030ECF8(int a0);
 extern void cHeap_allocFirstFit(int a0, int a1, int a2);
-extern void func_003009F8(int a0, int a1);
+extern void Slots_runHandlerForAll(int a0, int a1);
 extern void ForEachSlotRunHandler(int a0, int a1);
 
 __attribute__((section(".text.EnsureInitThenForward_2A9538_30EE08")))
@@ -21,14 +21,14 @@ void KillEffect(int a0, int a1, int a2) {
     }
     switch (a2) {
     case 0:
-        func_003009F8(a0, a1);
+        Slots_runHandlerForAll(a0, a1);
         break;
     case 1:
         ForEachSlotRunHandler(a0, a1);
         break;
     case 2:
         ForEachSlotRunHandler(a0, a1);
-        func_003009F8(a0, a1);
+        Slots_runHandlerForAll(a0, a1);
         break;
     }
 }

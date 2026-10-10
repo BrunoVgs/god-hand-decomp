@@ -5,7 +5,7 @@
 #include "godhand/cOm4f.h"
 
 extern void func_002AEDF0(cMessage *self, int kind);
-extern void func_002B2158(cMessageWin *win, int messNo, int kind, void *owner);
+extern void ActorMove_resetMotion(cMessageWin *win, int messNo, int kind, void *owner);
 extern void cArea_AreaGetCenterPos(void *area, float *pos);
 extern unsigned char cOm4f_isOpen(cOm4f *self);
 extern int GetField_774_1BDD90(void *door);
@@ -22,7 +22,7 @@ unsigned int cMessage_create(cMessage *self, unsigned int messNo, void *owner, u
     func_002AEDF0(self, kind);
     win = func_002AEE40(self, param);
     if (win != 0) {
-        func_002B2158(win, messNo & 0xFFFF, kind, owner);
+        ActorMove_resetMotion(win, messNo & 0xFFFF, kind, owner);
         workId = win->workId;
     } else {
         workId = CMESSAGE_NONE;

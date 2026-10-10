@@ -16,7 +16,7 @@ extern void MtxMulScaleVec(void *a0, void *a1, void *a2);
 extern int MtxCopy();
 extern void Obj0000_Set_Byte_54(void *a0, int a1);
 extern char D_005864F0[];
-extern void func_001B0150(void *a0);
+extern void cGameObj_pickDropItem(void *a0);
 extern void SwitchToSecondPose(void *a0);
 extern void cSnd_SeStop(void *a0, int a1);
 
@@ -54,7 +54,7 @@ void func_001AF870(void *a0)
             *(int *)(s1 + 0xAF4) = 0;
         }
         cSnd_SeCall_2CBA48(D_005FEE00, 2, 0x56, s1, 0, 0, 0, 0);
-        func_001B0150(s1);
+        cGameObj_pickDropItem(s1);
         SwitchToSecondPose(s1);
         SetField5B0Bit2ClearBit8_1B7908(s1);
         *(unsigned char *)(s1 + 0x2F5) = 1;

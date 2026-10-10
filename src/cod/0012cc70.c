@@ -5,7 +5,7 @@
 extern int SetEffect(int a0, int a1, void *a2, int a3, int t0, unsigned t1);
 extern void func_001E7E68(void *dst, void *a, void *b, int n);
 extern void InitClearStructAndSet_1E79A8(int *a0, int a1);
-extern void func_001E3240(void *a0, int a1);
+extern void Scroll_showLayerBySelector(void *a0, int a1);
 extern unsigned char D_0076CF20[];
 extern void func_0037C5C8(void *slot, void *obj, int bit);
 extern void func_0037C6A0(void *slot);
@@ -85,7 +85,7 @@ void Slot1_Initialize(void *this, unsigned short id, void *p0, void *p1,
     func_001E7E68((char *)this + 0x268, p4, p5, n);
     InitClearStructAndSet_1E79A8((int *)((char *)this + 0x370), last);
     *(short *)((char *)this + 0x48C) = id;
-    func_001E3240(this, 0);
+    Scroll_showLayerBySelector(this, 0);
 }
 
 /* sn-2.95.3-136 */

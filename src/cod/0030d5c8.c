@@ -1,7 +1,7 @@
 /* sn-2.95.3-136 matched TU. */
 #include "godhand/cCoreSave.h"
 
-extern void func_002CA798(void *a0);
+extern void cSnd_LoadStartupBanks(void *a0);
 extern int cDvd_ReadAlloc(void *a0, void *a1, void *a2, void *a3, int t0, int t1, int t2, int t3);
 extern void cDvd_CheckWaitFrame(void *a0, int a1);
 extern void FileNameFromObjId(char *buf, int id);
@@ -51,7 +51,7 @@ void func_0030D5C8(void) {
         a |= 0x4000;
         D_00747A24 = a;
         if ((a & 0x40000) == 0) {
-            func_002CA798(D_005FEE00);
+            cSnd_LoadStartupBanks(D_005FEE00);
         }
     }
     {

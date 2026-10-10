@@ -7,7 +7,7 @@ extern int D_00747A84;
 extern char D_005864F0[];
 extern void *Getplayer(void);
 extern void pl00_reset(void *a0);
-extern void func_002948E8(void *a0, int a1);
+extern void cEmManage_suspendRange(void *a0, int a1);
 extern void func_002FA470(int a0);
 
 __attribute__((section(".text.cScenario__endSoftEvent")))
@@ -69,7 +69,7 @@ void cScenario__endSoftEvent(cScenario *self)
             break;
         }
     }
-    func_002948E8(D_005864F0, 0);
+    cEmManage_suspendRange(D_005864F0, 0);
     cScenario_setOmSuspend(self, 0);
     {
         char *p = (char *)Getplayer();

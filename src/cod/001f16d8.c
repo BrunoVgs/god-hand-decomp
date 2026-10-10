@@ -21,8 +21,8 @@ extern char *func_001F0498(void *owner, int obj, cVec *pos, float angle);     /*
 #define DEG_TO_RAD    0.017453292f
 
 /* Place five pieces (object 0x3ED) evenly on a circle of radius 8 around the origin. */
-__attribute__((section(".text.func_001F16D8")))
-void func_001F16D8(void *self) {
+__attribute__((section(".text.Ring_spawnPiecesB")))
+void Ring_spawnPiecesB(void *self) {
     int i;
     for (i = 0; i < RING_NUM; i++) {
         cVec pos;
@@ -57,8 +57,8 @@ typedef struct RingOwner {
 } RingOwner;
 
 /* Place six pieces (object 0x3EC) evenly on a circle of radius 8 around the origin and keep them in the owner. */
-__attribute__((section(".text.func_001F1810")))
-void func_001F1810(RingOwner *self) {
+__attribute__((section(".text.Ring_spawnSixPieces")))
+void Ring_spawnSixPieces(RingOwner *self) {
     int i;
     for (i = 0; i < RING_NUM; i++) {
         cVec pos;

@@ -27,7 +27,7 @@ extern int irand(void);
 extern char D_00569B70[];
 extern int GetField_2B1_14B638(cModel *self);
 extern cModelNode *cModel_getMeshPtr(cModel *self, int idx);
-extern void func_001F91D0(cBox *dst, cBox *src);
+extern void Box_growToContain(cBox *dst, cBox *src);
 extern void cGameObjSortEnt_pushHeap(cGameObjSortEnt *first, int holeIndex, int topIndex, long val, void *tag);
 
 /* cEm00_updateKnockDrift: a knocked-about enemy that drifts toward a goal and starts a
@@ -289,7 +289,7 @@ void cModel_addMesh(cModel *self, cModelNode *node, cBox *box) {
     if (self->meshNum == 1) {
         self->box = *box;
     } else {
-        func_001F91D0(&self->box, box);
+        Box_growToContain(&self->box, box);
     }
 }
 

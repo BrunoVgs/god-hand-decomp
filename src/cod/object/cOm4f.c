@@ -1,6 +1,6 @@
 /* TU: cOm4f [object] - recovered C++ class. */
 #include "godhand/cOm4f.h"
-extern void func_001A4BD0(void *);
+extern void cGameObjCam_startSubCamera(void *);
 #include "include_asm.h"
 
 /* 1 while the door stands open. */
@@ -43,7 +43,7 @@ void cOm4f_setOpen(cOm4f *self) {
         return;
     }
     self->active = 1;
-    func_001A4BD0(self);
+    cGameObjCam_startSubCamera(self);
     self->moveCmd = 1;
     self->unk2F5[0] = 0;
     self->unk2F5[1] = 0;
@@ -61,7 +61,7 @@ void cOm4f_setClose(cOm4f *self) {
         return;
     }
     self->active = 1;
-    func_001A4BD0(self);
+    cGameObjCam_startSubCamera(self);
     self->moveCmd = 2;
     self->unk2F5[0] = 0;
     self->unk2F5[1] = 0;

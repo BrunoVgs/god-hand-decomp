@@ -95,7 +95,7 @@ void IdDispObj_construct(IdDispObj *self)
 #define TASKMGR_WAIT(self)   (*(unsigned short *)((char *)(self) + TASKMGR_WAIT_OFFSET))
 
 
-extern void func_002D57C8(cTaskWork *work);     /* run one task's step */
+extern void cTaskWork_step(cTaskWork *work);     /* run one task's step */
 
 
 __attribute__((section(".text.cTaskManager_runTasksWithWait")))
@@ -124,7 +124,7 @@ void cTaskManager_runTasksWithWait(cTaskManager *self)
                 if (((attr >> 1) & 1) == 0) goto next;
             }
             TASKMGR_WAIT(self) = 0;
-            func_002D57C8(work);
+            cTaskWork_step(work);
             if (TASKMGR_WAIT(self) != 0) {
                 cTaskWork_sleep(D_00752C00.cur, TASKMGR_WAIT(self));
                 off -= TASKMGR_WORK_SIZE;
@@ -310,7 +310,7 @@ PoolObj *Pool_createObjWithScale(Pool *pool, int arg, int a, int b, float scale)
     }
     func_002B8A70(obj, arg);
     sub = (PoolObj *)((char *)obj + POOLOBJ_SUB_OFFSET);
-    func_002BB160(sub, a, b, D_00747B00);
+    cCollisionShape_construct(sub, a, b, D_00747B00);
     sub->subVt = (SubVt *)D_0044BD60;
     obj->state = 0;
     sub->subVt->scale.pfn((char *)sub + sub->subVt->scale.delta, scale);

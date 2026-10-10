@@ -27,8 +27,8 @@ extern void cEmWrap_StartAction(void *wrap);
 #define EM_FADE_STEP       0.1f
 
 /* Phase 0: start the death and flash the body. Phase 1: slow the animation to a stop, then release the enemy. */
-__attribute__((section(".text.func_0028AB48")))
-void func_0028AB48(cEm00 *self) {
+__attribute__((section(".text.cEm00_stepFadeOutAndReleaseB")))
+void cEm00_stepFadeOutAndReleaseB(cEm00 *self) {
     self->hitFlash = EM_HIT_FLASH_FULL;
     switch (self->step) {
     case 0:
@@ -55,8 +55,8 @@ void func_0028AB48(cEm00 *self) {
 #define ROW_FN            4
 
 /* Call the function of the dispatch row selected by the phase byte, with this adjusted by the row and by the table entry. */
-__attribute__((section(".text.func_001B2708")))
-void func_001B2708(void *a0) {
+__attribute__((section(".text.PhaseDispatch_callRowB")))
+void PhaseDispatch_callRowB(void *a0) {
     char *s0 = (char *)a0;
     char *e;
     int i8;
@@ -90,8 +90,8 @@ void func_001B2708(void *a0) {
 #define ROW_FN            4
 
 /* Call the function of the dispatch row selected by the phase byte, with this adjusted by the row and by the table entry. */
-__attribute__((section(".text.func_001C9A50")))
-void func_001C9A50(void *a0) {
+__attribute__((section(".text.PhaseDispatch_callRowC")))
+void PhaseDispatch_callRowC(void *a0) {
     char *s0 = (char *)a0;
     char *e;
     int i8;
@@ -130,8 +130,8 @@ typedef struct CostumeObj {
     unsigned short actorId;             /* 0x2FE */
 } CostumeObj;
 
-__attribute__((section(".text.func_002981D8")))
-void func_002981D8(CostumeObj *self, int unused, int costume)
+__attribute__((section(".text.CostumeObj_applyTailPartMeshes")))
+void CostumeObj_applyTailPartMeshes(CostumeObj *self, int unused, int costume)
 {
     if (self == 0) {
         return;
@@ -159,8 +159,8 @@ void func_002981D8(CostumeObj *self, int unused, int costume)
 
 
 /* Set value in both slots of every mesh node, by index. */
-__attribute__((section(".text.objScroll_Set_test")))
-void objScroll_Set_test(cModel *self, int value) {
+__attribute__((section(".text.cModel_setNodeValues")))
+void cModel_setNodeValues(cModel *self, int value) {
     int num = GetField_2B1_14B638(self);
     int i = 0;
     if (num > 0) {
@@ -196,8 +196,8 @@ typedef struct ArenaEm {
 
 extern void ColiseumBattle_DefeatAllEnemies(ArenaEm *self);
 
-__attribute__((section(".text.func_001F1C50")))
-void func_001F1C50(ArenaEm *self)
+__attribute__((section(".text.ArenaEm_stepSecondWave")))
+void ArenaEm_stepSecondWave(ArenaEm *self)
 {
     char buf[0x10];
     switch (self->introStep) {

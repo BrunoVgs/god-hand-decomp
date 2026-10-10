@@ -56,8 +56,8 @@ typedef struct FollowObj {
 
 
 
-__attribute__((section(".text.func_00195850")))
-void *func_00195850(FollowObj *self)
+__attribute__((section(".text.FollowObj_getHitPos")))
+void *FollowObj_getHitPos(FollowObj *self)
 {
     HitRec *hit;
     float *src;
@@ -111,8 +111,8 @@ typedef struct OwnerObj {
     void *owned[2];                     /* 0x600 */
 } OwnerObj;
 
-__attribute__((section(".text.func_001A2630")))
-void func_001A2630(OwnerObj *self, void *a1) {
+__attribute__((section(".text.OwnerObj_destroyOwnedPair")))
+void OwnerObj_destroyOwnedPair(OwnerObj *self, void *a1) {
     void **p = self->owned;
     int i;
     self->vt = D_00426F88;

@@ -17,7 +17,7 @@ extern void pl00_reset(void *p);
 extern void func_001F6B78(void *p, int a);
 extern void func_001F6C40(void *p, int a);
 extern int JukeBox_Load(void *p);
-extern void func_001F5E90(void *p);
+extern void Entry_runHookAndDraw(void *p);
 extern void JukeBox_Release(void *p);
 extern void cSnd_BgmFlaggedNodeKick(void *p, float f);
 
@@ -55,7 +55,7 @@ void JukeBox_Execute(JukeBoxObj *self)
 
     if (JukeBox_Load(self) && self->done == 0) {
         do {
-            func_001F5E90(self);
+            Entry_runHookAndDraw(self);
             cTaskWork_sleep(
                 *(void **)((char *)D_003C2F84 + 0x20), 1);
         } while (self->done == 0);

@@ -18,22 +18,22 @@ extern void displayScrollLayer(int id, int on);
  * unnamed arguments. */
 
 
-__attribute__((section(".text.func_002E0DA8")))
-int func_002E0DA8(int a, int b, int c, int d, int fmt, ...)
+__attribute__((section(".text.DebugPrintfWrapper")))
+int DebugPrintfWrapper(int a, int b, int c, int d, int fmt, ...)
 {
     char *args;
     args = (char *)__builtin_next_arg(fmt) - 24;
     return func_002E0C80(a, b, c, d, 0, fmt, args);
 }
 
-/* func_0012BFB8: if the 0x6A0 link is empty, do the jump-up and jump-down
+/* cEm00_startJumpSetup: if the 0x6A0 link is empty, do the jump-up and jump-down
  * setup and raise bit 0x100 of the flag word. */
 #define EM_LINK6A0(self) (*(int *)((char *)(self) + 0x6A0))
 
 
 
-__attribute__((section(".text.func_0012BFB8")))
-void func_0012BFB8(cEm00 *self)
+__attribute__((section(".text.cEm00_startJumpSetup")))
+void cEm00_startJumpSetup(cEm00 *self)
 {
     if (EM_LINK6A0(self) == 0) {
         SetActionJumpUp(self);
@@ -42,13 +42,13 @@ void func_0012BFB8(cEm00 *self)
     }
 }
 
-/* func_001AF630: step the motion; when the 0x984 counter has run out, reset the
+/* cEm00_stepMotionCounter: step the motion; when the 0x984 counter has run out, reset the
  * phase block (phase 2), then count the counter down. */
 #define EM_COUNT984(self) (*(short *)((char *)(self) + 0x984))
 
 
-__attribute__((section(".text.func_001AF630")))
-void func_001AF630(cEm00 *self)
+__attribute__((section(".text.cEm00_stepMotionCounter")))
+void cEm00_stepMotionCounter(cEm00 *self)
 {
     moveMotion(self);
     if (EM_COUNT984(self) <= 0) {
@@ -83,18 +83,18 @@ void func_002B64C0(CoordSet *self)
     }
 }
 
-/* func_00182908: set the method table (0x214), prepare the 0xB10 sub-record, then run the shared init. */
-__attribute__((section(".text.func_00182908")))
-void func_00182908(char *self, void *arg)
+/* cObj_initWithSubRecord: set the method table (0x214), prepare the 0xB10 sub-record, then run the shared init. */
+__attribute__((section(".text.cObj_initWithSubRecord")))
+void cObj_initWithSubRecord(char *self, void *arg)
 {
     *(int **)(self + 0x214) = &D_00422A80;
     func_002AD288(self + 0xB10, 2);
     SetField214PtrThenInit_1B6F38(self, arg);
 }
 
-/* func_001E3240: run the shared setup, then turn on one of two scroll layers (0x400 or 0x404). */
-__attribute__((section(".text.func_001E3240")))
-void func_001E3240(char *self, int sel)
+/* Scroll_showLayerBySelector: run the shared setup, then turn on one of two scroll layers (0x400 or 0x404). */
+__attribute__((section(".text.Scroll_showLayerBySelector")))
+void Scroll_showLayerBySelector(char *self, int sel)
 {
     func_001E3298(self);
     if (sel != 0) {

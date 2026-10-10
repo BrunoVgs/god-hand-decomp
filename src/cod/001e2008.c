@@ -12,9 +12,9 @@ extern void cSnd_SeStop(void *a0, int a1);
 extern char D_005FEE00[];
 extern long D_00747650;
 extern int SetEffect(int a0, int a1, void *a2, int a3, int t0, unsigned t1);
-extern void func_001E3928(Slot1 *a0, int a1, int a2);
+extern void Slot2_setMarkLayersAt464(Slot1 *a0, int a1, int a2);
 extern void cSnd_BgmEventStart(void *a0, int a1, int a2, int a3);
-extern void func_001E3A98(Slot1 *a0, int a1, int a2);
+extern void Slot2_setMarkLayersAt46C(Slot1 *a0, int a1, int a2);
 extern void func_001E7470(int a0, int a1, int a2);
 
 /* Slot1 payout stage, prize line 3: pay out coin by coin until a button is pressed or the coins run out. */
@@ -225,7 +225,7 @@ void Slot1_payoutLine1(Slot1 *self) {
         self->payMode = SLOT1_PAYMODE_ON;
         SetEffect(1, 1, 0, 0, -1, 0xFFFFFFFFU);
         func_001E4200(self, self->slotId, 1, 1);
-        func_001E3928(self, 1, 1);
+        Slot2_setMarkLayersAt464(self, 1, 1);
         self->timer = 0x3C;
         self->phase = self->phase + 1;
         break;
@@ -250,7 +250,7 @@ void Slot1_payoutLine1(Slot1 *self) {
             cSnd_SeStop(D_005FEE00, self->seId);
             cCoreSave_addGold(&D_00569B70, self->coinUnit * self->coinNum, 0);
             func_001E4200(self, self->slotId, 0, 0);
-            func_001E3928(self, 0, 0);
+            Slot2_setMarkLayersAt464(self, 0, 0);
             self->phase = self->phase + 1;
             break;
         }
@@ -290,7 +290,7 @@ void Slot1_payoutLine2(Slot1 *self) {
         self->payMode = SLOT1_PAYMODE_ON;
         SetEffect(1, 2, 0, 0, -1, 0xFFFFFFFFU);
         func_001E4200(self, self->slotId, 1, 1);
-        func_001E3A98(self, 1, 1);
+        Slot2_setMarkLayersAt46C(self, 1, 1);
         self->timer = 0x3C;
         self->phase = self->phase + 1;
         break;
@@ -315,7 +315,7 @@ void Slot1_payoutLine2(Slot1 *self) {
             cSnd_SeStop(D_005FEE00, self->seId);
             cCoreSave_addGold(&D_00569B70, self->coinUnit * self->coinNum, 0);
             func_001E4200(self, self->slotId, 0, 0);
-            func_001E3A98(self, 0, 0);
+            Slot2_setMarkLayersAt46C(self, 0, 0);
             self->phase = self->phase + 1;
             break;
         }

@@ -34,8 +34,8 @@ extern void sceGsResetGraph(int mode, int inter, int omode, int ffmode);
 extern void sceGsSyncV(int mode);
 extern void cDvd_init(void *dvd);
 extern void func_002C9D20(void *snd);
-extern void func_002B4960(void *res);
-extern void func_002AE3F0(void *card);
+extern void MoviePool_init(void *res);
+extern void SlotIds_sendSetup(void *card);
 extern void func_0031A718(void *arg);
 extern void func_002BE4E8(void *arg);
 
@@ -47,8 +47,8 @@ extern void func_002BE4E8(void *arg);
 
 
 
-__attribute__((section(".text.func_0028E7C8")))
-void func_0028E7C8(void *self) {
+__attribute__((section(".text.cScenario_startSoftTask")))
+void cScenario_startSoftTask(void *self) {
     int no;
     char *works;
     cScenario_startSoftEvent(D_003C2F84, 2);
@@ -85,8 +85,8 @@ typedef struct MenuObj {
     unsigned char state;                /* 0xBF0 */
 } MenuObj;
 
-__attribute__((section(".text.func_002AE990")))
-void func_002AE990(MenuObj *self) {
+__attribute__((section(".text.cMenu_loadDataTables")))
+void cMenu_loadDataTables(MenuObj *self) {
     char *sys = D_007474A0;
     D_003C23A4->data = SearchData(*(void **)(sys + 0x558), D_0044B100, 0);
     D_003C23A4->tex = SearchData(*(void **)(sys + 0x558), D_0044B100, 1);
@@ -117,8 +117,8 @@ typedef struct PartObj {
 #define SYS_FLAG_HOLD   0x10000000
 #define PART_FLAG_FOLLOW 0x1
 
-__attribute__((section(".text.func_002B8850")))
-void func_002B8850(PartObj *self) {
+__attribute__((section(".text.PartObj_refresh")))
+void PartObj_refresh(PartObj *self) {
     if ((D_00747A78 & SYS_FLAG_HOLD) == 0) {
         if (self->link != 0 && self->busy == 0)
             func_001582A0(self, self->link, 1.0f, 0.0f, 0, 0, 0);
@@ -163,8 +163,8 @@ extern DmgGive *cDamageManage_CreateDamageGive(void *mgr, int kind, void *obj);
 
 
 
-__attribute__((section(".text.func_001EFFF8")))
-void func_001EFFF8(GiveOwner *self) {
+__attribute__((section(".text.GiveOwner_createGiveVolumes")))
+void GiveOwner_createGiveVolumes(GiveOwner *self) {
     unsigned int i = 0;
     DmgGive **slot = self->give;
     do {
@@ -204,8 +204,8 @@ extern int ChkLine(void *a0, void *a1, void *a2, void *a3, int a4, int a5, int a
 
 #define FRAME ((char *)&pos - 0x30)
 
-__attribute__((section(".text.func_002E2C50")))
-void func_002E2C50(char *self)
+__attribute__((section(".text.Pos_followGround")))
+void Pos_followGround(char *self)
 {
     cVec pos;                           /* sp+0x30 object position */
     cVec from;                          /* sp+0x40 */
@@ -258,8 +258,8 @@ void func_002E2C50(char *self)
 
 
 
-__attribute__((section(".text.func_002BE0F0")))
-void func_002BE0F0(void *arg) {
+__attribute__((section(".text.System_bringUp")))
+void System_bringUp(void *arg) {
     char *sys;
     int r;
     FileLoader_readWholeFile(arg);
@@ -280,8 +280,8 @@ void func_002BE0F0(void *arg) {
     sceGsSyncV(0);
     cDvd_init(D_00583F20);
     func_002C9D20(D_005FEE00);
-    func_002B4960(D_005E79D0);
-    func_002AE3F0(D_005E6900);
+    MoviePool_init(D_005E79D0);
+    SlotIds_sendSetup(D_005E6900);
     func_0031A718(arg);
     func_002BE4E8(arg);
 }

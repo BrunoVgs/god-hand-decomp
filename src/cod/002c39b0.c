@@ -10,7 +10,7 @@ extern void HideModelMgr_ClearHiddenModelList(void *a0);
 extern void KeyStop(void);
 extern void *Getplayer(void);
 extern void func_00126770(void *a0);
-extern void func_002948E8(void *a0, int a1);
+extern void cEmManage_suspendRange(void *a0, int a1);
 extern void func_002FA470(int a0);
 
 __attribute__((section(".text.cScenario_startSoftEvent")))
@@ -52,7 +52,7 @@ void cScenario_startSoftEvent(cScenario *self, int type)
                 *(int *)(g2 + 0xC) = *(int *)(g2 + 0xC) | 0x04000000;
                 HideModelMgr_ResetHiddenModels(D_00747B20);
                 HideModelMgr_ClearHiddenModelList(D_00747B20);
-                func_002948E8(D_005864F0, 1);
+                cEmManage_suspendRange(D_005864F0, 1);
                 cScenario_setOmSuspend(self, 1);
                 func_002FA470(1);
                 p = (char *)Getplayer();

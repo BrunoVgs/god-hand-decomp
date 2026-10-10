@@ -31,8 +31,8 @@ extern void UpdateObjByIndexedOp_2FBE50(void *slot);
 extern int ChkLine(void *a0, void *a1, void *a2, void *a3, int a4, int a5, int a6,
                    int a7, int a8, int a9, int a10, int a11, int a12);
 
-__attribute__((section(".text.func_002E2D40")))
-void func_002E2D40(cOmBase *self)
+__attribute__((section(".text.cOmBase_dropTestB")))
+void cOmBase_dropTestB(cOmBase *self)
 {
     cVec pos;                           /* sp+0x30 object position */
     cVec from;                          /* sp+0x40 */
@@ -58,8 +58,8 @@ void func_002E2D40(cOmBase *self)
 
 
 /* Tick: dispatch the current action: pick the table entry for state byte +0x2F5 (reset to 0 when out of range) and call its handler, then sync. */
-__attribute__((section(".text.func_00285EB8")))
-void func_00285EB8(void *a0) {
+__attribute__((section(".text.ActionTable_tickDispatch")))
+void ActionTable_tickDispatch(void *a0) {
     char *s0 = (char *)a0;
     char *e;
     int i8;
@@ -99,8 +99,8 @@ typedef struct PanelHost {
     char unk00[4];
 } PanelHost;
 
-__attribute__((section(".text.func_001D6030")))
-void func_001D6030(PanelHost *self, unsigned short mode)
+__attribute__((section(".text.PanelHost_slideSidePanel")))
+void PanelHost_slideSidePanel(PanelHost *self, unsigned short mode)
 {
     int m = mode;
     if (m == 1) {
@@ -141,8 +141,8 @@ typedef struct { char b[0x10]; } PmfTbl;
 
 /* Call the routine for the current phase. The table is copied to the
  * stack and the pointer to member is decoded by hand, as retail does. */
-__attribute__((section(".text.func_001A7940")))
-void func_001A7940(cOmBase *self) {
+__attribute__((section(".text.cOmBase_callPhaseRoutine")))
+void cOmBase_callPhaseRoutine(cOmBase *self) {
     char frame[0x10];
     char *s2 = (char *)self;
     cPlCamPmf *pm;
@@ -192,8 +192,8 @@ typedef struct PhaseEnt {
 typedef struct { char b[0x10]; } PhaseTbl;
 extern PhaseTbl D_00447D28;             /* the two entries */
 
-__attribute__((section(".text.func_00279678")))
-void func_00279678(cEm00 *self) {
+__attribute__((section(".text.cEm00_tickPhaseDispatchB")))
+void cEm00_tickPhaseDispatchB(cEm00 *self) {
     PhaseEnt tbl[PHASE_NUM];
     char *e;
     int i8;
@@ -235,8 +235,8 @@ extern unsigned char D_0061B7C0[];      /* the 0x400 effect slots, 0x400 bytes e
 #define ESP_SLOT_SUBGRP  0x23C          /* offset of the slot's sub group number (unsigned short) */
 
 /* Run the kill handler of every effect slot that is in use, neither paused nor hidden, and whose group number is group. */
-__attribute__((section(".text.func_002FB6C8")))
-void func_002FB6C8(int group) {
+__attribute__((section(".text.Esp_killByGroupNumber")))
+void Esp_killByGroupNumber(int group) {
     unsigned char *p;
     int i;
     unsigned int bit;

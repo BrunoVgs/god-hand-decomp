@@ -11,7 +11,7 @@ void *AllocAndInitObjVtable_313510(void)
         if (p != 0)
         {
             func_003A52F0(p, 0, 0x1570);
-            return InitObjVtableAndType_2772A8(p);
+            return EnemyBase_constructTriVec(p);
         }
     }
     return 0;
@@ -27,7 +27,7 @@ void *AllocAndSetupObj_313580(void)
         if (p != 0)
         {
             func_003A52F0(p, 0, 0x15B0);
-            return Setup_278068(p);
+            return Em_construct278068(p);
         }
     }
     return 0;
@@ -59,7 +59,7 @@ int AllocZeroedAndSetupObj_313660(void)
     if (p == 0)
         return 0;
     func_003A52F0(p, 0, 0x31B0);
-    return Setup_27DD88(p);
+    return cEm66_construct(p);
 }
 
 __attribute__((section(".text.AllocAndInitObjVtableFull_3136D0")))
@@ -85,5 +85,5 @@ int ForwardInitBuffer_313740(void)
     if (p == 0)
         return 0;
     func_003A52F0(p, 0, 0x15C0);
-    return func_00281638(p);
+    return Em_construct281638(p);
 }

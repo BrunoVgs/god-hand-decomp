@@ -174,7 +174,7 @@ PoolObj *Pool_createObjWithTable(Pool *pool, int arg, int a, int b, void *table,
     }
     func_002B8A70(obj, arg);
     sub = (PoolObj *)((char *)obj + POOLOBJ_SUB_OFFSET);
-    func_002BB160(sub, a, b, table);
+    cCollisionShape_construct(sub, a, b, table);
     sub->subVt = (SubVt *)D_0044BCA0;
     obj->state = 2;
     sub->subVt->scaleA.pfn((char *)sub + sub->subVt->scaleA.delta, scaleB);

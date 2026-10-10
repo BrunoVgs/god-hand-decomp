@@ -15,7 +15,7 @@ extern void func_001EE2A8(void *p, int n);
 extern void func_001EE2C8(void *p, int n);
 extern void SetCustomIDDispOneOrAll_1EE1C0(void *p, int n, int f);
 extern void CustomIDWork_SetMessNo(void *p, int n);
-extern void func_001ECE30(void *p, int a, int b);
+extern void CustomIDWork_setDispAllButEight(void *p, int a, int b);
 extern void func_001ED490(void *p, int a);
 extern void func_003A52F0(void *dst, int val, int n);
 extern cRoomSaveData D_005E9CB8[ROOMSAVE_PAGE_NUM];
@@ -117,7 +117,7 @@ void InitDogRaceResultIdWorks(char *p)
     CustomIDWork_SetMessNo(p + 0xEE8, 0x101B);
     CustomIDWork_SetMessNo(p + 0x15B0, 0x101B);
     CustomIDWork_SetDisp(p + 0x440, 0);
-    func_001ECE30(p, 0x2D, 0);
+    CustomIDWork_setDispAllButEight(p, 0x2D, 0);
     func_001ED490(p, 0);
 }
 

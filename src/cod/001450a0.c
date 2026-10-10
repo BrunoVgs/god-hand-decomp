@@ -32,8 +32,8 @@ typedef struct BlendWork {
 extern void *func_003A5148(void *d, const void *s, int n); /* memcpy */
 
 /* Copy num halfwords from src into the table (clamped to the table size) and mark the table ready. */
-__attribute__((section(".text.func_001450A0")))
-void func_001450A0(BlendWork *self, void *src, short num) {
+__attribute__((section(".text.BlendWork_copyShortTable")))
+void BlendWork_copyShortTable(BlendWork *self, void *src, short num) {
     if (num >= BLENDWORK_TABLE_MAX + 1) {
         self->tableNum = BLENDWORK_TABLE_MAX;
     } else {
@@ -55,8 +55,8 @@ void func_001450A0(BlendWork *self, void *src, short num) {
 
 
 /* Load the memory card module, run its two stripped log hooks, release it and end the calling task. */
-__attribute__((section(".text.func_002AE838")))
-void func_002AE838(void) {
+__attribute__((section(".text.cMc_loadRunReleaseB")))
+void cMc_loadRunReleaseB(void) {
     cMc_DllLoad(&D_005E6900, 0);
     func_0(cEvent_nullStr00);
     func_0(cEvent_nullStr00);
@@ -71,8 +71,8 @@ void func_002AE838(void) {
 
 
 /* Reset an object: run the base reset, release its four id slots, clear two counters on the shared record. */
-__attribute__((section(".text.func_001655D8")))
-void func_001655D8(int a0) {
+__attribute__((section(".text.IdObj_resetAndReleaseIds4")))
+void IdObj_resetAndReleaseIds4(int a0) {
     char *p;
     Obj0000_Set_D_007474A0_Fields_5D8_5E0(a0);
     cIDBase_release(a0 + 0x230);
@@ -96,8 +96,8 @@ void func_001655D8(int a0) {
 #define MARK_COUNT   0x3FFF     /* markFlag: frames since the last flip */
 #define MARK_PERIOD  8
 
-__attribute__((section(".text.func_001E6DA0")))
-void func_001E6DA0(Slot2 *self) {
+__attribute__((section(".text.Slot2_updateLineMark2")))
+void Slot2_updateLineMark2(Slot2 *self) {
     unsigned int flag = self->markFlag[2];
     if (flag & MARK_BLINK) {
         unsigned short next;    /* short: the store keeps retail's andi 0xFFFF */
@@ -126,8 +126,8 @@ void func_001E6DA0(Slot2 *self) {
 #define MARK_COUNT   0x3FFF     /* markFlag: frames since the last flip */
 #define MARK_PERIOD  8
 
-__attribute__((section(".text.func_001E6E68")))
-void func_001E6E68(Slot2 *self) {
+__attribute__((section(".text.Slot2_updateLineMark3")))
+void Slot2_updateLineMark3(Slot2 *self) {
     unsigned int flag = self->markFlag[3];
     if (flag & MARK_BLINK) {
         unsigned short next;    /* short: the store keeps retail's andi 0xFFFF */
@@ -162,8 +162,8 @@ typedef struct Slot2Mark {
 #define MARK_PERIOD  8
 
 /* Mark at 0x4A8, once a frame: while lit (bit 15), count 8 frames, then flip the shown bit (14) and update the layer. */
-__attribute__((section(".text.func_001E3DD0")))
-void func_001E3DD0(Slot2Mark *self) {
+__attribute__((section(".text.Slot2_updateMarkAt4A8")))
+void Slot2_updateMarkAt4A8(Slot2Mark *self) {
     unsigned int flag = self->markFlag;
     if (flag & MARK_BLINK) {
         unsigned short next;    /* short: the store keeps retail's andi 0xFFFF */

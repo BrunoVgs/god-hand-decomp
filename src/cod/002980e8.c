@@ -3,9 +3,9 @@
 extern int D_00586AF0;
 extern void CostumeObj_applyPartMeshes(void);
 extern void func_00297B40(void *a, void *b);
-extern void func_002981D8(void);
+extern void CostumeObj_applyTailPartMeshes(void);
 extern void SetCostumeFlagIfMatch_2982A0(void);
-extern void func_00298338(void);
+extern void ScrollCallback_hideLayers(void);
 extern void func_00297B20(void *a, void *b);
 extern void func_00298A78(void);
 extern void func_00298C18(void);
@@ -36,7 +36,7 @@ void Forward297B40_2980E8(void) {
 
 __attribute__((section(".text.Forward297B40_2981B0")))
 void Forward297B40_2981B0(void) {
-    func_00297B40(&D_00586AF0, (void *)&func_002981D8);
+    func_00297B40(&D_00586AF0, (void *)&CostumeObj_applyTailPartMeshes);
 }
 
 /* clone */
@@ -56,7 +56,7 @@ void Forward297B40_298278(void) {
 
 __attribute__((section(".text.Forward297B20_298310")))
 void Forward297B20_298310(void) {
-    func_00297B20(&D_00586AF0, (void *)&func_00298338);
+    func_00297B20(&D_00586AF0, (void *)&ScrollCallback_hideLayers);
 }
 
 /* clone */

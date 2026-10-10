@@ -8,7 +8,7 @@ extern int func_003999A8(void);
 extern void func_00323A70(void *);
 extern char D_0042C780;
 extern void func_002BF708(void *);
-extern void func_002BF790(void *);
+extern void SysFlags_saveAndFreeze(void *);
 extern void func_002C0A08(void *);
 extern void *D_003C264C;
 extern float Adjust_theta(float f12);
@@ -21,8 +21,8 @@ extern void cTaskWork_kill(void *work);
 
 
 
-__attribute__((section(".text.func_002AE740")))
-void func_002AE740(int mode) {
+__attribute__((section(".text.cMc_startLoadRunRelease")))
+void cMc_startLoadRunRelease(int mode) {
     D_00747A84[1] |= 0x80000000;
     cTaskManager_execute(&D_00752C00, (void *)&cMc_loadRunRelease, mode);
 }
@@ -34,8 +34,8 @@ void func_002AE740(int mode) {
 
 
 
-__attribute__((section(".text.func_00201A00")))
-int func_00201A00(void) {
+__attribute__((section(".text.Entry_releaseIfReady")))
+int Entry_releaseIfReady(void) {
     if (func_003999A8() == 0x14) {
         void *e = func_00323618(&D_0042C780, 0);
         if (e != 0) {
@@ -53,10 +53,10 @@ int func_00201A00(void) {
 
 
 
-__attribute__((section(".text.func_002BF3D0")))
-void func_002BF3D0(char *self) {
+__attribute__((section(".text.cScenarioCursor_reinit")))
+void cScenarioCursor_reinit(char *self) {
     func_002BF708(self);
-    func_002BF790(self);
+    SysFlags_saveAndFreeze(self);
     func_002C0A08(D_003C264C);
     {
         char old = self[0];
@@ -71,8 +71,8 @@ void func_002BF3D0(char *self) {
  * the factor c and add it back onto b, wrapping each step. */
 
 
-__attribute__((section(".text.Ang_mult_late")))
-float Ang_mult_late(float a, float b, float c) {
+__attribute__((section(".text.Ang_blendLate")))
+float Ang_blendLate(float a, float b, float c) {
     float base = Adjust_theta(b);
     float diff = Adjust_theta(Adjust_theta(a) - base);
     return Adjust_theta(base + diff * c);
@@ -89,8 +89,8 @@ typedef struct TaskPool {
 
 
 
-__attribute__((section(".text.func_002D56A8")))
-void func_002D56A8(TaskPool *self) {
+__attribute__((section(".text.cTaskPool_killAll")))
+void cTaskPool_killAll(TaskPool *self) {
     int i;
     for (i = 0; i < self->count; i++)
         cTaskWork_kill(self->works + i * POOL_WORK_SIZE);
@@ -116,8 +116,8 @@ typedef struct Panel {
 extern void func_002B1C80(Panel *);
 extern void func_002B1890(Panel *);
 
-__attribute__((section(".text.func_002B1830")))
-void func_002B1830(Panel *self) {
+__attribute__((section(".text.Panel_resetToStartPose")))
+void Panel_resetToStartPose(Panel *self) {
     self->curX = self->savedX;
     self->curY = self->savedY;
     self->scaleA = 1.0f;

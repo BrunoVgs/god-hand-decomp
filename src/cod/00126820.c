@@ -40,7 +40,7 @@ void cMessage_updateAll(cMessage *self) {
         func_002B2438(&win->base);
         /* xor spelling: retail tests with xori + branch, a plain == hoists the 7 into a register */
         if ((win->kind ^ MESS_KIND_ONESHOT) == 0) {
-            win = (cMessageWinKind *)func_002AEF10(self, &win->base);
+            win = (cMessageWinKind *)cMessage_releaseWin(self, &win->base);
         } else {
             win = (cMessageWinKind *)win->base.next;
         }
@@ -232,7 +232,7 @@ typedef struct MessWin {
 
 
 
-extern void func_002B43B0(MessWin *self);
+extern void MessWin_closeIfNoEndCode(MessWin *self);
 extern void func_002B45E8(MessWin *self);
 
 __attribute__((section(".text.cMessageWin_takeCode")))
@@ -247,7 +247,7 @@ int cMessageWin_takeCode(MessWin *self) {
     self->codeNum++;
     self->flags &= ~MWIN_FLAG_A;
     self->flags &= ~MWIN_FLAG_B;
-    func_002B43B0(self);
+    MessWin_closeIfNoEndCode(self);
     func_002B45E8(self);
     return 0;
 }

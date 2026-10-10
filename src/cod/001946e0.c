@@ -3,8 +3,8 @@
 #include "godhand/cOmBase.h"
 
 extern void func_002FBED0(void *self);
-extern void func_002E2C50(void *self);
-extern void func_002E2D40(void *self);
+extern void Pos_followGround(void *self);
+extern void cOmBase_dropTestB(void *self);
 extern void func_002E2E00(void *self);
 extern void UpdateObjByIndexedOp_2FBE50(void *self);
 extern void *EnsureInitThenForward_2A9538_30EE08(int size, int align, void *region);
@@ -34,18 +34,18 @@ typedef struct ModeObj {
 } ModeObj;
 
 /* Per-frame update: run the step function for the current mode unless the machine is held, else apply a pending rate change. */
-__attribute__((section(".text.func_002E2800")))
-void func_002E2800(ModeObj *self)
+__attribute__((section(".text.ModeObj_update")))
+void ModeObj_update(ModeObj *self)
 {
     func_002FBED0(self);
     /* retail reads the held bit as a byte and flips it with xori; a plain mask gives a different branch layout */
     if ((*(unsigned char *)&self->modeFlags ^ 1) & 1) {
         switch ((unsigned int)self->mode) {
         case 0:
-            func_002E2C50(self);
+            Pos_followGround(self);
             return;
         case 1:
-            func_002E2D40(self);
+            cOmBase_dropTestB(self);
             return;
         case 2:
             func_002E2E00(self);
@@ -85,8 +85,8 @@ typedef struct EntTable {
 } EntTable;
 
 /* Allocate and clear num entries, initialise each from src with consecutive ids starting at firstId, and create the table's semaphore. */
-__attribute__((section(".text.func_002D50E8")))
-void func_002D50E8(EntTable *self, int num, int src, int firstId)
+__attribute__((section(".text.EntTable_init")))
+void EntTable_init(EntTable *self, int num, int src, int firstId)
 {
     unsigned int i;
 
@@ -117,8 +117,8 @@ typedef struct TexObj {
 } TexObj;
 
 /* While in action 0x251: with half the max health below the current health apply the texture exchange and switch it on or off by texMode; otherwise run the recovery routine. */
-__attribute__((section(".text.func_0026A558")))
-void func_0026A558(TexObj *self)
+__attribute__((section(".text.TexObj_updateTexExchange")))
+void TexObj_updateTexExchange(TexObj *self)
 {
     int half;
 
@@ -156,8 +156,8 @@ typedef struct { char b[0x18]; } ModeTbl;
 extern ModeTbl D_00424B30;              /* the three entries */
 
 /* Phase tick: call the handler the current phase's table entry names (a method table entry, or an inline handler for a negative index), then run the shared post step. */
-__attribute__((section(".text.func_001946E0")))
-void func_001946E0(cOmBase *self)
+__attribute__((section(".text.cOmBase_tickPhaseTable194558")))
+void cOmBase_tickPhaseTable194558(cOmBase *self)
 {
     ModeEnt tbl[MODE_NUM];
     char *e;
@@ -218,8 +218,8 @@ typedef struct CutFrameCmd {
 } CutFrameCmd;
 
 /* Resolve the first and last cut and frame of the command (0xFF means the current cut). Returns 1 while the playing position is before the first cut and frame; 0 when no cutscene runs. */
-__attribute__((section(".text.func_002B2D88")))
-int func_002B2D88(CutFrameCmd *self)
+__attribute__((section(".text.CutFrameCmd_resolveBefore")))
+int CutFrameCmd_resolveBefore(CutFrameCmd *self)
 {
     if ((D_00747A84 & SYSFLAG_EVENT_RUNNING) == 0) {
         return 0;
@@ -246,8 +246,8 @@ int func_002B2D88(CutFrameCmd *self)
 #define IDWORK_SIZE   0x7C
 
 /* Show or hide one entry of the work table, or all of them except entry 8 when id is 0x2D. Entry 8 alone is never touched. */
-__attribute__((section(".text.func_001ECE30")))
-void func_001ECE30(char *self, int id, int on)
+__attribute__((section(".text.CustomIDWork_setDispAllButEight")))
+void CustomIDWork_setDispAllButEight(char *self, int id, int on)
 {
     int i;
 

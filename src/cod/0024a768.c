@@ -90,7 +90,7 @@ int func_002B2638(void *obj) {
     case 0xAD00: return func_002B2D28(obj);
     case 0x8F00: return func_002B3038(obj);
     case 0xDA00: return func_002B3050(obj);
-    case 0xE700: return func_002B2D88(obj);
+    case 0xE700: return CutFrameCmd_resolveBefore(obj);
     }
 }
 

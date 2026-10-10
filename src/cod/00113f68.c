@@ -32,7 +32,7 @@ extern void classFADE_start(void *p, int b, int c, int d, int e, unsigned int f,
 extern void classFADE_kill(void *p);
 extern void cTaskWork_sleep(void *p, int a);
 extern void DogRace_Load(void *p);
-extern void func_001EA1A8(void *p);
+extern void Slot2_dispatchStep(void *p);
 extern void DogRace_Release(void *p);
 extern void cSnd_BgmFlaggedNodeKick(void *p, float f);
 extern void cSceAtManager_SetEnable_2C2950(void *p, int a);
@@ -226,7 +226,7 @@ void func_001E9F68(char *p)
         if ((v & 1) == 0) {
             long w;
             do {
-                func_001EA1A8(p);
+                Slot2_dispatchStep(p);
                 cTaskWork_sleep(*(void **)(D_003C2F84 + 0x20), 1);
                 w = *(unsigned int *)(p + 0x54);
             } while ((w & 1) == 0);

@@ -34,7 +34,7 @@ extern void func_002D34A8(char *rec);
 extern int func_002D3210(char *rec);
 extern void StoreVecFromFieldB0_2B6160(void *dst, void *self);
 extern void func_002F5588(void *dst, void *self);
-extern void func_002B5FC8(void *self, void *v);
+extern void cNode_setTranslationFromWorld(void *self, void *v);
 extern void LinkObj_callLockOn(void *self);
 
 /* Once per object (flag byte 0x688): cast a line from the object's position
@@ -65,8 +65,8 @@ extern int ChkLine(void *a0, void *a1, void *a2, int a3, int a4, int a5, void *a
 
 
 
-__attribute__((section(".text.func_001D0B38")))
-void func_001D0B38(LineObj *self) {
+__attribute__((section(".text.LineObj_checkWaterHit")))
+void LineObj_checkWaterHit(LineObj *self) {
     float buf[8];
     if (self->done == 0) {
         float *v = buf;
@@ -104,8 +104,8 @@ typedef struct StateTable {
 
 extern StateTable D_004297B8;
 
-__attribute__((section(".text.func_001BFB80")))
-void func_001BFB80(void *a0)
+__attribute__((section(".text.StateObj_runHandler")))
+void StateObj_runHandler(void *a0)
 {
     char *s0 = (char *)a0;
     StateTable tbl;
@@ -175,8 +175,8 @@ extern PoolInfo *D_00747A4C;
 
 
 
-__attribute__((section(".text.func_002A5D80")))
-void func_002A5D80(void) {
+__attribute__((section(".text.System_initPools")))
+void System_initPools(void) {
     PoolInfo *info;
     int n;
     info = (PoolInfo *)SearchData(D_00747A4C, D_0044AD60, 0);
@@ -226,8 +226,8 @@ extern void func_003452D8(MovieSetup *setup);
 
 
 
-__attribute__((section(".text.func_002B4960")))
-void func_002B4960(MoviePool *self) {
+__attribute__((section(".text.MoviePool_init")))
+void MoviePool_init(MoviePool *self) {
     MovieSetup setup;
     int *slot;
     char *node;
@@ -273,8 +273,8 @@ typedef struct Ring {
 
 
 
-__attribute__((section(".text.func_002D2E38")))
-void func_002D2E38(Ring *self) {
+__attribute__((section(".text.Ring_stepToAccepted")))
+void Ring_stepToAccepted(Ring *self) {
     int tries;
     char *end;
     char *start;
@@ -302,8 +302,8 @@ again:
 
 /* Aim at the lock-on target: read three vectors of the object (base, offset
  * from func_002F5588, field B0), add the offset and the third into one
- * point, pass the point to func_002B5FC8, run the lock-on call, then pass
- * the base vector to func_002B5FC8. */
+ * point, pass the point to cNode_setTranslationFromWorld, run the lock-on call, then pass
+ * the base vector to cNode_setTranslationFromWorld. */
 
 
 
@@ -320,8 +320,8 @@ typedef struct AimFrame {
 
 
 
-__attribute__((section(".text.func_002F5468")))
-void func_002F5468(void *self)
+__attribute__((section(".text.LockOn_aimAtTarget")))
+void LockOn_aimAtTarget(void *self)
 {
     AimFrame fr;
     cVec *sum;
@@ -334,7 +334,7 @@ void func_002F5468(void *self)
     VU0_VADD_XYZ_IP(&fr.sum, 0, &fr.third);
     VU0_LQC2(4, sum, 0);
     VU0_SQC2(4, &fr, 0x10);
-    func_002B5FC8(self, &fr.point);
+    cNode_setTranslationFromWorld(self, &fr.point);
     LinkObj_callLockOn(self);
-    func_002B5FC8(self, &fr.base);
+    cNode_setTranslationFromWorld(self, &fr.base);
 }

@@ -40,8 +40,8 @@ extern const unsigned char D_00448E20[];    /* method table */
 extern const char D_00448DB0[];             /* type name */
 extern void *func_0028EB00(void *self);     /* enemy base constructor */
 
-__attribute__((section(".text.func_00289728")))
-EnemyRec *func_00289728(EnemyRec *self)
+__attribute__((section(".text.EnemyBase_constructAimQuad")))
+EnemyRec *EnemyBase_constructAimQuad(EnemyRec *self)
 {
     EnemyAim *aim;
     func_0028EB00(self);
@@ -75,8 +75,8 @@ typedef struct Slot2Mark {
 #define MARK_KEEP    0x800      /* markFlag: bit kept across the flip */
 
 /* Mark at 0x4C0, once a frame: while lit (bit 15), count 8 frames, then flip the shown bit (14) and update the layer. */
-__attribute__((section(".text.func_001E44A8")))
-void func_001E44A8(Slot2Mark *self) {
+__attribute__((section(".text.Slot2_updateMarkAt4C0")))
+void Slot2_updateMarkAt4C0(Slot2Mark *self) {
     unsigned int flag = self->markFlag;
     if (flag & MARK_BLINK) {
         unsigned short next;    /* short: the store keeps retail's andi 0xFFFF */
@@ -145,8 +145,8 @@ typedef struct IdDispObj {
     unsigned char bBC;                  /* 0xBC */
 } IdDispObj;
 
-__attribute__((section(".text.func_001616A8")))
-void func_001616A8(IdDispObj *self)
+__attribute__((section(".text.IdDispObj_constructKind9")))
+void IdDispObj_constructKind9(IdDispObj *self)
 {
     unsigned short i;
     Obj0000_Set_Fields_68_6C_From_D_007474A0_1615D0(self);
@@ -186,8 +186,8 @@ typedef struct PhaseEnt {
 typedef struct { char b[0x10]; } PhaseTbl;
 extern PhaseTbl D_00448578;             /* the two entries */
 
-__attribute__((section(".text.func_00280A10")))
-void func_00280A10(cEm00 *self) {
+__attribute__((section(".text.cEm00_tickPhaseDispatchC")))
+void cEm00_tickPhaseDispatchC(cEm00 *self) {
     PhaseEnt tbl[PHASE_NUM];
     char *e;
     int i8;
@@ -228,8 +228,8 @@ void func_00280A10(cEm00 *self) {
 #define PANEL_SUB_A         4
 #define PANEL_SUB_B         5
 
-__attribute__((section(".text.func_001DF278")))
-void func_001DF278(void *ui, int mode)
+__attribute__((section(".text.Panel_slideSidePanelArrows")))
+void Panel_slideSidePanelArrows(void *ui, int mode)
 {
     char *s0 = (char *)ui;
     switch (mode & 0xFF) {

@@ -31,16 +31,16 @@ extern GameStatePack D_007474A0;
 
 
 /* Looks up the two textures of the current resource in the pack and installs them in slot 2. */
-__attribute__((section(".text.func_002A4C38")))
-void func_002A4C38(cFont *self) {
+__attribute__((section(".text.cFont_setMessageTextures")))
+void cFont_setMessageTextures(cFont *self) {
     void *tex0 = SearchData(D_007474A0.pack, D_0044ACE0, D_007474A0.resId);
     void *tex1 = SearchData(D_007474A0.pack, D_0044ACE8, D_007474A0.resId);
     cFont_setTextureAddr(self, 2, tex0, tex1);
 }
 
 /* Whether the target is a knocked-down enemy: actor id in 0x200..0x2FF but not in the 0x2A0..0x2FF band. */
-__attribute__((section(".text.func_00124FD8")))
-int func_00124FD8(cGameObj *self, cGameObj *target) {
+__attribute__((section(".text.cGameObj_isDownedEnemy")))
+int cGameObj_isDownedEnemy(cGameObj *self, cGameObj *target) {
     if (cGameObj_idInRange(target, 0x200, 0x300) & 0xFF) {
         if (!(cGameObj_idInRange(target, 0x2A0, 0x300) & 0xFF)) {
             return cEm00_ckDown(target) != 0;
@@ -73,8 +73,8 @@ typedef struct Trail {
 } Trail;
 
 /* Pulls every link onto its source's position and keeps the old point in prev. */
-__attribute__((section(".text.func_001FCEB0")))
-void func_001FCEB0(Trail *self) {
+__attribute__((section(".text.Trail_snapToSources")))
+void Trail_snapToSources(Trail *self) {
     TrailLink *link = self->head;
     self->shift = 0;
     while (link != 0) {
@@ -91,8 +91,8 @@ typedef struct MessWin {
 } MessWin;
 
 /* Looks for one of the page-end control codes D2, D9 or DA in the text; if none is there, runs the default close. */
-__attribute__((section(".text.func_002B43B0")))
-void func_002B43B0(MessWin *win) {
+__attribute__((section(".text.MessWin_closeIfNoEndCode")))
+void MessWin_closeIfNoEndCode(MessWin *win) {
     if (func_002B45F8(win, win->text, MESS_END_D2) != 0) return;
     if (func_002B45F8(win, win->text, MESS_END_D9) != 0) return;
     if (func_002B45F8(win, win->text, MESS_END_DA) != 0) return;
@@ -110,8 +110,8 @@ typedef struct cOmEffectHolder {
 
 
 /* Moves the held effect to the position the object reports through virtual method 16. */
-__attribute__((section(".text.func_001C2B80")))
-void func_001C2B80(cOmEffectHolder *self) {
+__attribute__((section(".text.cOmEffectHolder_syncEffectPos")))
+void cOmEffectHolder_syncEffectPos(cOmEffectHolder *self) {
     cVec pos;
     cVec *src;
 
@@ -138,8 +138,8 @@ static __inline__ long cEmActor_idInRange(const cEmActor *em, int lo, int hi)
 }
 
 /* Calls the suspend method of every listed enemy whose actor id is 0x200..0x2FF, passing flag. */
-__attribute__((section(".text.func_002948E8")))
-void func_002948E8(cEmManage *self, int flag) {
+__attribute__((section(".text.cEmManage_suspendRange")))
+void cEmManage_suspendRange(cEmManage *self, int flag) {
     cEmSlot *slot = self->list.top;
     while (slot != 0) {
         cEmActor *em = slot->em;

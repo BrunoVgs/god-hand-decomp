@@ -10,7 +10,7 @@ extern void func_001FD9D8(void *unit, void *mtx, float *pos, float *dir, float *
 extern void cOmDoor_setObjCollision(void *self);
 extern int D_00574380;
 extern void cSnd_SeCall_2CB8A0(char *snd, int a1, int a2, int a3, int t0, int t1, int t2);
-extern void func_001F6A80(void *self);
+extern void SlotList_selectPrev(void *self);
 extern void func_001F6AF8(void *self);
 extern char D_005FEE00[];
 extern char D_007474A0[];
@@ -99,7 +99,7 @@ int cOmDoor_initWithBox(DoorLikeObj *self) {
     return 1;
 }
 
-/* Menu input step: read the pad's pressed buttons and move the menu. A back button leaves for state 2 (sound 0x160); the two 0x2000000 / 0x1000000 buttons enter state 1 at entry 0 or 5; the two shoulder buttons page with func_001F6A80 / func_001F6AF8. Every move plays sound 0x15F. */
+/* Menu input step: read the pad's pressed buttons and move the menu. A back button leaves for state 2 (sound 0x160); the two 0x2000000 / 0x1000000 buttons enter state 1 at entry 0 or 5; the two shoulder buttons page with SlotList_selectPrev / func_001F6AF8. Every move plays sound 0x15F. */
 
 /* The menu object: four state bytes, then the selected entry. */
 typedef struct MenuInput {
@@ -155,7 +155,7 @@ void MenuInput_stepPad(void *a0)
         s0->stepArg = 0;
         cSnd_SeCall_2CB8A0(D_005FEE00, 0, MENU_SE_MOVE, -1, -1, 0, 0);
     } else if (b & PAD_PAGE_PREV) {
-        func_001F6A80(s0);
+        SlotList_selectPrev(s0);
         cSnd_SeCall_2CB8A0(D_005FEE00, 0, MENU_SE_MOVE, -1, -1, 0, 0);
     } else if (b & PAD_PAGE_NEXT) {
         func_001F6AF8(s0);

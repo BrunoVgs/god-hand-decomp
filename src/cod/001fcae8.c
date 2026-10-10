@@ -21,8 +21,8 @@ extern char D_005864F0[];               /* enemy manager */
 #define ACTION_SPECIAL  0x211           /* action id this count applies to */
 
 /* While the object runs action 0x211, count the enemies of its actor type in the four groups 0x200, 0x203, 0x227 and 0x22A. */
-__attribute__((section(".text.func_00260650")))
-int func_00260650(cOmBase *self)
+__attribute__((section(".text.cOmBase_countGroupsInAction211")))
+int cOmBase_countGroupsInAction211(cOmBase *self)
 {
     int n;
 
@@ -61,8 +61,8 @@ typedef struct GameInitObj {
 } GameInitObj;
 
 /* Start a new game: initialise every manager, set the system flag, mark the object started and set its rate to 0.5. */
-__attribute__((section(".text.func_002A5B18")))
-void func_002A5B18(GameInitObj *self)
+__attribute__((section(".text.GameInitObj_start")))
+void GameInitObj_start(GameInitObj *self)
 {
     cWorldTime_gameInit(D_0061A990);
     D_00747A24 |= SYS_FLAG_NEW_GAME;
@@ -99,8 +99,8 @@ typedef struct DamageFiveObj {
 } DamageFiveObj;
 
 /* Switch all five damage units off: clear their hit values and deactivate every node. */
-__attribute__((section(".text.func_0020F310")))
-void func_0020F310(DamageFiveObj *self)
+__attribute__((section(".text.DamageFiveObj_clearHits")))
+void DamageFiveObj_clearHits(DamageFiveObj *self)
 {
     self->unit0->hitA = 0;
     self->unit0->hitB = 0;
@@ -149,8 +149,8 @@ extern PoolObj *Pool_createObjWithTable(void *pool, int a1, int a2, int a3, int 
 
 
 /* Create the pool object for the record, register key 1, copy its owner position into cur and pos and mark the record started. Returns -1 when the pool is full. */
-__attribute__((section(".text.func_001FCAE8")))
-int func_001FCAE8(SpawnRec *self, int a1, int a2, int a3, int t0, int value)
+__attribute__((section(".text.SpawnRec_create")))
+int SpawnRec_create(SpawnRec *self, int a1, int a2, int a3, int t0, int value)
 {
     Vec3 *cur;
     Vec3 *src;
@@ -190,8 +190,8 @@ typedef struct { char b[0x10]; } ModeTbl;
 extern ModeTbl D_00448C68;              /* the two entries */
 
 /* Phase tick: call the handler the current phase's table entry names (a method table entry, or an inline handler for a negative index), then run the shared post step. A phase of 2 or more resets to 0 first. */
-__attribute__((section(".text.func_00288570")))
-void func_00288570(cOmBase *self)
+__attribute__((section(".text.cOmBase_tickPhaseTable288570")))
+void cOmBase_tickPhaseTable288570(cOmBase *self)
 {
     ModeEnt tbl[MODE_NUM];
     char *e;

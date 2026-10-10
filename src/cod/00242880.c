@@ -4,7 +4,7 @@
 
 extern void cCollisionSolidManage_SetActive(void *a0, void *a1, int a2);
 extern void func_002A8578(void *a0, int a1, int a2, float f, int a3, int t0, int t1);
-extern void func_0026B9E8(void *a0);
+extern void Spawner_spawnChild(void *a0);
 extern int cSnd_SeCall_2CBA48(void *a0, int a1, int a2, void *a3, int a4, int a5, int a6, int a7);
 extern int SetEffect(int a0, int a1, void *a2, void *a3, int t0, unsigned int t1);
 extern int moveMotion(void *a0);
@@ -66,7 +66,7 @@ typedef struct S {
 } S;
 
 /* Phase machine on the step byte, 7 case labels. Calls VU0_SQC2_VF0,
- * cCollisionSolidManage_SetActive, func_002A8578, cCoreSave_getGameLevel, func_0026B9E8,
+ * cCollisionSolidManage_SetActive, func_002A8578, cCoreSave_getGameLevel, Spawner_spawnChild,
  * cSnd_SeCall_2CBA48 and 4 more. */
 __attribute__((section(".text.func_00242880"))) void func_00242880(cEm00 *self)
 {
@@ -128,7 +128,7 @@ __attribute__((section(".text.func_00242880"))) void func_00242880(cEm00 *self)
                     *(float *)((char *)self + 0x172C) = 900.0f;
                     break;
             }
-            func_0026B9E8(self);
+            Spawner_spawnChild(self);
             cSnd_SeCall_2CBA48(D_005FEE00, 0, 0x107, self, 0, 0, 0, 0);
             SetEffect(0x69, 1, self, &fr, 1, 0xFFFFFFFFU);
             self->emFlags2 |= 0x20;

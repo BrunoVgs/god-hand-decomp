@@ -4,9 +4,9 @@
 
 extern void CornerPanel_initState0(void *a0);
 extern void func_002B17F8(void *a0);
-extern void func_002B1830(void *a0);
+extern void Panel_resetToStartPose(void *a0);
 extern void CornerPanel_setPointsState4(void *a0);
-extern void func_002B1C30(void *a0);
+extern void CornerPanel_setPointsState5(void *a0);
 extern int D_00747A2C;
 
 __attribute__((section(".text.func_002B16F0")))
@@ -33,13 +33,13 @@ void func_002B16F0(void *a0)
         func_002B17F8(p);
         break;
     case 3:
-        func_002B1830(p);
+        Panel_resetToStartPose(p);
         break;
     case 4:
         CornerPanel_setPointsState4(p);
         break;
     case 5:
-        func_002B1C30(p);
+        CornerPanel_setPointsState5(p);
         break;
     default:
         break;

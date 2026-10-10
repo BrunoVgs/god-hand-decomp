@@ -2,7 +2,7 @@
 
 extern void cOmBase_tickModeTableSkip381(void);
 extern void cOmBase_dieCommon(void);
-extern void func_001BFB80(void);
+extern void StateObj_runHandler(void);
 extern void func_001BC0A0(void);
 
 __attribute__((section(".text.func_0019ABA8")))
@@ -32,7 +32,7 @@ void func_0019C030(void) {
 
 __attribute__((section(".text.func_0019C2B0")))
 void func_0019C2B0(void) {
-    func_001BFB80();
+    StateObj_runHandler();
 }
 
 __attribute__((section(".text.func_0019C518")))
@@ -45,10 +45,10 @@ __attribute__((section(".text.func_0019D538")))
 void func_0019D538(void) { func_001BC0A0(); }
 
 __attribute__((section(".text.func_0019D740")))
-void func_0019D740(void) { func_001BFB80(); }
+void func_0019D740(void) { StateObj_runHandler(); }
 
 __attribute__((section(".text.func_0019D950")))
-void func_0019D950(void) { func_001BFB80(); }
+void func_0019D950(void) { StateObj_runHandler(); }
 
 __attribute__((section(".text.func_0019DBD8")))
 void func_0019DBD8(void) { cOmBase_tickModeTableSkip381(); }

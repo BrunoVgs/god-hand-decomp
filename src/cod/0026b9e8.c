@@ -8,8 +8,8 @@ extern void func_001D0090(void *obj, void *owner);
 #define CHILD_OFFSET_Y 0.6f             /* spawn height offset below the owner position */
 
 /* While in action 0x211, create the child object 0x3B8, put it at the owner's position lowered by 0.6, mirror that in its own position copy, link it to the owner and store it at 0x730. */
-__attribute__((section(".text.func_0026B9E8")))
-void func_0026B9E8(char *self)
+__attribute__((section(".text.Spawner_spawnChild")))
+void Spawner_spawnChild(char *self)
 {
     char *obj;
     float *dst;

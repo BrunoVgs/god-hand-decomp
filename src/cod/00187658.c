@@ -14,8 +14,8 @@ typedef struct PanelObj {
 
 extern void func_001DEE60(PanelObj *self, int element, int show);
 
-__attribute__((section(".text.func_001DEFC8")))
-void func_001DEFC8(PanelObj *self, unsigned char mode)
+__attribute__((section(".text.PanelObj_setArrowMode")))
+void PanelObj_setArrowMode(PanelObj *self, unsigned char mode)
 {
     switch (mode) {
     case 0:
@@ -34,8 +34,8 @@ void func_001DEFC8(PanelObj *self, unsigned char mode)
 
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_001BD1A0")))
-void func_001BD1A0(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepB")))
+void cOmBase_startKnockStepB(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;
@@ -90,8 +90,8 @@ void func_00187658(cOmBase *self)
 #define COMBASE_F0_BIT2   0x04          /* flags0 bit 2 */
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_0018BFA0")))
-void func_0018BFA0(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepC")))
+void cOmBase_startKnockStepC(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;
@@ -118,8 +118,8 @@ void func_0018BFA0(cOmBase *self)
 #define COMBASE_F0_BIT2   0x04          /* flags0 bit 2 */
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_0018CDA8")))
-void func_0018CDA8(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepD")))
+void cOmBase_startKnockStepD(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;
@@ -146,8 +146,8 @@ void func_0018CDA8(cOmBase *self)
 #define COMBASE_F0_BIT2   0x04          /* flags0 bit 2 */
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_0018DB60")))
-void func_0018DB60(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepE")))
+void cOmBase_startKnockStepE(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;

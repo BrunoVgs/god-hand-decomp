@@ -35,8 +35,8 @@ typedef struct ModeEnt {
 typedef struct { char b[0x20]; } ModeTbl;
 extern ModeTbl D_004236E0;              /* the four entries */
 
-__attribute__((section(".text.func_0018A870")))
-void func_0018A870(cOmBase *self) {
+__attribute__((section(".text.cOmBase_tickModeTableB")))
+void cOmBase_tickModeTableB(cOmBase *self) {
     ModeEnt tbl[MODE_NUM];
     char *e;
     int i8;
@@ -84,8 +84,8 @@ typedef struct GripBuf {
 
 
 
-__attribute__((section(".text.func_0026ADF8")))
-void func_0026ADF8(cOmBase *self, void *weapon, int left)
+__attribute__((section(".text.cOmBase_attachWeaponGripB")))
+void cOmBase_attachWeaponGripB(cOmBase *self, void *weapon, int left)
 {
     GripBuf grip;
     int idx;
@@ -161,8 +161,8 @@ typedef struct DoorLikeObj {
     char hitRecData[0x20];              /* 0x650 */
 } DoorLikeObj;
 
-__attribute__((section(".text.func_001867E8")))
-int func_001867E8(DoorLikeObj *self) {
+__attribute__((section(".text.DoorBox_initWithBoxA")))
+int DoorBox_initWithBoxA(DoorLikeObj *self) {
     float f[16];
     float *t;
     float *m;
@@ -239,8 +239,8 @@ static __inline__ void door_vec(cVec *v, float x, float y, float z, float w) {
 /* Register the door's solid box with the collision list: the box centre
  * is the door size plus a margin, the half extents are half the height,
  * and the axes are copied from the shared table. */
-__attribute__((section(".text.func_001BDA00")))
-void func_001BDA00(DoorBoxHost *self) {
+__attribute__((section(".text.cOmDoor_setObjCollisionCenterOnly")))
+void cOmDoor_setObjCollisionCenterOnly(DoorBoxHost *self) {
     cVec center;
     cVec half;
     cVec zero;
@@ -269,8 +269,8 @@ void func_001BDA00(DoorBoxHost *self) {
 #define EM_FADE_STEP       0.1f
 
 /* Phase 0: flash the body and enter phase 1. Phase 1: slow the animation to a stop, then release the enemy. */
-__attribute__((section(".text.func_00279838")))
-void func_00279838(cEm00 *self) {
+__attribute__((section(".text.cEm00_stepFadeOutAndReleaseNoStart")))
+void cEm00_stepFadeOutAndReleaseNoStart(cEm00 *self) {
     cEm00 *em;
     unsigned char one = 1;
     self->hitFlash = EM_HIT_FLASH_FULL;

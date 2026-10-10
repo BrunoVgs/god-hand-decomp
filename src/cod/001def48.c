@@ -39,7 +39,7 @@ typedef struct Slot2Part {
     unsigned short blinkTimer;          /* 0x4C2 frames of blinking left */
 } Slot2Part;
 
-extern void func_001E4520(Slot2Part *self, int mode);
+extern void LayerScreen_hideLayers(Slot2Part *self, int mode);
 
 __attribute__((section(".text.Slot2Part_stepWait")))
 void Slot2Part_stepWait(Slot2Part *self)
@@ -50,7 +50,7 @@ void Slot2Part_stepWait(Slot2Part *self)
             self->blinkTimer--;
             if (self->blinkTimer == 0) {
                 self->flags &= ~SLOT2PART_F_BLINK;
-                func_001E4520(self, 0);
+                LayerScreen_hideLayers(self, 0);
             }
         }
         self->phase = self->phase + 1;

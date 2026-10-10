@@ -153,7 +153,7 @@ void func_0022B358(char *s0)
     s1 = s0 + 0x6E4;
     while (s2 < 2) {
         void *e = *(void **)s1;
-        if (e != 0 && func_001B1A80(e) != 0) {
+        if (e != 0 && CountdownObj_tickIsSpent(e) != 0) {
             EmThrower_throwHeld(s0, 0, 1);
             EmThrower_throwHeld(s0, 1, 1);
             break;

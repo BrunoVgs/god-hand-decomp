@@ -24,7 +24,7 @@ extern int D_0042B270[POKER_SUIT_NUM];
 extern float D_00568150[4];
 extern BlackJackCardObj *CreateObj(int id, int a1);
 extern void cOmTrump_Initialize(BlackJackCardObj *obj, int rank);
-extern void func_001DF890(Poker *self);
+extern void IdScreen_loadIdData(Poker *self);
 
 /* Flag-word address of a deck card. A helper so the +0x2E68 stays out of the lw/sw displacement, as retail has it. */
 static __inline__ unsigned int *CardFlagAddr(char *p)
@@ -90,7 +90,7 @@ void Poker_Initialize(Poker *self, int level)
             }
         }
     }
-    func_001DF890(self);
+    IdScreen_loadIdData(self);
 }
 
 __attribute__((section(".text.Poker_Release")))

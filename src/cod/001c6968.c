@@ -5,7 +5,7 @@
 extern void func_001C6C30(void *a0, void *a1);
 extern float fRand1_1(void);
 extern void cModel_calcParts(void *a0);
-extern void func_001C6A90(void *a0, int a1, void *a2, void *a3, int t0);
+extern void SubInit_init(void *a0, int a1, void *a2, void *a3, int t0);
 
 /* sn-2.95.3-136 matched TU. */
 
@@ -348,7 +348,7 @@ void func_001CFB28(cOmWeapon *self, cVec *pos, int arg)
 __attribute__((section(".text.func_001C6968")))
 void func_001C6968(char *a, int n, void *v)
 {
-    func_001C6A90(a, n, v, a + 0x80, 1);
+    SubInit_init(a, n, v, a + 0x80, 1);
 }
 
 /* sn-2.95.3-136 matched TU. */
@@ -358,5 +358,5 @@ void func_001C6968(char *a, int n, void *v)
 __attribute__((section(".text.func_001C6A60")))
 void func_001C6A60(char *a, int n, void *v, int fl)
 {
-    func_001C6A90(a, n, a + 0x70, v, fl | 2);
+    SubInit_init(a, n, a + 0x70, v, fl | 2);
 }

@@ -249,7 +249,7 @@ void func_002606E8(unsigned char *p, int kind)
     }
 
     VU0_SQC2_VF0(pos, 0);
-    if (func_00260650(p) >= 2) {
+    if (cOmBase_countGroupsInAction211(p) >= 2) {
         return;
     }
 

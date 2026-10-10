@@ -3,7 +3,7 @@
 extern void cEmManage_SetSlotWait(void *a0, int a1);
 extern void cEmManage_SetPlCatched(void *a0);
 extern void cEmManage_SetBigHitEffWait(void *a0, int a1);
-extern void func_00129BA0(void *a0);
+extern void Owner_spawnEffect(void *a0);
 extern void pl00_clearMotionCam(void *a0, int a1, int a2);
 extern void Obj0000_Clear_Fields_640_648_124E58(void *a0);
 extern void func_002A8578(void *a0, int a1, int a2, float a3, int a4, int a5, int a6);
@@ -29,7 +29,7 @@ void func_00113CF8(void *a0)
     *(int *)(s1 + 0x15F4) |= 0x200;
     switch (*(unsigned char *)(s1 + 0x2F6)) {
     case 0:
-        func_00129BA0(s1);
+        Owner_spawnEffect(s1);
         pl00_clearMotionCam(s1, 0, 0);
         Obj0000_Clear_Fields_640_648_124E58(s1);
         b = *(int *)(s1 + 0x304);

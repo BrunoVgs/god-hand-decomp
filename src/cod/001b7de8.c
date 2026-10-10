@@ -7,7 +7,7 @@ extern void cModel_setTextureExchange(void *a0, int a1, int a2, int a3);
 extern int D_00428A18;
 extern void func_003A52F0(void *a0, int a1, int a2);
 extern void cSndMemHeap_ResetFirstBlk(void *);
-extern void func_002B43B0(void *);
+extern void MessWin_closeIfNoEndCode(void *);
 extern void func_002B45E8(void *);
 extern char *D_003C23A4;
 extern int cDamageManage_ReleaseDamageGive(void *a, void *b);
@@ -52,7 +52,7 @@ __attribute__((section(".text.func_002B3B70")))
 int func_002B3B70(char *a0) {
     if (func_002AEF90(D_003C23A4) == 0 ||
         func_002B45F8(a0, *(int *)(a0 + 0x8C), 0x8000) == 0)
-        func_002B43B0(a0);
+        MessWin_closeIfNoEndCode(a0);
     func_002B45E8(a0);
     *(char *)(a0 + 0xC) = 6;
     *(char *)(a0 + 0xD) = 0;

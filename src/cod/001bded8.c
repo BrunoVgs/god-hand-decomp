@@ -5,7 +5,7 @@
 extern int D_00586AF0;
 extern void func_00297B20(void *a, void *b);
 extern void func_00297B40(void *a, void *b);
-extern void func_002983D0(void);
+extern void ScrollLayer_hideAtEnd(void);
 extern void func_00298460(void);
 extern char D_00462FC0[];
 extern void cCollisionSolidManage_ReleaseUnit(void *manager, void *unit);
@@ -22,10 +22,10 @@ extern void SetField214PtrThenInit_1B6F38(cGameObj *self, int flag);
 
 
 
-__attribute__((section(".text.func_00298388")))
-void func_00298388(void)
+__attribute__((section(".text.RegisterCostumeHookPair")))
+void RegisterCostumeHookPair(void)
 {
-    func_00297B20(&D_00586AF0, (void *)&func_002983D0);
+    func_00297B20(&D_00586AF0, (void *)&ScrollLayer_hideAtEnd);
     func_00297B40(&D_00586AF0, (void *)&func_00298460);
 }
 
@@ -35,8 +35,8 @@ typedef struct ChildOwner {
     void *child;                        /* 0x15EC owned object, dies with its owner */
 } ChildOwner;
 
-__attribute__((section(".text.func_00285678")))
-void func_00285678(ChildOwner *self)
+__attribute__((section(".text.ChildOwner_releaseChild")))
+void ChildOwner_releaseChild(ChildOwner *self)
 {
     cCollisionSolidManage_ReleaseUnit(D_00462FC0, self);
     if (self->child != 0) {
@@ -60,8 +60,8 @@ typedef struct CornerPanel {
 
 extern void func_002B1C80(CornerPanel *self);
 
-__attribute__((section(".text.func_002B1C30")))
-void func_002B1C30(CornerPanel *self)
+__attribute__((section(".text.CornerPanel_setPointsState5")))
+void CornerPanel_setPointsState5(CornerPanel *self)
 {
     self->x0 = 0x100;
     self->y0 = 0x144;
@@ -81,8 +81,8 @@ typedef struct StateObj {
 extern void func_00385078(StateObj *self);
 extern void func_00385138(StateObj *self);
 
-__attribute__((section(".text.func_00385030")))
-void func_00385030(StateObj *self)
+__attribute__((section(".text.StateObj_runStep")))
+void StateObj_runStep(StateObj *self)
 {
     switch (self->state) {
     case 0:
@@ -103,8 +103,8 @@ void func_00385030(StateObj *self)
 
 
 /* Destructor of a game object subclass: set its method table, release effect data 0x241, run the base destructor. */
-__attribute__((section(".text.func_001BDED8")))
-void func_001BDED8(cGameObj *self, int flag) {
+__attribute__((section(".text.cGameObj_destructSubclassB")))
+void cGameObj_destructSubclassB(cGameObj *self, int flag) {
     self->vt = (cGameObjVt *)&D_004294F0;
     espSys_effDataRelease(D_007419A0, 0x241);
     SetField214PtrThenInit_1B6F38(self, flag);

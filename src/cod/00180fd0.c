@@ -6,8 +6,8 @@ extern char D_00747470[];
 extern void classFADE_kill(void *p);
 extern void classFADE_start(void *p, int b, int c, int d, unsigned int e, unsigned int f, int g);
 extern void func_00300D20(int a0, int a1);
-extern void func_002FB898(int a0, int a1);
-extern void func_003009F8(int a0, int a1);
+extern void Esp_killByGroupPair(int a0, int a1);
+extern void Slots_runHandlerForAll(int a0, int a1);
 extern void func_002FBA60(int a0, int a1, int a2);
 extern int ClearField5B4IfFlagUnset_1B76B0(int a0);
 extern void func_002A87E8(void *a0, int a1);
@@ -62,10 +62,10 @@ void KillEffect_306168(int a0, int a1, int a2) {
         func_00300D20(a0, a1);
         break;
     case 1:
-        func_002FB898(a0, a1);
+        Esp_killByGroupPair(a0, a1);
         break;
     case 2:
-        func_002FB898(a0, a1);
+        Esp_killByGroupPair(a0, a1);
         func_00300D20(a0, a1);
         break;
     }
@@ -82,14 +82,14 @@ void KillEffectWithFlag(int a0, int a1, int a2, unsigned char a3) {
     }
     switch (a2) {
     case 0:
-        func_003009F8(a0, a1);
+        Slots_runHandlerForAll(a0, a1);
         break;
     case 1:
         func_002FBA60(a0, a1, a3);
         break;
     case 2:
         func_002FBA60(a0, a1, a3);
-        func_003009F8(a0, a1);
+        Slots_runHandlerForAll(a0, a1);
         break;
     }
 }

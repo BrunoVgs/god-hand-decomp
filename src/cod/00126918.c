@@ -8,11 +8,11 @@
 extern void func_002CAF28(cSnd *self);
 extern void cSnd_BgmControl(cSnd *self);
 extern void Forward33F690_325DD8(void);
-extern void func_002CA5D8(cSnd *self);
+extern void cSnd_flushPendingSe(cSnd *self);
 extern void func_00375380(void);
 extern void func_00375500(void);
-extern void func_002CA558(cSnd *self);
-extern void func_002D2E38(void *p);
+extern void cSnd_updateLoads(cSnd *self);
+extern void Ring_stepToAccepted(void *p);
 extern int cSnd_SeFadeOut(cSnd *self, int handle, short fade);
 extern char D_00603A40[];
 extern void func_002B6370(void *self);
@@ -23,7 +23,7 @@ extern void cNode_setLocalTranslation(void *self, void *v);
 extern int strlen(const char *s);
 extern char D_0044B060[];
 extern char D_0044B090[];
-extern void func_001450A0(void *self, void *src, short num);
+extern void BlendWork_copyShortTable(void *self, void *src, short num);
 extern void BlendWork_copyTable(void *self, void *src, short num);
 extern void func_001451A0(void *self, void *src, short num);
 extern void SetFlagAfterCopy_145160(void *self, void *src);
@@ -38,8 +38,8 @@ extern char *D_003BD6E8;
 #define SE_STOP_FADE  5
 
 /* Per-frame sound update: run every sub-update, then fade out and clear each SeStop handle that is set. */
-__attribute__((section(".text.func_002CA470")))
-void func_002CA470(cSnd *self)
+__attribute__((section(".text.cSnd_update")))
+void cSnd_update(cSnd *self)
 {
     unsigned int i;
     int *stop;
@@ -48,11 +48,11 @@ void func_002CA470(cSnd *self)
     stop = self->seStop;
     cSnd_BgmControl(self);
     Forward33F690_325DD8();
-    func_002CA5D8(self);
+    cSnd_flushPendingSe(self);
     func_00375380();
     func_00375500();
-    func_002CA558(self);
-    func_002D2E38(D_00603A40);
+    cSnd_updateLoads(self);
+    Ring_stepToAccepted(D_00603A40);
     for (i = 0; i < CSND_SE_STOP_NUM; i++) {
         if (*stop != 0) {
             cSnd_SeFadeOut(self, *stop, SE_STOP_FADE);
@@ -63,8 +63,8 @@ void func_002CA470(cSnd *self)
 }
 
 /* Set the node's local translation from a world-space position: bring `pos` into the parent's space with the inverse of the parent matrix (identity when there is no parent). */
-__attribute__((section(".text.func_002B5FC8")))
-void func_002B5FC8(void *self, float *pos)
+__attribute__((section(".text.cNode_setTranslationFromWorld")))
+void cNode_setTranslationFromWorld(void *self, float *pos)
 {
     char frame[0x60] __attribute__((aligned(16)));
     char *vec;
@@ -108,8 +108,8 @@ typedef struct SlotIds {
 } SlotIds;
 
 /* Send the two setup requests to the queue, retrying each until it is accepted, then clear both ids. */
-__attribute__((section(".text.func_002AE3F0")))
-void func_002AE3F0(SlotIds *self)
+__attribute__((section(".text.SlotIds_sendSetup")))
+void SlotIds_sendSetup(SlotIds *self)
 {
     Str10 text;
 
@@ -132,12 +132,12 @@ typedef struct BlendSetup {
 } BlendSetup;
 
 /* Load the three tables and the default table, then store `start - 1` as the current entry (clamped to 0..0x23; before the first entry wraps to num - 1). */
-__attribute__((section(".text.func_00144FD8")))
-void func_00144FD8(BlendSetup *self, void *tblA, void *tblB, void *tblC, short num, unsigned short start)
+__attribute__((section(".text.BlendSetup_load")))
+void BlendSetup_load(BlendSetup *self, void *tblA, void *tblB, void *tblC, short num, unsigned short start)
 {
     int idx;
 
-    func_001450A0(self, tblB, num);
+    BlendWork_copyShortTable(self, tblB, num);
     BlendWork_copyTable(self, tblA, num);
     func_001451A0(self, tblC, num);
     SetFlagAfterCopy_145160(self, D_003BD6F8);
@@ -168,8 +168,8 @@ typedef struct ComboObj {
 } ComboObj;
 
 /* Start the next combo of the current set: wrap to slot 0 of set 0 once the slot passes the set's size, look up the combo, load its first word as the move, start it and advance the slot. Returns the combo id. */
-__attribute__((section(".text.func_00126918")))
-int func_00126918(ComboObj *self)
+__attribute__((section(".text.ComboObj_startNext")))
+int ComboObj_startNext(ComboObj *self)
 {
     int combo;
     int move;
@@ -197,8 +197,8 @@ extern char D_005FEE00[];               /* cSnd */
 #define BGM_REQ_B   0x24
 
 /* End-of-game stage: on the first call fade out both BGM requests, hide layer 1, run the end hook and flag the game as over. */
-__attribute__((section(".text.func_001EB648")))
-void func_001EB648(Slot2 *self)
+__attribute__((section(".text.Slot2_endGameFade")))
+void Slot2_endGameFade(Slot2 *self)
 {
     switch (self->step) {
     case 0:

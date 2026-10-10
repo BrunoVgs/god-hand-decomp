@@ -35,8 +35,8 @@ typedef struct IconScreen {
 } IconScreen;
 
 /* Advance to the next step once the child object has finished animating. */
-__attribute__((section(".text.func_0013DA98")))
-void func_0013DA98(IconScreen *self)
+__attribute__((section(".text.IconScreen_waitChildDone")))
+void IconScreen_waitChildDone(IconScreen *self)
 {
     if (self->child->flags & ICONSCREEN_SUB_FLAG_DONE) {
         cIDBase_move(self);
@@ -48,8 +48,8 @@ void func_0013DA98(IconScreen *self)
 #define SLOT2_LAYER_ID_NUM      12
 
 /* Hide every scroll layer of the machine's layer id table. */
-__attribute__((section(".text.func_001E6820")))
-void func_001E6820(Slot2 *self)
+__attribute__((section(".text.Slot2_hideLayerIds")))
+void Slot2_hideLayerIds(Slot2 *self)
 {
     int *id = (int *)((char *)self + SLOT2_OFFSET_LAYER_IDS);
     int i;
@@ -65,8 +65,8 @@ typedef struct StepObj {
 } StepObj;
 
 /* Call the handler for the current step (8 byte entries: short delta, handler at +4), then run the shared update. */
-__attribute__((section(".text.func_001EA1A8")))
-void func_001EA1A8(StepObj *self)
+__attribute__((section(".text.Slot2_dispatchStep")))
+void Slot2_dispatchStep(StepObj *self)
 {
     int i = self->step;
     short off = *(short *)(D_003BE528 + i * 8);
@@ -89,8 +89,8 @@ typedef struct TaskFnWork {
 
 
 /* Task body: call the stored function (with its argument when kind is 1), then end the task. */
-__attribute__((section(".text.func_002D5AD8")))
-void func_002D5AD8(TaskFnWork *self)
+__attribute__((section(".text.TaskFnWork_runAndExit")))
+void TaskFnWork_runAndExit(TaskFnWork *self)
 {
     switch (self->kind) {
     default:

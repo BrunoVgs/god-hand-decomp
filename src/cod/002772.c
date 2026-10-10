@@ -16,8 +16,8 @@ extern const unsigned char D_00447BA0[];    /* method table */
 extern const char D_00447B88[];             /* type name */
 extern void *func_0028EB00(void *self);     /* enemy base constructor */
 
-__attribute__((section(".text.InitObjVtableAndType_2772A8")))
-EnemyRec *InitObjVtableAndType_2772A8(EnemyRec *self)
+__attribute__((section(".text.EnemyBase_constructTriVec")))
+EnemyRec *EnemyBase_constructTriVec(EnemyRec *self)
 {
     func_0028EB00(self);
     self->vt = D_00447BA0;

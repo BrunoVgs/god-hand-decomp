@@ -21,7 +21,7 @@ extern void cDataManager_addPinnedData(void *mgr, int id, void *data);
 extern void sceVu0ApplyMatrix(void *dst, void *mtx, void *v);
 
 /* Tick down the button's countdown (0x32) while its state (0x36) is 1;
- * when the countdown is spent, call func_001F7228. */
+ * when the countdown is spent, call cActionButtonEnt_reset. */
 typedef struct TimedButton {
     char unk00[0x32];
     short timer;                        /* 0x32 frames left */
@@ -31,13 +31,13 @@ typedef struct TimedButton {
 
 #define BUTTON_STATE_COUNTING  1
 
-extern void func_001F7228(TimedButton *self);
+extern void cActionButtonEnt_reset(TimedButton *self);
 
-__attribute__((section(".text.func_001F6F58")))
-void func_001F6F58(TimedButton *self) {
+__attribute__((section(".text.TimedButton_tick")))
+void TimedButton_tick(TimedButton *self) {
     if (self->state == BUTTON_STATE_COUNTING) {
         if (self->timer <= 0) {
-            func_001F7228(self);
+            cActionButtonEnt_reset(self);
         } else {
             self->timer = (unsigned short)self->timer - 1;
         }
@@ -57,8 +57,8 @@ typedef struct BufHolder {
 
 
 
-__attribute__((section(".text.func_001483C8")))
-void func_001483C8(BufHolder *self, int flags) {
+__attribute__((section(".text.BufHolder_deletingDtor")))
+void BufHolder_deletingDtor(BufHolder *self, int flags) {
     char *buf = self->buf;
     if (buf != 0)
         cHeap_free(HEAP_OF_BLOCK(buf), buf);
@@ -79,8 +79,8 @@ typedef struct OwnerObj {
 
 
 
-__attribute__((section(".text.func_002E6368")))
-void func_002E6368(OwnerObj *self, int flags) {
+__attribute__((section(".text.OwnerObj_destroyOwned")))
+void OwnerObj_destroyOwned(OwnerObj *self, int flags) {
     self->vt = D_0044E538;
     if (self->owned != 0)
         ReleaseObj(self->owned);
@@ -108,8 +108,8 @@ typedef struct EffObj {
 
 
 
-__attribute__((section(".text.func_0028E068")))
-void func_0028E068(EffObj *self, int flag) {
+__attribute__((section(".text.EffObj_teardown")))
+void EffObj_teardown(EffObj *self, int flag) {
     self->vt = D_0044A528;
     func_002A84A8(self);
     espSys_effDataRelease(D_007419A0, EFFDATA_SLOT);
@@ -169,8 +169,8 @@ extern FxObj *CreateObj(int id, int flags);
 
 #define FRAME ((char *)&off - 0x0)
 
-__attribute__((section(".text.func_00129BA0")))
-void func_00129BA0(Owner *self)
+__attribute__((section(".text.Owner_spawnEffect")))
+void Owner_spawnEffect(Owner *self)
 {
     cVec off;                           /* sp+0x00 */
     cVec w;                             /* sp+0x10 */
@@ -215,8 +215,8 @@ typedef struct SlotList {
     void *slot[4];                      /* 0x10 */
 } SlotList;
 
-__attribute__((section(".text.func_001F6A80")))
-void func_001F6A80(SlotList *self) {
+__attribute__((section(".text.SlotList_selectPrev")))
+void SlotList_selectPrev(SlotList *self) {
     int i = self->cur - 1;
     int j;
     for (; i >= 0; i--) {

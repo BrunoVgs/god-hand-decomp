@@ -9,8 +9,8 @@ extern void cSndSeVoice_Stop(cSndSeVoice *voice);
 #define CSND_VOICE_STOP_BIT 2           /* voice flag bit that marks it for stopping */
 
 /* Clears the pending bit, steps every voice, and if the bit came back stops the voices flagged for it. */
-__attribute__((section(".text.func_002CA5D8")))
-void func_002CA5D8(cSnd *self) {
+__attribute__((section(".text.cSnd_flushPendingSe")))
+void cSnd_flushPendingSe(cSnd *self) {
     cSndSeVoice *v;
 
     self->flagsB0 = self->flagsB0 & ~CSND_F_SE_PENDING;

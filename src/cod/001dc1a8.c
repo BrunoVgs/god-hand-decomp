@@ -29,8 +29,8 @@ typedef struct PartHolder {
 } PartHolder;
 
 /* Mark every part when one of the four kinds the first lookup returns is PART_KIND_FOUND and the second lookup returns the sequence 0, 9, 10, 11, 12 in its x values. Returns 1 when it marked them. */
-__attribute__((section(".text.func_001DC1A8")))
-int func_001DC1A8(PartHolder *self)
+__attribute__((section(".text.PartHolder_markIfSequence")))
+int PartHolder_markIfSequence(PartHolder *self)
 {
     unsigned short kind[4];
     unsigned short x[5];
@@ -63,8 +63,8 @@ extern char D_0044AC00[];               /* BGM names, one per stage count */
 #define STAGE_NUM  3
 
 /* Count the finished stages and start the BGM of that count: event 0x1001 plus its named track for one stage, 0x1002 for two, 0x1003 for three. */
-__attribute__((section(".text.func_00298DB8")))
-void func_00298DB8(void)
+__attribute__((section(".text.EventBgm_startByStageCount")))
+void EventBgm_startByStageCount(void)
 {
     int n;
     int i;
@@ -119,8 +119,8 @@ static __inline__ long inrange(unsigned short k, int lo, int hi)
 }
 
 /* First live item object of actor 0x3D1 for which func_001C2328 answers nonzero, or 0. */
-__attribute__((section(".text.func_00274018")))
-char *func_00274018(void)
+__attribute__((section(".text.ObjList_findActor3D1")))
+char *ObjList_findActor3D1(void)
 {
     char **p = D_00754C58->begin;
     char **end = D_00754C58->end;

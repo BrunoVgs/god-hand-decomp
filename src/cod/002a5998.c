@@ -6,7 +6,7 @@ extern int D_00752C00[];
 extern void func_002A5B00(void *a0);
 extern void func_002A6CA8(void *a0);
 extern void func_002A6DA8(void *a0);
-extern void func_002A5B18(void *a0);
+extern void GameInitObj_start(void *a0);
 extern void func_002A5BB8(void *a0);
 extern void GameLoop_stageClearToState3(void *a0);
 extern void func_002A5EC0(void *a0);
@@ -40,7 +40,7 @@ void func_002A5998(void) {
         func_002A6CA8(&D_005CAC90);
         func_002A6DA8(&D_005CAC90);
         switch (D_005CAC90) {
-        case 0: func_002A5B18(&D_005CAC90); break;
+        case 0: GameInitObj_start(&D_005CAC90); break;
         case 1: func_002A5BB8(&D_005CAC90); break;
         case 2: GameLoop_stageClearToState3(&D_005CAC90); break;
         case 3: func_002A5EC0(&D_005CAC90); break;

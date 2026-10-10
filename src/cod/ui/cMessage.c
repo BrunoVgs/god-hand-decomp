@@ -1,6 +1,6 @@
 #include "godhand/cMessage.h"
 extern cMessageWin *cMessage_searchWorkId(cMessage *self, unsigned short workId);
-extern cMessageWin *func_002AEF10(cMessage *self, cMessageWin *win);
+extern cMessageWin *cMessage_releaseWin(cMessage *self, cMessageWin *win);
 /* Delete the window with this work id. 1 if it existed. */
 __attribute__((section(".text.cMessage_deleteWorkId")))
 int cMessage_deleteWorkId(cMessage *self, unsigned short workId)
@@ -10,7 +10,7 @@ int cMessage_deleteWorkId(cMessage *self, unsigned short workId)
     if (win == 0) {
         return 0;
     }
-    func_002AEF10(self, win);
+    cMessage_releaseWin(self, win);
     return 1;
 }
 
@@ -24,7 +24,7 @@ int cMessage_deleteMessNo(cMessage *self, unsigned short messNo)
     if (win == 0) {
         return 0;
     }
-    func_002AEF10(self, win);
+    cMessage_releaseWin(self, win);
     return 1;
 }
 #include "include_asm.h"

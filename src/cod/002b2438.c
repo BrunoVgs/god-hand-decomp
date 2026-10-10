@@ -1,7 +1,7 @@
 /* sn-2.95.3-136 matched TU. */
 
 extern void func_002B3078(void *a0);
-extern void func_002B3240(void *a0);
+extern void StepObj_stepTimer(void *a0);
 extern void func_002B3D70(void *a0);
 extern void func_002B3EC8(void *a0);
 extern void func_002B4028(void *a0);
@@ -23,7 +23,7 @@ void func_002B2438(char *a0)
         func_002B3078(a0);
         break;
     case 2:
-        func_002B3240(a0);
+        StepObj_stepTimer(a0);
         break;
     case 3:
         func_002B3D70(a0);

@@ -383,7 +383,7 @@ __attribute__((section(".text.func_002557F8"))) void func_002557F8(cEm00 *self)
             char *o;
             int n;
             if (moveMotion(s1) != 0) {
-                if (func_00274E98(s1) != 0) {
+                if (cEm00_startHitUnitAim(s1) != 0) {
                     return;
                 }
                 func_002705D8(s1);
@@ -397,7 +397,7 @@ __attribute__((section(".text.func_002557F8"))) void func_002557F8(cEm00 *self)
             if (n != 0) {
                 *(int *)(s1 + 0x5F0) = n - 1;
             } else {
-                if (func_00274E98(s1) != 0) {
+                if (cEm00_startHitUnitAim(s1) != 0) {
                     return;
                 }
                 func_00262AA8(s1);

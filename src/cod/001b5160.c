@@ -14,7 +14,7 @@ extern void func_00345610(void);
 extern void func_0014EA28(void);
 extern void func_002BB010(void);
 extern void func_002BF170(void *a0);
-extern void func_002AE740(int a0);
+extern void cMc_startLoadRunRelease(int a0);
 extern void func_002AE7F0(int a0);
 extern int Forward325C98_325DC0(int a0);
 
@@ -143,7 +143,7 @@ __attribute__((section(".text.func_002BF150")))
 void func_002BF150(void *a0) { func_002BF170(a0); }
 
 __attribute__((section(".text.func_002C09E8")))
-void func_002C09E8(void) { func_002AE740(2); }
+void func_002C09E8(void) { cMc_startLoadRunRelease(2); }
 
 __attribute__((section(".text.func_002C0A08")))
 void func_002C0A08(void) { func_002AE7F0(2); }
@@ -300,7 +300,7 @@ extern void cObjBase_KageDraw(void);
 extern void func_0015FF10(void);
 extern void func_001BC0A0(void);
 extern void func_001BD6B0(void);
-extern void func_001BFB80(void);
+extern void StateObj_runHandler(void);
 extern void cOmBase_tickModeTableSkip381(void);
 extern void func_0030A2E0(void);
 extern void func_0030A548(void);
@@ -358,16 +358,16 @@ __attribute__((section(".text.Tramp_func_001C29D0_00170418")))
 void Tramp_func_001C29D0_00170418(void) { cOmBase_tickModeTableSkip381(); }
 
 __attribute__((section(".text.Tramp_func_001BFB80_001706E0")))
-void Tramp_func_001BFB80_001706E0(void) { func_001BFB80(); }
+void Tramp_func_001BFB80_001706E0(void) { StateObj_runHandler(); }
 
 __attribute__((section(".text.Tramp_func_001BFB80_00170970")))
-void Tramp_func_001BFB80_00170970(void) { func_001BFB80(); }
+void Tramp_func_001BFB80_00170970(void) { StateObj_runHandler(); }
 
 __attribute__((section(".text.Tramp_func_001BFB80_00170C00")))
-void Tramp_func_001BFB80_00170C00(void) { func_001BFB80(); }
+void Tramp_func_001BFB80_00170C00(void) { StateObj_runHandler(); }
 
 __attribute__((section(".text.Tramp_func_001BFB80_00170E90")))
-void Tramp_func_001BFB80_00170E90(void) { func_001BFB80(); }
+void Tramp_func_001BFB80_00170E90(void) { StateObj_runHandler(); }
 
 __attribute__((section(".text.Tramp_func_001BFB80_00171000")))
 void Tramp_func_001BFB80_00171000(void) { func_001BD6B0(); }
@@ -472,7 +472,7 @@ __attribute__((section(".text.Tramp_func_001B79B0_00182FD8")))
 void Tramp_func_001B79B0_00182FD8(void) { cOmBase_dieCommon(); }
 
 __attribute__((section(".text.Tramp_func_001BFB80_001834F0")))
-void Tramp_func_001BFB80_001834F0(void) { func_001BFB80(); }
+void Tramp_func_001BFB80_001834F0(void) { StateObj_runHandler(); }
 
 __attribute__((section(".text.Tramp_func_001C29D0_001837D8")))
 void Tramp_func_001C29D0_001837D8(void) { cOmBase_tickModeTableSkip381(); }
@@ -526,7 +526,7 @@ __attribute__((section(".text.Tramp_func_001C29D0_0018EC28")))
 void Tramp_func_001C29D0_0018EC28(void) { cOmBase_tickModeTableSkip381(); }
 
 __attribute__((section(".text.Tramp_func_001BFB80_0018EE38")))
-void Tramp_func_001BFB80_0018EE38(void) { func_001BFB80(); }
+void Tramp_func_001BFB80_0018EE38(void) { StateObj_runHandler(); }
 
 __attribute__((section(".text.Tramp_func_001BC0A0_0018F0A0")))
 void Tramp_func_001BC0A0_0018F0A0(void) { func_001BC0A0(); }

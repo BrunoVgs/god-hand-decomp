@@ -15,7 +15,7 @@ extern void func_002D5958(void *task, void *fn);
 extern void func_0030DA08(void);
 extern int D_00747A78;
 extern void cCamera__calcRotation(cVec *out, void *self, void *a, void *b);
-extern void func_002EC310(void *self);
+extern void ScrollObj_advanceScroll(void *self);
 extern void StoreVecFromFieldB0_2B6160(cVec *dst, void *self);
 
 /* Memory card task body: flag the system as busy (bit 31), load the card
@@ -34,8 +34,8 @@ extern void StoreVecFromFieldB0_2B6160(cVec *dst, void *self);
 
 
 
-__attribute__((section(".text.func_002AE8A8")))
-void func_002AE8A8(void) {
+__attribute__((section(".text.cMc_taskBody")))
+void cMc_taskBody(void) {
     D_00747A84[1] |= 0x80000000;
     cMc_DllLoad(&D_005E6900, 0);
     func_0(cEvent_nullStr00);
@@ -69,8 +69,8 @@ extern StateTable D_0041D970;
 
 
 
-__attribute__((section(".text.func_00139C88")))
-void func_00139C88(char *s1)
+__attribute__((section(".text.cCamera_stepState")))
+void cCamera_stepState(char *s1)
 {
     StateTable tbl;
     cVec rot;
@@ -126,12 +126,12 @@ typedef struct TrailObj {
 
 
 
-__attribute__((section(".text.func_002EC218")))
-void func_002EC218(TrailObj *self)
+__attribute__((section(".text.Trail_pushPosition")))
+void Trail_pushPosition(TrailObj *self)
 {
     cVec head;
     int i;
-    func_002EC310(self);
+    ScrollObj_advanceScroll(self);
     for (i = self->count - 1; i > 0; i--)
         cVec_copy3(&self->trail[i], &self->trail[i - 1]);
     StoreVecFromFieldB0_2B6160(&head, self);

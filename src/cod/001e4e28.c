@@ -11,7 +11,7 @@ extern void func_001E78A8(char *a0, int a1);
 extern void func_001E78C8(char *a0, int a1);
 extern void func_001E78E8(char *a0, int a1);
 extern void func_001E6ED8(char *a0, int a1, int a2);
-extern void func_001E6A48(char *a0);
+extern void Slot2_showLayersForBetLv(char *a0);
 extern void func_001E6B70(char *a0, int a1, int a2);
 extern void func_001E6C80(char *a0, int a1, int a2);
 extern void func_001E6D48(char *a0, int a1, int a2);
@@ -48,7 +48,7 @@ void Slot2_UpdateBet(Slot2 *self)
         func_001E78E8(layer, self->unk36C[5]);
         self->betLv = 0;
         func_001E6ED8(self, 0, 0);
-        func_001E6A48(self);
+        Slot2_showLayersForBetLv(self);
         func_001E6B70(self, 0, 0);
         func_001E6C80(self, 0, 0);
         func_001E6D48(self, 0, 0);
@@ -110,7 +110,7 @@ void Slot2_UpdateBet(Slot2 *self)
                 }
                 self->betLv += 1;
                 cCoreSave_subGold(&D_00569B70, self->betCost);
-                func_001E6A48(self);
+                Slot2_showLayersForBetLv(self);
                 cSnd_SeCall_2CB8A0(D_005FEE00, 0, 0x15F, -1, -1, 0, 0);
                 return;
             }
@@ -120,7 +120,7 @@ void Slot2_UpdateBet(Slot2 *self)
                 }
                 self->betLv -= 1;
                 cCoreSave_addGold(&D_00569B70, self->betCost, 0);
-                func_001E6A48(self);
+                Slot2_showLayersForBetLv(self);
                 cSnd_SeCall_2CB8A0(D_005FEE00, 0, 0x161, -1, -1, 0, 0);
                 return;
             }

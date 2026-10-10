@@ -25,8 +25,8 @@ extern void func_002A58D8(cFont *self, unsigned int v);
 
 
 /* Starts the lift: base init, waits COM53_RISE_WAIT frames, sets the down position to 0. */
-__attribute__((section(".text.func_001A7820")))
-int func_001A7820(cOm53 *self) {
+__attribute__((section(".text.cOm53_start")))
+int cOm53_start(cOm53 *self) {
     func_001B6FB8(self);
     COM53_SCRFLAGS(self) |= 1;
     cOm53_setRiseWaitTime(self, COM53_RISE_WAIT);
@@ -37,8 +37,8 @@ int func_001A7820(cOm53 *self) {
 }
 
 /* On a plain hit (result 1) restart the four state bytes at mode 1 and flag the object dead when its hp ran out. */
-__attribute__((section(".text.func_001A62B8")))
-void func_001A62B8(cOmScripted *self) {
+__attribute__((section(".text.cOmScripted_onHit")))
+void cOmScripted_onHit(cOmScripted *self) {
     if (cOmBase_checkDamage(self, self->hitRecord) == 1) {
         if (self->base.hp <= 0) {
             self->dead = 1;
@@ -51,8 +51,8 @@ void func_001A62B8(cOmScripted *self) {
 }
 
 /* Adds the null part's speed to the position after turning it by yaw (radians) around the object's own origin. */
-__attribute__((section(".text.Add_nullspeedDir")))
-void Add_nullspeedDir(cObjBase *self, float yaw) {
+__attribute__((section(".text.cObjBase_addNullSpeedDir")))
+void cObjBase_addNullSpeedDir(cObjBase *self, float yaw) {
     struct {
         float mtx[16];
         cVec rot;                       /* 0x40 */
@@ -86,8 +86,8 @@ typedef struct ObjList {
 extern void func_002A9800(ObjList *list, VtOwner *obj);
 
 /* Queues obj on the list: counts it, runs its virtual method in slot 1 with mode 2, then moves it to the list front. */
-__attribute__((section(".text.func_001505A8")))
-void func_001505A8(ObjList *list, VtOwner *obj) {
+__attribute__((section(".text.ObjList_queueObj")))
+void ObjList_queueObj(ObjList *list, VtOwner *obj) {
     if (obj != 0) {
         list->count++;
         obj->vt[1].pfn((char *)obj + obj->vt[1].delta, 2);
@@ -116,8 +116,8 @@ static __inline__ void IdHolder_reset(IdHolder *self) {
 }
 
 /* Releases the live animation if there is one, and leaves the holder idle. */
-__attribute__((section(".text.func_0013E908")))
-void func_0013E908(IdHolder *self) {
+__attribute__((section(".text.IdHolder_releaseAnim")))
+void IdHolder_releaseAnim(IdHolder *self) {
     if (self->anim != 0) {
         cIDBase_release(self);
         IdHolder_reset(self);
@@ -126,8 +126,8 @@ void func_0013E908(IdHolder *self) {
 }
 
 /* Sets the text draw state: colour, layer, three scales; then runs the two state setters with a3 and t0. */
-__attribute__((section(".text.func_002A4E58")))
-void func_002A4E58(cFont *self, int colour, int layer, int a3, int t0, float scaleX, float f13, float f14) {
+__attribute__((section(".text.cFont_setDrawState")))
+void cFont_setDrawState(cFont *self, int colour, int layer, int a3, int t0, float scaleX, float f13, float f14) {
     self->state.colour = colour;
     self->state.layer = layer;
     self->state.scaleY = scaleX;

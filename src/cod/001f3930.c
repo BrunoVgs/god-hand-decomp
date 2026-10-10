@@ -9,7 +9,7 @@ extern void ColiseumUi_StartFade(void *a0, int a1);
 extern void func_001F44E0(void *a0);
 extern void func_001F4068(void *a0, unsigned short a1, void *a2, int a3);
 extern void func_001F4248(void *a0, int a1);
-extern void func_001F52A0(void *a0, int a1, int a2);
+extern void CustomIDWork_placeByIndex(void *a0, int a1, int a2);
 extern void func_001F55C0(void *a0, int a1, int a2, int a3);
 
 extern void MarkObj_setPulse(void *a0, int a1);
@@ -95,7 +95,7 @@ void func_001F3930(void *a0)
             *(T28 *)(s1 + 0x37A8) =
                 *(T28 *)&D_003BE8B0[*(short *)(s1 + 0x37D0) * 0x28];
             func_001F4248(s1, 1);
-            func_001F52A0(s1 + 0x60, *(unsigned short *)(s1 + 0x37D2), 1);
+            CustomIDWork_placeByIndex(s1 + 0x60, *(unsigned short *)(s1 + 0x37D2), 1);
             func_001F55C0(s1 + 0x60, *(short *)(s1 + 0x37D6), 7,
                           *(short *)(s1 + 0x37D4));
             cSnd_SeCall_2CB8A0(D_005FEE00, 0, 0x15F, -1, -1, 0, 0);

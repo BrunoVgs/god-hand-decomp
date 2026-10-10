@@ -9,8 +9,8 @@ extern void SetFlagOnEntries7C_1D51B8(void *self, int entry, int on);
 #define PANEL_SLIDE_FRAMES  0xA
 
 /* Panel mode: 0 hidden, 1 shown, 2 slide in, 3 slide out; entries 0x21 and 0x22 follow the mode. */
-__attribute__((section(".text.func_001D5F50")))
-void func_001D5F50(char *self, int mode) {
+__attribute__((section(".text.PanelWork_setMode")))
+void PanelWork_setMode(char *self, int mode) {
     switch (mode & 0xFFFF) {
     default:
     case 0:

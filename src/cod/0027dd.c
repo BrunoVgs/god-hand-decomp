@@ -17,8 +17,8 @@ extern const char D_004483A8[];                 /* method table */
 extern const char D_004482B0[];                 /* "cEm66" */
 
 /* cEm66 constructor: base setup, method table, zeroed vectors, then the zeroed slot array and the type name. */
-__attribute__((section(".text.Setup_27DD88")))
-cEm66 *Setup_27DD88(cEm66 *self) {
+__attribute__((section(".text.cEm66_construct")))
+cEm66 *cEm66_construct(cEm66 *self) {
     char *slot;
     int i;
 

@@ -33,7 +33,7 @@ int func_00318518(void *a0) {
 __attribute__((section(".text.func_0031A018")))
 int func_0031A018(void *a0) {
     *(char**)((char*)a0+0x214) = D_00450CE8;
-    return func_0014E5D0(a0);
+    return cObj_releaseActorData(a0);
 }
 
 /* clone */

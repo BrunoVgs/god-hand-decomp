@@ -3,7 +3,7 @@
 #include "godhand/cOmBase.h"
 #include "godhand/vu0.h"
 
-extern void func_002FB6C8(int a0);
+extern void Esp_killByGroupNumber(int a0);
 extern void func_00300AE8(int a0, int a1);
 extern void func_002FBB78(int a0, int a1, int a2, int a3);
 
@@ -14,8 +14,8 @@ extern void func_002FBB78(int a0, int a1, int a2, int a3);
 #define COMBASE_F0_BIT2   0x04          /* flags0 bit 2 */
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_00179C60")))
-void func_00179C60(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepL")))
+void cOmBase_startKnockStepL(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;
@@ -42,8 +42,8 @@ void func_00179C60(cOmBase *self)
 #define COMBASE_F0_BIT2   0x04          /* flags0 bit 2 */
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_0017A9E0")))
-void func_0017A9E0(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepM")))
+void cOmBase_startKnockStepM(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;
@@ -70,8 +70,8 @@ void func_0017A9E0(cOmBase *self)
 #define COMBASE_F0_BIT2   0x04          /* flags0 bit 2 */
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_0017D2E0")))
-void func_0017D2E0(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepN")))
+void cOmBase_startKnockStepN(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;
@@ -98,8 +98,8 @@ void func_0017D2E0(cOmBase *self)
 #define COMBASE_F0_BIT2   0x04          /* flags0 bit 2 */
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_001824E8")))
-void func_001824E8(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepO")))
+void cOmBase_startKnockStepO(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;
@@ -124,17 +124,17 @@ void func_001824E8(cOmBase *self)
 
 
 /* Remove an effect from one or both of its lists: mode 0 the second list, 1 the first, 2 both. */
-__attribute__((section(".text.func_003062A8")))
-void func_003062A8(int a0, int a1) {
+__attribute__((section(".text.Effect_killByMode")))
+void Effect_killByMode(int a0, int a1) {
     switch (a1) {
     case 0:
         func_00300AE8(a0, 0);
         break;
     case 1:
-        func_002FB6C8(a0);
+        Esp_killByGroupNumber(a0);
         break;
     case 2:
-        func_002FB6C8(a0);
+        Esp_killByGroupNumber(a0);
         func_00300AE8(a0, 0);
         break;
     }

@@ -26,8 +26,8 @@ extern char D_00754230[];               /* heap the file is read into */
 
 
 /* Frees the held block, reads the named file into it again and waits for the read. */
-__attribute__((section(".text.func_00166540")))
-void func_00166540(FileHolder *self, const char *name) {
+__attribute__((section(".text.FileHolder_reload")))
+void FileHolder_reload(FileHolder *self, const char *name) {
     if (self->data != 0) {
         cHeap_free(self->data[-8], self->data);
     }
@@ -50,8 +50,8 @@ typedef struct cGameObjCam {
 #define SYSFLAG_CAMHOLD  0x10000        /* bit of D_00747A78 */
 
 /* Starts the sub-screen camera: soft event on, then aims it at the object's lock-on point and a point 4 ahead of it, turned by the object's matrix. */
-__attribute__((section(".text.func_001A4BD0")))
-void func_001A4BD0(cGameObjCam *self)
+__attribute__((section(".text.cGameObjCam_startSubCamera")))
+void cGameObjCam_startSubCamera(cGameObjCam *self)
 {
     char buf[0x40] __attribute__((aligned(16)));
     float *v;

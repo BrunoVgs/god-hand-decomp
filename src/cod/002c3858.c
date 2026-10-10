@@ -1,7 +1,7 @@
 /* SN ProDG ee-gcc 2.95.3 matched TU. */
 #include "godhand/cScenario.h"
 
-extern void func_002D56A8(cTaskManager *task);
+extern void cTaskPool_killAll(cTaskManager *task);
 extern void cTaskWork_sleep(cTaskWork *work, int a1);
 extern unsigned int D_00747A78;
 extern char D_00463050[];
@@ -21,7 +21,7 @@ __attribute__((section(".text.cScenario_release")))
 void cScenario_release(cScenario *self) {
     cScenario_runExitFunc(self);
     cScenario_runRoomExitFunc(self);
-    func_002D56A8(&self->task);
+    cTaskPool_killAll(&self->task);
 }
 
 __attribute__((section(".text.cScenario_startCamMotion")))

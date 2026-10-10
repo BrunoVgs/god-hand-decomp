@@ -6,8 +6,8 @@
 
 extern int cSnd_SeCall(void *a0, int a1, short a2, int a3, int a4, int a5);
 extern int cSnd_SeCall_2CB8A0(void *a0, int a1, int a2, int a3, int t0, int t1, int t2);
-extern void func_001F30B8(char *a0, int a1);
-extern void func_001F33F8(char *a0, int a1, int a2);
+extern void CustomIDOwner_setShown(char *a0, int a1);
+extern void DigitDisplay_setNumber(char *a0, int a1, int a2);
 extern void func_001F3488(char *a0, int a1);
 
 extern void classFADE_start(void *p, int b, int c, int d, int e, unsigned int f, int g);
@@ -36,7 +36,7 @@ void ColiseumBattle_StepResult(ColiseumBattle *self)
     switch (self->state) {
     case 0:
         cSnd_SeCall(D_005FEE00, 0, 0x35, D_005CAFF0 + 0x210, 0, 0);
-        func_001F30B8(self->ui, 1);
+        CustomIDOwner_setShown(self->ui, 1);
         self->timer = 0x3C;
         self->state = self->state + 1;
         break;
@@ -104,7 +104,7 @@ void ColiseumBattle_StepResult(ColiseumBattle *self)
         if (all != 0) {
             self->prizeLeft = 0xC350;
             D_00569B70.data->flags = D_00569B70.data->flags | 0x20000;
-            func_001F30B8(self->ui, 0);
+            CustomIDOwner_setShown(self->ui, 0);
             self->timer = 0x1E;
             self->state = self->state + 1;
         } else {
@@ -122,7 +122,7 @@ void ColiseumBattle_StepResult(ColiseumBattle *self)
         if ((done & 0xFF) == 0) {
             break;
         }
-        func_001F33F8(self->ui, 1, self->prizeLeft);
+        DigitDisplay_setNumber(self->ui, 1, self->prizeLeft);
         self->timer = 0x1E;
         self->state = self->state + 1;
         break;
@@ -150,7 +150,7 @@ void ColiseumBattle_StepResult(ColiseumBattle *self)
             cCoreSave_setGold(&D_00569B70, cCoreSave_getGold(&D_00569B70) + 0x3E8);
             self->prizeSteps = self->prizeSteps - 1;
         }
-        func_001F33F8(self->ui, 1, self->prizeSteps * 0x3E8);
+        DigitDisplay_setNumber(self->ui, 1, self->prizeSteps * 0x3E8);
         break;
     case 6:
         if (self->timer != 0) {
@@ -162,10 +162,10 @@ void ColiseumBattle_StepResult(ColiseumBattle *self)
         if ((done & 0xFF) == 0) {
             break;
         }
-        func_001F33F8(self->ui, 0, 0);
+        DigitDisplay_setNumber(self->ui, 0, 0);
         { long t = self->flags;
         if (((t >> 4) % 2L) != 0L) {
-            func_001F30B8(self->ui, 0);
+            CustomIDOwner_setShown(self->ui, 0);
             self->timer = 0x1E;
             self->state = self->state + 1;
         } else {
@@ -211,7 +211,7 @@ void ColiseumBattle_StepResult(ColiseumBattle *self)
         if ((done & 0xFF) == 0) {
             break;
         }
-        func_001F33F8(self->ui, 0, 0);
+        DigitDisplay_setNumber(self->ui, 0, 0);
         classFADE_start(D_00747470, 0, 0xA, 0, 0, 0xFF000000u, 0xF);
         self->state = self->state + 1;
         break;

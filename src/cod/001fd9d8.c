@@ -21,7 +21,7 @@ int func_001FD9D8(int a0, int a1, int a2, int a3, int a4) {
     if (func_001FD908(a0) == 0) {
         return -1;
     }
-    result = func_001FC988(node, func_001FD908(a0), a1, a2, a3, a4, a0);
+    result = KeyFollower_attach(node, func_001FD908(a0), a1, a2, a3, a4, a0);
     if (result == -1) {
         return -1;
     }

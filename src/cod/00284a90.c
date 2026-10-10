@@ -13,7 +13,7 @@ void ResetStateVtable_284A90(int a0, int a1) {
         SetField_630_1C2370(*(int *)((char *)a0 + 0x15C4));
         *(int *)((char *)a0 + 0x15C4) = 0;
     }
-    func_00285678(a0);
+    ChildOwner_releaseChild(a0);
     func_0028EB88(a0, a1);
 }
 

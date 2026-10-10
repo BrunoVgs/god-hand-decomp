@@ -82,7 +82,7 @@ void func_002705D8(void *a0)
     if (func_00274F50(s0) != 0) {
         return;
     }
-    if (func_00274E98(s0) != 0) {
+    if (cEm00_startHitUnitAim(s0) != 0) {
         return;
     }
     if (*(unsigned char *)(s0 + 0x1864) != 0) {
@@ -142,7 +142,7 @@ void func_002705D8(void *a0)
                 *(unsigned char *)(s0 + 0x2F7) = 0;
                 return;
             }
-            if (func_00260650(s0) < 2 && (unsigned int)getItemNumInRoom() < 0xA) {
+            if (cOmBase_countGroupsInAction211(s0) < 2 && (unsigned int)getItemNumInRoom() < 0xA) {
                 *(unsigned char *)(s0 + 0x2F4) = 0;
                 *(unsigned char *)(s0 + 0x2F5) = 0x84;
                 *(unsigned char *)(s0 + 0x2F6) = 0;

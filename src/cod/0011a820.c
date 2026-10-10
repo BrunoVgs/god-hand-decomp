@@ -34,8 +34,8 @@ extern IdxTable D_0042B5D0;             /* element number for each of the five s
 #define IDWORK_SIZE   0x7C
 
 /* Starts (on) or resets (off) the pulsing scale animation of the element slot maps to; slots above 4 do nothing. */
-__attribute__((section(".text.func_001DEA50")))
-void func_001DEA50(char *self, unsigned char slot, int on) {
+__attribute__((section(".text.CustomIDWork_pulseSlot")))
+void CustomIDWork_pulseSlot(char *self, unsigned char slot, int on) {
     IdxTable tbl;
 
     if (slot < 5) {
@@ -62,8 +62,8 @@ typedef struct ChargeObj {
 } ChargeObj;
 
 /* Starts the aura effect when the charge turns positive (on part 6 for enemy 0x223, else part 4) and kills it when the charge drops. */
-__attribute__((section(".text.func_00268508")))
-void func_00268508(ChargeObj *self) {
+__attribute__((section(".text.ChargeObj_updateAuraEffect")))
+void ChargeObj_updateAuraEffect(ChargeObj *self) {
     if (self->charge > 0.0f) {
         if ((self->fxFlags & FX_RUNNING) == 0) {
             self->fxFlags |= FX_RUNNING;
@@ -105,8 +105,8 @@ typedef struct EspAnim {
 extern void UpdateObjByIndexedOp_2FBE50(EspAnim *self);
 
 /* Advances the frame counter by one tick (or through func_002FA350), stores the frame index, and runs the indexed update once the index has reached the frame count. */
-__attribute__((section(".text.func_002FCAC8")))
-int func_002FCAC8(EspAnim *self) {
+__attribute__((section(".text.EspAnim_step")))
+int EspAnim_step(EspAnim *self) {
     int index;
 
     if (self->frameNum == 0) {
@@ -148,8 +148,8 @@ static __inline__ unsigned char cMovieTrack_inUse(cMovieTrack *t) {
 }
 
 /* Starts a clip on a free track: copies its name, loads it, looks the entry up and starts (or loops) the stream. Returns 1 on success. */
-__attribute__((section(".text.func_002D3BA8")))
-int func_002D3BA8(cMovieTrack *track, const char **clip) {
+__attribute__((section(".text.cMovieTrack_start")))
+int cMovieTrack_start(cMovieTrack *track, const char **clip) {
     char *name;
     int found;
 
@@ -186,8 +186,8 @@ typedef struct cGameObjTurn {
 
 
 /* Turn step: the first call plays the turn sound and enters step 1; step 1 turns the heading toward goalRot and, once there, resets the four state bytes. */
-__attribute__((section(".text.func_001BC610")))
-void func_001BC610(cGameObjTurn *self) {
+__attribute__((section(".text.cGameObjTurn_stepTurn")))
+void cGameObjTurn_stepTurn(cGameObjTurn *self) {
     float rot;
 
     switch (self->base.step) {
@@ -239,8 +239,8 @@ extern void Obj0000_Clear_Fields_640_648_124E58(cOmPhased *self);
 extern void func_0012B928(cOmPhased *self);
 
 /* Reset the object, clamp the phase byte into the table, then run the handler for that phase. */
-__attribute__((section(".text.func_0011A820")))
-void func_0011A820(cOmPhased *self)
+__attribute__((section(".text.cOmPhased_resetAndRunPhase")))
+void cOmPhased_resetAndRunPhase(cOmPhased *self)
 {
     char *s0 = (char *)self;
     char *e;

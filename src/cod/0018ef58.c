@@ -32,8 +32,8 @@ typedef struct ModeEnt {
 typedef struct { char b[0x20]; } ModeTbl;
 extern ModeTbl D_00424308;              /* the four entries */
 
-__attribute__((section(".text.func_00192458")))
-void func_00192458(cOmBase *self) {
+__attribute__((section(".text.cOmBase_tickModeTableC")))
+void cOmBase_tickModeTableC(cOmBase *self) {
     ModeEnt tbl[MODE_NUM];
     char *e;
     int i8;
@@ -95,8 +95,8 @@ typedef struct DoorLikeObj {
     char hitRecData[0x20];              /* 0x650 */
 } DoorLikeObj;
 
-__attribute__((section(".text.func_0018EF58")))
-int func_0018EF58(DoorLikeObj *self) {
+__attribute__((section(".text.DoorBox_initWithBoxB")))
+int DoorBox_initWithBoxB(DoorLikeObj *self) {
     float f[16];
     float *t;
     float *m;

@@ -12,7 +12,7 @@ extern void func_0019BA08(void *a0, int a1, int a2);
 extern void SetField5B0Bit2ClearBit8_1B7908(int a0);
 extern float capVu0Atan2(float y, float x);
 extern int SetEffect();
-extern void func_001BFF68(void *a0);
+extern void DamageObj_disableDamage(void *a0);
 extern void func_00373FA0(void *a0);
 extern void func_0032BDC0(void *a0, int a1, int a2);
 extern void func_0032BB48(void *a0, int a1, int a2);
@@ -267,7 +267,7 @@ void func_001BFD28(void *a0)
             void (*fp2)() = *(void (**)())(vt2 + 0xAC);
             fp2(s0 + off2);
         }
-        func_001BFF68(s0);
+        DamageObj_disableDamage(s0);
         SetField5B0Bit2ClearBit8_1B7908((int)s0);
         *(unsigned char *)(s0 + 0x2F5) = 1;
         *(short *)(s0 + 0x604) = 0x1E;

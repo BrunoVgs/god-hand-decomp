@@ -4,7 +4,7 @@ extern void cSndSeVoice_Stop(void *node);
 extern void cSndBgmNode_Release(void *node);
 extern void func_002CB070(void *this);
 extern void func_00375050(int a, int b);
-extern void func_002CA470(void *this);
+extern void cSnd_update(void *this);
 extern void sceGsSyncV(int a);
 extern void cSnd_resetAll(void *this);
 extern void cSndMemHeap_Close(void *a);
@@ -60,7 +60,7 @@ void func_002CA040(void *this) {
     func_002CB070(this);
     func_00375050(0, 0);
     while (func_00375180() == 1) {
-        func_002CA470(this);
+        cSnd_update(this);
         sceGsSyncV(0);
     }
     cSnd_resetAll(this);

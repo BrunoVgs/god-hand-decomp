@@ -4,7 +4,7 @@
 #include "godhand/vu0.h"
 
 extern void SetCustomIDDispOneOrAll_1F4778(void *self, int id, int on);
-extern void func_001F5478(void *self, int on);
+extern void CustomIDOwner_setAllShown(void *self, int on);
 extern void func_001F4928(void *self, int on);
 extern void func_00306330(int a0, int a1);
 extern int EffEventIsCutDataExist(unsigned int id);
@@ -13,8 +13,8 @@ extern int SetEffect(int kind, int id, void *owner, void *param, int handle, uns
 #define DISP_ALL  0x6F                  /* id that stands for every element */
 
 /* Opens the display: hides everything, shows elements 0..9 one by one, then starts the two animations. */
-__attribute__((section(".text.func_001F4840")))
-void func_001F4840(void *self) {
+__attribute__((section(".text.DispMenu_open")))
+void DispMenu_open(void *self) {
     SetCustomIDDispOneOrAll_1F4778(self, DISP_ALL, 0);
     SetCustomIDDispOneOrAll_1F4778(self, 0, 1);
     SetCustomIDDispOneOrAll_1F4778(self, 1, 1);
@@ -26,7 +26,7 @@ void func_001F4840(void *self) {
     SetCustomIDDispOneOrAll_1F4778(self, 7, 1);
     SetCustomIDDispOneOrAll_1F4778(self, 8, 1);
     SetCustomIDDispOneOrAll_1F4778(self, 9, 1);
-    func_001F5478(self, 1);
+    CustomIDOwner_setAllShown(self, 1);
     func_001F4928(self, 1);
 }
 

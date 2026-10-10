@@ -32,7 +32,7 @@ int Forward155AE8_148F00(int a0, int a1) {
 
 __attribute__((section(".text.Forward149378_1492C8")))
 int Forward149378_1492C8(void) {
-    return func_00149378(D_00466448);
+    return EntList_destroy(D_00466448);
 }
 
 __attribute__((section(".text.Forward149400_1492E8")))
@@ -45,5 +45,5 @@ int GetActiveState_149310(void) {
     if (D_00747A34 & 0x40000) {
         return 0;
     }
-    return func_00149488(D_00466448);
+    return EntPool_allocClear(D_00466448);
 }

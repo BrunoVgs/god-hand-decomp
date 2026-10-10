@@ -25,7 +25,7 @@ int ForwardInitBuffer_313820(void)
     if (p == 0)
         return 0;
     func_003A52F0(p, 0, 0x1610);
-    return func_00284A28(p);
+    return EnemyBase_constructAimQuad5(p);
 }
 
 __attribute__((section(".text.ForwardInitBuffer_313890")))
@@ -38,7 +38,7 @@ int ForwardInitBuffer_313890(void)
     if (p == 0)
         return 0;
     func_003A52F0(p, 0, 0x1600);
-    return func_00289728(p);
+    return EnemyBase_constructAimQuad(p);
 }
 
 __attribute__((section(".text.ForwardInitObj28B0Buffer_313900")))

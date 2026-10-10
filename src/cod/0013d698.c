@@ -10,11 +10,11 @@ extern void cIDBase_move(void *self);
 extern int ClearField5B4IfFlagUnset_1B76B0(void *self);
 extern void func_002A87E8(void *self, int arg);
 extern void func_001B76D8(void *self);
-extern void func_001E4520(Slot2 *self, int a1);
+extern void LayerScreen_hideLayers(Slot2 *self, int a1);
 extern void func_001E4200(Slot2 *self, int a1, int a2, int a3);
 extern void func_001E3E40(Slot2 *self, unsigned short a1, int a2, int a3);
-extern void func_001E3928(Slot2 *self, int a1, int a2);
-extern void func_001E3A98(Slot2 *self, int a1, int a2);
+extern void Slot2_setMarkLayersAt464(Slot2 *self, int a1, int a2);
+extern void Slot2_setMarkLayersAt46C(Slot2 *self, int a1, int a2);
 extern void Slot2_setMarkLayers(Slot2 *self, int a1, int a2);
 extern float func_002AC650(cIDBaseObj *obj, int frame, int recNo, int a3);
 extern int func_002AC6E0(cIDBaseObj *obj, float t, float *x, float *y, cIDBaseEnt *ent);
@@ -143,7 +143,7 @@ void Slot2_introStage(Slot2 *self)
         SLOT2_FIELD(self, int, SLOT2_LAMP_STATE_OFFSET) = 9;
         SLOT2_FIELD(self, short, SLOT2_LAMP_FRAME_OFFSET) = 0;
         self->endFlag = (int)self->endFlag & ~SLOT2_END_NOLAMP;
-        func_001E4520(self, 0);
+        LayerScreen_hideLayers(self, 0);
         self->phase = self->phase + 1;
         break;
     case 1:
@@ -160,8 +160,8 @@ void Slot2_introStage(Slot2 *self)
             done = 1;
         }
         if ((done & 0xFF) != 0) {
-            func_001E3928(self, 0, 0);
-            func_001E3A98(self, 0, 0);
+            Slot2_setMarkLayersAt464(self, 0, 0);
+            Slot2_setMarkLayersAt46C(self, 0, 0);
             Slot2_setMarkLayers(self, 0, 0);
             func_001E4200(self, SLOT2_FIELD(self, unsigned short, SLOT2_LAMP_SEL_OFFSET), 0, 0);
             func_001E3E40(self, SLOT2_FIELD(self, unsigned short, SLOT2_LAMP_SEL_OFFSET), 0, 0);

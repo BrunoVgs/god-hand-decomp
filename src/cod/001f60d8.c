@@ -4,7 +4,7 @@
 
 extern char D_0044BB20[];
 extern char D_005FEE00[];
-extern void func_001F6A80(void *self);
+extern void SlotList_selectPrev(void *self);
 extern void func_001F6AF8(void *self);
 extern void cSnd_SeCall_2CB8A0(char *snd, int a1, int a2, int a3, int t0, int t1, int t2);
 
@@ -60,11 +60,11 @@ typedef struct PoolObj {
 
 extern PoolObj *create(Pool *pool, int flag);
 extern void func_002B8A70(PoolObj *obj, int arg);
-extern PoolObj *func_002BB160(PoolObj *sub, int a, int b, int c);   /* returns this */
+extern PoolObj *cCollisionShape_construct(PoolObj *sub, int a, int b, int c);   /* returns this */
 
 /* Takes a free object from the pool and builds it: base init, the embedded sub-object (method table D_0044BB20), state 4, the zeroed vectors at 0x1F0 and 0x200, then setter 7 with the last argument and method 10. When the taken record is not free it goes back through the pool's method 6. Returns the object, or 0. */
-__attribute__((section(".text.func_002BA020")))
-PoolObj *func_002BA020(Pool *pool, int arg, int a, int b, int c, int last)
+__attribute__((section(".text.Pool_createObjWithVt")))
+PoolObj *Pool_createObjWithVt(Pool *pool, int arg, int a, int b, int c, int last)
 {
     PoolObj *obj = create(pool, 4);
     PoolObj *sub;
@@ -77,7 +77,7 @@ PoolObj *func_002BA020(Pool *pool, int arg, int a, int b, int c, int last)
     }
     func_002B8A70(obj, arg);
     sub = (PoolObj *)((char *)obj + POOLOBJ_SUB_OFFSET);
-    func_002BB160(sub, a, b, c);
+    cCollisionShape_construct(sub, a, b, c);
     sub->subVt = (SubVt *)D_0044BB20;
     VU0_SQC2_VF0(obj, 0x1F0);
     VU0_SQC2_VF0(obj, 0x200);
@@ -113,13 +113,13 @@ typedef struct MenuCursor {
 } MenuCursor;
 
 /* Menu pad step: page keys turn the page, first/last jump the cursor; each plays the move sound. */
-__attribute__((section(".text.func_001F60D8")))
-void func_001F60D8(MenuCursor *self)
+__attribute__((section(".text.MenuInput_stepPageKeys")))
+void MenuInput_stepPageKeys(MenuCursor *self)
 {
     long b = D_00747650;
 
     if (b & PAD_PAGE_PREV) {
-        func_001F6A80(self);
+        SlotList_selectPrev(self);
         cSnd_SeCall_2CB8A0(D_005FEE00, 0, MENU_SE_MOVE, -1, -1, 0, 0);
     } else if (b & PAD_PAGE_NEXT) {
         func_001F6AF8(self);
@@ -136,7 +136,7 @@ void func_001F60D8(MenuCursor *self)
         self->stepArg = 0;
         cSnd_SeCall_2CB8A0(D_005FEE00, 0, MENU_SE_MOVE, -1, -1, 0, 0);
     } else if (b & PAD_PREV_ALT) {
-        func_001F6A80(self);
+        SlotList_selectPrev(self);
         cSnd_SeCall_2CB8A0(D_005FEE00, 0, MENU_SE_MOVE, -1, -1, 0, 0);
     } else if (b & PAD_NEXT_ALT) {
         func_001F6AF8(self);

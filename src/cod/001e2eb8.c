@@ -1,8 +1,8 @@
 /* sn-2.95.3-136 matched TU. */
 
-extern void func_001E4520(char *a0, int a1);
+extern void LayerScreen_hideLayers(char *a0, int a1);
 extern void func_001E4200(char *a0, int a1, int a2, int a3);
-extern void func_001E4438(char *a0, int a1, int a2);
+extern void MarkObj_setMarkFlag(char *a0, int a1, int a2);
 extern void displayScrollLayer(int a0, int a1);
 extern int D_005FEE00;
 extern void cSnd_SeCall_2CBA48(int *a0, int a1, int a2, void *a3, int t0, int t1, int t2, int t3);
@@ -19,14 +19,14 @@ void func_001E2EB8(char *a0)
         v = *(unsigned int *)(a0 + 0x54);
         *(short *)(a0 + 0x4C2) = 0xA;
         if (((v >> 8) & 1) == 0) {
-            func_001E4520(a0, 1);
+            LayerScreen_hideLayers(a0, 1);
             *(int *)(a0 + 0x54) |= 0x100;
         }
         *(int *)(a0 + 0xC) += 1;
         break;
     case 1:
         func_001E4200(a0, *(unsigned short *)(a0 + 0x494), 1, 1);
-        func_001E4438(a0, 0, 1);
+        MarkObj_setMarkFlag(a0, 0, 1);
         *(int *)(a0 + 0x10) = 0x78;
         *(int *)(a0 + 0xC) += 1;
         break;

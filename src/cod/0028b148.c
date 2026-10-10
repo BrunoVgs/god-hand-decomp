@@ -77,7 +77,7 @@ __attribute__((section(".text.func_002BE858")))
 void func_002BE858(void *a0, int a1) {
     void *p = (void *)(a1 * 8 + (int)a0);
     if (*(unsigned char *)((char *)p + 0x4) == 1)
-        func_002BE5F0(p);
+        HeapBuf_release(p);
 }
 
 /* clone */

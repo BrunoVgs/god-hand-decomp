@@ -10,8 +10,8 @@
 #define COMBASE_F0_BIT2   0x04          /* flags0 bit 2 */
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_0018E918")))
-void func_0018E918(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepF")))
+void cOmBase_startKnockStepF(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;
@@ -38,8 +38,8 @@ void func_0018E918(cOmBase *self)
 #define COMBASE_F0_BIT2   0x04          /* flags0 bit 2 */
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_001900C8")))
-void func_001900C8(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepG")))
+void cOmBase_startKnockStepG(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;
@@ -66,8 +66,8 @@ void func_001900C8(cOmBase *self)
 #define COMBASE_F0_BIT2   0x04          /* flags0 bit 2 */
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_00199CC8")))
-void func_00199CC8(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepH")))
+void cOmBase_startKnockStepH(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;
@@ -94,8 +94,8 @@ void func_00199CC8(cOmBase *self)
 #define COMBASE_F0_BIT2   0x04          /* flags0 bit 2 */
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_0019FDB0")))
-void func_0019FDB0(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepI")))
+void cOmBase_startKnockStepI(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;
@@ -122,8 +122,8 @@ void func_0019FDB0(cOmBase *self)
 #define COMBASE_F0_BIT2   0x04          /* flags0 bit 2 */
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_001746B0")))
-void func_001746B0(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepJ")))
+void cOmBase_startKnockStepJ(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;
@@ -150,8 +150,8 @@ void func_001746B0(cOmBase *self)
 #define COMBASE_F0_BIT2   0x04          /* flags0 bit 2 */
 
 /* Start the knock step: aim the knock vector from the anchor body at the object, set mode 2 step 0, and flag the object active. */
-__attribute__((section(".text.func_001754B0")))
-void func_001754B0(cOmBase *self)
+__attribute__((section(".text.cOmBase_startKnockStepK")))
+void cOmBase_startKnockStepK(cOmBase *self)
 {
     cVec frame[2] __attribute__((aligned(16)));
     unsigned int f = self->flags0;

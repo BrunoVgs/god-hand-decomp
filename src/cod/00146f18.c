@@ -18,9 +18,9 @@ extern void ClearBytesAt74And79To7C_13C618(void *self);
 #define GAMEOBJ_LOCKON_COPY_Y(self) (*(float *)((char *)(self) + 0x8D4))
 #define GAMEOBJ_LOCKON_COPY(self) ((cVec *)((char *)(self) + 0x8D0))
 
-/* func_0017B568: copy the lock-on point into the 0x8D0 vector, raise it by 4.1 and return it. */
-__attribute__((section(".text.func_0017B568")))
-cVec *func_0017B568(cGameObj *self)
+/* cGameObj_getRaisedLockOnPos: copy the lock-on point into the 0x8D0 vector, raise it by 4.1 and return it. */
+__attribute__((section(".text.cGameObj_getRaisedLockOnPos")))
+cVec *cGameObj_getRaisedLockOnPos(cGameObj *self)
 {
     cVec *src = ((cVec *(*)(void *))self->vt->lockOn)((char *)self + self->vt->lockOnDelta);
     cVec *dst = GAMEOBJ_LOCKON_COPY(self);
@@ -82,10 +82,10 @@ typedef struct CutCmd {
 
 
 
-/* func_002B47C8: nonzero while the running cutscene is inside the command: not before its first cut,
+/* CutCmd_isInRange: nonzero while the running cutscene is inside the command: not before its first cut,
  * and in its last cut only until the end frame. */
-__attribute__((section(".text.func_002B47C8")))
-int func_002B47C8(CutCmd *self)
+__attribute__((section(".text.CutCmd_isInRange")))
+int CutCmd_isInRange(CutCmd *self)
 {
     char *ev = D_00586AF0;
     float frame;
@@ -105,10 +105,10 @@ int func_002B47C8(CutCmd *self)
 /* The flag word of the derived object at 0x5B8. */
 #define GAMEOBJ_FLAGS5B8(self) (*(int *)((char *)(self) + 0x5B8))
 
-/* func_001C2630: move the object to a new position (live position and posA), refresh it and mark
+/* cGameObj_moveToPos: move the object to a new position (live position and posA), refresh it and mark
  * bit 0x10 of the 0x5B8 flags. */
-__attribute__((section(".text.func_001C2630")))
-void func_001C2630(cGameObj *self, cVec *pos)
+__attribute__((section(".text.cGameObj_moveToPos")))
+void cGameObj_moveToPos(cGameObj *self, cVec *pos)
 {
     cVec_copy3(self->pos, pos);
     func_001C0450(self);
@@ -116,10 +116,10 @@ void func_001C2630(cGameObj *self, cVec *pos)
     GAMEOBJ_FLAGS5B8(self) |= 0x10;
 }
 
-/* func_0018F110: constructor. Runs the base constructor, sets the method table, clears two
+/* cEm_constructWithRecords: constructor. Runs the base constructor, sets the method table, clears two
  * vectors at 0x660 and seven 0x60-byte records from 0x680 (five vectors each, then their byte at 0x54). */
-__attribute__((section(".text.func_0018F110")))
-void *func_0018F110(char *self)
+__attribute__((section(".text.cEm_constructWithRecords")))
+void *cEm_constructWithRecords(char *self)
 {
     char *rec;
     int i;
@@ -147,9 +147,9 @@ typedef struct PosPair {
     float y;            /* 0x64 */
 } PosPair;
 
-/* func_00146F18: reset the element; in mode 0x20 place it at (-130, 5), otherwise at the origin. */
-__attribute__((section(".text.func_00146F18")))
-void func_00146F18(PosPair *self)
+/* Element_resetPos: reset the element; in mode 0x20 place it at (-130, 5), otherwise at the origin. */
+__attribute__((section(".text.Element_resetPos")))
+void Element_resetPos(PosPair *self)
 {
     ClearBytesAt74And79To7C_13C618(self);
     if (D_00747A50 == 0x20) {

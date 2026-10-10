@@ -34,8 +34,8 @@ typedef struct StepObj {
 } StepObj;
 
 /* Runs the object's start step once, then its per-frame step; advances the timer by the frame length (times 10 while the fast mode is on and no wait is set). */
-__attribute__((section(".text.func_002B3240")))
-void func_002B3240(StepObj *self) {
+__attribute__((section(".text.StepObj_stepTimer")))
+void StepObj_stepTimer(StepObj *self) {
     int add;
 
     switch (self->state) {

@@ -13,8 +13,8 @@ extern const char D_00447CB0[];             /* type name */
 extern void *func_0028EB00(void *self);     /* enemy base constructor */
 
 /* Enemy constructor: base setup, method table, five zeroed vectors and the type name. */
-__attribute__((section(".text.Setup_278068")))
-EmDerived *Setup_278068(EmDerived *self)
+__attribute__((section(".text.Em_construct278068")))
+EmDerived *Em_construct278068(EmDerived *self)
 {
     func_0028EB00(self);
     self->vt = D_00447D48;

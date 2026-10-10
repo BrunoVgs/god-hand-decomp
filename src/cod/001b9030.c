@@ -7,7 +7,7 @@
 #include "godhand/cMessage.h"
 
 extern int D_00747A24;
-extern void func_001E6820(Slot2 *self);
+extern void Slot2_hideLayerIds(Slot2 *self);
 extern void displayScrollLayer(int id, int on);
 extern int cDvd_ReadAlloc(void *dvd, const char *name, void *outBuf, void *heap, int a4, int a5, int a6, int a7);
 extern void cDvd_CheckWaitFrame(void *dvd, int id);
@@ -59,7 +59,7 @@ void cEmSetParam_resetRoom(cEmSetParamRoom *self)
 __attribute__((section(".text.Slot2_showMarkLayers")))
 void Slot2_showMarkLayers(Slot2 *self, int all)
 {
-    func_001E6820(self);
+    Slot2_hideLayerIds(self);
     if (all) {
         displayScrollLayer(SLOT2_MARK_LAYER(self, 0), 1);
         displayScrollLayer(SLOT2_MARK_LAYER(self, 2), 1);

@@ -5,7 +5,7 @@
 
 extern char *D_003C23A4;
 extern void cTaskWork_exit(cTaskWork *work);
-extern void func_002D56A8(void *a0);
+extern void cTaskPool_killAll(void *a0);
 extern char D_007474A0[];
 extern char D_0061A990[];
 extern void func_002D9BD0(void *a0);
@@ -128,7 +128,7 @@ cSceAtUnit *cSceAtManager_getJumpPointAt(cSceAtManager *self, int idx) {
 
 __attribute__((section(".text.ClearActorList_2C32C0")))
 void ClearActorList_2C32C0(void *a0) {
-    func_002D56A8((char*)a0 + 0x1C);
+    cTaskPool_killAll((char*)a0 + 0x1C);
     *(char*)((char*)a0 + 0x14) = 0;
 }
 

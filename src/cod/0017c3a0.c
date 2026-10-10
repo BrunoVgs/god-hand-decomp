@@ -23,9 +23,9 @@ extern int cSnd_SeCall_2CB8A0(void *a0, int a1, short a2, int a3, int t0, int t1
 
 
 
-/* func_001ED4E8: with sel set, start the 16-frame sine bob on both elements (-3 and +3); otherwise reset their offsets. */
-__attribute__((section(".text.func_001ED4E8")))
-void func_001ED4E8(void *self, int sel)
+/* CustomIDOwner_setBob: with sel set, start the 16-frame sine bob on both elements (-3 and +3); otherwise reset their offsets. */
+__attribute__((section(".text.CustomIDOwner_setBob")))
+void CustomIDOwner_setBob(void *self, int sel)
 {
     if (sel != 0) {
         CustomIDWork_SetMoveOffsetPosYSin(OWNER_IDW_A(self), -3, 16);
@@ -43,9 +43,9 @@ typedef struct IdOwner {
     int unk924;                /* 0x924 */
 } IdOwner;
 
-/* func_001F30B8: show or hide the ID display (flag bit 1) and clear the two 0x920 counters. */
-__attribute__((section(".text.func_001F30B8")))
-void func_001F30B8(IdOwner *self, int on)
+/* CustomIDOwner_setShown: show or hide the ID display (flag bit 1) and clear the two 0x920 counters. */
+__attribute__((section(".text.CustomIDOwner_setShown")))
+void CustomIDOwner_setShown(IdOwner *self, int on)
 {
     SetCustomIDDispOneOrAll_1F29C0(self, 2, on);
     self->unk920 = 0;
@@ -57,19 +57,19 @@ void func_001F30B8(IdOwner *self, int on)
     }
 }
 
-/* func_0017C3A0: store a new position in posA, copy it to the live position, then refresh the
+/* cGameObj_setPosAndRefresh: store a new position in posA, copy it to the live position, then refresh the
  * pose from the live position and the rotation. */
-__attribute__((section(".text.func_0017C3A0")))
-void func_0017C3A0(cGameObj *self, cVec *pos)
+__attribute__((section(".text.cGameObj_setPosAndRefresh")))
+void cGameObj_setPosAndRefresh(cGameObj *self, cVec *pos)
 {
     cVec_copy3(&self->posA, pos);
     cVec_copy3(self->pos, &self->posA);
     func_0017C028(self, (int)self->pos, self->rot);
 }
 
-/* func_002CA6B0: fade out (10 frames) every voice whose bit 3 is set. */
-__attribute__((section(".text.func_002CA6B0")))
-void func_002CA6B0(cSnd *self)
+/* cSnd_SeFadeOutHeldVoices: fade out (10 frames) every voice whose bit 3 is set. */
+__attribute__((section(".text.cSnd_SeFadeOutHeldVoices")))
+void cSnd_SeFadeOutHeldVoices(cSnd *self)
 {
     cSndSeVoice *v = self->voiceHead;
     unsigned long fl;
@@ -113,10 +113,10 @@ int cScenario_getStrFromObjId(cScenario *self, char *buf, int objId)
     return func_003A6C58(buf, D_0044C2C0);
 }
 
-/* func_002B46F0: play a sound effect on the global sound manager unless bit 1 of D_00747A30 is set;
+/* cSnd_SeCallGlobal: play a sound effect on the global sound manager unless bit 1 of D_00747A30 is set;
  * with a nonzero a3 it takes the fixed-voice call, otherwise the default-voice call. */
-__attribute__((section(".text.func_002B46F0")))
-void func_002B46F0(int unused, int id, short slot, int voice)
+__attribute__((section(".text.cSnd_SeCallGlobal")))
+void cSnd_SeCallGlobal(int unused, int id, short slot, int voice)
 {
     unsigned long fl;
     unsigned long bit;

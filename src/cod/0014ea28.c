@@ -24,13 +24,13 @@ extern void func_0015EAC8(char *work);
 extern void func_002D5890(int a0, int a1);
 extern void func_002D5440(int a0, int a1);
 
-extern int func_0014E5D0(struct cObjBase *self);
+extern int cObj_releaseActorData(struct cObjBase *self);
 /* The cObjBase part of the destructor: put this class's vtable back, then run
  * the cObj destructor. */
 __attribute__((section(".text.func_0014EA28")))
 int func_0014EA28(struct cObjBase *self) {
     self->vtable = (cVtEnt *)&D_0041EBE8;
-    return func_0014E5D0(self);
+    return cObj_releaseActorData(self);
 }
 
 __attribute__((section(".text.func_002A73C8")))

@@ -1,7 +1,7 @@
 /* sn-2.95.3-136 matched TU. */
 
 extern void cOmBase_setDispMode(void *a0, int a1);
-extern void func_00185F50(void *a0, int a1);
+extern void cOmBase_setDispModeLayers2E(void *a0, int a1);
 extern int D_006046C0;
 extern void cSpline_setBasePoint(void *a0, void *a1);
 extern void cSpline_getPoint(void *a0, void *a1, float a2);
@@ -38,10 +38,10 @@ void func_001850B0(void *a0) {
     float f1 = (float)*(short *)(s0 + 0x628) / (float)*(short *)(s0 + 0x636);
     switch (*(unsigned char *)(s0 + 0x65A)) {
     case 0:
-        if (f1 <= 0.5f) { func_00185F50(s0, 1); *(unsigned char *)(s0 + 0x65A) += 1; }
+        if (f1 <= 0.5f) { cOmBase_setDispModeLayers2E(s0, 1); *(unsigned char *)(s0 + 0x65A) += 1; }
         break;
     case 1:
-        if (f1 <= 0.0f) { func_00185F50(s0, 4); *(unsigned char *)(s0 + 0x65A) += 1; }
+        if (f1 <= 0.0f) { cOmBase_setDispModeLayers2E(s0, 4); *(unsigned char *)(s0 + 0x65A) += 1; }
         break;
     case 2:
         *(unsigned char *)(s0 + 0x661) = 1;

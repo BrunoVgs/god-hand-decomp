@@ -8,7 +8,7 @@ extern void cPlCamera_setCamUpdate(struct cPlCamera *self, int snap);
 extern int moveMotion(void *a0);
 extern void cObjBase_addNullSpeed_Rotation(void *a0, float f);
 extern void cObjBase_addNullSpeed(void *a0, float f);
-extern void func_0012BFB8(void *a0);
+extern void cEm00_startJumpSetup(void *a0);
 extern float D_003BD478;
 extern unsigned char D_00462FC0[];
 extern unsigned char D_005864F0[];
@@ -94,7 +94,7 @@ void func_0010C930(void *a0)
         break;
     }
     if (func_00123938(s0, 0) == 0) {
-        func_0012BFB8(s0);
+        cEm00_startJumpSetup(s0);
     }
 }
 

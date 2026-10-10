@@ -8,13 +8,13 @@ extern void func_001D6D20(BlackJack *, int);
 extern void SetLinkedObjField2B_1D6D68(BlackJack *, int);
 extern void CustomIDWork_SetNumber_1D5760(BlackJack *, int);
 extern int  cSnd_SeCall_2CBA48(void *, int, int, int, int, int, int, int);
-extern void func_001D6030(BlackJack *, int);
+extern void PanelHost_slideSidePanel(BlackJack *, int);
 extern void BlackJack_slidePanel(BlackJack *, int);
 extern void func_001D61C0(BlackJack *, int);
 extern void func_001D5C38(BlackJack *, int);
 extern void func_001D5D20(BlackJack *, int);
 extern void func_001D5E08(BlackJack *, int);
-extern void func_001D5F50(BlackJack *, int);
+extern void PanelWork_setMode(BlackJack *, int);
 
 extern char D_005FEE00[];
 extern Vec  D_005680F0[];
@@ -70,7 +70,7 @@ void BlackJack_UpdateClearTable(BlackJack *self)
             self->timer--;
             break;
         }
-        func_001D6030(self, 3);
+        PanelHost_slideSidePanel(self, 3);
         BlackJack_slidePanel(self, 3);
         func_001D61C0(self, 3);
         self->timer = 0x1E;
@@ -84,7 +84,7 @@ void BlackJack_UpdateClearTable(BlackJack *self)
         func_001D5C38(self, 2);
         func_001D5D20(self, 2);
         func_001D5E08(self, 2);
-        func_001D5F50(self, 2);
+        PanelWork_setMode(self, 2);
         self->timer = 0x1E;
         self->phase++;
         break;

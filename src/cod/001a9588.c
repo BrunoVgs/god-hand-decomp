@@ -10,7 +10,7 @@ extern char D_005FEE00[];
 extern void cSnd_BgmEventStart(void *snd, int event, int a2, int a3);
 extern void func_002B00A0(cMessDrawFont *self, void *cmd);
 extern void func_002B0208(cMessDrawFont *self, void *cmd);
-extern void func_002B0420(cMessDrawFont *self, void *cmd);
+extern void PosObj_forwardSpan(cMessDrawFont *self, void *cmd);
 
 /* Enemy: set the position copy at 0x490, push it into the live position, then update the model. */
 
@@ -160,7 +160,7 @@ void cMessDrawFont_execCommand(cMessDrawFont *self, void *cmd) {
         func_002B0208(self, cmd);
         break;
     case MESS_CMD_94:
-        func_002B0420(self, cmd);
+        PosObj_forwardSpan(self, cmd);
         break;
     }
 }

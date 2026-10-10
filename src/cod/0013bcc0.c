@@ -28,8 +28,8 @@ extern HookEnt D_003BF0E0[];
 
 #define SCREEN_STATE_ENTRY_RUN 10
 
-__attribute__((section(".text.func_001F5E90")))
-void func_001F5E90(unsigned char *self) {
+__attribute__((section(".text.Entry_runHookAndDraw")))
+void Entry_runHookAndDraw(unsigned char *self) {
     int type = self[0];
     int delta = D_003BF0E0[type].delta;
     D_003BF0E0[type].pfn(self + delta);
@@ -48,8 +48,8 @@ void func_001F5E90(unsigned char *self) {
 
 
 
-__attribute__((section(".text.func_001ECFE8")))
-void func_001ECFE8(char *self, unsigned short slot, int messNo) {
+__attribute__((section(".text.CustomIDWork_setSlotMessNo")))
+void CustomIDWork_setSlotMessNo(char *self, unsigned short slot, int messNo) {
     if (slot < SLOT_COUNT) {
         int off = slot * WORK_SIZE;
         CustomIDWork_SetMessNo(self + (off + BANK_A_OFFSET), messNo);
@@ -79,8 +79,8 @@ typedef struct ListRec {
 
 
 
-__attribute__((section(".text.func_00140DE0")))
-void func_00140DE0(char *self) {
+__attribute__((section(".text.cHookList_callAll")))
+void cHookList_callAll(char *self) {
     ListRec *rec = (ListRec *)(self + 0x22F4);
     int i;
     for (i = 16; i >= 0; i--, rec++) {
@@ -104,8 +104,8 @@ typedef struct MarkObj {
 
 
 
-__attribute__((section(".text.func_001E4438")))
-void func_001E4438(MarkObj *self, unsigned short mark, int lit) {
+__attribute__((section(".text.MarkObj_setMarkFlag")))
+void MarkObj_setMarkFlag(MarkObj *self, unsigned short mark, int lit) {
     if (mark < 3) {
         if (lit) {
             self->markFlag = (mark << 11) | 0x8000;
@@ -138,8 +138,8 @@ typedef struct ModeObj {
 #define INPUT_BIT_MODE     0x20000000
 #define INPUT_BIT_SOUND    0x200000
 
-__attribute__((section(".text.func_001641B8")))
-void func_001641B8(ModeObj *self) {
+__attribute__((section(".text.ModeObj_pollInputBits")))
+void ModeObj_pollInputBits(ModeObj *self) {
     char *in = (char *)D_007474A0;
     if (INPUT_WORD(in) & INPUT_BIT_MODE)
         self->mode = 10;
@@ -167,8 +167,8 @@ typedef struct IdScreen {
 
 
 
-__attribute__((section(".text.func_0013BCC0")))
-void func_0013BCC0(IdScreen *self) {
+__attribute__((section(".text.IdScreen_refillEntries")))
+void IdScreen_refillEntries(IdScreen *self) {
     unsigned short i = 0;
     self->unk90 = 0;
     cIDBase_restartAnim(self);

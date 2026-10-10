@@ -38,8 +38,8 @@ typedef struct Slot2Marks {
     unsigned short markFlag;            /* 0x4A4 */
 } Slot2Marks;
 
-__attribute__((section(".text.func_001E3A98")))
-void func_001E3A98(Slot2Marks *self, int show, int startLit)
+__attribute__((section(".text.Slot2_setMarkLayersAt46C")))
+void Slot2_setMarkLayersAt46C(Slot2Marks *self, int show, int startLit)
 {
     self->markFlag = 0;
     if (startLit) {
@@ -78,8 +78,8 @@ typedef struct Slot2Blink {
     char unk00[4];
 } Slot2Blink;
 
-__attribute__((section(".text.func_001E3CB0")))
-void func_001E3CB0(Slot2Blink *self)
+__attribute__((section(".text.Slot2_blinkMarksAt4A6")))
+void Slot2_blinkMarksAt4A6(Slot2Blink *self)
 {
     unsigned short *blink = (unsigned short *)((char *)self + SLOT2_OFFSET_BLINK);
     unsigned int v = *blink;
@@ -141,8 +141,8 @@ typedef struct IdDispObj {
     unsigned char b111;                  /* 0x111 */
 } IdDispObj;
 
-__attribute__((section(".text.func_001673D0")))
-void func_001673D0(IdDispObj *self)
+__attribute__((section(".text.IdDispObj_constructKind1B")))
+void IdDispObj_constructKind1B(IdDispObj *self)
 {
     unsigned short i;
     Obj0000_Set_Fields_68_6C_From_D_007474A0_1615D0(self);
@@ -196,8 +196,8 @@ typedef struct DoorLikeObj {
     char hitRecData[0x20];              /* 0x650 */
 } DoorLikeObj;
 
-__attribute__((section(".text.func_0019D3F0")))
-int func_0019D3F0(DoorLikeObj *self) {
+__attribute__((section(".text.DoorBox_initWithBoxD")))
+int DoorBox_initWithBoxD(DoorLikeObj *self) {
     float f[16];
     float *t;
     float *m;

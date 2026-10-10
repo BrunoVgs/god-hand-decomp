@@ -10,7 +10,7 @@ extern void cModel_calcWorldParts(void *a0);
 extern void SetEffectPos(int a0, int a1, int a2, void *a3, int a4, float a5);
 extern int cSnd_SeCall_2CBA48(void *a, int b, int c, void *d, int e, int f, int g, int h);
 extern void func_0012C348(void *a0, int a1);
-extern void func_00103760(void *a0, int a1);
+extern void FollowObj_snapToPlayer(void *a0, int a1);
 extern void pl00_reset(void *a0);
 extern char D_005FEE00[];
 extern char *D_00586A88;
@@ -48,7 +48,7 @@ __attribute__((section(".text.func_0012C540"))) void func_0012C540(void *a0, int
       cModel_calcWorldParts(s0);
       if (s1 != 0)
     {
-      func_00103760(s1, 0);
+      FollowObj_snapToPlayer(s1, 0);
     }
       break;
 
@@ -59,7 +59,7 @@ __attribute__((section(".text.func_0012C540"))) void func_0012C540(void *a0, int
       pl00_clearMotionCam(s0, 0, 0);
       func_00126770(s0);
       *((int *) (s0 + 0x250)) = (*((int *) (s0 + 0x250))) | 2;
-      func_00103760(s1, 1);
+      FollowObj_snapToPlayer(s1, 1);
       *((float *) (s1 + 0x54C)) = t;
     }
       break;

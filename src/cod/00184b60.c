@@ -1,6 +1,6 @@
 /* sn-2.95.3-136 matched TU. */
 
-extern void func_001855A8(void *a0, int a1);
+extern void cOmBase_setDispModeLayers1E(void *a0, int a1);
 extern void func_00185690(void *a0, int a1);
 
 /* sn-2.95.3-136 matched TU. */
@@ -14,10 +14,10 @@ void func_00184B60(void *a0) {
     float f1 = (float)*(short *)(s0 + 0x620) / (float)*(short *)(s0 + 0x62E);
     switch (*(unsigned char *)(s0 + 0x656)) {
     case 0:
-        if (f1 <= 0.95f) { func_001855A8(s0, 1); *(unsigned char *)(s0 + 0x656) += 1; }
+        if (f1 <= 0.95f) { cOmBase_setDispModeLayers1E(s0, 1); *(unsigned char *)(s0 + 0x656) += 1; }
         break;
     case 1:
-        if (f1 <= 0.9f) { func_001855A8(s0, 4); *(unsigned char *)(s0 + 0x656) += 1; }
+        if (f1 <= 0.9f) { cOmBase_setDispModeLayers1E(s0, 4); *(unsigned char *)(s0 + 0x656) += 1; }
         break;
     case 2:
         if (f1 <= 0.75f) { func_00185690(s0, 1); *(unsigned char *)(s0 + 0x656) += 1; }

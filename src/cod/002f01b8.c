@@ -23,8 +23,8 @@ extern float capVu0Cos(float x);
 extern float Adjust_theta(float x);
 
 /* Steps the three oscillators: the first uses sine, the other two cosine; an oscillator with a zero step is left alone. */
-__attribute__((section(".text.func_002F01B8")))
-void func_002F01B8(EspWobble *self) {
+__attribute__((section(".text.EspWobble_step")))
+void EspWobble_step(EspWobble *self) {
     func_002FBED0(self);
     if (self->step0 != 0.0f) {
         self->out0 = self->amp0 * capVu0Sin(self->ang0);

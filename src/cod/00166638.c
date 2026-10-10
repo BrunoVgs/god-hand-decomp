@@ -43,8 +43,8 @@ extern const unsigned char D_00448CA0[];    /* method table */
 extern const char D_00448A00[];             /* type name */
 extern void *func_0028EB00(void *self);     /* enemy base constructor */
 
-__attribute__((section(".text.func_00284A28")))
-EnemyRec *func_00284A28(EnemyRec *self)
+__attribute__((section(".text.EnemyBase_constructAimQuad5")))
+EnemyRec *EnemyBase_constructAimQuad5(EnemyRec *self)
 {
     EnemyAim *aim;
     func_0028EB00(self);
@@ -80,8 +80,8 @@ typedef struct Slot2Marks {
     unsigned short markFlag;            /* 0x4A2 */
 } Slot2Marks;
 
-__attribute__((section(".text.func_001E3928")))
-void func_001E3928(Slot2Marks *self, int show, int startLit)
+__attribute__((section(".text.Slot2_setMarkLayersAt464")))
+void Slot2_setMarkLayersAt464(Slot2Marks *self, int show, int startLit)
 {
     self->markFlag = 0;
     if (startLit) {
@@ -120,8 +120,8 @@ typedef struct Slot2Blink {
     char unk00[4];
 } Slot2Blink;
 
-__attribute__((section(".text.func_001E39D0")))
-void func_001E39D0(Slot2Blink *self)
+__attribute__((section(".text.Slot2_blinkMarksAt4A2")))
+void Slot2_blinkMarksAt4A2(Slot2Blink *self)
 {
     unsigned short *blink = (unsigned short *)((char *)self + SLOT2_OFFSET_BLINK);
     unsigned int v = *blink;
@@ -183,8 +183,8 @@ typedef struct IdDispObj {
     unsigned char b131;                  /* 0x131 */
 } IdDispObj;
 
-__attribute__((section(".text.func_00166638")))
-void func_00166638(IdDispObj *self)
+__attribute__((section(".text.IdDispObj_constructKind8")))
+void IdDispObj_constructKind8(IdDispObj *self)
 {
     unsigned short i;
     Obj0000_Set_Fields_68_6C_From_D_007474A0_1615D0(self);
@@ -238,8 +238,8 @@ typedef struct DoorLikeObj {
     char hitRecData[0x20];              /* 0x650 */
 } DoorLikeObj;
 
-__attribute__((section(".text.func_0019C3D0")))
-int func_0019C3D0(DoorLikeObj *self) {
+__attribute__((section(".text.DoorBox_initWithBoxC")))
+int DoorBox_initWithBoxC(DoorLikeObj *self) {
     float f[16];
     float *t;
     float *m;

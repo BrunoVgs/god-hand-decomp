@@ -42,7 +42,7 @@ extern void cOmBase_dieCommon(void *a0);
 #include "godhand/vu0.h"
 #include "godhand/cCoreSave.h"
 
-/* Phase machine on the step byte, 10 case labels. Calls func_00274018,
+/* Phase machine on the step byte, 10 case labels. Calls ObjList_findActor3D1,
  * CheckSlotsShort2FEAndSetByte1864_262A10, Obj0000_Get_Byte_17C3_NZ_2_276468,
  * StoreMotionParamsBoth_2609A8, func_002A8578, cGameObj_SetTgtTurn and 12 more. */
 __attribute__((section(".text.func_002258C0"))) void func_002258C0(cEm00 *self)
@@ -52,7 +52,7 @@ __attribute__((section(".text.func_002258C0"))) void func_002258C0(cEm00 *self)
 
     *(char *)((char *)self + 0x186A) = 2;
     self->emFlags2 |= 0x400;
-    s3 = (char *)func_00274018();
+    s3 = (char *)ObjList_findActor3D1();
     CheckSlotsShort2FEAndSetByte1864_262A10(self);
     switch (self->step) {
         case 0: {

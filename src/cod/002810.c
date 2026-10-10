@@ -243,6 +243,6 @@ int func_002815D0(char *a0) {
 /* ── Call-chain (INCLUDE_ASM nonmatching — T1 will match) ── */
 
 /* GetClassDescB_2815E8 moved to src/cod/merged_orphans_b.c (matched, SN pin). */
-INCLUDE_ASM("nonmatching", func_00281638);
+INCLUDE_ASM("nonmatching", Em_construct281638);
 
 /* ── PERMANENT: func_002816E0 (0x260 B) — complex init — stays in asm ── */

@@ -6,13 +6,13 @@ extern float Adjust_theta(float f12);
 extern int moveMotion(void *a0);
 extern void cObjBase_addNullSpeed_Rotation(void *a0, float f);
 extern void cObjBase_addNullSpeed(void *a0, float f);
-extern void func_0012BFB8(void *a0);
+extern void cEm00_startJumpSetup(void *a0);
 
 extern float D_003BD478;
 extern float D_003BD480;
 extern float Turn_dest_dir(float f12, float f13, float f14);
 extern void cModel_calcNullPart(void *a0);
-extern void Add_nullspeedDir(void *a0, float f12);
+extern void cObjBase_addNullSpeedDir(void *a0, float f12);
 __attribute__((section(".text.func_0010C300")))
 void func_0010C300(void *a0)
 {
@@ -81,7 +81,7 @@ void func_0010C300(void *a0)
             *(float *)(s0 + 0x104) = Adjust_theta(*(float *)(s0 + 0x104));
             moveMotion(s0);
             cModel_calcNullPart(s0);
-            Add_nullspeedDir(s0, *(float *)(s0 + 0x15FC));
+            cObjBase_addNullSpeedDir(s0, *(float *)(s0 + 0x15FC));
         }
         break;
     }
@@ -91,6 +91,6 @@ void func_0010C300(void *a0)
         }
     }
     if (func_00123938(s0, 0) == 0) {
-        func_0012BFB8(s0);
+        cEm00_startJumpSetup(s0);
     }
 }

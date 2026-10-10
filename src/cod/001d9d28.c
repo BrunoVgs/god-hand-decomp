@@ -3,7 +3,7 @@
 
 /* sn-2.95.3-136 matched TU. */
 
-extern void func_001DD6D8(void *a0, int a1);
+extern void CustomIDOwner_setScoreNumber(void *a0, int a1);
 extern void func_001DE5F8(void *a0, int a1, int a2);
 extern void func_001DD910(void *a0, int a1);
 extern void UiRecord_setDispSubs6to10(void *p, int a1);
@@ -54,7 +54,7 @@ void func_001D9D28(void *arg)
     case 1:
         f = TickDown((int *)(s1 + 0x3028));
         if (f) {
-            func_001DD6D8(s1, *(int *)(s1 + 0x3038));
+            CustomIDOwner_setScoreNumber(s1, *(int *)(s1 + 0x3038));
             func_001DE5F8(s1, *(unsigned char *)(s1 + 0x3048), 2);
             *(int *)(s1 + 0x3028) = 0x14;
             *(unsigned char *)(s1 + 0x3025) = *(unsigned char *)(s1 + 0x3025) + 1;

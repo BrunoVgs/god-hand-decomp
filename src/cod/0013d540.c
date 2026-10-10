@@ -4,7 +4,7 @@
 extern int cIDBase_getIDWork(void *this, int idx);
 extern void IconScreen_stepGrow(void *this);
 extern void func_0013D7B0(void *this);
-extern void func_0013DA98(void *this);
+extern void IconScreen_waitChildDone(void *this);
 extern void func_0013DB50(void *this);
 extern void CustomIDWork_Main(void *p);
 extern void cIDBase_move(void *p);
@@ -45,7 +45,7 @@ void func_0013D540(void *this) {
         func_0013D7B0(this);
         break;
     case 2:
-        func_0013DA98(this);
+        IconScreen_waitChildDone(this);
         break;
     }
 

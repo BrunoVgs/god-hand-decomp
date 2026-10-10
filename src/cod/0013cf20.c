@@ -38,8 +38,8 @@ typedef struct SysState {
 extern SysState D_00747A24;
 
 /* Draw the display when its owner is alive and switched on, the game is not paused or hidden, and the save state allows it. */
-__attribute__((section(".text.func_0013CF20")))
-void func_0013CF20(IdDrawObj *self)
+__attribute__((section(".text.IdDrawObj_transIfShown")))
+void IdDrawObj_transIfShown(IdDrawObj *self)
 {
     unsigned long flags;
     unsigned long bit;
@@ -64,8 +64,8 @@ void func_0013CF20(IdDrawObj *self)
 #define SCALE_END   101.0f
 
 /* Hide both scroll layers when the progress value reaches the end of mode 0 (0.0) or mode 13 (101.0). */
-__attribute__((section(".text.func_002983D0")))
-void func_002983D0(int mode, float value)
+__attribute__((section(".text.ScrollLayer_hideAtEnd")))
+void ScrollLayer_hideAtEnd(int mode, float value)
 {
     switch (mode) {
     case MODE_START:
@@ -90,8 +90,8 @@ typedef struct { int w[6]; } DivTable;
 #define LEVEL_ALWAYS  3                 /* levels below this always succeed */
 
 /* Chance roll: levels 0..2 always succeed, higher levels succeed one time in the level's divisor. */
-__attribute__((section(".text.func_001ABB58")))
-int func_001ABB58(int unused, int level)
+__attribute__((section(".text.Level_rollChance")))
+int Level_rollChance(int unused, int level)
 {
     DivTable tbl = *(DivTable *)D_00427CD8;
 
@@ -109,8 +109,8 @@ extern char D_00568288[];               /* the cActionButton manager */
 #define ACTBTN_ENT_WORD(ent, off)  (*(int *)((char *)(ent) + (off)))
 
 /* Reset an entry to an unused prompt: register it with the manager, drop the in-use bit and clear every field. */
-__attribute__((section(".text.func_001F7228")))
-void func_001F7228(cActionButtonEnt *self)
+__attribute__((section(".text.cActionButtonEnt_reset")))
+void cActionButtonEnt_reset(cActionButtonEnt *self)
 {
     func_001F7820(D_00568288, self);
     self->flags &= ~ACTBTN_ENT_USED;
@@ -134,8 +134,8 @@ void func_001F7228(cActionButtonEnt *self)
 }
 
 /* Set the node's translation to `pos` relative to its parent's position (zero when it has no parent). */
-__attribute__((section(".text.func_002B5F28")))
-void func_002B5F28(void *self, float *pos)
+__attribute__((section(".text.cNode_setTranslationFromParent")))
+void cNode_setTranslationFromParent(void *self, float *pos)
 {
     float parentPos[4] __attribute__((aligned(16)));
     float tmp[4] __attribute__((aligned(16)));

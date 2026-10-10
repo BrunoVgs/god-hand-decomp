@@ -6,7 +6,7 @@ extern float sqrtf(float x);
 extern void StoreVecFromFieldB0_2B6160(void *dst, void *self);
 extern void *CopyVec16From20_B62E0(void *dst, char *self);
 extern void UpdateObjByIndexedOp_2FBE50(void *self);
-extern void func_002B5FC8(void *self, void *v);
+extern void cNode_setTranslationFromWorld(void *self, void *v);
 extern int SetEffect();
 
 /* sn-2.95.3-136 matched TU. */
@@ -184,5 +184,5 @@ void func_002E6B88(void *arg, float thr) {
                             *(float *)(self + 0x12C) = 0.0f;
         }
     }
-    func_002B5FC8(self, &fr.a);
+    cNode_setTranslationFromWorld(self, &fr.a);
 }

@@ -24,8 +24,8 @@ extern int D_00574380;
 #define SLOT2_OFFSET_LAYER_4  0x3C4
 #define SLOT2_LAYER(self, off) (*(int *)((char *)(self) + (off)))
 
-__attribute__((section(".text.func_001E6A48")))
-void func_001E6A48(Slot2 *self)
+__attribute__((section(".text.Slot2_showLayersForBetLv")))
+void Slot2_showLayersForBetLv(Slot2 *self)
 {
     switch (self->betLv) {
     case 0:
@@ -79,8 +79,8 @@ typedef struct Slot2Blink {
 
 extern MarkTbl D_0042B8D0;              /* layer index of each mark */
 
-__attribute__((section(".text.func_001E4308")))
-void func_001E4308(Slot2Blink *self)
+__attribute__((section(".text.Slot2_stepMarkSelector")))
+void Slot2_stepMarkSelector(Slot2Blink *self)
 {
     unsigned short *blink = (unsigned short *)((char *)self + SLOT2_OFFSET_BLINK2);
     unsigned int v = *blink;
@@ -146,8 +146,8 @@ typedef struct DoorBoxObj {
 
 #define COMBASE_F2_BIT1  0x2            /* flags2 bit 1 */
 
-__attribute__((section(".text.func_0017F320")))
-int func_0017F320(DoorBoxObj *self)
+__attribute__((section(".text.DoorBoxObj_constructWideB")))
+int DoorBoxObj_constructWideB(DoorBoxObj *self)
 {
     float f[16];
     float *m;

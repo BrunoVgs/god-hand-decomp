@@ -18,7 +18,7 @@ extern float Adjust_theta(float f12);
 extern int ClearField5B4IfFlagUnset_1B76B0(int a0);
 extern int cOmBase_checkDamage(void *a0, int a1);
 extern int cSnd_SeCall_2CBA48(void *a0, int a1, int a2, void *a3, int t0, int t1, int t2, int t3);
-extern void func_001B5430(void *a0);
+extern void StunObj_startStun(void *a0);
 extern void func_001B48E0(void *a0);
 extern void func_001B54E8(void *a0);
 extern int func_001329C0(void *a0, void *a1, int a2, void *a3, float f12);
@@ -283,7 +283,7 @@ void func_001B4068(void *a0)
         } else {
             cSnd_SeCall_2CBA48(D_005FEE00, 2, 0x8E, s0, 0, 0, 0, 0);
         }
-        func_001B5430(s0);
+        StunObj_startStun(s0);
     }
     {
         char *e;

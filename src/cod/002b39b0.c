@@ -1,6 +1,6 @@
 /* sn-2.95.3-136 matched TU. */
 
-extern void func_002B46F0(unsigned char *, int, int, int);
+extern void cSnd_SeCallGlobal(unsigned char *, int, int, int);
 
 __attribute__((section(".text.func_002B39B0")))
 int func_002B39B0(unsigned char *obj)
@@ -28,6 +28,6 @@ int func_002B39B0(unsigned char *obj)
         mode = *(int *)(obj + 0x20);
         break;
     }
-    func_002B46F0(obj, mode, *(short *)(*(unsigned char **)(obj + 0x8C) + 4), *(int *)(obj + 0x18));
+    cSnd_SeCallGlobal(obj, mode, *(short *)(*(unsigned char **)(obj + 0x8C) + 4), *(int *)(obj + 0x18));
     return 0;
 }

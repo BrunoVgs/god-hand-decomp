@@ -27,8 +27,8 @@ extern unsigned char D_0061B7C0[];      /* the 0x400 effect slots, 0x400 bytes e
 #define ESP_SLOT_SUBGRP  0x23C          /* offset of the slot's sub group number (unsigned short) */
 
 /* Run the kill handler of every effect slot that is in use, neither paused nor hidden, has flag 2 set and is not in group 0xD7. */
-__attribute__((section(".text.KillEventEsp")))
-void KillEventEsp(void) {
+__attribute__((section(".text.Esp_killFlaggedExceptEvent")))
+void Esp_killFlaggedExceptEvent(void) {
     unsigned char *p;
     int i;
     unsigned int bit;
@@ -62,8 +62,8 @@ extern unsigned char D_0061B7C0[];      /* the 0x400 effect slots, 0x400 bytes e
 #define ESP_SLOT_SUBGRP  0x23C          /* offset of the slot's sub group number (unsigned short) */
 
 /* Run the kill handler of every effect slot that is in use, neither paused nor hidden, and whose group and sub group numbers match. */
-__attribute__((section(".text.func_002FB898")))
-void func_002FB898(int group, int subGroup) {
+__attribute__((section(".text.Esp_killByGroupPair")))
+void Esp_killByGroupPair(int group, int subGroup) {
     unsigned char *p;
     int i;
     unsigned int bit;
@@ -92,8 +92,8 @@ next: ;
 
 
 /* Switch the object's display layers: hide layers 0x2E and 0x2F, then by mode show layer 0x2E (mode 0) or 0x2F (mode 1), or for mode 4 start effect 0x298 on it and play sound effect 0x113. */
-__attribute__((section(".text.func_00185F50")))
-void func_00185F50(cOmBase *self, int mode)
+__attribute__((section(".text.cOmBase_setDispModeLayers2E")))
+void cOmBase_setDispModeLayers2E(cOmBase *self, int mode)
 {
     cOmBase_setMeshDispFromLayer(self, 0x2E, 0);
     cOmBase_setMeshDispFromLayer(self, 0x2F, 0);
@@ -120,8 +120,8 @@ void func_00185F50(cOmBase *self, int mode)
 
 
 /* Switch the object's display layers: hide layers 0x1E and 0x1F, then by mode show layer 0x1E (mode 0) or 0x1F (mode 1), or for mode 4 start effect 0x298 on it and play sound effect 0x113. */
-__attribute__((section(".text.func_001855A8")))
-void func_001855A8(cOmBase *self, int mode)
+__attribute__((section(".text.cOmBase_setDispModeLayers1E")))
+void cOmBase_setDispModeLayers1E(cOmBase *self, int mode)
 {
     cOmBase_setMeshDispFromLayer(self, 0x1E, 0);
     cOmBase_setMeshDispFromLayer(self, 0x1F, 0);
@@ -147,8 +147,8 @@ void func_001855A8(cOmBase *self, int mode)
 
 
 /* True when the distance from the line, taken from the matrix position along its turned (0, h, 0) offset, is at most k0 + k1. */
-__attribute__((section(".text.func_002BB670")))
-int func_002BB670(void *line, void *mtx, float k0, float k1, float h)
+__attribute__((section(".text.Mtx_checkLineDistanceSum")))
+int Mtx_checkLineDistanceSum(void *line, void *mtx, float k0, float k1, float h)
 {
     char buf[0x40] __attribute__((aligned(16)));
     float *v;
@@ -190,8 +190,8 @@ extern unsigned char D_0071B940[];      /* the 0x100 slots, 0x260 bytes each */
 #define SLOT_SIZE  0x260
 
 /* Walk the 0x100 object slots; for each live, non-paused, visible slot run its handler with (a0, a1). */
-__attribute__((section(".text.func_003009F8")))
-void func_003009F8(int a0, int a1)
+__attribute__((section(".text.Slots_runHandlerForAll")))
+void Slots_runHandlerForAll(int a0, int a1)
 {
     char *p;
     int i;

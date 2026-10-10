@@ -29,8 +29,8 @@ extern void func_00279FF0(cEmNear *self);
 extern void cModel_calcParts(cEmNear *self);
 
 /* Per-frame update unless the game is frozen: measure the distance to the player, update the AI, rebuild the parts, copy the position. */
-__attribute__((section(".text.func_00279E78")))
-void func_00279E78(cEmNear *self) {
+__attribute__((section(".text.cEmNear_updateNearPlayer")))
+void cEmNear_updateNearPlayer(cEmNear *self) {
     if ((D_00747A78 & SYSFLAG_FREEZE) == 0) {
         self->playerDistSq = capVu0MagnitudeSqXZ(Getplayer()->pos, self->base.pos);
         func_00279FF0(self);
@@ -40,8 +40,8 @@ void func_00279E78(cEmNear *self) {
 }
 
 /* Number display: shows or hides the five digit elements 0xD..0x11, then sets the number in the work at 0x728. */
-__attribute__((section(".text.func_001F33F8")))
-void func_001F33F8(char *self, int on, int value) {
+__attribute__((section(".text.DigitDisplay_setNumber")))
+void DigitDisplay_setNumber(char *self, int on, int value) {
     SetCustomIDDispOneOrAll_1F29C0(self, 0xD, on);
     SetCustomIDDispOneOrAll_1F29C0(self, 0xE, on);
     SetCustomIDDispOneOrAll_1F29C0(self, 0xF, on);
@@ -94,8 +94,8 @@ void func_0013BC28(IdSet *self) {
 
 /* Casts a probe line from 49 units below the zeroed start point; returns the hit height, or pos->y when nothing is hit.
    The start is never filled from pos: retail copies from's own address onto itself, which gcc drops but keeps the address pseudo. */
-__attribute__((section(".text.func_002DB6D0")))
-float func_002DB6D0(cVec *pos)
+__attribute__((section(".text.Pos_probeGroundBelow")))
+float Pos_probeGroundBelow(cVec *pos)
 {
     cVec from;
     cVec to;
@@ -135,8 +135,8 @@ typedef struct ActorRec {
 } ActorRec;
 
 /* Resets the record: zero flags, two zeroed points (w 1.0), the 0x30..0x4C settings, then runs step 4. */
-__attribute__((section(".text.func_001FCD00")))
-void func_001FCD00(ActorRec *self) {
+__attribute__((section(".text.ActorRec_reset")))
+void ActorRec_reset(ActorRec *self) {
     cVec zero;
 
     self->unk00 = 0;

@@ -58,7 +58,7 @@ int ForwardInitBuffer_314160(void){
     s0 = EnsureInitThenForward_2A9538_30EE08(0x920, 0x10, D_00754C10);
     if (s0 == 0) return 0;
     func_003A52F0(s0, 0, 0x920);
-    return func_0018F110(s0);
+    return cEm_constructWithRecords(s0);
 }
 
 __attribute__((section(".text.ForwardInitBuffer_3141D0")))

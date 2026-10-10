@@ -13,7 +13,7 @@ extern void cSeData_Update(void *se);
 extern void cBgmData_UpdateLoad(cBgmData *bgm);
 extern void SetEffectPos(int kind, int effNo, int a2, void *pos, int a4, float scale);
 extern void func_002FBED0(void *self);
-extern void func_001483C8(int entry, int mode);
+extern void BufHolder_deletingDtor(int entry, int mode);
 extern void func_002A9790(void *pool);
 extern void cHeap_free(int heap, int *node);
 extern void func_001DBF18(void *self, unsigned short *a, unsigned short *b, unsigned short *c, unsigned short *d);
@@ -30,8 +30,8 @@ typedef struct DamageObj {
 } DamageObj;
 
 /* Switch the object's damage volumes off and hide its first mesh node. */
-__attribute__((section(".text.func_001BFF68")))
-void func_001BFF68(DamageObj *self)
+__attribute__((section(".text.DamageObj_disableDamage")))
+void DamageObj_disableDamage(DamageObj *self)
 {
     if (self->damageUnit != 0) {
         cDamageUnit_SetDamageCollActive(self->damageUnit, 0);
@@ -49,8 +49,8 @@ void func_001BFF68(DamageObj *self)
 
 
 /* Per-frame load update of every sound-effect slot and every BGM data slot. */
-__attribute__((section(".text.func_002CA558")))
-void func_002CA558(cSnd *self)
+__attribute__((section(".text.cSnd_updateLoads")))
+void cSnd_updateLoads(cSnd *self)
 {
     int i;
     for (i = 0; i < CSND_SE_ENTRY_NUM; i++)
@@ -73,8 +73,8 @@ typedef struct EffObj {
 } EffObj;
 
 /* Start effect kind 1 at the object's position. */
-__attribute__((section(".text.func_001A4218")))
-void func_001A4218(EffObj *self)
+__attribute__((section(".text.EffObj_startEffectAtPos")))
+void EffObj_startEffectAtPos(EffObj *self)
 {
     float pos[4] __attribute__((aligned(16)));
     float *p;
@@ -95,8 +95,8 @@ typedef struct ScrollObj {
 } ScrollObj;
 
 /* Run the base update, then advance the scroll position by its speed and wrap it into 0..1. */
-__attribute__((section(".text.func_002EC310")))
-void func_002EC310(ScrollObj *self)
+__attribute__((section(".text.ScrollObj_advanceScroll")))
+void ScrollObj_advanceScroll(ScrollObj *self)
 {
     float speed;
     func_002FBED0(self);
@@ -117,15 +117,15 @@ typedef struct EntList {
 } EntList;
 
 /* Release every entry of the list in order, then reset the list and free its heap block. */
-__attribute__((section(".text.func_00149378")))
-void func_00149378(EntList *self)
+__attribute__((section(".text.EntList_destroy")))
+void EntList_destroy(EntList *self)
 {
     int cur = func_002A9860(self, 0);
     int *block;
 
     while (cur != 0) {
         int next = func_002A9860(self, cur);
-        func_001483C8(cur, 2);
+        BufHolder_deletingDtor(cur, 2);
         cur = next;
     }
     block = self->block;
@@ -150,8 +150,8 @@ typedef struct PartHolder {
 } PartHolder;
 
 /* Mark every part when any of the four kinds the lookup returns is PART_KIND_FOUND. Returns 1 when it marked them. */
-__attribute__((section(".text.func_001DC710")))
-int func_001DC710(PartHolder *self)
+__attribute__((section(".text.PartHolder_markIfFound")))
+int PartHolder_markIfFound(PartHolder *self)
 {
     unsigned short kind[4];
     Part **p;

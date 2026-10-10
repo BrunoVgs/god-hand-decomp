@@ -35,11 +35,11 @@ extern void displayScrollLayer(int id, int on);
 
 
 
-/* func_002D57C8: one step of the task, switched on its state (0xC). State 2 creates the thread, state 1
+/* cTaskWork_step: one step of the task, switched on its state (0xC). State 2 creates the thread, state 1
  * counts the sleep down and wakes the thread at zero, state 4 and the ends of the other two mark the task
  * done and wait on the manager's semaphore. Once the state is DONE the task is killed. */
-__attribute__((section(".text.func_002D57C8")))
-void func_002D57C8(cTaskWork *self)
+__attribute__((section(".text.cTaskWork_step")))
+void cTaskWork_step(cTaskWork *self)
 {
     switch (self->running) {
     case 2:
@@ -63,10 +63,10 @@ void func_002D57C8(cTaskWork *self)
     }
 }
 
-/* func_0014E5D0: the cObj part of the destructor. Put this class's vtable back, release the actor's data
+/* cObj_releaseActorData: the cObj part of the destructor. Put this class's vtable back, release the actor's data
  * kind from whichever manager holds it, then run the cModel part. */
-__attribute__((section(".text.func_0014E5D0")))
-int func_0014E5D0(cObjBase *self, int flag)
+__attribute__((section(".text.cObj_releaseActorData")))
+int cObj_releaseActorData(cObjBase *self, int flag)
 {
     self->vtable = (cVtEnt *)D_0041EAF0;
     if (self->actorId != 0) {
@@ -76,17 +76,17 @@ int func_0014E5D0(cObjBase *self, int flag)
             cDataManager_resetKind(&D_00580D20, self->actorId, 0);
         }
     }
-    return func_001496C0(self, flag);
+    return cModel_destroy(self, flag);
 }
 
 /* The element that slides in and out sits at 0xDC of the owner. */
 #define OWNER_SLIDE_IDW(self) ((CustomIDWork *)((char *)(self) + 0xDC))
 #define SLIDE_HIDDEN_Y  (-0x46)
 
-/* func_001DE428: place or slide the element in (sel 2: down from hidden to shown over 10 frames; sel 3:
+/* CustomIDOwner_setSlideState: place or slide the element in (sel 2: down from hidden to shown over 10 frames; sel 3:
  * the way back; sel 1: shown at once; others: hidden). */
-__attribute__((section(".text.func_001DE428")))
-void func_001DE428(void *self, unsigned char sel)
+__attribute__((section(".text.CustomIDOwner_setSlideState")))
+void CustomIDOwner_setSlideState(void *self, unsigned char sel)
 {
     switch (sel) {
     case 0:
@@ -109,10 +109,10 @@ void func_001DE428(void *self, unsigned char sel)
     }
 }
 
-/* func_001F1DF8: phase 0 defeats every enemy and moves on; phase 1 clears each of the first five entry
+/* ColiseumBattle_stepEntryWait5: phase 0 defeats every enemy and moves on; phase 1 clears each of the first five entry
  * handles whose entry reports active. */
-__attribute__((section(".text.func_001F1DF8")))
-void func_001F1DF8(ColiseumBattle *self)
+__attribute__((section(".text.ColiseumBattle_stepEntryWait5")))
+void ColiseumBattle_stepEntryWait5(ColiseumBattle *self)
 {
     switch (self->phase) {
     case 0:
@@ -157,9 +157,9 @@ typedef struct Box {
 
 extern void func_001F8A88(Box *self, float minX, float maxX, float minY, float maxY, float minZ, float maxZ);
 
-/* func_001F91D0: grow the box to contain another box, by taking the lower and upper bound on each axis. */
-__attribute__((section(".text.func_001F91D0")))
-Box *func_001F91D0(Box *self, Box *other)
+/* Box_growToContain: grow the box to contain another box, by taking the lower and upper bound on each axis. */
+__attribute__((section(".text.Box_growToContain")))
+Box *Box_growToContain(Box *self, Box *other)
 {
     float minX, maxX, minY, maxY, minZ, maxZ;
     float t;
@@ -208,10 +208,10 @@ typedef struct LayerScreen {
 
 
 
-/* func_001E4520: with both objects present, hide every layer and clear the shown flag; for sel 1 also
+/* LayerScreen_hideLayers: with both objects present, hide every layer and clear the shown flag; for sel 1 also
  * zero the objects' x positions and show the two main layers again. */
-__attribute__((section(".text.func_001E4520")))
-void func_001E4520(LayerScreen *self, unsigned char sel)
+__attribute__((section(".text.LayerScreen_hideLayers")))
+void LayerScreen_hideLayers(LayerScreen *self, unsigned char sel)
 {
     if (sel < 2) {
         if (self->objA == 0) return;

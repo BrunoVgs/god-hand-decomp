@@ -84,11 +84,11 @@ int func_00150098(int a0) {
     return func_001504B0(&D_00466470, a0);
 }
 
-int func_001505A8(int *a0, int a1);
+int ObjList_queueObj(int *a0, int a1);
 
 __attribute__((section(".text.func_00150100")))
 int func_00150100(int a0) {
-    return func_001505A8(&D_00466470, a0);
+    return ObjList_queueObj(&D_00466470, a0);
 }
 
 __attribute__((section(".text.func_001F8A60")))
@@ -280,12 +280,12 @@ void func_00165E88(void *a0) {
 }
 
 void func_002BE028(void *a0);
-void func_002BE0F0(void *a0);
+void System_bringUp(void *a0);
 
 __attribute__((section(".text.func_002BDFF8")))
 void func_002BDFF8(void *a0) {
     func_002BE028(a0);
-    func_002BE0F0(a0);
+    System_bringUp(a0);
 }
 
 void func_002D9C10(void *a0);

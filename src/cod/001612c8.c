@@ -15,7 +15,7 @@ extern int D_00747A84;
 extern int D_005FEE00;
 extern void cTaskWork_sleep(void *p, int a);
 extern void cMessage_deleteAll(void *p);
-extern void func_002CA6B0(void *p);
+extern void cSnd_SeFadeOutHeldVoices(void *p);
 extern void func_00306140(void);
 extern void classFADE_start(void *p, int b, int c, int d, unsigned int e, int f, int g);
 extern void cTaskWork_exit(void *a0);
@@ -127,7 +127,7 @@ void cScenario_endTask(void)
         if (b < 0x40)
             D_00747A8C[(unsigned int)b >> 5] |= 0x80000000u >> (b & 0x1F);
     cMessage_deleteAll(D_003C23A4);
-    func_002CA6B0(&D_005FEE00);
+    cSnd_SeFadeOutHeldVoices(&D_005FEE00);
     func_00306140();
     if (D_003C2F84->nextTask != 0)
         cScenario_taskExec(D_003C2F84, D_003C2F84->nextTask, D_003C2F84->nextTaskArg,

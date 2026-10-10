@@ -18,8 +18,8 @@ typedef struct InitRec {
 } InitRec;
 
 /* Start the record: mode 1, convert the source, keep the parameter, state 2. */
-__attribute__((section(".text.func_001FF470")))
-void func_001FF470(InitRec *self, int src, int param)
+__attribute__((section(".text.InitRec_start")))
+void InitRec_start(InitRec *self, int src, int param)
 {
     self->mode = 1;
     self->result = func_003078E0(src);
@@ -38,8 +38,8 @@ typedef struct CountdownObj {
 } CountdownObj;
 
 /* Count the timer down by the frame rate while it is positive; returns 1 once it is spent. */
-__attribute__((section(".text.func_001B1A80")))
-int func_001B1A80(CountdownObj *self)
+__attribute__((section(".text.CountdownObj_tickIsSpent")))
+int CountdownObj_tickIsSpent(CountdownObj *self)
 {
     float rate = cEmManage_GetSpeedRate(&D_005864F0);
     if (self->timeLeft > 0.0f) {
@@ -59,8 +59,8 @@ typedef struct PosObj {
 } PosObj;
 
 /* Forward the object, the current field value and the elapsed span to func_002AFED0 together with the two position floats. */
-__attribute__((section(".text.func_002B0420")))
-void func_002B0420(PosObj *self, int arg)
+__attribute__((section(".text.PosObj_forwardSpan")))
+void PosObj_forwardSpan(PosObj *self, int arg)
 {
     int span = self->endTime - self->startTime;
     int field = GetField_BEE_2B1290();
@@ -81,8 +81,8 @@ typedef struct cOl30Obj {
 } cOl30Obj;
 
 /* Set pos from src (when it is not already pos), mirror it into target, then place the object at its initial position. */
-__attribute__((section(".text.func_00183240")))
-void func_00183240(cOl30Obj *self, Vec3 *src)
+__attribute__((section(".text.cOl30_setPosAndPlace")))
+void cOl30_setPosAndPlace(cOl30Obj *self, Vec3 *src)
 {
     Vec3 *pos = &self->pos;
     Vec3 *dst;
@@ -110,8 +110,8 @@ typedef struct EntPool {
 } EntPool;
 
 /* Take an entry from the pool, count it, clear it and run its initialiser. Returns 0 when the pool is empty. */
-__attribute__((section(".text.func_00149488")))
-void *func_00149488(EntPool *self)
+__attribute__((section(".text.EntPool_allocClear")))
+void *EntPool_allocClear(EntPool *self)
 {
     int ent = func_002A97A0(self);
     unsigned int n;
@@ -138,8 +138,8 @@ typedef struct FlagSaveObj {
 } FlagSaveObj;
 
 /* Save the system flag words in the object, then set the flags for the frozen state. */
-__attribute__((section(".text.func_002BF790")))
-void func_002BF790(FlagSaveObj *self)
+__attribute__((section(".text.SysFlags_saveAndFreeze")))
+void SysFlags_saveAndFreeze(FlagSaveObj *self)
 {
     self->saved = *(SysFlags8 *)&D_00747A78;
     D_00747A78 &= 0xFDFFFFFF;

@@ -115,7 +115,7 @@ void ColiseumBattle_spawnWave(ColiseumBattle *self) {
 #define TASKMGR_NUM_OFFSET  0xC         /* an unsigned short the header leaves in unk0C */
 #define TASKMGR_NUM(self)   (*(unsigned short *)((char *)(self) + TASKMGR_NUM_OFFSET))
 
-extern void func_002D57C8(cTaskWork *work);     /* run one task's step */
+extern void cTaskWork_step(cTaskWork *work);     /* run one task's step */
 
 __attribute__((section(".text.cTaskManager_runAllMatching")))
 void cTaskManager_runAllMatching(cTaskManager *self) {
@@ -140,7 +140,7 @@ void cTaskManager_runAllMatching(cTaskManager *self) {
                 attr = work->attr;
                 if (((attr >> 1) & 1) == 0) goto next;
             }
-            func_002D57C8(work);
+            cTaskWork_step(work);
         next:
             i++;
             off += TASKMGR_WORK_SIZE;

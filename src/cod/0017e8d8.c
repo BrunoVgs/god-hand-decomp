@@ -27,8 +27,8 @@ typedef struct DoorBoxObj {
 
 #define COMBASE_F2_BIT1  0x2            /* flags2 bit 1 */
 
-__attribute__((section(".text.func_0017E8D8")))
-int func_0017E8D8(DoorBoxObj *self)
+__attribute__((section(".text.DoorBoxObj_constructWide")))
+int DoorBoxObj_constructWide(DoorBoxObj *self)
 {
     float f[16];
     float *m;

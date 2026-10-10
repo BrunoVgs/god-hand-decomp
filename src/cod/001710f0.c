@@ -25,16 +25,16 @@ typedef struct VibHead {
 extern VibHead *D_007479F4;
 extern void cPadVib_stopSeq(cPadVib *self);
 
-__attribute__((section(".text.func_002BDB78")))
-void func_002BDB78(cPadVib *self) {
+__attribute__((section(".text.cPadVib_init")))
+void cPadVib_init(cPadVib *self) {
     self->table = D_007479F4->tableOff + (int)D_007479F4;
     cPadVib_stopSeq(self);
     self->flags |= 1;
 }
 
 /* Stops the track's stream player if the player is still running (mode 0). */
-__attribute__((section(".text.func_002D42F8")))
-void func_002D42F8(cMovieTrack *track) {
+__attribute__((section(".text.cMovieTrack_stop")))
+void cMovieTrack_stop(cMovieTrack *track) {
     if (track->handle != 0 && func_00345B88(track->handle) != 0) {
         func_00345F48(track->handle, 0);
     }
@@ -49,8 +49,8 @@ typedef struct HeapBuf {
 extern void func_002BE6C8(HeapBuf *self);
 
 
-__attribute__((section(".text.func_002BE5F0")))
-void func_002BE5F0(HeapBuf *self) {
+__attribute__((section(".text.HeapBuf_release")))
+void HeapBuf_release(HeapBuf *self) {
     func_002BE6C8(self);
     if (self->buf != 0) {
         cHeap_free(self->buf[-8], self->buf);
@@ -60,8 +60,8 @@ void func_002BE5F0(HeapBuf *self) {
 }
 
 /* Callback: when value is 0 and mode is 0 or 4, hides scroll layers 0x1E and 0x1F. */
-__attribute__((section(".text.func_00298338")))
-void func_00298338(int mode, float value) {
+__attribute__((section(".text.ScrollCallback_hideLayers")))
+void ScrollCallback_hideLayers(int mode, float value) {
     if (value == 0.0f) {
         if (mode == 0 || mode == 4) {
             displayScrollLayer(0x1E, 0);
@@ -82,8 +82,8 @@ typedef struct VtObj {
 
 extern void SetField214PtrThenInit_1B6F38(VtObj *self, int flags);
 
-__attribute__((section(".text.func_001710F0")))
-void func_001710F0(VtObj *self, int flags) {
+__attribute__((section(".text.VtObj_destroyDerived")))
+void VtObj_destroyDerived(VtObj *self, int flags) {
     self->vt = D_00420CA0;
     func_002AD288(self->sub, 2);
     SetField214PtrThenInit_1B6F38(self, flags);
@@ -103,8 +103,8 @@ typedef struct WorkArea {
 
 
 
-__attribute__((section(".text.func_002BF878")))
-void func_002BF878(WorkArea *self) {
+__attribute__((section(".text.WorkArea_clear")))
+void WorkArea_clear(WorkArea *self) {
     func_003A52F0(self->head, 0, WORK_HEAD_SIZE);
     func_003A52F0(self->body, 0, WORK_BODY_SIZE);
     func_003A52F0(self->tail, 0, WORK_TAIL_SIZE);

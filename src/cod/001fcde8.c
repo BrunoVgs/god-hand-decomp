@@ -1,6 +1,6 @@
 /* SN ProDG ee-gcc 2.95.3 matched TU. */
 
-extern void func_001FCD00(void *a0);
+extern void ActorRec_reset(void *a0);
 extern unsigned char D_0042C4D8[];
 extern unsigned char D_0042C4B8[];
 extern void func_001FCDB8(void *a0);
@@ -15,7 +15,7 @@ extern void func_00378070(void *a0);
 
 __attribute__((section(".text.ResetObjectFields_1FCDE8")))
 void ResetObjectFields_1FCDE8(void *a0) {
-    func_001FCD00(a0);
+    ActorRec_reset(a0);
     *(int*)((char*)a0+0x34) = 0;
     *(char*)((char*)a0+0x49) = 2;
     *(int*)((char*)a0+0x60) = 0;

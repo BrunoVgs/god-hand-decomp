@@ -21,7 +21,7 @@ extern void func_002D5250(int frames);
 extern char D_00580D40[];
 extern int FindEntryValue_1FF9C0(char *table, char *name, int *size, char *key);
 extern void func_001B6FB8(void *self);
-extern void func_001BDA00(void *self);
+extern void cOmDoor_setObjCollisionCenterOnly(void *self);
 extern void SetFlagBit_1BD698(void *self);
 extern void func_001BDD88(void *self, float f);
 extern float fRand0_1(void);
@@ -29,10 +29,10 @@ extern void Obj0000_Clear_Fields_640_648_124E58(void *a0);
 extern void CallWithAndClearField698_12AC28(void *a0);
 extern void func_0012B928(void *a0);
 
-/* func_002CA798: load the sound banks 0 and 3 from disc and the first BGM, waiting a frame at a time until
+/* cSnd_LoadStartupBanks: load the sound banks 0 and 3 from disc and the first BGM, waiting a frame at a time until
  * each is ready. Returns early when the BGM bank has nothing to load. */
-__attribute__((section(".text.func_002CA798")))
-void func_002CA798(cSnd *self)
+__attribute__((section(".text.cSnd_LoadStartupBanks")))
+void cSnd_LoadStartupBanks(cSnd *self)
 {
     cSeData_Release(cSnd_GetSeData(self, 0));
     cSnd_SeLoadFile(self, 0, D_0044CE28);
@@ -54,10 +54,10 @@ void func_002CA798(cSnd *self)
     }
 }
 
-/* func_00200B88: queue a read of a named file into a caller buffer (rounded up to 64 bytes). id 0 takes
+/* cDvd_ReadToBuffer: queue a read of a named file into a caller buffer (rounded up to 64 bytes). id 0 takes
  * the next job id; size overrides the size in bytes. Returns the job id, 0 on failure. */
-__attribute__((section(".text.func_00200B88")))
-int func_00200B88(cDvd *self, char *name, unsigned int buf, int id, int size, int arg70, int arg6C)
+__attribute__((section(".text.cDvd_ReadToBuffer")))
+int cDvd_ReadToBuffer(cDvd *self, char *name, unsigned int buf, int id, int size, int arg70, int arg6C)
 {
     cDvdJob *job;
     int fileNo;
@@ -97,10 +97,10 @@ int func_00200B88(cDvd *self, char *name, unsigned int buf, int id, int size, in
 /* The vector the object keeps at 0x600. */
 #define OBJ_VEC600(self)  ((cVec *)((char *)(self) + 0x600))
 
-/* func_0017EAF8: initialise the object: base setup, store (5.78, 5.5, 0.2) in the vector at 0x600, run
+/* Obj_initPosVec600: initialise the object: base setup, store (5.78, 5.5, 0.2) in the vector at 0x600, run
  * the two follow-up steps and start the 5.6 effect. Returns 1. */
-__attribute__((section(".text.func_0017EAF8")))
-int func_0017EAF8(void *self)
+__attribute__((section(".text.Obj_initPosVec600")))
+int Obj_initPosVec600(void *self)
 {
     cVec v;
     func_001B6FB8(self);
@@ -109,7 +109,7 @@ int func_0017EAF8(void *self)
     v.z = 0.2f;
     v.w = 1.0f;
     cVec_copy3(OBJ_VEC600(self), &v);
-    func_001BDA00(self);
+    cOmDoor_setObjCollisionCenterOnly(self);
     SetFlagBit_1BD698(self);
     func_001BDD88(self, 5.6f);
     return 1;
@@ -125,10 +125,10 @@ typedef struct DropTable { DropEntry e[5]; } DropTable;
 extern DropTable D_00428068;
 
 
-/* func_001B0150: when the object has no drop item yet (0xFFFF), pick one from the five-entry weighted
+/* cGameObj_pickDropItem: when the object has no drop item yet (0xFFFF), pick one from the five-entry weighted
  * table D_00428068 with a random number; if it runs past the last weight the item is 0x3E2. */
-__attribute__((section(".text.func_001B0150")))
-void func_001B0150(cGameObj *self)
+__attribute__((section(".text.cGameObj_pickDropItem")))
+void cGameObj_pickDropItem(cGameObj *self)
 {
     DropTable tbl;
     float r;
@@ -153,10 +153,10 @@ struct Entry_func_00122C48 { short f0; short f2; short f4; short f6; };
 struct Table_func_00122C48 { struct Entry_func_00122C48 e[1]; };
 extern struct Table_func_00122C48 D_003BD458;
 
-/* func_00122C48: per-frame tick. Clear the 0x640 and 0x698 links, update the base, force phase 0 when the
+/* cEm00_stepByPhaseTable: per-frame tick. Clear the 0x640 and 0x698 links, update the base, force phase 0 when the
  * phase byte (0x2F5) is 2 or more, then call the method the phase table names for it. */
-__attribute__((section(".text.func_00122C48")))
-void func_00122C48(cEm00 *self)
+__attribute__((section(".text.cEm00_stepByPhaseTable")))
+void cEm00_stepByPhaseTable(cEm00 *self)
 {
     char *s0 = (char *)self;
     char *e;

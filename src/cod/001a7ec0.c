@@ -6,7 +6,7 @@
 #include "godhand/cMc.h"
 
 extern void func_002B4A50(cMovie *self);
-extern void func_002D42F8(cMovieTrack *track);
+extern void cMovieTrack_stop(cMovieTrack *track);
 extern void cE3_stepMenuClock(cE3 *self);
 extern void cE3_runDemo(cE3 *self);
 extern void KeyStop(void);
@@ -38,12 +38,12 @@ int cMovie_isIdle(cMovie *self) {
     return 1;
 }
 
-/* Hand the active track, if there is one, to func_002D42F8. */
+/* Hand the active track, if there is one, to cMovieTrack_stop. */
 __attribute__((section(".text.cMovie_haltActive")))
 void cMovie_haltActive(void) {
     cMovieTrack *track = func_002B4F98();
     if (track)
-        func_002D42F8(track);
+        cMovieTrack_stop(track);
 }
 
 /* Run the step for the current state: the menu or the demo. */

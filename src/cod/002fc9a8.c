@@ -33,11 +33,11 @@ extern void UpdateObjByIndexedOp_2FBE50(StepObj *self);
         } \
     } while (0)
 
-/* func_002FC9A8: advance the frame counter. At the limit it either wraps (flag 0x800: back to 0 or the limit)
+/* StepObj_advanceFrame: advance the frame counter. At the limit it either wraps (flag 0x800: back to 0 or the limit)
  * or hands over to UpdateObjByIndexedOp (returns 1). The time steps by 1.0 or is held, and the frame is the
  * time truncated. Returns 0. */
-__attribute__((section(".text.func_002FC9A8")))
-int func_002FC9A8(StepObj *self)
+__attribute__((section(".text.StepObj_advanceFrame")))
+int StepObj_advanceFrame(StepObj *self)
 {
     short limit;
     unsigned int fl;

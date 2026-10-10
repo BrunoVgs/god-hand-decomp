@@ -5,7 +5,7 @@
 #include "godhand/cOm1f.h"
 
 extern int D_00747A0C;
-extern void func_002D5AD8(void);
+extern void TaskFnWork_runAndExit(void);
 extern char D_00468CF0[];
 extern unsigned char D_003D9DD0[];
 extern int D_003D9DD4;
@@ -234,7 +234,7 @@ __attribute__((section(".text.func_002D5918")))
 void func_002D5918(char *p) {
     /* SWEEP-BEGIN */
     *(short *)(p + 0xC) = 2;
-    *(void **)(p + 0x24) = (void *)func_002D5AD8;
+    *(void **)(p + 0x24) = (void *)TaskFnWork_runAndExit;
     *(int *)(p + 0x28) = *(int *)(p + 0x10);
     *(int *)(p + 0x2C) = *(int *)(p + 0x8);
     *(int *)(p + 0x34) = *(unsigned short *)(p + 0x1C);

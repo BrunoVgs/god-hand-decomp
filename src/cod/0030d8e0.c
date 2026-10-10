@@ -48,10 +48,10 @@ void func_0030D8E0(int objid)
 
     FileNameFromObjId(buf, objid);
     GetBuiltPackedAddr_1FFA28(D_00580D40, buf);
-    r = func_00200B88(D_00583F20, buf, D_00752C38[0], 0, 0, 0, 0);
+    r = cDvd_ReadToBuffer(D_00583F20, buf, D_00752C38[0], 0, 0, 0, 0);
     cDvd_CheckWaitFrame(D_00583F20, r);
     FileNameFromObjId(buf, id2);
     GetBuiltPackedAddr_1FFA28(D_00580D40, buf);
-    func_00200B88(D_00583F20, buf, D_00752C38[1], r, 0, 0, 0);
+    cDvd_ReadToBuffer(D_00583F20, buf, D_00752C38[1], r, 0, 0, 0);
     cDvd_CheckWaitFrame(D_00583F20, r);
 }

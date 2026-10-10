@@ -1,7 +1,7 @@
 /* sn-2.95.3-136 matched TU. */
 #include "godhand/BlackJack.h"
 
-extern void func_002B46F0(unsigned char *, int, int, int);
+extern void cSnd_SeCallGlobal(unsigned char *, int, int, int);
 extern void func_002B4768(unsigned char *, unsigned char *, unsigned char *);
 extern unsigned int D_00747A84;
 extern int D_007474A0;
@@ -65,12 +65,12 @@ void func_002B3EC8(unsigned char *a0)
     }
     *(short *)(s0 + 0x94) = w;
     if ((short)w != old) {
-        func_002B46F0(s0, 0, 0x15F, 0);
+        cSnd_SeCallGlobal(s0, 0, 0x15F, 0);
     }
     if (D_00747640 & 0x10000000L) {
         k = *(short *)(s0 + 0x94);
         *(short *)(D_003C23A4 + 0xBEC) = k;
-        func_002B46F0(s0, 0, 0x15E, 0);
+        cSnd_SeCallGlobal(s0, 0, 0x15E, 0);
         *(int *)(s0 + 0x14) = *(int *)(s0 + 0x14) & ~1;
         *(int *)(s0 + 0x14) = *(int *)(s0 + 0x14) & ~0x20;
         *(int *)(s0 + 0x14) = *(int *)(s0 + 0x14) | 0x400;
