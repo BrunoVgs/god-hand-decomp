@@ -50401,3 +50401,4 @@ func_00179C60 = 0x00179C60; // type:func
 func_0017A9E0 = 0x0017A9E0; // type:func
 func_0017D2E0 = 0x0017D2E0; // type:func
 func_001824E8 = 0x001824E8; // type:func
+func_002BB670 = 0x002BB670; // type:func
