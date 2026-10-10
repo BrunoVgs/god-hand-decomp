@@ -87604,6 +87604,61 @@
       }
     },
     {
+      "name": "asm/cod/000000.part8160",
+      "target_path": "expected/build/asm/cod/000000.part8160.o",
+      "base_path": "build/asm/cod/000000.part8160.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8161",
+      "target_path": "expected/build/asm/cod/000000.part8161.o",
+      "base_path": "build/asm/cod/000000.part8161.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8162",
+      "target_path": "expected/build/asm/cod/000000.part8162.o",
+      "base_path": "build/asm/cod/000000.part8162.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8163",
+      "target_path": "expected/build/asm/cod/000000.part8163.o",
+      "base_path": "build/asm/cod/000000.part8163.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8164",
+      "target_path": "expected/build/asm/cod/000000.part8164.o",
+      "base_path": "build/asm/cod/000000.part8164.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
       "name": "asm/cod/000000.part817",
       "target_path": "expected/build/asm/cod/000000.part817.o",
       "base_path": "build/asm/cod/000000.part817.o",
@@ -92397,6 +92452,18 @@
       "name": "src/cod/0013bbd8",
       "target_path": "expected/build/src/cod/0013bbd8.o",
       "base_path": "build/src/cod/0013bbd8.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ],
+        "complete": true
+      }
+    },
+    {
+      "name": "src/cod/0013bc28",
+      "target_path": "expected/build/src/cod/0013bc28.o",
+      "base_path": "build/src/cod/0013bc28.o",
       "metadata": {
         "auto_generated": true,
         "progress_categories": [
