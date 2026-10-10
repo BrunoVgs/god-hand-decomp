@@ -2387,11 +2387,10 @@ void cObjSimple_R0_Init(cObjSimple *self) {
     self->stateArg[2] = 0;
 }
 
-INCLUDE_ASM("nonmatching", cScenario_getStrFromObjId);
-
 INCLUDE_ASM("nonmatching", KeyStop);
 
 INCLUDE_ASM("nonmatching", SearchData);
+
 
 
 
