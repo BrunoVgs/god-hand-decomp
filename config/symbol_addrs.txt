@@ -50409,3 +50409,4 @@ func_001FCEB0 = 0x001FCEB0; // type:func
 func_002BA020 = 0x002BA020; // type:func
 func_002D56A8 = 0x002D56A8; // type:func
 func_002B1830 = 0x002B1830; // type:func
+func_001F6A80 = 0x001F6A80; // type:func
