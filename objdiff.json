@@ -85866,9 +85866,53 @@
       }
     },
     {
+      "name": "asm/cod/000000.part8018",
+      "target_path": "expected/build/asm/cod/000000.part8018.o",
+      "base_path": "build/asm/cod/000000.part8018.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8019",
+      "target_path": "expected/build/asm/cod/000000.part8019.o",
+      "base_path": "build/asm/cod/000000.part8019.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
       "name": "asm/cod/000000.part802",
       "target_path": "expected/build/asm/cod/000000.part802.o",
       "base_path": "build/asm/cod/000000.part802.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8020",
+      "target_path": "expected/build/asm/cod/000000.part8020.o",
+      "base_path": "build/asm/cod/000000.part8020.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8021",
+      "target_path": "expected/build/asm/cod/000000.part8021.o",
+      "base_path": "build/asm/cod/000000.part8021.o",
       "metadata": {
         "auto_generated": true,
         "progress_categories": [
@@ -90883,6 +90927,18 @@
       "name": "src/cod/0013d698",
       "target_path": "expected/build/src/cod/0013d698.o",
       "base_path": "build/src/cod/0013d698.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ],
+        "complete": true
+      }
+    },
+    {
+      "name": "src/cod/0013da98",
+      "target_path": "expected/build/src/cod/0013da98.o",
+      "base_path": "build/src/cod/0013da98.o",
       "metadata": {
         "auto_generated": true,
         "progress_categories": [

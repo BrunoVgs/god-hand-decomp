@@ -2350,8 +2350,6 @@ INCLUDE_ASM("nonmatching", pl00_CkSubScreen);
 
 INCLUDE_ASM("nonmatching", cObj_setId);
 
-INCLUDE_ASM("nonmatching", VecRotY);
-
 INCLUDE_ASM("nonmatching", MotionIsHaveParam);
 
 INCLUDE_ASM("nonmatching", cOmSub_setVibration);
@@ -2390,6 +2388,7 @@ void cObjSimple_R0_Init(cObjSimple *self) {
 INCLUDE_ASM("nonmatching", KeyStop);
 
 INCLUDE_ASM("nonmatching", SearchData);
+
 
 
 
