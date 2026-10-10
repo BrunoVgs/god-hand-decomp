@@ -50382,3 +50382,4 @@ FlashDriver_resetFlash = 0x001FD448; // type:func
 func_002E0DA8 = 0x002E0DA8; // type:func
 func_002BF790 = 0x002BF790; // type:func
 func_002B5F28 = 0x002B5F28; // type:func
+func_002AE3F0 = 0x002AE3F0; // type:func
