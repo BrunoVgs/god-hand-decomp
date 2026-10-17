@@ -50410,3 +50410,4 @@ Pool_createObjWithVt = 0x002BA020; // type:func
 cTaskPool_killAll = 0x002D56A8; // type:func
 Panel_resetToStartPose = 0x002B1830; // type:func
 SlotList_selectPrev = 0x001F6A80; // type:func
+func_002AC538 = 0x002AC538; // type:func
