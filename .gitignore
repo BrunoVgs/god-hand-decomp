@@ -2997,6 +2997,13 @@
 !include/godhand/Slot2.h
 !include/godhand/cModel.h
 !include/godhand/cEmSetParam.h
+!include/godhand/cRecordIndex.h
+!include/godhand/cOl2b.h
+!include/godhand/cCamManager.h
+!include/godhand/SlotUi.h
+!include/godhand/ScenarioCursor.h
+!include/godhand/FileLoadRec.h
+!include/godhand/DispMgr.h
 !include/godhand/cOmSub.h
 !include/godhand/cOmSized.h
 !include/godhand/cOmScripted.h
