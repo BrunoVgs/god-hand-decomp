@@ -7,7 +7,7 @@ extern void func_002A8578(void *a0, int a1, int a2, float a3, int a4, int a5, in
 extern int irand(void);
 extern void *Getplayer(void);
 extern void cGameObj_SetTgtTurn(void *a0, int a1, float a2);
-extern void func_00262980(void *a0);
+extern void cEm00_armAttackVolume(void *a0);
 extern int moveMotion(void *a0);
 extern void func_002705D8(void *a0);
 extern void cObjBase_addNullSpeed_Rotation(void *a0, float a1);
@@ -103,7 +103,7 @@ void func_00227FE8(void *a0)
         }
         if (*(int *)(s1 + 0x16D4) & 0x4000) {
             *(int *)(s1 + 0x5FC) = 1;
-            func_00262980(s1);
+            cEm00_armAttackVolume(s1);
         }
         if (moveMotion(s1) != 0) {
             func_002705D8(s1);

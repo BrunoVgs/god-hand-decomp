@@ -18,8 +18,8 @@ extern void cIDBase_trans(void *idBase);
 
 
 /* Hides every mark and bet mark, then shows the first and last mark. */
-__attribute__((section(".text.func_001E7600")))
-void func_001E7600(SlotUi *self)
+__attribute__((section(".text.SlotUi_showEndMarks")))
+void SlotUi_showEndMarks(SlotUi *self)
 {
     func_001E7470(self, SLOTUI_MARK_NUM, 0);
     func_001E7538(self, SLOTUI_BET_NUM, 0);
@@ -86,8 +86,8 @@ typedef struct Panel1ED7E0 {
 } Panel1ED7E0;
 
 /* Hides the four icons and clears the shown bit and the selection. */
-__attribute__((section(".text.func_001ED7E0")))
-void func_001ED7E0(Panel1ED7E0 *self)
+__attribute__((section(".text.Panel_hideIcons")))
+void Panel_hideIcons(Panel1ED7E0 *self)
 {
     CustomIDWork_SetDisp(&self->icon[0], 0);
     CustomIDWork_SetDisp(&self->icon[1], 0);
@@ -99,8 +99,8 @@ void func_001ED7E0(Panel1ED7E0 *self)
 
 /* Registers `sub` of the given kind in the first free slot. 1 if there was
  * one, 0 if the table is full. */
-__attribute__((section(".text.func_00140BF0")))
-int func_00140BF0(DispMgr *mgr, void *sub, int kind)
+__attribute__((section(".text.DispMgr_registerSub")))
+int DispMgr_registerSub(DispMgr *mgr, void *sub, int kind)
 {
     int no = FindFreeSlotIndex_140C58(mgr);
     if (no < 0) {
@@ -131,8 +131,8 @@ typedef struct Ui13E6E0 {
 } Ui13E6E0;
 
 /* Draws the ui's id bases unless the play state hides the ui. */
-__attribute__((section(".text.func_0013E6E0")))
-void func_0013E6E0(Ui13E6E0 *self)
+__attribute__((section(".text.Ui_transIdBases")))
+void Ui_transIdBases(Ui13E6E0 *self)
 {
     /* 64-bit locals: retail tests the bit with dsrl, not sra. */
     unsigned long word = D_00747A24.flags;

@@ -34,8 +34,8 @@ typedef struct Screen16C678 {
 
 /* Closes the screen: hands the player back, releases the three id bases,
  * clears the host's two words and tells the list to move on. */
-__attribute__((section(".text.func_0016C678")))
-void func_0016C678(Screen16C678 *self)
+__attribute__((section(".text.Screen_closeAndRestorePlayer")))
+void Screen_closeAndRestorePlayer(Screen16C678 *self)
 {
     char *host;
     Obj0000_Set_D_007474A0_Fields_5D8_5E0(self);

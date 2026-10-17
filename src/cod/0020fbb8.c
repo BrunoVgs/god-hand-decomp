@@ -17,7 +17,7 @@ extern void *Getplayer(void);
 extern void func_002A74E0(void *a0, void *a1, int a2);
 extern int cEmManage_ckEnemyActiveNear(void *a0, void *a1, float f12);
 extern int cEmManage_ckEmNear(void *a0, void *a1, void *a2, float f12);
-extern void func_002736F8(int a0);
+extern void cEm00_clearSetFlags(int a0);
 extern char D_00462FC0[];
 extern unsigned short D_00747A50;
 extern char D_007474A0[];
@@ -1173,7 +1173,7 @@ __attribute__((section(".text.func_0020FBB8"))) void func_0020FBB8(cEm00 *self)
             if (*(unsigned char *)(s1 + 0x2F6) != 2) {
                 break;
             }
-            func_002736F8((int)s1);
+            cEm00_clearSetFlags((int)s1);
             switch (*(unsigned char *)(s1 + 0x1650)) {
                 default:
                 case 0x0:

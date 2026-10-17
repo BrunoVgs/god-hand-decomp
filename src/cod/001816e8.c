@@ -28,8 +28,8 @@ typedef struct DoorObj {
 /* Set up a door object: 1 life (0x548, 0x54A), a 1.66 by 4.47 by 0.2 box kept
  * at 0x610, its collision object, a body at 0x650 and flag bit 1 in 0x5B8.
  * Returns 1. */
-__attribute__((section(".text.func_001816E8")))
-int func_001816E8(DoorObj *self) {
+__attribute__((section(".text.DoorObj_construct2")))
+int DoorObj_construct2(DoorObj *self) {
     float f[8];
     float *t;
     int hp;

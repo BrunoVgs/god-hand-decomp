@@ -28,8 +28,8 @@ extern void func_001C7310(SubRec *self);
 
 /* Initialise the record: default type and argument, zero the two offset
  * vectors apart from their height, copy the centre in and run the two setup calls. */
-__attribute__((section(".text.func_001C6C30")))
-void func_001C6C30(SubRec *self, Vec3 *center, float highY, float lowY, float extra)
+__attribute__((section(".text.SubRec_initCenter")))
+void SubRec_initCenter(SubRec *self, Vec3 *center, float highY, float lowY, float extra)
 {
     Vec3 *lo;
     Vec3 *hi;

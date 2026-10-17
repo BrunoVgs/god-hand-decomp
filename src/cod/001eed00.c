@@ -19,8 +19,8 @@ extern void classFADE_kill(void *p);
 extern void GiveOwner_createGiveVolumes(ColiseumBattle *self);
 extern void ColiseumBattle_findNearEnemy(ColiseumBattle *self);
 extern void func_001F0498(ColiseumBattle *self, float v0, int id, float *vec);
-extern void func_001F2CF0(void *ui);
-extern void func_001F2B28(void *ui, int n, int on);
+extern void CustomIDOwner_hideAll(void *ui);
+extern void CustomID_setNumberAndShow(void *ui, int n, int on);
 extern void func_001F28F0(void *ui);
 extern void func_001F2990(void *ui);
 extern void NoOp_1F0490(ColiseumBattle *self);
@@ -94,7 +94,7 @@ void ColiseumBattle_Update(ColiseumBattle *self)
             done = 1;
         }
         if ((done & 0xFF) != 0) {
-            func_001F2CF0(self->ui);
+            CustomIDOwner_hideAll(self->ui);
             self->timer = 0x3C;
             self->state = self->state + 1;
         }
@@ -117,9 +117,9 @@ void ColiseumBattle_Update(ColiseumBattle *self)
         *(int *)&self->unkB88 = self->enemyNum - alive;
         bits = D_00747A84;
         if (((bits >> 6) % 2UL) != 0UL) {
-            func_001F2B28(self->ui, self->ring.unk0A - self->unkB88, 0);
+            CustomID_setNumberAndShow(self->ui, self->ring.unk0A - self->unkB88, 0);
         } else {
-            func_001F2B28(self->ui, self->ring.unk0A - self->unkB88, 1);
+            CustomID_setNumberAndShow(self->ui, self->ring.unk0A - self->unkB88, 1);
         }
         D_003BE710[self->ring.ringNo].pfn((char *)self + D_003BE710[self->ring.ringNo].delta);
         player = (char *)Getplayer();

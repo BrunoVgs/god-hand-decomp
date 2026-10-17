@@ -1,7 +1,7 @@
 /* sn-2.95.3-136 matched TU. */
 #include "godhand/cDataManager.h"
 
-extern void func_002D5250(int a0);
+extern void cScenario_sleepFrames(int a0);
 extern unsigned short D_00747A50;
 
 /* sn-2.95.3-136 matched TU. */
@@ -81,6 +81,6 @@ void cDataManager_loadSeWait(cDataManager *self, int kind, int id, int flags) {
         break;
     }
     while (UpdateStateReady_1FF238(&self->slot[v0]) == 0) {
-        func_002D5250(1);
+        cScenario_sleepFrames(1);
     }
 }

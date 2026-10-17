@@ -25,8 +25,8 @@ typedef struct EmWeaponHolder {
 
 
 /* Enemy 0x211: drop up to `count` of its held weapons, in slot order, and forget their handles. */
-__attribute__((section(".text.func_0026BAD8")))
-void func_0026BAD8(EmWeaponHolder *self, unsigned int count, int arg)
+__attribute__((section(".text.EmWeaponHolder_dropWeapons")))
+void EmWeaponHolder_dropWeapons(EmWeaponHolder *self, unsigned int count, int arg)
 {
     unsigned int i;
     unsigned int dropped;
@@ -62,8 +62,8 @@ extern void func_001F77D0(ActionButtonMgr *self);
 
 /* Reset the manager: clear its free list, then put all eight entries in
  * the unused state. */
-__attribute__((section(".text.func_001F72C0")))
-void func_001F72C0(ActionButtonMgr *self)
+__attribute__((section(".text.cActionButton_resetEntries")))
+void cActionButton_resetEntries(ActionButtonMgr *self)
 {
     cActionButtonEnt *ent;
     unsigned int i;
@@ -123,8 +123,8 @@ extern int PartHolder_markIfFound(PartHolder *self);
 
 /* Classify the holder: the first test that accepts it names its kind;
  * PART_KIND_NONE when none does. Each test marks the holder as a side effect. */
-__attribute__((section(".text.func_001DCDA8")))
-int func_001DCDA8(PartHolder *self)
+__attribute__((section(".text.PartHolder_classify")))
+int PartHolder_classify(PartHolder *self)
 {
     if (PartHolder_markIfSequence(self))
         return PART_KIND_SEQUENCE;
@@ -158,8 +158,8 @@ int func_001DCDA8(PartHolder *self)
 /* In room mode 0x700, look for a hit unit at the enemy's position unless
  * the lock byte is set; when found, aim at its centre (unk580) and extent
  * (unk590.z) and switch to phase 0x37. Returns 1 when it did. */
-__attribute__((section(".text.func_001169D8")))
-int func_001169D8(cEm00 *self)
+__attribute__((section(".text.cEm00_startRoomHitAim")))
+int cEm00_startRoomHitAim(cEm00 *self)
 {
     cVec center;
     float extent;
@@ -207,8 +207,8 @@ extern void func_002B4768(ScriptRun *run, int *time, ScriptCmd **cmd);
 /* Run the commands of a channel that is not busy: advance past each
  * finished command until a wait command ends the run. Returns 0 when the
  * channel is busy or a step asks to stop, 1 otherwise. */
-__attribute__((section(".text.func_002B2588")))
-int func_002B2588(ScriptRun *run)
+__attribute__((section(".text.ScriptRun_runChannel")))
+int ScriptRun_runChannel(ScriptRun *run)
 {
     if (func_002AEDC0(D_003C23A4, run->channel) >= 2)
         return 0;
@@ -241,8 +241,8 @@ typedef struct UvScroll {
 extern void func_002FBED0(UvScroll *self);
 
 /* Step u and v by their speeds, fold both back into -2..2, then run the base update. */
-__attribute__((section(".text.func_002EA9F0")))
-void func_002EA9F0(UvScroll *self)
+__attribute__((section(".text.UvScroll_step")))
+void UvScroll_step(UvScroll *self)
 {
     self->u += self->du;
     self->v += self->dv;

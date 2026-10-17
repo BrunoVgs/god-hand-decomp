@@ -12,7 +12,7 @@ extern void *memcpy(void *, const void *, unsigned int);
 
 __attribute__((section(".text.Forward1494F8_149350")))
 int Forward1494F8_149350(int a0) {
-    return func_001494F8(D_00466448, a0);
+    return EntCounter_releaseEntry(D_00466448, a0);
 }
 
 __attribute__((section(".text.ForwardGlobalIfFlagSet_149550")))

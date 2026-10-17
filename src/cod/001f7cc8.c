@@ -19,8 +19,8 @@ static __inline__ unsigned short cDoor_pointId(unsigned short id)
 
 /* Aim a door jump: set the landing point (position, heading, jump point id
  * and arguments) and start it. */
-__attribute__((section(".text.func_001FFEB8")))
-void func_001FFEB8(cDoor *self, unsigned short id, float *pos, float angle,
+__attribute__((section(".text.cDoor_aimJump")))
+void cDoor_aimJump(cDoor *self, unsigned short id, float *pos, float angle,
                    unsigned char arg, int arg2, unsigned char doorArg)
 {
     self->point[0].id = cDoor_pointId(id);
@@ -50,8 +50,8 @@ extern void NoOp_1F7D18(Node *self, int size);
 
 /* Destructor: reset the method table and clear the state bits; with bit 0
  * of flags set, hand the node back (size 0xC). */
-__attribute__((section(".text.func_001F7CC8")))
-void func_001F7CC8(Node *self, int flags)
+__attribute__((section(".text.Node_dtor")))
+void Node_dtor(Node *self, int flags)
 {
     self->vt = D_0042C320;
     self->flags &= NODE_FLAGS_KEEP;
@@ -80,8 +80,8 @@ static __inline__ int lookupWithFallback(unsigned char no, unsigned short kind, 
 /* Find an event object from a packed id (kind in the high half, number in
  * the low byte). Kinds 0x605 and 0x3D6 fall back to their alternate kind
  * when the first lookup finds nothing. Returns 0 for a zero kind. */
-__attribute__((section(".text.getEventObjPtr")))
-int getEventObjPtr(unsigned int id)
+__attribute__((section(".text.cEvent_getObjPtrByPackedId")))
+int cEvent_getObjPtrByPackedId(unsigned int id)
 {
     unsigned int kind = id >> 16;
 

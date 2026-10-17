@@ -182,7 +182,7 @@ int cSeData_AllocSysMem(cSeData *d)
         return 0;
     p = d->buf;
     if (p->f20 != (int)p)
-        d->f30 = func_002D3050(&D_00603A40, p->f20, &d->sysMem, p->f24);
+        d->f30 = cSif_allocAndForward(&D_00603A40, p->f20, &d->sysMem, p->f24);
     cSeData_AddLoadBits(d, 0x10);
     return 1;
 }

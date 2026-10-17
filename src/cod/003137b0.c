@@ -61,7 +61,7 @@ void *ForwardSetupBuffer_28E018_313970(void) {
         s0 = EnsureInitThenForward_2A9538_30EE08(0x1560, 0x10, D_00754220);
         if (s0 != 0) {
             func_003A52F0(s0, 0, 0x1560);
-            return cEmad_construct(s0);
+            return cEm00_construct_ad(s0);
         }
     }
     return 0;

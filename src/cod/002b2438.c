@@ -5,7 +5,7 @@ extern void StepObj_stepTimer(void *a0);
 extern void func_002B3D70(void *a0);
 extern void func_002B3EC8(void *a0);
 extern void func_002B4028(void *a0);
-extern void func_002B4188(void *a0);
+extern void PhaseJob_step(void *a0);
 extern void func_002B4390(void *a0);
 
 __attribute__((section(".text.func_002B2438")))
@@ -35,7 +35,7 @@ void func_002B2438(char *a0)
         func_002B4028(a0);
         break;
     case 6:
-        func_002B4188(a0);
+        PhaseJob_step(a0);
     case 7:
         break;
     }

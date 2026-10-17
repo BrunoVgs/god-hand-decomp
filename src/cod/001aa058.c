@@ -52,8 +52,8 @@ typedef struct FollowObj {
 
 
 
-__attribute__((section(".text.func_001AA058")))
-void *func_001AA058(FollowObj *self)
+__attribute__((section(".text.FollowObjB_getHitPos")))
+void *FollowObjB_getHitPos(FollowObj *self)
 {
     HitRec *hit;
     float *src;

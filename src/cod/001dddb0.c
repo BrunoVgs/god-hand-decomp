@@ -14,8 +14,8 @@ extern void cIDManager_getLocalFileName(int a, void *b, void *c, int d);
 extern void cDvd_CheckWait(void *a, void *b);
 extern void cIDManager_setIDData(int a, int b, int c);
 extern void func_001F27B0(void *a);
-extern void func_001F2A88(void *a, int b);
-extern void func_001F2B28(void *a, short b, int c);
+extern void CustomID_showDisplays(void *a, int b);
+extern void CustomID_setNumberAndShow(void *a, short b, int c);
 extern void func_001F2B80(void *a, int b, int c, int d, int t0, int t1);
 extern void ColiseumBattle_ApplyRingRules(void *a);
 extern void ColiseumBattle_SetCountdown(void *a);
@@ -79,8 +79,8 @@ void ColiseumBattle_Initialize(ColiseumBattle *self)
     cDvd_CheckWait(D_00583F20, h);
     cIDManager_setIDData(*D_003C2384, 0x15, info[0]);
     func_001F27B0(self->ui);
-    func_001F2A88(self->ui, self->ring.timeLimit != 0);
-    func_001F2B28(self->ui, self->ring.unk0A, 1);
+    CustomID_showDisplays(self->ui, self->ring.timeLimit != 0);
+    CustomID_setNumberAndShow(self->ui, self->ring.unk0A, 1);
     if (self->ring.timeLimit != 0) {
         func_001F2B80(self->ui, 1, self->ring.timeLimit / 60,
                       self->ring.timeLimit % 60, 0, 1);

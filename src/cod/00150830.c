@@ -1,7 +1,7 @@
 /* sn-2.95.3-136 matched TU. */
 
 extern char D_00583EC0[];
-extern void func_001FFEB8();
+extern void cDoor_aimJump();
 extern void func_001FFF30();
 extern void func_0016B1F8();
 extern void *D_005FEC68;
@@ -18,7 +18,7 @@ __attribute__((section(".text.cScenario_beginRoomJump_2C4548")))
 void cScenario_beginRoomJump_2C4548(int a0, unsigned short a1, int a2, unsigned char a3,
                                   int a4, unsigned char a5)
 {
-    func_001FFEB8(D_00583EC0, a1, a2, a3, a4, a5);
+    cDoor_aimJump(D_00583EC0, a1, a2, a3, a4, a5);
 }
 
 __attribute__((section(".text.cScenario_beginRoomJumpForce")))

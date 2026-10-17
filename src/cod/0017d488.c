@@ -36,8 +36,8 @@ typedef struct DoorObj {
 /* Set up a door object: 1 life (0x548, 0x54A), a 1.75 by 3.1 by 0.2 box kept
  * at 0x610, its collision object, a body at 0x650 and flag bit 1 in 0x5B8.
  * Returns 1. */
-__attribute__((section(".text.func_0017D488")))
-int func_0017D488(DoorObj *self) {
+__attribute__((section(".text.DoorObj_construct1B")))
+int DoorObj_construct1B(DoorObj *self) {
     float f[8];
     float *t;
     int hp;
@@ -92,8 +92,8 @@ typedef struct HitRec {
 #define SURFACE_WATER  0x400
 #define FRAME ((char *)buf - 0x30)
 
-__attribute__((section(".text.func_001C8E50")))
-void func_001C8E50(LineObjB *self) {
+__attribute__((section(".text.LineObjB_checkWaterHit")))
+void LineObjB_checkWaterHit(LineObjB *self) {
     float buf[8];
     if (self->done == 0) {
         float *v = buf;
@@ -114,8 +114,8 @@ void func_001C8E50(LineObjB *self) {
 #define PANEL_SLIDE_FRAMES  0xA
 
 /* Panel mode: 0 hidden, 1 shown, 2 slide in, 3 slide out; entries 0x11 and 0x12 follow the mode. */
-__attribute__((section(".text.func_001DE4F8")))
-void func_001DE4F8(char *self, unsigned char mode) {
+__attribute__((section(".text.PanelWork_setModeB")))
+void PanelWork_setModeB(char *self, unsigned char mode) {
     switch (mode) {
     default:
     case 0:

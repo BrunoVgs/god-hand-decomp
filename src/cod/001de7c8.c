@@ -28,8 +28,8 @@ typedef struct Panel1DE7C8 {
 
 /* Moves the panel by mode: PANEL_SHOW puts it in place, PANEL_SLIDE_OUT and
  * PANEL_SLIDE_IN slide it, anything else hides it at once. */
-__attribute__((section(".text.func_001DE7C8")))
-void func_001DE7C8(Panel1DE7C8 *self, unsigned char mode)
+__attribute__((section(".text.Panel_slide")))
+void Panel_slide(Panel1DE7C8 *self, unsigned char mode)
 {
     switch (mode) {
     case PANEL_HIDE:
@@ -56,8 +56,8 @@ void func_001DE7C8(Panel1DE7C8 *self, unsigned char mode)
 
 /* Per frame: counts a lit mark's phase and, after MARK_PHASE_LEN frames,
  * flips it between on and off and shows or hides both line layers. */
-__attribute__((section(".text.func_001E6BE8")))
-void func_001E6BE8(Slot2 *self)
+__attribute__((section(".text.Slot2_blinkMark")))
+void Slot2_blinkMark(Slot2 *self)
 {
     unsigned int flag = self->markFlag[0];
     if (flag & MARK_LIT) {
@@ -81,8 +81,8 @@ void func_001E6BE8(Slot2 *self)
 
 /* Builds the node's world matrix (matWorld) unless it is already valid:
  * parent matrix times the local one, or just the local one for a root. */
-__attribute__((section(".text.func_002B6420")))
-void func_002B6420(cNode *self)
+__attribute__((section(".text.cNode_updateWorldMatrix")))
+void cNode_updateWorldMatrix(cNode *self)
 {
     if (func_002B6510(self) == 0) {
         cNode *parent = func_002B5E50(self);
@@ -99,16 +99,16 @@ void func_002B6420(cNode *self)
 #define NODE_FLAG_ACTIVE  1             /* unk90 bit 0: the node is being walked */
 
 /* Depth first walk: for an active node, visits every child (recursing into
- * func_002B6370) and then clears the active flag. unk90 is signed in cNode.h
+ * cNode_clearActiveRecursive) and then clears the active flag. unk90 is signed in cNode.h
  * and retail masks it as unsigned, hence the cast. */
-__attribute__((section(".text.func_002B6370")))
-void func_002B6370(cNode *self)
+__attribute__((section(".text.cNode_clearActiveRecursive")))
+void cNode_clearActiveRecursive(cNode *self)
 {
     if (func_002B6510(self) != 0) {
         int i;
         int n = func_002B5E58(self);
         for (i = 0; i < n; i++) {
-            func_002B6370(func_002B5E90(self, i));
+            cNode_clearActiveRecursive(func_002B5E90(self, i));
         }
         self->unk90 = (unsigned int)self->unk90 & ~NODE_FLAG_ACTIVE;
     }
@@ -124,8 +124,8 @@ typedef struct Vtx {
 } Vtx;
 
 /* Draws one grey quad over the whole 512x448 screen. */
-__attribute__((section(".text.func_002C7850")))
-void func_002C7850(void *unused, int arg5, int arg6)
+__attribute__((section(".text.Gp_drawGreyScreenQuad")))
+void Gp_drawGreyScreenQuad(void *unused, int arg5, int arg6)
 {
     char ctx[0x50];
     Vtx v[4];

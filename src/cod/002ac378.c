@@ -2,7 +2,7 @@
 
 /* sn-2.95.3-136 matched TU. */
 
-extern float func_002AC650(void *a0, int a1, int a2, int a3);
+extern float Curve_sample(void *a0, int a1, int a2, int a3);
 
 __attribute__((section(".text.func_002AC378")))
 void func_002AC378(void *a0, void *a1)
@@ -43,7 +43,7 @@ void func_002AC378(void *a0, void *a1)
             return;
         }
     }
-    t = func_002AC650(a0, *(short *)(s0 + 0xA8), n, *(int *)(s0 + 0x10));
+    t = Curve_sample(a0, *(short *)(s0 + 0xA8), n, *(int *)(s0 + 0x10));
     u = 1.0f - t;
     bits = *(int *)(s0 + 0x2C);
     *(char *)(s0 + 0x4C) = (int)((float)*(unsigned char *)(s1 + 0x50) * u

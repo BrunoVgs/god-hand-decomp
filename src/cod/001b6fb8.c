@@ -11,7 +11,7 @@ extern int D_00428A08;
 extern int D_00428A10;
 extern int D_003BD6E8;
 extern void ReleaseField6ECByTag564_26B1E8(void *);
-extern void func_002B6420(void *a0);
+extern void cNode_updateWorldMatrix(void *a0);
 extern void func_00147C88(void *a0, void *a1, int a2);
 
 __attribute__((section(".text.func_001B6FB8")))
@@ -93,7 +93,7 @@ void func_00270C78(void *a0) {
 __attribute__((section(".text.func_002B60D0")))
 void *func_002B60D0(void *a0, void *a1) {
     unsigned char buf[16] __attribute__((aligned(16)));
-    func_002B6420(a1);
+    cNode_updateWorldMatrix(a1);
     VU0_SQC2_VF0(buf, 0);
     if (*(float *)((char *)a1 + 0x20) != 0.0f &&
         *(float *)((char *)a1 + 0x24) != 0.0f &&

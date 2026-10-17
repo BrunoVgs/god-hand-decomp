@@ -2,7 +2,7 @@
 
 extern int cIDBase_initialize();
 extern int cIDBase_getIDWork(void *a, int b);
-extern void func_001468B0(void *a);
+extern void IdPair_init(void *a);
 extern int cSceAtManager_getUnit(int a0, int a1);
 extern void func_002C1D68(int a0, int a1, int a2);
 extern int cArea_HitCheck_1F83E8(int a0, int a1);
@@ -27,7 +27,7 @@ void func_001467E8(void *a0) {
         i = i + 1;
     } while (i < 4);
     *(short *)((char *)a0 + 0x100) = 0;
-    func_001468B0(a0);
+    IdPair_init(a0);
 }
 
 /* SN ProDG ee-gcc 2.95.3. House style inherited from the matched

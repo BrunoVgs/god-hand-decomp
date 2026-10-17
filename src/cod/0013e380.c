@@ -65,7 +65,7 @@ int UpdatePlayStage(char *self) {
         func_002B2580(self);
         *(unsigned char *)(self + 0xD) = *(unsigned char *)(self + 0xD) + 1;
     case 1:
-        if (func_002B2588(self)) {
+        if (ScriptRun_runChannel(self)) {
             func_002B2E80(self);
             ret = 1;
             *(unsigned char *)(self + 0xF) = 0;

@@ -2,7 +2,7 @@
 #include "godhand/cOmWeapon.h"
 #include "godhand/cObjSimple.h"
 
-extern void func_001C6C30(void *a0, void *a1);
+extern void SubRec_initCenter(void *a0, void *a1);
 extern float fRand1_1(void);
 extern void cModel_calcParts(void *a0);
 extern void SubInit_init(void *a0, int a1, void *a2, void *a3, int t0);
@@ -112,7 +112,7 @@ void cOmSub_initMove3_y(char *a, unsigned char *obj, int idx, void *v)
             }
         }
     }
-    func_001C6C30(a, v);
+    SubRec_initCenter(a, v);
 }
 
 /* sn-2.95.3-136 matched TU. */

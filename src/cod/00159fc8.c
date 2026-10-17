@@ -31,8 +31,8 @@ typedef struct IdOwnerB {
 #define IDOWNER_CLEARED  0x01
 
 /* Hide displays 0, 1, 0xB and 0xC, clear the two counters and set the cleared flag. */
-__attribute__((section(".text.func_001F2CF0")))
-void func_001F2CF0(IdOwnerB *self) {
+__attribute__((section(".text.CustomIDOwner_hideAll")))
+void CustomIDOwner_hideAll(IdOwnerB *self) {
     SetCustomIDDispOneOrAll_1F29C0(self, 0, 0);
     SetCustomIDDispOneOrAll_1F29C0(self, 1, 0);
     SetCustomIDDispOneOrAll_1F29C0(self, 0xB, 0);
@@ -43,8 +43,8 @@ void func_001F2CF0(IdOwnerB *self) {
 }
 
 /* For each of the 12 emergency-pool slots, check whether its voice ended and release the slot data. */
-__attribute__((section(".text.func_002CB208")))
-void func_002CB208(cSnd *self) {
+__attribute__((section(".text.cSnd_releaseEmSeAll")))
+void cSnd_releaseEmSeAll(cSnd *self) {
     int *slot = D_0044CE48;
     unsigned int i = 0;
     do {
@@ -66,8 +66,8 @@ typedef struct TicketObj {
 } TicketObj;
 
 /* Stop key input, take one casino ticket and show the new count, then enter mode 1 phase 0 with the active flag set. */
-__attribute__((section(".text.func_001BEB28")))
-void func_001BEB28(TicketObj *self) {
+__attribute__((section(".text.cOm_takeCasinoTicket")))
+void cOm_takeCasinoTicket(TicketObj *self) {
     KeyStop();
     cCoreSave_addCasinoTicket(&D_00569B70, -1);
     GAMEWORK_TICKETS(*(char **)D_003BD6E8) = (short)cCoreSave_getCasinoTicketNum(&D_00569B70);
@@ -93,8 +93,8 @@ void Quaternion_SetRotationAxis(cVec *q, cVec *axis, float angle)
 }
 
 /* Look up two named entries in the actor's data pack and, when the second exists, set up the model from both. */
-__attribute__((section(".text.func_0028EA38")))
-int func_0028EA38(struct cObj *self) {
+__attribute__((section(".text.cModel_setupFromPack")))
+int cModel_setupFromPack(struct cObj *self) {
     void *first = SearchData(self->pack, D_0044A518, 0);
     void *second = SearchData(self->pack, D_0044A520, 0);
     if (second != 0) {
@@ -114,8 +114,8 @@ typedef struct GoldScreen {
 #define GOLD_PAYOUT    1000
 
 /* On a pad press while the pay prompt is on, pay 1000 gold and show the new total in the display. */
-__attribute__((section(".text.func_001EC8A8")))
-void func_001EC8A8(GoldScreen *self) {
+__attribute__((section(".text.cCoreSave_payGoldOnPress")))
+void cCoreSave_payGoldOnPress(GoldScreen *self) {
     if ((D_00747A2C & SYS_PAY_GOLD) != 0) {
         if ((*(long *)((char *)&D_00747A2C - 0x3DC) & PAD_PRESS_ANY) != 0) {
             cCoreSave_addGold(&D_00569B70, GOLD_PAYOUT, 0);

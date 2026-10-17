@@ -10,7 +10,7 @@ extern void MtxInitCoord(void *a0, int a1, int a2, int a3, int t0);
 extern int D_00422A80;
 extern void func_002AD288(void *a0, int a1);
 extern void SetField214PtrThenInit_1B6F38(void *a0, void *a1);
-extern void func_001E3298(void *a0);
+extern void Slot2_hideBankLayerIds(void *a0);
 extern void displayScrollLayer(int id, int on);
 
 /* Variadic wrapper: forwards the first four arguments and the format word
@@ -96,7 +96,7 @@ void cObj_initWithSubRecord(char *self, void *arg)
 __attribute__((section(".text.Scroll_showLayerBySelector")))
 void Scroll_showLayerBySelector(char *self, int sel)
 {
-    func_001E3298(self);
+    Slot2_hideBankLayerIds(self);
     if (sel != 0) {
         displayScrollLayer(*(int *)(self + 0x400), 1);
     } else {

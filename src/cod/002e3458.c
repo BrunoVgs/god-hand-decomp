@@ -47,7 +47,7 @@ int func_002EA8E0(void *a0) {
 __attribute__((section(".text.func_002EBF70")))
 int func_002EBF70(void *a0) {
     *(char**)((char*)a0+0xF0) = D_0044E8C8;
-    return func_002EBC50(a0);
+    return BlockOwner_dtor(a0);
 }
 
 /* clone */
@@ -77,7 +77,7 @@ int func_002F5328(void *a0) {
 __attribute__((section(".text.func_002F6230")))
 int func_002F6230(void *a0) {
     *(char**)((char*)a0+0xF0) = D_0044F4F8;
-    return func_002EBC50(a0);
+    return BlockOwner_dtor(a0);
 }
 
 /* clone */
@@ -97,7 +97,7 @@ int func_002F6CD0(void *a0) {
 __attribute__((section(".text.func_002F7178")))
 int func_002F7178(void *a0) {
     *(char**)((char*)a0+0xF0) = D_0044F6D8;
-    return func_002EBC50(a0);
+    return BlockOwner_dtor(a0);
 }
 
 /* clone */

@@ -11,7 +11,7 @@ extern void *EnsureInitThenForward_2A9538_30EE08(int size, int align, void *regi
 extern void func_002D5768(void *entry, int src, int id, void *owner);
 extern int CreateSema(void *param);
 extern char D_00754200[];
-extern void func_00273F08(void *self);
+extern void cEm00_swapTextureAndShowMesh(void *self);
 extern void cModel_setTextureExchange(void *model, int texSet, int tex, int arg);
 extern void func_00194558(void *self);
 extern unsigned int cEvent_getCutNo();
@@ -130,7 +130,7 @@ void TexObj_updateTexExchange(TexObj *self)
     }
     half = self->base.hpMax / 2;
     if (!(half < self->base.hp)) {
-        func_00273F08(self);
+        cEm00_swapTextureAndShowMesh(self);
         return;
     }
     cModel_setTextureExchange(self, self->base.texSet,

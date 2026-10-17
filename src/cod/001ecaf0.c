@@ -8,7 +8,7 @@ extern void *cIDBase_getIDWork(void *p, int i);
 extern void CustomIDWork_Initialize(void *p, void *w);
 extern void CustomIDWork_SetDisp(void *p, int f);
 extern void SetCustomIDDispOneOrAll_1F4778(void *p, int n, int f);
-extern void func_001ED7E0(void *p);
+extern void Panel_hideIcons(void *p);
 extern void func_001EDC28(void *p, int n);
 extern void func_001ED700(void *p, int n, int f);
 extern void func_001EE2A8(void *p, int n);
@@ -61,7 +61,7 @@ void InitDogRaceUiIdWorks(char *p)
     for (i = 0; i < 6; i++) {
         CustomIDWork_Initialize(p + 0x60 + i * 0x7C, cIDBase_getIDWork(p + 0x10, i));
     }
-    func_001ED7E0(p);
+    Panel_hideIcons(p);
     func_001EDC28(p, 0);
     func_001ED700(p, 6, 0);
 }

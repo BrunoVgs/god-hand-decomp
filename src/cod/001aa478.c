@@ -26,8 +26,8 @@ typedef struct AimObj {
 } AimObj;
 
 /* Store the aim record, enter step 2 and rebuild the parts. */
-__attribute__((section(".text.func_001C2280")))
-void func_001C2280(AimObj *self, int a, int b, cVec *from, cVec *to) {
+__attribute__((section(".text.cObj_setupAimStep2")))
+void cObj_setupAimStep2(AimObj *self, int a, int b, cVec *from, cVec *to) {
     self->aimA = a;
     self->aimB = b;
     cVec_copy3(&self->from, from);
@@ -56,8 +56,8 @@ typedef struct SeqSet {
 #define SEQ_HELD      0x180000
 
 /* True when nothing is stopped and no live sequence has the looping flag without a held flag. */
-__attribute__((section(".text.func_002CAB58")))
-int func_002CAB58(SeqSet *self) {
+__attribute__((section(".text.cSnd_isNoLoopVoice")))
+int cSnd_isNoLoopVoice(SeqSet *self) {
     int ok = self->stopCount == 0;
     SeqNode *node = self->head;
     while (node != 0) {
@@ -84,8 +84,8 @@ typedef struct BlinkObj {
 #define BLINK_LAYER  1
 
 /* Count the blink timer down one tick: the last tick and odd ticks show white, even ticks red. */
-__attribute__((section(".text.func_001AA478")))
-void func_001AA478(BlinkObj *self) {
+__attribute__((section(".text.cOmBase_blinkTick")))
+void cOmBase_blinkTick(BlinkObj *self) {
     int n = self->blinkLeft;
     if (n == 0) {
         return;
@@ -106,8 +106,8 @@ void func_001AA478(BlinkObj *self) {
 #define COMBASE_UNK4AC(o)  (*(int *)((char *)(o) + 0x4AC))
 
 /* When the player is alive, free and not caught, and self is not flagged off, run func_001C24E8 unless the table lookup hits. */
-__attribute__((section(".text.func_002DB978")))
-void func_002DB978(cOmBase *self) {
+__attribute__((section(".text.cPlayer_tryTrigger")))
+void cPlayer_tryTrigger(cOmBase *self) {
     cOmBase *player = Getplayer();
     if (player->hp > 0) {
         if (Obj0000_IsSet_Field_15F4_Bit_400000_10B698(player) == 0) {
@@ -125,8 +125,8 @@ void func_002DB978(cOmBase *self) {
 }
 
 /* Find a free job slot (state 0). If all 32 are taken, run func_002011B0 to free some and look again. Returns 0 if none. */
-__attribute__((section(".text.func_002017A8")))
-cDvdJob *func_002017A8(cDvd *self) {
+__attribute__((section(".text.cDvd_takeFreeJob")))
+cDvdJob *cDvd_takeFreeJob(cDvd *self) {
     int i;
     for (i = 0; i < CDVD_JOB_NUM; i++) {
         if (self->job[i].state == 0) {
@@ -144,8 +144,8 @@ cDvdJob *func_002017A8(cDvd *self) {
 
 /* Allocate the heap block for a job from its file number. On failure wipe the running job and start the next one;
  * otherwise apply the job's args to the new block. */
-__attribute__((section(".text.func_00201840")))
-void func_00201840(cDvd *self, cDvdJob *job) {
+__attribute__((section(".text.cDvd_startJobHeap")))
+void cDvd_startJobHeap(cDvd *self, cDvdJob *job) {
     void *heap = func_00323918(0, job->fileNo);
     job->heap = heap;
     if (heap == 0) {

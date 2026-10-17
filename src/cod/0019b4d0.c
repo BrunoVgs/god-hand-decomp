@@ -99,7 +99,7 @@ typedef struct ReqQueue {
     ReqJob *head;                       /* 0x00 first job in the queue, 0 when empty */
 } ReqQueue;
 
-extern ReqJob *func_002D3110(ReqQueue *self);               /* take a free job */
+extern ReqJob *Ring_findRejectedRecord(ReqQueue *self);               /* take a free job */
 extern int func_002D3190(ReqQueue *self);                   /* next request id */
 extern void func_002D3240(ReqJob *job, int kind, int a2, int a3, int a4, int id);
 
@@ -108,7 +108,7 @@ int ReqQueue_push(ReqQueue *self, int kind, int a2, int a3, int a4)
 {
     ReqJob *job;
     int id;
-    job = func_002D3110(self);
+    job = Ring_findRejectedRecord(self);
     if (job == 0)
         return 0;
     id = func_002D3190(self);

@@ -77,7 +77,7 @@ int cDvd_ReadAllocSized(cDvd *self, char *name, void **outBuf, int a3, int id, u
     void *buf;
 
     *outBuf = 0;
-    job = func_002017A8(self);
+    job = cDvd_takeFreeJob(self);
     if (job == 0) return 0;
     job->fileNo = FindEntryValue_1FF9C0(D_00580D40, name, &job->size, job->unk0C);
     job->align = a3;

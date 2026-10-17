@@ -19,8 +19,8 @@ extern void __builtin_delete(void *p);
 
 /* Destructor: destroy the five elements last to first, restore the base
  * vtable and free the object when bit 0 of flags is set. */
-__attribute__((section(".text.func_0013DE90")))
-void func_0013DE90(IdBank *self, int flags)
+__attribute__((section(".text.IdBank_dtor")))
+void IdBank_dtor(IdBank *self, int flags)
 {
     CustomIDWork *p;
 

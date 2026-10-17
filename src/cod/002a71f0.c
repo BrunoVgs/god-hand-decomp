@@ -21,8 +21,8 @@ typedef struct RecPool {
 } RecPool;
 
 /* Hand every used, not skipped record to the pool's handler. */
-__attribute__((section(".text.func_002A71F0")))
-void func_002A71F0(RecPool *self)
+__attribute__((section(".text.RecPool_dispatchUsed")))
+void RecPool_dispatchUsed(RecPool *self)
 {
     unsigned int i;
     char *rec;

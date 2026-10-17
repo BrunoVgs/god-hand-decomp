@@ -25,8 +25,8 @@ typedef struct LockNode {
 
 /* If the node's position projects in front of the camera, unlock it, move it to the screen position, call the lock-on,
  * then lock it and put it back at its original place. */
-__attribute__((section(".text.func_002EFB68")))
-void func_002EFB68(LockNode *node) {
+__attribute__((section(".text.cNode_lockOnScreen")))
+void cNode_lockOnScreen(LockNode *node) {
     cVec orig;
     cVec field;
     cVec screen;
@@ -58,8 +58,8 @@ typedef struct DriftObj {
 
 /* Step 0 starts the drift (velocity +-0.0128, 15 frames) and runs step 1; step 1 moves the actor along y by the
  * velocity, advances the velocities and the countdown by the frame rate, and when the countdown ends goes back to mode 1. */
-__attribute__((section(".text.func_001CEC68")))
-void func_001CEC68(DriftObj *self) {
+__attribute__((section(".text.cOmBase_stepDrift")))
+void cOmBase_stepDrift(DriftObj *self) {
     float rate = cEmManage_GetSpeedRate(&D_005864F0);
     switch (self->base.step) {
     case 0: {
@@ -98,8 +98,8 @@ typedef struct SteerCtl {
 } SteerCtl;
 
 /* Store x, and when there is a target set its direction to (x, 0, 0) and run func_0031A088 unless that direction is zero. */
-__attribute__((section(".text.func_001E8F78")))
-void func_001E8F78(SteerCtl *self, float x) {
+__attribute__((section(".text.cObj_setFloatAndVec")))
+void cObj_setFloatAndVec(SteerCtl *self, float x) {
     SteerTarget *target = self->target;
     cVec v;
 
@@ -138,8 +138,8 @@ typedef struct LiftNode {
 
 /* Ask the part (a virtual call) for its box vector, put half its height on the y axis, rotate that by the matrix and
  * store the result as the position. buf[0] is the lift, buf[1] the box, buf[2] the rotated lift. */
-__attribute__((section(".text.func_002BABD0")))
-void func_002BABD0(LiftNode *self) {
+__attribute__((section(".text.cNode_updateLiftedPos")))
+void cNode_updateLiftedPos(LiftNode *self) {
     cVec buf[3];
     VtEnt *vt = self->part;
     cVec *rot;
@@ -174,8 +174,8 @@ typedef struct LinkOwner {
 } LinkOwner;
 
 /* Release every node on the list: unlink the head from its neighbours and clear it. Returns 0 if one cannot be released. */
-__attribute__((section(".text.func_001FD580")))
-int func_001FD580(LinkOwner *self) {
+__attribute__((section(".text.cDvd_releaseAll")))
+int cDvd_releaseAll(LinkOwner *self) {
     LinkNode *node;
     if ((node = self->head) != 0) {
         do {

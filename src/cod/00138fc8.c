@@ -40,8 +40,8 @@ void func_002FBE88(Obj002FBE88 *self)
 
 /* Steps the manager's state, then moves the current camera unless the
  * manager is in motion-camera mode. */
-__attribute__((section(".text.func_00138FC8")))
-void func_00138FC8(cCamManager *self)
+__attribute__((section(".text.cCamManager_update")))
+void cCamManager_update(cCamManager *self)
 {
     func_00137F38(self->unkFF4, self);
     if (!(self->mode & CAMMGR_MODE_NO_MOVE)) {
@@ -51,8 +51,8 @@ void func_00138FC8(cCamManager *self)
 
 /* Clears two flag bits of the enemy and tells the room's placement table
  * the new flag word for the enemy's entry. */
-__attribute__((section(".text.func_002736F8")))
-void func_002736F8(cEm00 *self)
+__attribute__((section(".text.cEm00_clearSetFlags")))
+void cEm00_clearSetFlags(cEm00 *self)
 {
     unsigned int flags = self->flags1644;
     flags &= ~0x10000000;
@@ -70,8 +70,8 @@ extern cTaskWork *D_00752C04;           /* the main task, used when no script ta
 /* Sleeps the running script task for one step and leaves the frame count
  * at cScenario 0x50; with no script task running, sleeps the main task
  * for `frames` instead. */
-__attribute__((section(".text.func_002D5250")))
-void func_002D5250(unsigned short frames)
+__attribute__((section(".text.cScenario_sleepFrames")))
+void cScenario_sleepFrames(unsigned short frames)
 {
     cTaskManager *task = &D_003C2F84->task;
     cTaskWork *cur = task->cur;
@@ -86,8 +86,8 @@ void func_002D5250(unsigned short frames)
 extern float D_00428000[];              /* per game level scale, levels past 5 use entry 5 */
 
 /* The object's speed rate scaled by the table entry for the game level. */
-__attribute__((section(".text.func_001AE6A0")))
-float func_001AE6A0(cGameObj *self)
+__attribute__((section(".text.cGameObj_getLevelSpeedScale")))
+float cGameObj_getLevelSpeedScale(cGameObj *self)
 {
     int level = cCoreSave_getGameLevel(&D_00569B70);
     if (level > CORESAVE_LEVEL_NUM) {
@@ -98,8 +98,8 @@ float func_001AE6A0(cGameObj *self)
 
 /* Releases both id bases of the panel, clears the host's two pick words and
  * frees the panel's heap node. */
-__attribute__((section(".text.func_001E7368")))
-void func_001E7368(SlotUi *self)
+__attribute__((section(".text.SlotUi_release")))
+void SlotUi_release(SlotUi *self)
 {
     SlotUiHost *host;
     cIDBase_release(self->idBase2);

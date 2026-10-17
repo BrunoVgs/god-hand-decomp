@@ -11,7 +11,7 @@ extern int moveMotion(void *a0);
 extern void cObjBase_addNullSpeed_Rotation(void *a0, float f);
 extern void cObjBase_addNullSpeed(void *a0, float f);
 extern void func_0026B600(void *a0);
-extern void func_0026BAD8(void *a0, int a1, int a2);
+extern void EmWeaponHolder_dropWeapons(void *a0, int a1, int a2);
 extern float capVu0Sin(float f12);
 extern float Adjust_theta(float f12);
 extern char D_00462FC0[];
@@ -96,7 +96,7 @@ __attribute__((section(".text.func_002439A0"))) void func_002439A0(cEm00 *self)
                 self->timer = self->timer - self->speedRate;
             } else {
                 self->unk568 = self->unk568 - 1;
-                func_0026BAD8(self, 1, 1);
+                EmWeaponHolder_dropWeapons(self, 1, 1);
                 self->timer = 20.0f;
             }
             break;
@@ -117,7 +117,7 @@ __attribute__((section(".text.func_002439A0"))) void func_002439A0(cEm00 *self)
                     self->timer = self->timer - self->speedRate;
                 } else {
                     self->unk568 = self->unk568 - 1;
-                    func_0026BAD8(self, 1, 1);
+                    EmWeaponHolder_dropWeapons(self, 1, 1);
                     self->timer = 20.0f;
                 }
             } else {

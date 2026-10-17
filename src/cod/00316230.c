@@ -78,7 +78,7 @@ int ForwardInitObject_316540(void){
     s0 = EnsureInitThenForward_2A9538_30EE08(0x690, 0x10, D_00754C10);
     if (s0 == 0) return 0;
     func_003A52F0(s0, 0, 0x690);
-    return func_001C0068(s0);
+    return cObj_initVuFields4AC(s0);
 }
 
 __attribute__((section(".text.ForwardInitObject_3165B0")))

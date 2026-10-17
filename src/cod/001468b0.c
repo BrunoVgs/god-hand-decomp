@@ -30,8 +30,8 @@ extern char *D_005CAFF0;
 /* Trigger the enemy's reaction when allowed: not while its slide runs, only when
  * func_0026F328 accepts, the flag does not forbid it, it is alive, and for
  * enemies 0x256 and 0x218 only outside their blocked rooms. Returns 1 when it fired. */
-__attribute__((section(".text.func_0026F200")))
-int func_0026F200(cEm00 *self)
+__attribute__((section(".text.cEm00_tryReact")))
+int cEm00_tryReact(cEm00 *self)
 {
     if (self->slideTime > 0.0f)
         return 0;
@@ -52,8 +52,8 @@ int func_0026F200(cEm00 *self)
 /* Hermite-interpolate each of x, y and z between two points with zero
  * tangents into *tmp, copy the vector to *ret and return ret. The struct
  * return of retail is passed as the first argument. */
-__attribute__((section(".text.func_002E1468")))
-cVec *func_002E1468(cVec *ret, cVec *tmp, float *p0, float *p1, float t)
+__attribute__((section(".text.Hermite3_interpolate")))
+cVec *Hermite3_interpolate(cVec *ret, cVec *tmp, float *p0, float *p1, float t)
 {
     tmp->x = ESLib_ESHermite(t, p0[0], p1[0], 0.0f, 0.0f);
     tmp->y = ESLib_ESHermite(t, p0[1], p1[1], 0.0f, 0.0f);
@@ -84,8 +84,8 @@ typedef struct BlockOwner {
 extern void func_002FBE28(BlockOwner *self, int flags);
 
 /* Destructor: reset the method table, free the six blocks, then run the base destructor. */
-__attribute__((section(".text.func_002EBC50")))
-void func_002EBC50(BlockOwner *self, int flags)
+__attribute__((section(".text.BlockOwner_dtor")))
+void BlockOwner_dtor(BlockOwner *self, int flags)
 {
     self->vt = D_0044E960;
     if (self->blockCC != 0)
@@ -119,8 +119,8 @@ typedef struct IdPair {
 
 /* Clear the state bytes, initialise the four elements of both parts, give
  * the first element of each part its sine amplitude and set the timer to 90. */
-__attribute__((section(".text.func_001468B0")))
-void func_001468B0(IdPair *self)
+__attribute__((section(".text.IdPair_init")))
+void IdPair_init(IdPair *self)
 {
     unsigned short i;
     char *part;
@@ -153,8 +153,8 @@ typedef struct ReachObj {
 
 /* True when the object has no reach or the scaled distance from its anchor to
  * the reference point at D_005CAFF0 + 0x210 is within the reach. */
-__attribute__((section(".text.func_002F3E68")))
-int func_002F3E68(ReachObj *self)
+__attribute__((section(".text.ReachObj_isWithinReach")))
+int ReachObj_isWithinReach(ReachObj *self)
 {
     float buf[8];
 
@@ -227,8 +227,8 @@ static __inline__ void PanelOwner_setStep(PanelOwner *self, int step)
 /* Reset the panel cursor and arrows, compare the two competitors' keys and
  * pick the next step: 0x12 when the left key is lower, 0x11 when it is higher
  * (swapped by the reversed flag), 0x13 when they tie. */
-__attribute__((section(".text.func_001DAE18")))
-void func_001DAE18(PanelOwner *self)
+__attribute__((section(".text.PanelOwner_pickStep")))
+void PanelOwner_pickStep(PanelOwner *self)
 {
     int a;
     int b;

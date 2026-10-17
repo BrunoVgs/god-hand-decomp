@@ -184,7 +184,7 @@ typedef struct DispMgr {
 } DispMgr;
 
 
-extern void func_00140BF0(DispMgr *mgr, void *sub, int kind);
+extern void DispMgr_registerSub(DispMgr *mgr, void *sub, int kind);
 extern void SetupFields10And14_13D3C0(DispMgr *mgr);
 
 
@@ -205,17 +205,17 @@ void DispMgr_reset(DispMgr *self)
 
     func_003A52F0(MGR_SUB(self, 0x22F0), 0, MGR_SLOT_NUM * 12);
     po = &self->slot[0].obj;
-    func_00140BF0(self, MGR_SUB(self, 0x6E0), 1);
-    func_00140BF0(self, MGR_SUB(self, 0x460), 3);
-    func_00140BF0(self, MGR_SUB(self, 0xEA0), 6);
-    func_00140BF0(self, MGR_SUB(self, 0xCC0), 4);
-    func_00140BF0(self, MGR_SUB(self, 0x1380), 7);
-    func_00140BF0(self, MGR_SUB(self, 0x1470), 8);
-    func_00140BF0(self, MGR_SUB(self, 0x1520), 14);
-    func_00140BF0(self, MGR_SUB(self, 0x15C0), 9);
-    func_00140BF0(self, MGR_SUB(self, 0x1CB0), 15);
-    func_00140BF0(self, MGR_SUB(self, 0x1910), 16);
-    func_00140BF0(self, MGR_SUB(self, 0x1AE0), 17);
+    DispMgr_registerSub(self, MGR_SUB(self, 0x6E0), 1);
+    DispMgr_registerSub(self, MGR_SUB(self, 0x460), 3);
+    DispMgr_registerSub(self, MGR_SUB(self, 0xEA0), 6);
+    DispMgr_registerSub(self, MGR_SUB(self, 0xCC0), 4);
+    DispMgr_registerSub(self, MGR_SUB(self, 0x1380), 7);
+    DispMgr_registerSub(self, MGR_SUB(self, 0x1470), 8);
+    DispMgr_registerSub(self, MGR_SUB(self, 0x1520), 14);
+    DispMgr_registerSub(self, MGR_SUB(self, 0x15C0), 9);
+    DispMgr_registerSub(self, MGR_SUB(self, 0x1CB0), 15);
+    DispMgr_registerSub(self, MGR_SUB(self, 0x1910), 16);
+    DispMgr_registerSub(self, MGR_SUB(self, 0x1AE0), 17);
     SetupFields10And14_13D3C0(self);
     func_0013ECF0(MGR_SUB(self, 0x3A0));
     Obj0000_Clear_Fields_94_9C_13C808(MGR_SUB(self, 0x1DC0));

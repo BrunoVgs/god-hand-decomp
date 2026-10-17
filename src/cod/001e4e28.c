@@ -12,7 +12,7 @@ extern void func_001E78C8(char *a0, int a1);
 extern void func_001E78E8(char *a0, int a1);
 extern void func_001E6ED8(char *a0, int a1, int a2);
 extern void Slot2_showLayersForBetLv(char *a0);
-extern void func_001E6B70(char *a0, int a1, int a2);
+extern void Slot2_setLineMark(char *a0, int a1, int a2);
 extern void func_001E6C80(char *a0, int a1, int a2);
 extern void func_001E6D48(char *a0, int a1, int a2);
 extern void func_001E6E10(char *a0, int a1, int a2);
@@ -49,7 +49,7 @@ void Slot2_UpdateBet(Slot2 *self)
         self->betLv = 0;
         func_001E6ED8(self, 0, 0);
         Slot2_showLayersForBetLv(self);
-        func_001E6B70(self, 0, 0);
+        Slot2_setLineMark(self, 0, 0);
         func_001E6C80(self, 0, 0);
         func_001E6D48(self, 0, 0);
         func_001E6E10(self, 0, 0);

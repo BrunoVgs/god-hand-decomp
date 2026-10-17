@@ -16,7 +16,7 @@ extern void func_001E3E40(Slot2 *self, unsigned short a1, int a2, int a3);
 extern void Slot2_setMarkLayersAt464(Slot2 *self, int a1, int a2);
 extern void Slot2_setMarkLayersAt46C(Slot2 *self, int a1, int a2);
 extern void Slot2_setMarkLayers(Slot2 *self, int a1, int a2);
-extern float func_002AC650(cIDBaseObj *obj, int frame, int recNo, int a3);
+extern float Curve_sample(cIDBaseObj *obj, int frame, int recNo, int a3);
 extern int func_002AC6E0(cIDBaseObj *obj, float t, float *x, float *y, cIDBaseEnt *ent);
 extern int func_002AC878(cIDBaseObj *obj, float t, float *x, float *y, cIDBaseEnt *ent);
 
@@ -253,7 +253,7 @@ void cIDBase_stepMoveAnim(cIDBaseObj *obj, cIDBaseEnt *ent)
             return;
         }
     }
-    t = func_002AC650(obj, *(short *)&ENT_MOVE_FRAME(ent), n, (int)ent->part[1]);
+    t = Curve_sample(obj, *(short *)&ENT_MOVE_FRAME(ent), n, (int)ent->part[1]);
     got = 0;
     switch (src->pathKind) {
     case 0:

@@ -29,7 +29,7 @@ extern char D_0045C470[];
 extern char D_0045C4A0[];
 extern char D_005FEE00[];
 extern void SetCustomIDDispOneOrAll_1DD258(int a0, int a1, int a2);
-extern void func_002D5250(int a0);
+extern void cScenario_sleepFrames(int a0);
 extern int cDvd_Check(int a0, int a1);
 extern int D_0044A660;
 extern int D_00574380;
@@ -237,9 +237,9 @@ void func_001DD5A0(int a0, int a1) {
 __attribute__((section(".text.cDvd_CheckWaitFrame")))
 void cDvd_CheckWaitFrame(int a0, int a1) {
     while (cDvd_Check(a0, a1) != 0) {
-        func_002D5250(1);
+        cScenario_sleepFrames(1);
     }
-    func_002D5250(1);
+    cScenario_sleepFrames(1);
 }
 
 __attribute__((section(".text.func_0028EB88")))

@@ -10,7 +10,7 @@ extern void SetEffectPos(int a0, int a1, int a2, void *a3, int a4, float a5);
 extern void Esp_killByGroup(int a0);
 extern void func_00300C00(int a0, int a1);
 extern void cHeap_free(void *heap, void *p);
-extern void func_002EBC50(void *self, int flags);
+extern void BlockOwner_dtor(void *self, int flags);
 extern char D_0044F7D0[];
 extern void func_001B6FB8(cOmSized *self);
 extern void cOmDoor_setObjCollisionCenterOnly(cOmSized *self);
@@ -31,8 +31,8 @@ typedef struct EntPool {
 
 
 /* Take an entry from the pool, count it, clear it and run its initialiser. Returns 0 when the pool is empty. */
-__attribute__((section(".text.func_00150538")))
-void *func_00150538(EntPool *self)
+__attribute__((section(".text.EntPool_allocClearSmall")))
+void *EntPool_allocClearSmall(EntPool *self)
 {
     int ent = func_002A97A0(self);
     unsigned int n;
@@ -58,8 +58,8 @@ typedef struct cOmEffectHolderB {
 } cOmEffectHolderB;
 
 /* Moves the held effect to the position the object reports through virtual method 16. */
-__attribute__((section(".text.func_001C2CE0")))
-void func_001C2CE0(cOmEffectHolderB *self) {
+__attribute__((section(".text.cOmEffectHolderB_syncEffectPos")))
+void cOmEffectHolderB_syncEffectPos(cOmEffectHolderB *self) {
     cVec pos;
     cVec *src;
 
@@ -72,8 +72,8 @@ void func_001C2CE0(cOmEffectHolderB *self) {
 }
 
 /* Remove an effect from one or both of its lists: mode 0 the second list, 1 the first, 2 both. */
-__attribute__((section(".text.func_00306330")))
-void func_00306330(int a0, int a1) {
+__attribute__((section(".text.Effect_killByModeB")))
+void Effect_killByModeB(int a0, int a1) {
     switch (a1) {
     case 0:
         func_00300C00(a0, 1);
@@ -104,20 +104,20 @@ typedef struct BufOwner2 {
 
 /* Deleting destructor: reset the vtable, free the five buffers held at 0x364,
  * 0x368, 0x36C, 0x370 and 0x360, then run the base destructor. */
-__attribute__((section(".text.func_002F7D88")))
-void func_002F7D88(BufOwner2 *self, int flags) {
+__attribute__((section(".text.BufOwner2_deletingDtor")))
+void BufOwner2_deletingDtor(BufOwner2 *self, int flags) {
     self->vt = D_0044F7D0;
     FREE_BUF(self->buf364);
     FREE_BUF(self->buf368);
     FREE_BUF(self->buf36C);
     FREE_BUF(self->buf370);
     FREE_BUF(self->buf360);
-    func_002EBC50(self, flags);
+    BlockOwner_dtor(self, flags);
 }
 
 /* Init: base setup, extent 4.0 x 4.1 x 0.2, then the shared setters and the 4.2 effect; returns 1. */
-__attribute__((section(".text.func_00170F60")))
-int func_00170F60(cOmSized *self)
+__attribute__((section(".text.cOmSized_startC")))
+int cOmSized_startC(cOmSized *self)
 {
     cVec ext;
 
@@ -134,8 +134,8 @@ int func_00170F60(cOmSized *self)
 }
 
 /* Init: base setup, extent 4.22 x 3.812 x 0.2, then the shared setters; returns 1. */
-__attribute__((section(".text.func_0017C508")))
-int func_0017C508(cOmSized *self) {
+__attribute__((section(".text.cOmSized_startB")))
+int cOmSized_startB(cOmSized *self) {
     cVec ext;
 
     func_001B6FB8(self);

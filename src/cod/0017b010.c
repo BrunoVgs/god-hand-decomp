@@ -29,8 +29,8 @@ extern void func_001B7EE0(void *self, float f12);
 
 /* Hides both marks of slot `no` and, if `lit`, shows one of them: the left
  * one when `right` is 0, the right one otherwise. */
-__attribute__((section(".text.func_001F4B98")))
-void func_001F4B98(void *self, unsigned short no, int right, int lit)
+__attribute__((section(".text.Panel_showSlotMark")))
+void Panel_showSlotMark(void *self, unsigned short no, int right, int lit)
 {
     if (no < MARK_NUM) {
         SetCustomIDDispOneOrAll_1F4778(self, no + MARK_A_BASE, 0);
@@ -112,8 +112,8 @@ void func_001A6F00(Obj1A6F00 *self)
 
 /* Starts reading the file of object `objId`. Returns the buffer pointer, or 0
  * when the read could not start. */
-__attribute__((section(".text.func_001FF180")))
-void *func_001FF180(FileLoadRec *self, int objId, int arg)
+__attribute__((section(".text.FileLoadRec_start")))
+void *FileLoadRec_start(FileLoadRec *self, int objId, int arg)
 {
     char name[0x10];
     void *ret;
@@ -183,8 +183,8 @@ typedef struct cOl1bRec {
 /* Per frame: an unlocked open door that was hit either counts a hit (vital
  * above 0) or closes; then it steps and, while open and idle, starts its
  * motion. */
-__attribute__((section(".text.func_0017B010")))
-void func_0017B010(cOl1bRec *self)
+__attribute__((section(".text.cOl1b_update")))
+void cOl1b_update(cOl1bRec *self)
 {
     unsigned char mode;
     if (self->locked == 0) {

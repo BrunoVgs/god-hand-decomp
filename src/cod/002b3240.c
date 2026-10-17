@@ -2,7 +2,7 @@
 
 extern void func_002B45D0(void *self);
 extern void func_002B45D8(void *self);
-extern void func_002B3338(void *self);
+extern void ScriptRun_runDueCommands(void *self);
 /* The manager that holds the frame length in 1/10 frames at 0xBDA. */
 typedef struct FrameClock {
     char unk000[0xBDA];
@@ -55,5 +55,5 @@ void StepObj_stepTimer(StepObj *self) {
         }
     }
     self->timer = self->timer + add;
-    func_002B3338(self);
+    ScriptRun_runDueCommands(self);
 }

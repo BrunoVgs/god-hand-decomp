@@ -104,7 +104,7 @@
     "for all 735 currently-matched TUs) or 'sn-2.95.3-136' (opt-in SN",
     "ee-gcc for the `sq`-prologue functions).  TUs not",
     "named here use the default compiler; the override is at TU",
-    "granularity (not per-function \u2014 that's a later task if needed).",
+    "granularity (not per-function — that's a later task if needed).",
     "Documentation entries (path starting with `_`) are ignored.",
     "",
     "Wired through `compile.py::discover` -> CompileUnit.compiler ->",
@@ -14712,7 +14712,7 @@
     "the TU's INCLUDE_ASM macro pulls the carved .s into its own .text,",
     "so the standalone build/asm/nonmatching/<name>.o is NOT built or",
     "linked when `tu` is set.  Without `tu` (baseline), the",
-    "standalone .o is linked directly \u2014 useful for asm-only carves",
+    "standalone .o is linked directly — useful for asm-only carves",
     "with no C wrapper yet.",
     "",
     "Mechanism: each carve splits the monolithic at the",
@@ -14953,7 +14953,7 @@
       "tu": "src/cod/000000.c"
     },
     {
-      "_comment": "first-TU group \u2014 accessor family @ 0x002930A8 \u2013 0x00293C40. 17 carve-eligible funcs (2 Ghidra mis-boundary fragments at 0x002930C8 / 0x00293748 stay in the monolithic)."
+      "_comment": "first-TU group — accessor family @ 0x002930A8 – 0x00293C40. 17 carve-eligible funcs (2 Ghidra mis-boundary fragments at 0x002930C8 / 0x00293748 stay in the monolithic)."
     },
     {
       "name": "cEmManage_getNextNo",
@@ -15019,7 +15019,7 @@
       "tu": "src/cod/000293.c"
     },
     {
-      "_comment": "func_00293138 (fp+bnel, 1500 B) stays in monolithic asm/cod/000000 \u2014 PERMANENT; no carve needed."
+      "_comment": "func_00293138 (fp+bnel, 1500 B) stays in monolithic asm/cod/000000 — PERMANENT; no carve needed."
     },
     {
       "name": "Obj293_OrByte_5A3",
@@ -15050,13 +15050,13 @@
       "tu": "src/cod/000293.c"
     },
     {
-      "_comment": "func_00293760 (jump-table, 96 B) stays in monolithic \u2014 carving would leak local .L00293794/.L00293A14/.L002941C0/.L00294308 labels referenced by rodata jump table at 0x44A7B0. PERMANENT under new jump-table class."
+      "_comment": "func_00293760 (jump-table, 96 B) stays in monolithic — carving would leak local .L00293794/.L00293A14/.L002941C0/.L00294308 labels referenced by rodata jump table at 0x44A7B0. PERMANENT under new jump-table class."
     },
     {
-      "_comment": "func_002937C0 (fp+bnel, 1152 B) stays in monolithic \u2014 PERMANENT; no carve needed."
+      "_comment": "func_002937C0 (fp+bnel, 1152 B) stays in monolithic — PERMANENT; no carve needed."
     },
     {
-      "_comment": "func_00293C40 (fp+bnel, 2116 B) stays in monolithic \u2014 PERMANENT; no carve needed."
+      "_comment": "func_00293C40 (fp+bnel, 2116 B) stays in monolithic — PERMANENT; no carve needed."
     },
     {
       "name": "EESyscall_0x00",
@@ -20973,7 +20973,7 @@
       "tu": "src/cod/0027dd.c"
     },
     {
-      "name": "cEmad_construct",
+      "name": "cEm00_construct_ad",
       "unit": "asm/cod/000000",
       "vaddr": "0x0028E018",
       "size": 80,
@@ -72844,602 +72844,602 @@
       "tu": "src/cod/00139c88.c"
     },
     {
-      "name": "func_002AE7F0",
+      "name": "cMc_startLoadRunReleaseB",
       "unit": "asm/cod/000000",
       "vaddr": "0x002AE7F0",
       "size": 68,
       "tu": "src/cod/0017b8f0.c"
     },
     {
-      "name": "func_0018F5D0",
+      "name": "cOmHit_onDamageHit",
       "unit": "asm/cod/000000",
       "vaddr": "0x0018F5D0",
       "size": 72,
       "tu": "src/cod/0017b8f0.c"
     },
     {
-      "name": "func_002BF388",
+      "name": "ScenarioCursor_runStep",
       "unit": "asm/cod/000000",
       "vaddr": "0x002BF388",
       "size": 72,
       "tu": "src/cod/0017b8f0.c"
     },
     {
-      "name": "func_001E3298",
+      "name": "Slot2_hideBankLayerIds",
       "unit": "asm/cod/000000",
       "vaddr": "0x001E3298",
       "size": 76,
       "tu": "src/cod/0017b8f0.c"
     },
     {
-      "name": "func_001A8930",
+      "name": "cGameObj_destructWithSubE40",
       "unit": "asm/cod/000000",
       "vaddr": "0x001A8930",
       "size": 80,
       "tu": "src/cod/0017b8f0.c"
     },
     {
-      "name": "func_0017B8F0",
+      "name": "cGameObj_destructWithSubD80",
       "unit": "asm/cod/000000",
       "vaddr": "0x0017B8F0",
       "size": 80,
       "tu": "src/cod/0017b8f0.c"
     },
     {
-      "name": "func_002BF4C8",
+      "name": "ScenarioCursor_reinitStep2",
       "unit": "asm/cod/000000",
       "vaddr": "0x002BF4C8",
       "size": 80,
       "tu": "src/cod/0013c298.c"
     },
     {
-      "name": "func_002F4B30",
+      "name": "OwnerObj_destroyOwned2",
       "unit": "asm/cod/000000",
       "vaddr": "0x002F4B30",
       "size": 84,
       "tu": "src/cod/0013c298.c"
     },
     {
-      "name": "func_002D51F0",
+      "name": "TaskPool_runAll",
       "unit": "asm/cod/000000",
       "vaddr": "0x002D51F0",
       "size": 96,
       "tu": "src/cod/0013c298.c"
     },
     {
-      "name": "func_0013F150",
+      "name": "IdScreen3_refillEntries",
       "unit": "asm/cod/000000",
       "vaddr": "0x0013F150",
       "size": 112,
       "tu": "src/cod/0013c298.c"
     },
     {
-      "name": "func_0013C298",
+      "name": "IdScreen4_refillEntries",
       "unit": "asm/cod/000000",
       "vaddr": "0x0013C298",
       "size": 124,
       "tu": "src/cod/0013c298.c"
     },
     {
-      "name": "func_00150538",
+      "name": "EntPool_allocClearSmall",
       "unit": "asm/cod/000000",
       "vaddr": "0x00150538",
       "size": 112,
       "tu": "src/cod/00150538.c"
     },
     {
-      "name": "func_001C2CE0",
+      "name": "cOmEffectHolderB_syncEffectPos",
       "unit": "asm/cod/000000",
       "vaddr": "0x001C2CE0",
       "size": 124,
       "tu": "src/cod/00150538.c"
     },
     {
-      "name": "func_00306330",
+      "name": "Effect_killByModeB",
       "unit": "asm/cod/000000",
       "vaddr": "0x00306330",
       "size": 136,
       "tu": "src/cod/00150538.c"
     },
     {
-      "name": "func_002F7D88",
+      "name": "BufOwner2_deletingDtor",
       "unit": "asm/cod/000000",
       "vaddr": "0x002F7D88",
       "size": 168,
       "tu": "src/cod/00150538.c"
     },
     {
-      "name": "func_00170F60",
+      "name": "cOmSized_startC",
       "unit": "asm/cod/000000",
       "vaddr": "0x00170F60",
       "size": 156,
       "tu": "src/cod/00150538.c"
     },
     {
-      "name": "func_0017C508",
+      "name": "cOmSized_startB",
       "unit": "asm/cod/000000",
       "vaddr": "0x0017C508",
       "size": 168,
       "tu": "src/cod/00150538.c"
     },
     {
-      "name": "func_001F07C0",
+      "name": "ArenaEm_stepFirstWave",
       "unit": "asm/cod/000000",
       "vaddr": "0x001F07C0",
       "size": 176,
       "tu": "src/cod/001895d8.c"
     },
     {
-      "name": "func_001FCA38",
+      "name": "KeyFollower_attachScaled",
       "unit": "asm/cod/000000",
       "vaddr": "0x001FCA38",
       "size": 176,
       "tu": "src/cod/001895d8.c"
     },
     {
-      "name": "func_001DF358",
+      "name": "CustomIDOwner_setSlideStateB",
       "unit": "asm/cod/000000",
       "vaddr": "0x001DF358",
       "size": 204,
       "tu": "src/cod/001895d8.c"
     },
     {
-      "name": "func_001BC538",
+      "name": "cGameObjTurnB_stepTurn",
       "unit": "asm/cod/000000",
       "vaddr": "0x001BC538",
       "size": 212,
       "tu": "src/cod/001895d8.c"
     },
     {
-      "name": "func_002E6EE8",
+      "name": "Pos_followGroundB",
       "unit": "asm/cod/000000",
       "vaddr": "0x002E6EE8",
       "size": 236,
       "tu": "src/cod/001895d8.c"
     },
     {
-      "name": "func_001895D8",
+      "name": "StateObj_runHandlerB",
       "unit": "asm/cod/000000",
       "vaddr": "0x001895D8",
       "size": 264,
       "tu": "src/cod/001895d8.c"
     },
     {
-      "name": "func_001AA058",
+      "name": "FollowObjB_getHitPos",
       "unit": "asm/cod/000000",
       "vaddr": "0x001AA058",
       "size": 304,
       "tu": "src/cod/001aa058.c"
     },
     {
-      "name": "func_0017D488",
+      "name": "DoorObj_construct1B",
       "unit": "asm/cod/000000",
       "vaddr": "0x0017D488",
       "size": 212,
       "tu": "src/cod/0017d488.c"
     },
     {
-      "name": "func_001C8E50",
+      "name": "LineObjB_checkWaterHit",
       "unit": "asm/cod/000000",
       "vaddr": "0x001C8E50",
       "size": 216,
       "tu": "src/cod/0017d488.c"
     },
     {
-      "name": "func_001DE4F8",
+      "name": "PanelWork_setModeB",
       "unit": "asm/cod/000000",
       "vaddr": "0x001DE4F8",
       "size": 252,
       "tu": "src/cod/0017d488.c"
     },
     {
-      "name": "func_001816E8",
+      "name": "DoorObj_construct2",
       "unit": "asm/cod/000000",
       "vaddr": "0x001816E8",
       "size": 220,
       "tu": "src/cod/001816e8.c"
     },
     {
-      "name": "func_002C9AD0",
+      "name": "cRecordIndex_isSlotSkillLevel1",
       "unit": "asm/cod/000000",
       "vaddr": "0x002C9AD0",
       "size": 64,
       "tu": "src/cod/0012b2e0.c"
     },
     {
-      "name": "func_0012B2E0",
+      "name": "WeaponCarrier_damageHeldWeapon",
       "unit": "asm/cod/000000",
       "vaddr": "0x0012B2E0",
       "size": 72,
       "tu": "src/cod/0012b2e0.c"
     },
     {
-      "name": "func_002AEDF0",
+      "name": "cMessage_closeMessNo8",
       "unit": "asm/cod/000000",
       "vaddr": "0x002AEDF0",
       "size": 80,
       "tu": "src/cod/0012b2e0.c"
     },
     {
-      "name": "func_001494F8",
+      "name": "EntCounter_releaseEntry",
       "unit": "asm/cod/000000",
       "vaddr": "0x001494F8",
       "size": 84,
       "tu": "src/cod/0012b2e0.c"
     },
     {
-      "name": "func_002C1270",
+      "name": "SlotOwner_freeSlots",
       "unit": "asm/cod/000000",
       "vaddr": "0x002C1270",
       "size": 84,
       "tu": "src/cod/0012b2e0.c"
     },
     {
-      "name": "func_002BF478",
+      "name": "StepRec_runKindHandler",
       "unit": "asm/cod/000000",
       "vaddr": "0x002BF478",
       "size": 76,
       "tu": "src/cod/0012b2e0.c"
     },
     {
-      "name": "func_002A4DF8",
+      "name": "DebugView_printShown",
       "unit": "asm/cod/000000",
       "vaddr": "0x002A4DF8",
       "size": 92,
       "tu": "src/cod/00143b70.c"
     },
     {
-      "name": "func_001F6078",
+      "name": "FadeStep_fadeOutAndAdvance",
       "unit": "asm/cod/000000",
       "vaddr": "0x001F6078",
       "size": 96,
       "tu": "src/cod/00143b70.c"
     },
     {
-      "name": "func_0017FC58",
+      "name": "cOl2b_startOpening",
       "unit": "asm/cod/000000",
       "vaddr": "0x0017FC58",
       "size": 92,
       "tu": "src/cod/00143b70.c"
     },
     {
-      "name": "func_002C9B10",
+      "name": "cRecordIndex_clearSkillIfLevel1",
       "unit": "asm/cod/000000",
       "vaddr": "0x002C9B10",
       "size": 100,
       "tu": "src/cod/00143b70.c"
     },
     {
-      "name": "func_002B4188",
+      "name": "PhaseJob_step",
       "unit": "asm/cod/000000",
       "vaddr": "0x002B4188",
       "size": 104,
       "tu": "src/cod/00143b70.c"
     },
     {
-      "name": "func_00143B70",
+      "name": "IdScreen_init",
       "unit": "asm/cod/000000",
       "vaddr": "0x00143B70",
       "size": 116,
       "tu": "src/cod/00143b70.c"
     },
     {
-      "name": "func_0019C050",
+      "name": "VoiceFighter_playHitVoice",
       "unit": "asm/cod/000000",
       "vaddr": "0x0019C050",
       "size": 120,
       "tu": "src/cod/001365b8.c"
     },
     {
-      "name": "func_002AC538",
+      "name": "KeyRec_findSegment",
       "unit": "asm/cod/000000",
       "vaddr": "0x002AC538",
       "size": 120,
       "tu": "src/cod/001365b8.c"
     },
     {
-      "name": "func_002949E8",
+      "name": "TickObj_stepToLimit",
       "unit": "asm/cod/000000",
       "vaddr": "0x002949E8",
       "size": 124,
       "tu": "src/cod/001365b8.c"
     },
     {
-      "name": "func_002D3110",
+      "name": "Ring_findRejectedRecord",
       "unit": "asm/cod/000000",
       "vaddr": "0x002D3110",
       "size": 128,
       "tu": "src/cod/001365b8.c"
     },
     {
-      "name": "func_001F0360",
+      "name": "NamedHit_applyLevel",
       "unit": "asm/cod/000000",
       "vaddr": "0x001F0360",
       "size": 132,
       "tu": "src/cod/001365b8.c"
     },
     {
-      "name": "func_001365B8",
+      "name": "HitProbe_probeHitPoint",
       "unit": "asm/cod/000000",
       "vaddr": "0x001365B8",
       "size": 136,
       "tu": "src/cod/001365b8.c"
     },
     {
-      "name": "func_001C6C30",
+      "name": "SubRec_initCenter",
       "unit": "asm/cod/000000",
       "vaddr": "0x001C6C30",
       "size": 136,
       "tu": "src/cod/001c6c30.c"
     },
     {
-      "name": "func_002A71F0",
+      "name": "RecPool_dispatchUsed",
       "unit": "asm/cod/000000",
       "vaddr": "0x002A71F0",
       "size": 140,
       "tu": "src/cod/002a71f0.c"
     },
     {
-      "name": "func_00273F08",
+      "name": "cEm00_swapTextureAndShowMesh",
       "unit": "asm/cod/000000",
       "vaddr": "0x00273F08",
       "size": 144,
       "tu": "src/cod/001482c0.c"
     },
     {
-      "name": "func_001482C0",
+      "name": "Mtx4_setRotZ",
       "unit": "asm/cod/000000",
       "vaddr": "0x001482C0",
       "size": 148,
       "tu": "src/cod/001482c0.c"
     },
     {
-      "name": "func_002BB3F0",
+      "name": "Sphere_overlapTest",
       "unit": "asm/cod/000000",
       "vaddr": "0x002BB3F0",
       "size": 148,
       "tu": "src/cod/001482c0.c"
     },
     {
-      "name": "func_0026BAD8",
+      "name": "EmWeaponHolder_dropWeapons",
       "unit": "asm/cod/000000",
       "vaddr": "0x0026BAD8",
       "size": 152,
       "tu": "src/cod/001169d8.c"
     },
     {
-      "name": "func_001F72C0",
+      "name": "cActionButton_resetEntries",
       "unit": "asm/cod/000000",
       "vaddr": "0x001F72C0",
       "size": 160,
       "tu": "src/cod/001169d8.c"
     },
     {
-      "name": "func_001DCDA8",
+      "name": "PartHolder_classify",
       "unit": "asm/cod/000000",
       "vaddr": "0x001DCDA8",
       "size": 180,
       "tu": "src/cod/001169d8.c"
     },
     {
-      "name": "func_001169D8",
+      "name": "cEm00_startRoomHitAim",
       "unit": "asm/cod/000000",
       "vaddr": "0x001169D8",
       "size": 172,
       "tu": "src/cod/001169d8.c"
     },
     {
-      "name": "func_002B2588",
+      "name": "ScriptRun_runChannel",
       "unit": "asm/cod/000000",
       "vaddr": "0x002B2588",
       "size": 172,
       "tu": "src/cod/001169d8.c"
     },
     {
-      "name": "func_002EA9F0",
+      "name": "UvScroll_step",
       "unit": "asm/cod/000000",
       "vaddr": "0x002EA9F0",
       "size": 180,
       "tu": "src/cod/001169d8.c"
     },
     {
-      "name": "func_0026F200",
+      "name": "cEm00_tryReact",
       "unit": "asm/cod/000000",
       "vaddr": "0x0026F200",
       "size": 184,
       "tu": "src/cod/001468b0.c"
     },
     {
-      "name": "func_002E1468",
+      "name": "Hermite3_interpolate",
       "unit": "asm/cod/000000",
       "vaddr": "0x002E1468",
       "size": 184,
       "tu": "src/cod/001468b0.c"
     },
     {
-      "name": "func_002EBC50",
+      "name": "BlockOwner_dtor",
       "unit": "asm/cod/000000",
       "vaddr": "0x002EBC50",
       "size": 188,
       "tu": "src/cod/001468b0.c"
     },
     {
-      "name": "func_001468B0",
+      "name": "IdPair_init",
       "unit": "asm/cod/000000",
       "vaddr": "0x001468B0",
       "size": 196,
       "tu": "src/cod/001468b0.c"
     },
     {
-      "name": "func_002F3E68",
+      "name": "ReachObj_isWithinReach",
       "unit": "asm/cod/000000",
       "vaddr": "0x002F3E68",
       "size": 200,
       "tu": "src/cod/001468b0.c"
     },
     {
-      "name": "func_001DAE18",
+      "name": "PanelOwner_pickStep",
       "unit": "asm/cod/000000",
       "vaddr": "0x001DAE18",
       "size": 168,
       "tu": "src/cod/001468b0.c"
     },
     {
-      "name": "func_001FFEB8",
+      "name": "cDoor_aimJump",
       "unit": "asm/cod/000000",
       "vaddr": "0x001FFEB8",
       "size": 116,
       "tu": "src/cod/001f7cc8.c"
     },
     {
-      "name": "func_001F7CC8",
+      "name": "Node_dtor",
       "unit": "asm/cod/000000",
       "vaddr": "0x001F7CC8",
       "size": 76,
       "tu": "src/cod/001f7cc8.c"
     },
     {
-      "name": "getEventObjPtr",
+      "name": "cEvent_getObjPtrByPackedId",
       "unit": "asm/cod/000000",
       "vaddr": "0x002FA240",
       "size": 204,
       "tu": "src/cod/001f7cc8.c"
     },
     {
-      "name": "func_0017EC98",
+      "name": "cOmBase_initEffData27D",
       "unit": "asm/cod/000000",
       "vaddr": "0x0017EC98",
       "size": 100,
       "tu": "src/cod/0017ec98.c"
     },
     {
-      "name": "func_001B1BD0",
+      "name": "cOmBase_initSphereBody",
       "unit": "asm/cod/000000",
       "vaddr": "0x001B1BD0",
       "size": 164,
       "tu": "src/cod/0017ec98.c"
     },
     {
-      "name": "func_002B3338",
+      "name": "ScriptRun_runDueCommands",
       "unit": "asm/cod/000000",
       "vaddr": "0x002B3338",
       "size": 156,
       "tu": "src/cod/0017ec98.c"
     },
     {
-      "name": "func_002B2C98",
+      "name": "CutStep_isBeforeEndFrame",
       "unit": "asm/cod/000000",
       "vaddr": "0x002B2C98",
       "size": 112,
       "tu": "src/cod/002b2c98.c"
     },
     {
-      "name": "func_0013DE90",
+      "name": "IdBank_dtor",
       "unit": "asm/cod/000000",
       "vaddr": "0x0013DE90",
       "size": 144,
       "tu": "src/cod/0013de90.c"
     },
     {
-      "name": "func_001B0CE8",
+      "name": "cObj_initVuFields610",
       "unit": "asm/cod/000000",
       "vaddr": "0x001B0CE8",
       "size": 68,
       "tu": "src/cod/0012b5c0.c"
     },
     {
-      "name": "func_001ADBE8",
+      "name": "cModel_hideAndClearState",
       "unit": "asm/cod/000000",
       "vaddr": "0x001ADBE8",
       "size": 76,
       "tu": "src/cod/0012b5c0.c"
     },
     {
-      "name": "func_002AF068",
+      "name": "cMessCommon_isHighCodeEnd",
       "unit": "asm/cod/000000",
       "vaddr": "0x002AF068",
       "size": 76,
       "tu": "src/cod/0012b5c0.c"
     },
     {
-      "name": "func_001522C0",
+      "name": "cIDBase_getSlotPtr",
       "unit": "asm/cod/000000",
       "vaddr": "0x001522C0",
       "size": 80,
       "tu": "src/cod/0012b5c0.c"
     },
     {
-      "name": "func_0012B5C0",
+      "name": "cOm_attachThrown",
       "unit": "asm/cod/000000",
       "vaddr": "0x0012B5C0",
       "size": 84,
       "tu": "src/cod/0012b5c0.c"
     },
     {
-      "name": "func_001F2B28",
+      "name": "CustomID_setNumberAndShow",
       "unit": "asm/cod/000000",
       "vaddr": "0x001F2B28",
       "size": 84,
       "tu": "src/cod/0012b5c0.c"
     },
     {
-      "name": "func_00200B20",
+      "name": "cDvd_step",
       "unit": "asm/cod/000000",
       "vaddr": "0x00200B20",
       "size": 100,
       "tu": "src/cod/00171a08.c"
     },
     {
-      "name": "func_002F5730",
+      "name": "cHeapOwner_deletingDtor",
       "unit": "asm/cod/000000",
       "vaddr": "0x002F5730",
       "size": 88,
       "tu": "src/cod/00171a08.c"
     },
     {
-      "name": "func_001F6A20",
+      "name": "CustomID_toggleBit29",
       "unit": "asm/cod/000000",
       "vaddr": "0x001F6A20",
       "size": 92,
       "tu": "src/cod/00171a08.c"
     },
     {
-      "name": "func_00171A08",
+      "name": "cEm_copyPosAndRefresh",
       "unit": "asm/cod/000000",
       "vaddr": "0x00171A08",
       "size": 100,
       "tu": "src/cod/00171a08.c"
     },
     {
-      "name": "func_001C0068",
+      "name": "cObj_initVuFields4AC",
       "unit": "asm/cod/000000",
       "vaddr": "0x001C0068",
       "size": 96,
       "tu": "src/cod/00171a08.c"
     },
     {
-      "name": "func_001B8140",
+      "name": "cGiveOwner_destructB",
       "unit": "asm/cod/000000",
       "vaddr": "0x001B8140",
       "size": 104,
       "tu": "src/cod/00171a08.c"
     },
     {
-      "name": "func_001F2CF0",
+      "name": "CustomIDOwner_hideAll",
       "unit": "asm/cod/000000",
       "vaddr": "0x001F2CF0",
       "size": 112,
       "tu": "src/cod/00159fc8.c"
     },
     {
-      "name": "func_002CB208",
+      "name": "cSnd_releaseEmSeAll",
       "unit": "asm/cod/000000",
       "vaddr": "0x002CB208",
       "size": 112,
       "tu": "src/cod/00159fc8.c"
     },
     {
-      "name": "func_001BEB28",
+      "name": "cOm_takeCasinoTicket",
       "unit": "asm/cod/000000",
       "vaddr": "0x001BEB28",
       "size": 116,
@@ -73453,161 +73453,161 @@
       "tu": "src/cod/00159fc8.c"
     },
     {
-      "name": "func_0028EA38",
+      "name": "cModel_setupFromPack",
       "unit": "asm/cod/000000",
       "vaddr": "0x0028EA38",
       "size": 120,
       "tu": "src/cod/00159fc8.c"
     },
     {
-      "name": "func_001EC8A8",
+      "name": "cCoreSave_payGoldOnPress",
       "unit": "asm/cod/000000",
       "vaddr": "0x001EC8A8",
       "size": 128,
       "tu": "src/cod/00159fc8.c"
     },
     {
-      "name": "func_001C2280",
+      "name": "cObj_setupAimStep2",
       "unit": "asm/cod/000000",
       "vaddr": "0x001C2280",
       "size": 132,
       "tu": "src/cod/001aa478.c"
     },
     {
-      "name": "func_002CAB58",
+      "name": "cSnd_isNoLoopVoice",
       "unit": "asm/cod/000000",
       "vaddr": "0x002CAB58",
       "size": 132,
       "tu": "src/cod/001aa478.c"
     },
     {
-      "name": "func_001AA478",
+      "name": "cOmBase_blinkTick",
       "unit": "asm/cod/000000",
       "vaddr": "0x001AA478",
       "size": 136,
       "tu": "src/cod/001aa478.c"
     },
     {
-      "name": "func_002DB978",
+      "name": "cPlayer_tryTrigger",
       "unit": "asm/cod/000000",
       "vaddr": "0x002DB978",
       "size": 136,
       "tu": "src/cod/001aa478.c"
     },
     {
-      "name": "func_002017A8",
+      "name": "cDvd_takeFreeJob",
       "unit": "asm/cod/000000",
       "vaddr": "0x002017A8",
       "size": 152,
       "tu": "src/cod/001aa478.c"
     },
     {
-      "name": "func_00201840",
+      "name": "cDvd_startJobHeap",
       "unit": "asm/cod/000000",
       "vaddr": "0x00201840",
       "size": 144,
       "tu": "src/cod/001aa478.c"
     },
     {
-      "name": "func_002D3050",
+      "name": "cSif_allocAndForward",
       "unit": "asm/cod/000000",
       "vaddr": "0x002D3050",
       "size": 144,
       "tu": "src/cod/00139910.c"
     },
     {
-      "name": "func_00201960",
+      "name": "cDvd_stepState",
       "unit": "asm/cod/000000",
       "vaddr": "0x00201960",
       "size": 148,
       "tu": "src/cod/00139910.c"
     },
     {
-      "name": "func_00139910",
+      "name": "cOmBase_copyTargetPositions",
       "unit": "asm/cod/000000",
       "vaddr": "0x00139910",
       "size": 144,
       "tu": "src/cod/00139910.c"
     },
     {
-      "name": "func_001F2A88",
+      "name": "CustomID_showDisplays",
       "unit": "asm/cod/000000",
       "vaddr": "0x001F2A88",
       "size": 156,
       "tu": "src/cod/00139910.c"
     },
     {
-      "name": "func_001ABBE8",
+      "name": "cOmBase_rollChance",
       "unit": "asm/cod/000000",
       "vaddr": "0x001ABBE8",
       "size": 164,
       "tu": "src/cod/00139910.c"
     },
     {
-      "name": "func_001ECF30",
+      "name": "CustomID_placeByIndexB",
       "unit": "asm/cod/000000",
       "vaddr": "0x001ECF30",
       "size": 184,
       "tu": "src/cod/00139910.c"
     },
     {
-      "name": "func_002EFB68",
+      "name": "cNode_lockOnScreen",
       "unit": "asm/cod/000000",
       "vaddr": "0x002EFB68",
       "size": 192,
       "tu": "src/cod/001cec68.c"
     },
     {
-      "name": "func_001CEC68",
+      "name": "cOmBase_stepDrift",
       "unit": "asm/cod/000000",
       "vaddr": "0x001CEC68",
       "size": 212,
       "tu": "src/cod/001cec68.c"
     },
     {
-      "name": "func_001E8F78",
+      "name": "cObj_setFloatAndVec",
       "unit": "asm/cod/000000",
       "vaddr": "0x001E8F78",
       "size": 172,
       "tu": "src/cod/001cec68.c"
     },
     {
-      "name": "func_002BABD0",
+      "name": "cNode_updateLiftedPos",
       "unit": "asm/cod/000000",
       "vaddr": "0x002BABD0",
       "size": 184,
       "tu": "src/cod/001cec68.c"
     },
     {
-      "name": "func_001FD580",
+      "name": "cDvd_releaseAll",
       "unit": "asm/cod/000000",
       "vaddr": "0x001FD580",
       "size": 140,
       "tu": "src/cod/001cec68.c"
     },
     {
-      "name": "func_001B81A8",
+      "name": "cObj_hideAndFlagMesh",
       "unit": "asm/cod/000000",
       "vaddr": "0x001B81A8",
       "size": 124,
       "tu": "src/cod/001b81a8.c"
     },
     {
-      "name": "func_002AEA18",
+      "name": "cMessage_initWinList",
       "unit": "asm/cod/000000",
       "vaddr": "0x002AEA18",
       "size": 180,
       "tu": "src/cod/001b81a8.c"
     },
     {
-      "name": "func_001ED3C0",
+      "name": "CustomID_setArrowDisp",
       "unit": "asm/cod/000000",
       "vaddr": "0x001ED3C0",
       "size": 200,
       "tu": "src/cod/001b81a8.c"
     },
     {
-      "name": "func_002C7E30",
+      "name": "Motion_seq_readQuadData",
       "unit": "asm/cod/000000",
       "vaddr": "0x002C7E30",
       "size": 204,
@@ -73621,42 +73621,42 @@
       "tu": "src/cod/00138fc8.c"
     },
     {
-      "name": "func_00138FC8",
+      "name": "cCamManager_update",
       "unit": "asm/cod/000000",
       "vaddr": "0x00138FC8",
       "size": 72,
       "tu": "src/cod/00138fc8.c"
     },
     {
-      "name": "func_002736F8",
+      "name": "cEm00_clearSetFlags",
       "unit": "asm/cod/000000",
       "vaddr": "0x002736F8",
       "size": 76,
       "tu": "src/cod/00138fc8.c"
     },
     {
-      "name": "func_002D5250",
+      "name": "cScenario_sleepFrames",
       "unit": "asm/cod/000000",
       "vaddr": "0x002D5250",
       "size": 76,
       "tu": "src/cod/00138fc8.c"
     },
     {
-      "name": "func_001AE6A0",
+      "name": "cGameObj_getLevelSpeedScale",
       "unit": "asm/cod/000000",
       "vaddr": "0x001AE6A0",
       "size": 84,
       "tu": "src/cod/00138fc8.c"
     },
     {
-      "name": "func_001E7368",
+      "name": "SlotUi_release",
       "unit": "asm/cod/000000",
       "vaddr": "0x001E7368",
       "size": 88,
       "tu": "src/cod/00138fc8.c"
     },
     {
-      "name": "func_001E7600",
+      "name": "SlotUi_showEndMarks",
       "unit": "asm/cod/000000",
       "vaddr": "0x001E7600",
       "size": 92,
@@ -73677,35 +73677,35 @@
       "tu": "src/cod/0013e6e0.c"
     },
     {
-      "name": "func_001ED7E0",
+      "name": "Panel_hideIcons",
       "unit": "asm/cod/000000",
       "vaddr": "0x001ED7E0",
       "size": 100,
       "tu": "src/cod/0013e6e0.c"
     },
     {
-      "name": "func_00140BF0",
+      "name": "DispMgr_registerSub",
       "unit": "asm/cod/000000",
       "vaddr": "0x00140BF0",
       "size": 104,
       "tu": "src/cod/0013e6e0.c"
     },
     {
-      "name": "func_0013E6E0",
+      "name": "Ui_transIdBases",
       "unit": "asm/cod/000000",
       "vaddr": "0x0013E6E0",
       "size": 108,
       "tu": "src/cod/0013e6e0.c"
     },
     {
-      "name": "func_00164140",
+      "name": "ModeObj_updatePhase",
       "unit": "asm/cod/000000",
       "vaddr": "0x00164140",
       "size": 116,
       "tu": "src/cod/00133aa8.c"
     },
     {
-      "name": "func_001E6B70",
+      "name": "Slot2_setLineMark",
       "unit": "asm/cod/000000",
       "vaddr": "0x001E6B70",
       "size": 120,
@@ -73719,56 +73719,56 @@
       "tu": "src/cod/00133aa8.c"
     },
     {
-      "name": "func_00133AA8",
+      "name": "cCollisionSolid_updateBounds",
       "unit": "asm/cod/000000",
       "vaddr": "0x00133AA8",
       "size": 128,
       "tu": "src/cod/00133aa8.c"
     },
     {
-      "name": "func_001DCE68",
+      "name": "Casino_randRange",
       "unit": "asm/cod/000000",
       "vaddr": "0x001DCE68",
       "size": 136,
       "tu": "src/cod/00133aa8.c"
     },
     {
-      "name": "func_001DE7C8",
+      "name": "Panel_slide",
       "unit": "asm/cod/000000",
       "vaddr": "0x001DE7C8",
       "size": 144,
       "tu": "src/cod/001de7c8.c"
     },
     {
-      "name": "func_001E6BE8",
+      "name": "Slot2_blinkMark",
       "unit": "asm/cod/000000",
       "vaddr": "0x001E6BE8",
       "size": 148,
       "tu": "src/cod/001de7c8.c"
     },
     {
-      "name": "func_002B6420",
+      "name": "cNode_updateWorldMatrix",
       "unit": "asm/cod/000000",
       "vaddr": "0x002B6420",
       "size": 156,
       "tu": "src/cod/001de7c8.c"
     },
     {
-      "name": "func_002B6370",
+      "name": "cNode_clearActiveRecursive",
       "unit": "asm/cod/000000",
       "vaddr": "0x002B6370",
       "size": 140,
       "tu": "src/cod/001de7c8.c"
     },
     {
-      "name": "func_002C7850",
+      "name": "Gp_drawGreyScreenQuad",
       "unit": "asm/cod/000000",
       "vaddr": "0x002C7850",
       "size": 160,
       "tu": "src/cod/001de7c8.c"
     },
     {
-      "name": "func_001F4B98",
+      "name": "Panel_showSlotMark",
       "unit": "asm/cod/000000",
       "vaddr": "0x001F4B98",
       "size": 168,
@@ -73789,7 +73789,7 @@
       "tu": "src/cod/0017b010.c"
     },
     {
-      "name": "func_001FF180",
+      "name": "FileLoadRec_start",
       "unit": "asm/cod/000000",
       "vaddr": "0x001FF180",
       "size": 180,
@@ -73803,105 +73803,105 @@
       "tu": "src/cod/0017b010.c"
     },
     {
-      "name": "func_0017B010",
+      "name": "cOl1b_update",
       "unit": "asm/cod/000000",
       "vaddr": "0x0017B010",
       "size": 200,
       "tu": "src/cod/0017b010.c"
     },
     {
-      "name": "func_00150418",
+      "name": "List_destroyChildren",
       "unit": "asm/cod/000000",
       "vaddr": "0x00150418",
       "size": 152,
       "tu": "src/cod/00150418.c"
     },
     {
-      "name": "func_002AEE40",
+      "name": "Queue_insertSorted",
       "unit": "asm/cod/000000",
       "vaddr": "0x002AEE40",
       "size": 204,
       "tu": "src/cod/00150418.c"
     },
     {
-      "name": "func_002AC650",
+      "name": "Curve_sample",
       "unit": "asm/cod/000000",
       "vaddr": "0x002AC650",
       "size": 144,
       "tu": "src/cod/00150418.c"
     },
     {
-      "name": "func_0016C678",
+      "name": "Screen_closeAndRestorePlayer",
       "unit": "asm/cod/000000",
       "vaddr": "0x0016C678",
       "size": 184,
       "tu": "src/cod/0016c678.c"
     },
     {
-      "name": "func_001689E8",
+      "name": "Screen_closeCasino",
       "unit": "asm/cod/000000",
       "vaddr": "0x001689E8",
       "size": 208,
       "tu": "src/cod/001689e8.c"
     },
     {
-      "name": "func_001F1038",
+      "name": "cEmWrap_setGroupVitalFraction",
       "unit": "asm/cod/000000",
       "vaddr": "0x001F1038",
       "size": 196,
       "tu": "src/cod/001f1038.c"
     },
     {
-      "name": "func_001E8EB8",
+      "name": "Ring_pickByAngle",
       "unit": "asm/cod/000000",
       "vaddr": "0x001E8EB8",
       "size": 188,
       "tu": "src/cod/001e8eb8.c"
     },
     {
-      "name": "func_002BBCE0",
+      "name": "LengthFromLineAtTurnedOffset",
       "unit": "asm/cod/000000",
       "vaddr": "0x002BBCE0",
       "size": 200,
       "tu": "src/cod/00170050.c"
     },
     {
-      "name": "func_001A9938",
+      "name": "EffectOwner_destruct",
       "unit": "asm/cod/000000",
       "vaddr": "0x001A9938",
       "size": 244,
       "tu": "src/cod/00170050.c"
     },
     {
-      "name": "func_00262980",
+      "name": "cEm00_armAttackVolume",
       "unit": "asm/cod/000000",
       "vaddr": "0x00262980",
       "size": 144,
       "tu": "src/cod/00170050.c"
     },
     {
-      "name": "func_00170050",
+      "name": "cOmHitVolume_setupCylinder",
       "unit": "asm/cod/000000",
       "vaddr": "0x00170050",
       "size": 224,
       "tu": "src/cod/00170050.c"
     },
     {
-      "name": "func_0019E2A8",
+      "name": "cOmHitVolume_setupThinBox",
       "unit": "asm/cod/000000",
       "vaddr": "0x0019E2A8",
       "size": 300,
       "tu": "src/cod/00170050.c"
     },
     {
-      "name": "func_001A0BD8",
+      "name": "cOmHitVolume_setupBox",
       "unit": "asm/cod/000000",
       "vaddr": "0x001A0BD8",
       "size": 288,
       "tu": "src/cod/00170050.c"
     },
     {
-      "name": "func_0019BCA0",
+      "name": "cOmHitVolume_setupLongBox",
       "unit": "asm/cod/000000",
       "vaddr": "0x0019BCA0",
       "size": 280,
@@ -73917,14 +73917,14 @@
     "  1. Assembling every `asm` part to build/rel/<name>/<asm-rel>.o",
     "  2. Full-linking via `mipsel-linux-gnu-ld -EL -T <lcf>",
     "     --unresolved-symbols=ignore-all -o build/rel/<name>/<name>.elf`",
-    "     (full link, not -r \u2014 the SNR2 tail",
+    "     (full link, not -r — the SNR2 tail",
     "     blob already encodes the surviving external reloc table).",
     "  3. Extracting .text via",
     "     `objcopy -O binary --only-section=.text` to",
     "     build/rel/<name>/<name>.text.bin.",
-    "  4. Concatenating parts in order \u2014 each `bin` part is read",
+    "  4. Concatenating parts in order — each `bin` part is read",
     "     verbatim and each `asm` part is replaced by the linked .text",
-    "     bytes \u2014 to produce build/rel/<name>.rel.",
+    "     bytes — to produce build/rel/<name>.rel.",
     "  5. Asserting sha256(build/rel/<name>.rel) == sha256_expected.",
     "",
     "Schema per entry:",
@@ -73983,7 +73983,7 @@
     "deprecated in the schema; per-unit `target_path`/`base_path` is",
     "used instead).  They live here only as the on-disk roots compile.py",
     "uses when constructing those per-unit paths and when mirroring",
-    "build/ \u2192 expected/build/ for not-yet-decompiled units.",
+    "build/ → expected/build/ for not-yet-decompiled units.",
     "`watch_patterns` and `progress_categories` are written verbatim.",
     "`min_version` pins the schema; bumping it should be deliberate."
   ],

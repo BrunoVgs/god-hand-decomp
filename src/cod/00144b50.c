@@ -9,7 +9,7 @@ extern int cSnd_SeCall_2CBA48(void *a, int b, int c, void *d, int e, int f, int 
 extern void cOmBase_setMeshColorFromLayer(void *a0, int a1, float r, float g, float b);
 extern char D_0044E300[];
 extern void cHeap_free(void *heap, void *p);
-extern void func_002EBC50(void *self, int flags);
+extern void BlockOwner_dtor(void *self, int flags);
 extern unsigned short D_003BD70C;
 extern int cIDBase_initialize(void *self, int pack, int type);
 extern void func_00144C90(void *self);
@@ -179,7 +179,7 @@ void BufOwner_deletingDtor(BufOwner *self, int flags) {
     FREE_BUF(self->buf33C);
     FREE_BUF(self->buf324);
     FREE_BUF(self->buf30C);
-    func_002EBC50(self, flags);
+    BlockOwner_dtor(self, flags);
 }
 
 /* Init the display: five entries of 0x50 bytes from 0x100 (pack 1, type 5),

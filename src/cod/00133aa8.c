@@ -23,8 +23,8 @@ typedef struct Screen164140 {
 } Screen164140;
 
 /* Runs the update for the screen's current phase. */
-__attribute__((section(".text.func_00164140")))
-void func_00164140(Screen164140 *self)
+__attribute__((section(".text.ModeObj_updatePhase")))
+void ModeObj_updatePhase(Screen164140 *self)
 {
     switch (self->phase) {
     case SCREEN_PHASE_POLL:
@@ -46,8 +46,8 @@ void func_00164140(Screen164140 *self)
 
 /* Sets the first mark: lit when `lit`; when `on` also flags the line marks and
  * shows both line layers, otherwise hides them. */
-__attribute__((section(".text.func_001E6B70")))
-void func_001E6B70(Slot2 *self, int on, int lit)
+__attribute__((section(".text.Slot2_setLineMark")))
+void Slot2_setLineMark(Slot2 *self, int on, int lit)
 {
     self->markFlag[0] = 0;
     if (lit) {
@@ -96,8 +96,8 @@ void func_002BF708(Obj2BF708 *self)
 /* Moves the sphere centre into world space, then rebuilds the box around it:
  * unk10 gets the corner at centre - radius, unk20 the corner at centre + radius.
  * Clears flag bit 1 (the box is up to date). */
-__attribute__((section(".text.func_00133AA8")))
-void func_00133AA8(cCollisionSolidObj *self)
+__attribute__((section(".text.cCollisionSolid_updateBounds")))
+void cCollisionSolid_updateBounds(cCollisionSolidObj *self)
 {
     float r;
     sceVu0ApplyMatrix(&self->unk60, self->owner, &self->center);
@@ -117,8 +117,8 @@ extern int D_0061A990;                  /* a counter that changes every frame */
 
 /* A pseudo-random number in lo..hi, mixed from the frame counter, the gold
  * and a random draw. */
-__attribute__((section(".text.func_001DCE68")))
-int func_001DCE68(void *self, int lo, int hi)
+__attribute__((section(".text.Casino_randRange")))
+int Casino_randRange(void *self, int lo, int hi)
 {
     unsigned int seed = D_0061A990;
     int gold = cCoreSave_getGold(&D_00569B70);

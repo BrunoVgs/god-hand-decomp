@@ -16,7 +16,7 @@ extern int ChkLine(void *a0, void *a1, void *a2, int a3, int a4, int a5, int a6,
                    int a7, int a8, int a9, int a10, int a11, int a12);
 extern void func_0026E7A8(void *a0, int a1);
 extern int cEmManage_CreateItem(void *a0, int a1, int a2, int a3);
-extern void func_001C2280(void *a0, void *a1, int a2, void *a3, void *a4);
+extern void cObj_setupAimStep2(void *a0, void *a1, int a2, void *a3, void *a4);
 extern void SetField_2F6_1C2308(void *a0);
 extern void cGameObj_SetTgtTurn(void *a0, int a1, float a2);
 extern float capVu0MagnitudeSqXZ(void *a0, void *a1);
@@ -144,7 +144,7 @@ __attribute__((section(".text.func_00241EB0"))) void func_00241EB0(cEm00 *self)
                         vb[0] = 0.0f;
                         vb[1] = 0.0f;
                         vb[2] = 0.0f;
-                        func_001C2280((void *)it, s3, 0xA, ap, vb);
+                        cObj_setupAimStep2((void *)it, s3, 0xA, ap, vb);
                         SetField_2F6_1C2308(*(void **)(s3 + 0x70C));
                     }
                 }

@@ -27,8 +27,8 @@ extern void func_002A4ED8(DebugView *self);
 
 
 /* Refresh the view, reset the text size and print the shown value at (0x28, 0x12C). */
-__attribute__((section(".text.func_002A4DF8")))
-void func_002A4DF8(DebugView *self)
+__attribute__((section(".text.DebugView_printShown")))
+void DebugView_printShown(DebugView *self)
 {
     func_002A4ED8(self);
     Moji_size_set(0, 0);
@@ -45,8 +45,8 @@ typedef struct FadeStep {
 
 /* Fade the screen to black over 10 frames, sleep the scenario task for as
  * long, then move the step to stage 1. */
-__attribute__((section(".text.func_001F6078")))
-void func_001F6078(FadeStep *self)
+__attribute__((section(".text.FadeStep_fadeOutAndAdvance")))
+void FadeStep_fadeOutAndAdvance(FadeStep *self)
 {
     classFADE_start(&D_00747470, 0, FADE_FRAMES, 0, 0, 0xFF000000, FADE_FRAMES);
     cTaskWork_sleep(D_003C2F84->task.cur, FADE_FRAMES);
@@ -55,8 +55,8 @@ void func_001F6078(FadeStep *self)
 
 /* Init the base, mark the object fixed and open, reset its sub-states and
  * start it opening. Always succeeds. */
-__attribute__((section(".text.func_0017FC58")))
-int func_0017FC58(cOl2b *self)
+__attribute__((section(".text.cOl2b_startOpening")))
+int cOl2b_startOpening(cOl2b *self)
 {
     func_001B6FB8(self);
     self->flags5B8 |= COL2B_FLAG5B8_FIXED;
@@ -69,8 +69,8 @@ int func_0017FC58(cOl2b *self)
 }
 
 /* Forget the skill that slot i of the index points at, when it is at level 1. */
-__attribute__((section(".text.func_002C9B10")))
-void func_002C9B10(cRecordIndex *self, int i)
+__attribute__((section(".text.cRecordIndex_clearSkillIfLevel1")))
+void cRecordIndex_clearSkillIfLevel1(cRecordIndex *self, int i)
 {
     signed char *base;
     signed char *skill;
@@ -99,8 +99,8 @@ extern void func_002B42F0(PhaseJob *job);
 
 /* Start the job on phase 0 and move to the run phase; in the run phase
  * step it, and finish it once the step reports done. */
-__attribute__((section(".text.func_002B4188")))
-void func_002B4188(PhaseJob *job)
+__attribute__((section(".text.PhaseJob_step")))
+void PhaseJob_step(PhaseJob *job)
 {
     switch (job->phase) {
     case PHASE_START:
@@ -133,8 +133,8 @@ typedef struct IdScreen {
 
 
 /* Initialise the four id parts and fetch the screen texture. */
-__attribute__((section(".text.func_00143B70")))
-void func_00143B70(IdScreen *self)
+__attribute__((section(".text.IdScreen_init")))
+void IdScreen_init(IdScreen *self)
 {
     self->count = 0;
     cIDBase_initialize(self, 1, SCREEN_PART_ID_A);

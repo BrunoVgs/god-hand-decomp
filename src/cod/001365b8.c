@@ -23,8 +23,8 @@ typedef struct VoiceFighter {
 
 
 /* Play the fighter's own voice when it has one, then the shared grunt. */
-__attribute__((section(".text.func_0019C050")))
-void func_0019C050(VoiceFighter *self)
+__attribute__((section(".text.VoiceFighter_playHitVoice")))
+void VoiceFighter_playHitVoice(VoiceFighter *self)
 {
     if (self->voiceNo >= 0)
         cSnd_SeCall_2CBA48(D_005FEE00, SE_BUS_VOICE, self->voiceNo, self, 0, 0, 0, 0);
@@ -42,8 +42,8 @@ typedef struct KeyRec {
 
 /* Index of the last record whose key is below `key`: -1 when even the first
  * is not, n when all of them are. The owner argument is not used. */
-__attribute__((section(".text.func_002AC538")))
-int func_002AC538(void *owner, short key, int n, KeyRec *rec)
+__attribute__((section(".text.KeyRec_findSegment")))
+int KeyRec_findSegment(void *owner, short key, int n, KeyRec *rec)
 {
     int i;
 
@@ -71,8 +71,8 @@ typedef struct TickObj {
 /* Draw a limit in 0..maxVal-1. One call in four resets the tick first. Once
  * the tick has reached the limit, reset it and return 1; otherwise count it
  * up and return 0. */
-__attribute__((section(".text.func_002949E8")))
-int func_002949E8(TickObj *self, unsigned int maxVal)
+__attribute__((section(".text.TickObj_stepToLimit")))
+int TickObj_stepToLimit(TickObj *self, unsigned int maxVal)
 {
     unsigned char limit = irand() % maxVal;
 
@@ -101,8 +101,8 @@ typedef struct Ring {
 /* Starting after the cursor, walk the ring (wrapping at the end) to the first
  * record func_002D3210 rejects; give up after 15 records and return the last
  * one. With no cursor, return the first record. */
-__attribute__((section(".text.func_002D3110")))
-char *func_002D3110(Ring *self)
+__attribute__((section(".text.Ring_findRejectedRecord")))
+char *Ring_findRejectedRecord(Ring *self)
 {
     char *p = (char *)self + RING_START;
     char *end;
@@ -145,8 +145,8 @@ extern void func_001F00E8(void *owner, NamedHit *rec, float level);
 
 /* For a record that has been hit: a listed name gets the fixed level, any
  * other name gets its own level plus a small step. */
-__attribute__((section(".text.func_001F0360")))
-void func_001F0360(void *owner, NamedHit *rec)
+__attribute__((section(".text.NamedHit_applyLevel")))
+void NamedHit_applyLevel(void *owner, NamedHit *rec)
 {
     if (rec != 0 && rec->hits > 0) {
         if (func_003A5678(D_0042BE90, rec->nameKey) == 0)
@@ -159,8 +159,8 @@ void func_001F0360(void *owner, NamedHit *rec)
 /* Probe for a hit point: zero a local vector, let func_00135EC8 fill it and
  * func_001361A0 confirm it. On success copy the point to out (when given)
  * and return 1; otherwise return 0. */
-__attribute__((section(".text.func_001365B8")))
-int func_001365B8(void *a0, void *a1, void *shape, void *a3, float *out)
+__attribute__((section(".text.HitProbe_probeHitPoint")))
+int HitProbe_probeHitPoint(void *a0, void *a1, void *shape, void *a3, float *out)
 {
     float hit[4] __attribute__((aligned(16)));
 

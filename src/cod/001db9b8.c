@@ -2,7 +2,7 @@
 
 extern void cSnd_SetBgmState(void *a0, int a1);
 extern int cSnd_SeCall_2CBA48(void *a, int b, int c, void *d, int e, int f, int g, int h);
-extern void func_001DF358(void *a0, int a1);
+extern void CustomIDOwner_setSlideStateB(void *a0, int a1);
 extern void PokerUi_slidePanel(void *a0, int a1);
 extern void Panel_slideSidePanelArrows(void *a0, int a1);
 extern void UiPanel_setSlideMode(void *a0, int a1);
@@ -13,8 +13,8 @@ extern void func_001DE170(void *a0, int a1);
 extern void func_001DE258(void *a0, int a1);
 extern void func_001DE340(void *a0, int a1);
 extern void CustomIDOwner_setSlideState(void *a0, int a1);
-extern void func_001DE4F8(void *a0, int a1);
-extern void func_001DE7C8(void *a0, int a1);
+extern void PanelWork_setModeB(void *a0, int a1);
+extern void Panel_slide(void *a0, int a1);
 extern void CustomIDWork_SetNumber_1DD218(void *a0, int a1);
 extern void func_001DD770(void *a0, int a1);
 extern void func_001DD840(void *a0, int a1);
@@ -90,7 +90,7 @@ void func_001DB9B8(void *a0)
         n = *(int *)(s1 + 0x302C);
         if (n == 0) {
             p = s1 + 0x25B0;
-            func_001DF358(p, 3);
+            CustomIDOwner_setSlideStateB(p, 3);
             PokerUi_slidePanel(p, 3);
             Panel_slideSidePanelArrows(p, 3);
             UiPanel_setSlideMode(p, 3);
@@ -120,8 +120,8 @@ void func_001DB9B8(void *a0)
         func_001DE258(s1, 2);
         func_001DE340(s1, 2);
         CustomIDOwner_setSlideState(s1, 2);
-        func_001DE4F8(s1, 2);
-        func_001DE7C8(s1, 2);
+        PanelWork_setModeB(s1, 2);
+        Panel_slide(s1, 2);
         *(int *)(s1 + 0x3034) = 0;
         CustomIDWork_SetNumber_1DD218(s1, 0);
         func_001DD770(s1, 2);

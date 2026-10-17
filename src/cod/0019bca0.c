@@ -8,8 +8,8 @@ extern void func_001FD9D8(void *slot, void *mtx, float *m, float *nv, float *t);
 
 
 /* Init: registers the object's damage-take volume (size 4 x 1 x 2) and sets its hit state fields; returns 1. */
-__attribute__((section(".text.func_0019BCA0")))
-int func_0019BCA0(cOmHitVolume *p)
+__attribute__((section(".text.cOmHitVolume_setupLongBox")))
+int cOmHitVolume_setupLongBox(cOmHitVolume *p)
 {
     float f[16];
     float *m;

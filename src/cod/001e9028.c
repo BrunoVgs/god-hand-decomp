@@ -6,7 +6,7 @@ typedef struct TurnObj {
     float angle;                        /* 0xB8 */
 } TurnObj;
 
-extern void func_001E8F78(TurnObj *self, float angle);
+extern void cObj_setFloatAndVec(TurnObj *self, float angle);
 
 __attribute__((section(".text.TurnObj_addAngleClamped")))
 void TurnObj_addAngleClamped(TurnObj *self, float step, float limit)
@@ -21,5 +21,5 @@ void TurnObj_addAngleClamped(TurnObj *self, float step, float limit)
             self->angle = limit;
         }
     }
-    func_001E8F78(self, self->angle);
+    cObj_setFloatAndVec(self, self->angle);
 }

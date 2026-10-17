@@ -8,7 +8,7 @@ extern void cIDBase_trans(void *p);
 extern void displayScrollLayer(int id, int on);
 extern int Rnd(void);
 extern void func_001F7820(void *mgr, void *ent);
-extern void func_002B6370(void *self);
+extern void cNode_clearActiveRecursive(void *self);
 extern void func_002B60D0(void *dst, void *src);
 extern void func_002B6230(void *self, void *v);
 extern int func_001B8030(void *obj);
@@ -143,7 +143,7 @@ void cNode_setTranslationFromParent(void *self, float *pos)
     void *parent;
 
     /* retail stores rel and tmp with literal offsets from the object at sp+0, and reads rel back through its own address */
-    func_002B6370(self);
+    cNode_clearActiveRecursive(self);
     VU0_SQC2_VF0(parentPos, 0);
     parent = func_002B5E50(self);
     if (parent != 0) {

@@ -4,7 +4,7 @@ extern void CustomIDWork_SetColorAnimNormal_2D68D8(void *a0, int a1, int a2, int
 extern void CustomIDWork_SetScaleAnimNormal(void *a0, int a1, float a2, float a3);
 extern void CustomIDWork_SetDisp(void *a0, int a1);
 extern int cSnd_SeCall(void *a0, int a1, short a2, int a3, int a4, int a5);
-extern void func_001ED7E0(void *a0);
+extern void Panel_hideIcons(void *a0);
 extern int D_005CAFF0;
 extern char D_005FEE00[];
 
@@ -104,7 +104,7 @@ void func_001ED848(void *a0) {
             break;
         case 5:
             if (*(int *)(s1 + 0x34C) == 0) {
-                func_001ED7E0(s1);
+                Panel_hideIcons(s1);
             } else {
                 *(int *)(s1 + 0x34C) -= 1;
             }

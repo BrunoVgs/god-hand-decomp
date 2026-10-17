@@ -18,8 +18,8 @@ extern char D_00586AF0[];
 extern float cEvent_getCutFrame();
 
 /* Nonzero while a cutscene runs and the current cut frame is still short of this step's end frame. */
-__attribute__((section(".text.func_002B2C98")))
-int func_002B2C98(CutStep *self)
+__attribute__((section(".text.CutStep_isBeforeEndFrame")))
+int CutStep_isBeforeEndFrame(CutStep *self)
 {
     float frame;
 

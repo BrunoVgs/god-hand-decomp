@@ -16,8 +16,8 @@ typedef struct Ring1E8EB8 {
 
 /* Picks the ring entry that the angle falls in and stores it with its two
  * neighbours (wrapping at both ends). */
-__attribute__((section(".text.func_001E8EB8")))
-void func_001E8EB8(Ring1E8EB8 *self)
+__attribute__((section(".text.Ring_pickByAngle")))
+void Ring_pickByAngle(Ring1E8EB8 *self)
 {
     unsigned int idx;
     float angle = func_001E9078(self);

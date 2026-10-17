@@ -12,8 +12,8 @@ extern void __builtin_delete(void *p);
 
 /* True when the skill that slot i of the index points at is at level 1.
  * False while the index has no table. */
-__attribute__((section(".text.func_002C9AD0")))
-int func_002C9AD0(cRecordIndex *self, int i)
+__attribute__((section(".text.cRecordIndex_isSlotSkillLevel1")))
+int cRecordIndex_isSlotSkillLevel1(cRecordIndex *self, int i)
 {
     if (self->table == 0)
         return 0;
@@ -30,8 +30,8 @@ typedef struct WeaponCarrier {
 
 
 /* Apply damage to the carried weapon; when that wrecks it, break it and let go. */
-__attribute__((section(".text.func_0012B2E0")))
-void func_0012B2E0(WeaponCarrier *self)
+__attribute__((section(".text.WeaponCarrier_damageHeldWeapon")))
+void WeaponCarrier_damageHeldWeapon(WeaponCarrier *self)
 {
     if (self->weapon != 0 && cOmWeapon_SetDamage(self->weapon) != 0) {
         cOmWeapon_SetBreak(self->weapon);
@@ -44,8 +44,8 @@ void func_0012B2E0(WeaponCarrier *self)
 
 
 /* Close every open window that shows message messNo. */
-__attribute__((section(".text.func_002AEDF0")))
-void func_002AEDF0(cMessage *self, int messNo)
+__attribute__((section(".text.cMessage_closeMessNo8")))
+void cMessage_closeMessNo8(cMessage *self, int messNo)
 {
     cMessageWin *win;
     unsigned char no = messNo;
@@ -66,8 +66,8 @@ typedef struct EntCounter {
 extern void func_002A9800(EntCounter *list, void *entry);
 
 /* Destroy entry (mode 2), count it, then hand it back to the list. */
-__attribute__((section(".text.func_001494F8")))
-void func_001494F8(EntCounter *list, void *entry)
+__attribute__((section(".text.EntCounter_releaseEntry")))
+void EntCounter_releaseEntry(EntCounter *list, void *entry)
 {
     if (entry != 0) {
         list->released++;
@@ -87,8 +87,8 @@ typedef struct SlotOwner {
 
 
 /* Free each of the eight objects and clear its handle. */
-__attribute__((section(".text.func_002C1270")))
-void func_002C1270(SlotOwner *self)
+__attribute__((section(".text.SlotOwner_freeSlots")))
+void SlotOwner_freeSlots(SlotOwner *self)
 {
     unsigned int i;
 
@@ -109,16 +109,16 @@ typedef struct StepRec {
     signed char kind;                   /* 0x01 */
 } StepRec;
 
-extern void func_002BF4C8(StepRec *rec);
+extern void ScenarioCursor_reinitStep2(StepRec *rec);
 extern void func_002BF518(StepRec *rec);
 
 /* Run the handler for the record's kind; other kinds do nothing. */
-__attribute__((section(".text.func_002BF478")))
-void func_002BF478(StepRec *rec)
+__attribute__((section(".text.StepRec_runKindHandler")))
+void StepRec_runKindHandler(StepRec *rec)
 {
     switch (rec->kind) {
     case STEP_KIND_A:
-        func_002BF4C8(rec);
+        ScenarioCursor_reinitStep2(rec);
         break;
     case STEP_KIND_B:
         func_002BF518(rec);

@@ -4,7 +4,7 @@ extern void *Getplayer(void);
 extern float capVu0LengthSq(void *a0);
 extern void cActionButton_set(void *a0, int a1, int a2, int a3, void *t0, void *t1, int t2);
 extern int D_00568288;
-extern void func_001BEB28();
+extern void cOm_takeCasinoTicket();
 
 #include "godhand/vu0.h"
 #include "godhand/cCoreSave.h"
@@ -43,7 +43,7 @@ void cOmea_ChkTreasureBox(void *a0) {
         d = capVu0LengthSq(buf);
         if (d < 1.0f) {
             if (cCoreSave_getCasinoTicketNum(&D_00569B70) != 0) {
-                cActionButton_set(&D_00568288, 4, 0, 0, (void *)&func_001BEB28, obj, 0);
+                cActionButton_set(&D_00568288, 4, 0, 0, (void *)&cOm_takeCasinoTicket, obj, 0);
             }
         }
     }

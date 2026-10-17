@@ -9,8 +9,8 @@ extern int D_0044A510;
 extern void *func_0028EB00(void *obj);
 
 /* Enemy constructor: run the base constructor, set the vtable at +0x214, clear one quadword, set the flag byte at +0x1541 and the type name at +0x4AC. */
-__attribute__((section(".text.cEmad_construct")))
-void *cEmad_construct(cEm00 *self)
+__attribute__((section(".text.cEm00_construct_ad")))
+void *cEm00_construct_ad(cEm00 *self)
 {
     unsigned char *flags;
 

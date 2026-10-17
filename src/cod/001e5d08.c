@@ -6,7 +6,7 @@
 
 extern int SetEffect(int a0, int a1, void *a2, int a3, int t0, unsigned t1);
 extern void func_001E6ED8(Slot2 *a0, int a1, int a2);
-extern void func_001E6B70(Slot2 *a0, int a1, int a2);
+extern void Slot2_setLineMark(Slot2 *a0, int a1, int a2);
 extern void func_001E8E48(void *a0, void *a1);
 extern void cSnd_BgmEventStart(void *a0, int a1, int a2, int a3);
 extern int cSnd_SeCall(void *a0, int a1, short a2, int a3, int a4, int a5);
@@ -42,7 +42,7 @@ void Slot2_payoutLine1(Slot2 *self) {
     case 0:
         SetEffect(1, 1, 0, 0, -1, 0xFFFFFFFFU);
         func_001E6ED8(self, 1, 1);
-        func_001E6B70(self, 1, 1);
+        Slot2_setLineMark(self, 1, 1);
         self->timer = 0x3C;
         self->phase = self->phase + 1;
         break;
@@ -67,7 +67,7 @@ void Slot2_payoutLine1(Slot2 *self) {
             cSnd_SeStop(D_005FEE00, self->seId[1]);
             cCoreSave_addGold(&D_00569B70, self->coinUnit * self->coinNum, 0);
             func_001E6ED8(self, 0, 0);
-            func_001E6B70(self, 0, 0);
+            Slot2_setLineMark(self, 0, 0);
             self->phase = self->phase + 1;
             break;
         }

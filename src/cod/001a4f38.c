@@ -4,7 +4,7 @@
 #include "godhand/cSceAtUnit.h"
 #include "godhand/cOm4f.h"
 
-extern void func_002AEDF0(cMessage *self, int kind);
+extern void cMessage_closeMessNo8(cMessage *self, int kind);
 extern void ActorMove_resetMotion(cMessageWin *win, int messNo, int kind, void *owner);
 extern void cArea_AreaGetCenterPos(void *area, float *pos);
 extern unsigned char cOm4f_isOpen(cOm4f *self);
@@ -19,8 +19,8 @@ unsigned int cMessage_create(cMessage *self, unsigned int messNo, void *owner, u
 {
     cMessageWin *win;
     unsigned int workId;
-    func_002AEDF0(self, kind);
-    win = func_002AEE40(self, param);
+    cMessage_closeMessNo8(self, kind);
+    win = Queue_insertSorted(self, param);
     if (win != 0) {
         ActorMove_resetMotion(win, messNo & 0xFFFF, kind, owner);
         workId = win->workId;

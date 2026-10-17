@@ -17,8 +17,8 @@ extern int D_0042BD40[5];
 extern int D_0042BD58[5];
 
 /* Allocate size bytes on the IOP heap, hand them to Forward2D2F78_2D3020 and store the block in *out on success; free it on failure. */
-__attribute__((section(".text.func_002D3050")))
-int func_002D3050(int a, int b, void **out, int size) {
+__attribute__((section(".text.cSif_allocAndForward")))
+int cSif_allocAndForward(int a, int b, void **out, int size) {
     void *mem;
     int r;
     *out = 0;
@@ -47,8 +47,8 @@ typedef struct cDvdState {
 
 /* Step the disc state: a hit sets state 1 with a 90 frame timer; state 1 counts the timer down once the disc is ready
  * and drops to 0. Returns the state. */
-__attribute__((section(".text.func_00201960")))
-unsigned char func_00201960(cDvdState *self) {
+__attribute__((section(".text.cDvd_stepState")))
+unsigned char cDvd_stepState(cDvdState *self) {
     unsigned char st;
     if (Obj3290_Tramp_003313E0_9298(self) == 1) {
         self->state = DVD_STATE_COUNT;
@@ -97,8 +97,8 @@ typedef struct TrackObj {
 } TrackObj;
 
 /* Copy the position of each source into the matching vector, with w = 1. */
-__attribute__((section(".text.func_00139910")))
-void func_00139910(TrackObj *self) {
+__attribute__((section(".text.cOmBase_copyTargetPositions")))
+void cOmBase_copyTargetPositions(TrackObj *self) {
     PosSource *a = self->srcFirst;
     if (a != 0 && self->srcSecond != 0) {
         cVec v;
@@ -112,8 +112,8 @@ void func_00139910(TrackObj *self) {
 }
 
 /* Hide display 0x12, show displays 5 and 6, and show 7..10 too when full is set. */
-__attribute__((section(".text.func_001F2A88")))
-void func_001F2A88(void *self, int full) {
+__attribute__((section(".text.CustomID_showDisplays")))
+void CustomID_showDisplays(void *self, int full) {
     SetCustomIDDispOneOrAll_1F29C0(self, 0x12, 0);
     SetCustomIDDispOneOrAll_1F29C0(self, 5, 1);
     SetCustomIDDispOneOrAll_1F29C0(self, 6, 1);
@@ -137,8 +137,8 @@ typedef struct ChanceObj {
 #define CHANCE_OFF  0x20000000          /* ChanceObj.flags: no chance roll */
 
 /* Chance roll for a level: 0 when disabled or level 1, else true one time in the level's divisor. */
-__attribute__((section(".text.func_001ABBE8")))
-int func_001ABBE8(ChanceObj *self, int level) {
+__attribute__((section(".text.cOmBase_rollChance")))
+int cOmBase_rollChance(ChanceObj *self, int level) {
     DivTable tbl;
     if ((self->flags & CHANCE_OFF) != 0) {
         return 0;
@@ -161,8 +161,8 @@ typedef struct IdPosScreen {
 } IdPosScreen;
 
 /* Place both elements at the local Y of position idx (0..4). */
-__attribute__((section(".text.func_001ECF30")))
-void func_001ECF30(IdPosScreen *self, unsigned short idx) {
+__attribute__((section(".text.CustomID_placeByIndexB")))
+void CustomID_placeByIndexB(IdPosScreen *self, unsigned short idx) {
     PosTbl a;
     PosTbl b;
     if (idx < 5) {

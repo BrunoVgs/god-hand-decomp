@@ -39,8 +39,8 @@ typedef struct ArenaEm {
 
 extern void ColiseumBattle_DefeatAllEnemies(ArenaEm *self);
 
-__attribute__((section(".text.func_001F07C0")))
-void func_001F07C0(ArenaEm *self)
+__attribute__((section(".text.ArenaEm_stepFirstWave")))
+void ArenaEm_stepFirstWave(ArenaEm *self)
 {
     char buf[0x10];
     switch (self->introStep) {
@@ -89,8 +89,8 @@ typedef struct KeyFollower {
 
 /* Take a key slot from the scaled pool (-1 when none is left), register it, and start both
  * position copies from the holder's position. Returns the object id. */
-__attribute__((section(".text.func_001FCA38")))
-int func_001FCA38(KeyFollower *self, int a1, int a2, int a3, int key)
+__attribute__((section(".text.KeyFollower_attachScaled")))
+int KeyFollower_attachScaled(KeyFollower *self, int a1, int a2, int a3, int key)
 {
     char *slot;
     slot = Pool_createObjWithScale(D_005E8040);
@@ -111,8 +111,8 @@ int func_001FCA38(KeyFollower *self, int a1, int a2, int a3, int key)
 
 /* Place or slide the element in (sel 2: down from hidden to shown over 10 frames; sel 3:
  * the way back; sel 1: shown at once; others: hidden). */
-__attribute__((section(".text.func_001DF358")))
-void func_001DF358(void *self, unsigned char sel)
+__attribute__((section(".text.CustomIDOwner_setSlideStateB")))
+void CustomIDOwner_setSlideStateB(void *self, unsigned char sel)
 {
     switch (sel) {
     case 0:
@@ -147,8 +147,8 @@ typedef struct cGameObjTurnB {
 } cGameObjTurnB;
 
 /* Turn step: the first call plays the turn sound and enters step 1; step 1 turns the heading toward goalRot and, once there, resets the four state bytes. */
-__attribute__((section(".text.func_001BC538")))
-void func_001BC538(cGameObjTurnB *self) {
+__attribute__((section(".text.cGameObjTurnB_stepTurn")))
+void cGameObjTurnB_stepTurn(cGameObjTurnB *self) {
     float rot;
 
     switch (self->base.step) {
@@ -187,8 +187,8 @@ extern int ChkLine(void *a0, void *a1, void *a2, void *a3, int a4, int a5, int a
 /* Keep an object on the ground: unless already grounded, cast a line from 1 unit above the
  * object's position to 11 units below it; on a hit keep the hit height at 0x2E0 and set the
  * flag in 0x2DC. While the flag is set, hand the kept height to func_002E6B88. */
-__attribute__((section(".text.func_002E6EE8")))
-void func_002E6EE8(char *self)
+__attribute__((section(".text.Pos_followGroundB")))
+void Pos_followGroundB(char *self)
 {
     cVec pos;                           /* sp+0x30 object position */
     cVec from;                          /* sp+0x40 */
@@ -237,8 +237,8 @@ typedef struct StateTable {
 
 extern StateTable D_004235D0;
 
-__attribute__((section(".text.func_001895D8")))
-void func_001895D8(void *a0)
+__attribute__((section(".text.StateObj_runHandlerB")))
+void StateObj_runHandlerB(void *a0)
 {
     char *s0 = (char *)a0;
     StateTable tbl;

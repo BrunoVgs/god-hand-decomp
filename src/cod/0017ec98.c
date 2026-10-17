@@ -17,8 +17,8 @@ extern void cCollisionSolidManage_CreateSphere(void *mgr, void *owner, void *bod
 
 /* Init of an object that owns effect data 0x27D: base init, register the
  * data record, start the effect on the object. */
-__attribute__((section(".text.func_0017EC98")))
-int func_0017EC98(cOmBase *self)
+__attribute__((section(".text.cOmBase_initEffData27D")))
+int cOmBase_initEffData27D(cOmBase *self)
 {
     int res;
 
@@ -38,8 +38,8 @@ extern int D_00462FC0;                  /* collision solid manager */
 
 /* Init of an object with one collision sphere: base init, mark it solid, register
  * the unit and a sphere centred half a unit above its origin, reset the mode byte. */
-__attribute__((section(".text.func_001B1BD0")))
-int func_001B1BD0(cOmBase *self)
+__attribute__((section(".text.cOmBase_initSphereBody")))
+int cOmBase_initSphereBody(cOmBase *self)
 {
     cVec centre;
 
@@ -81,8 +81,8 @@ extern void func_002B4768(ScriptRun *run, int *time, ScriptCmd **cmd);
 /* Run every command that is due (its time is not past the clock). A wait
  * command that accepts stops the run and moves the clock to its time. The
  * step runs as the loop's increment, so `continue` skips to the next command. */
-__attribute__((section(".text.func_002B3338")))
-void func_002B3338(ScriptRun *run)
+__attribute__((section(".text.ScriptRun_runDueCommands")))
+void ScriptRun_runDueCommands(ScriptRun *run)
 {
     for (;; func_002B4768(run, &run->cmdTime, &run->cmd)) {
         if (run->cmdTime > run->clock)

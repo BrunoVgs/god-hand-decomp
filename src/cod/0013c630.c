@@ -1,6 +1,6 @@
 /* sn-2.95.3-136 matched TU. */
 
-extern void func_002E1468(void *a0, void *a1, void *a2, void *a3, float f0, float f1, float f2);
+extern void Hermite3_interpolate(void *a0, void *a1, void *a2, void *a3, float f0, float f1, float f2);
 
 /* sn-2.95.3-136 matched TU. */
 #include "godhand/vu0.h"
@@ -52,7 +52,7 @@ void func_0013C630(void *arg) {
     p = buf + 4;
     p[3] = 1.0f;
     VU0_SQC2_VF0(buf, 0x20);
-    func_002E1468(&buf[12], &buf[8], &buf[0], p, r, 0.0f, 0.0f);
+    Hermite3_interpolate(&buf[12], &buf[8], &buf[0], p, r, 0.0f, 0.0f);
     *(float *)(s0 + 0x60) = buf[8];
     *(float *)(s0 + 0x64) = buf[9];
 }

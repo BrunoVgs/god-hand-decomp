@@ -124,7 +124,7 @@ void InitSubBufferPool_2C3280(char *a0)
 {
 	char *p = a0 + 0x1C;
 	EntTable_init(p, 0x10, 0x1800, 0x30);
-	func_002D51F0(p);
+	TaskPool_runAll(p);
 }
 
 __attribute__((section(".text.InitSubsystemGroup_2CA518")))

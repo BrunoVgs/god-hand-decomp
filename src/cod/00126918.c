@@ -15,7 +15,7 @@ extern void cSnd_updateLoads(cSnd *self);
 extern void Ring_stepToAccepted(void *p);
 extern int cSnd_SeFadeOut(cSnd *self, int handle, short fade);
 extern char D_00603A40[];
-extern void func_002B6370(void *self);
+extern void cNode_clearActiveRecursive(void *self);
 extern int CallThenReturnPlusB0_002B6420_2B61B0(void *parent);
 extern void MtxInverse(void *dst, void *src);
 extern void sceVu0ApplyMatrix(void *dst, void *mtx, void *vec);
@@ -70,7 +70,7 @@ void cNode_setTranslationFromWorld(void *self, float *pos)
     char *vec;
     void *parent;
 
-    func_002B6370(self);
+    cNode_clearActiveRecursive(self);
     parent = func_002B5E50(self);
     if (parent != 0) {
         MtxInverse(frame, (void *)CallThenReturnPlusB0_002B6420_2B61B0(parent));

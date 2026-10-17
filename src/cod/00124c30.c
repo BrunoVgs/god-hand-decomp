@@ -20,7 +20,7 @@ extern char *cIDBase_getIDWork();
 extern void CustomIDWork_Initialize();
 extern void CustomIDWork_SetMessNo();
 extern void CustomIDWork_SetNumber();
-extern void func_001E7600();
+extern void SlotUi_showEndMarks();
 extern int D_003C2388;
 extern char D_0042BB20[];
 extern char D_00583F20[];
@@ -269,7 +269,7 @@ void func_001E71B8(char *a0, int a1)
         else
             CustomIDWork_SetMessNo(a0 + 0x5FC, 0x1001);
         CustomIDWork_SetNumber(a0 + 0x50, 0);
-        func_001E7600(a0);
+        SlotUi_showEndMarks(a0);
     }
 }
 

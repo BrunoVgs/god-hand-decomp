@@ -25,8 +25,8 @@ typedef struct MeshHideObj {
 } MeshHideObj;
 
 /* Hide the actor, clear its two state bytes, then hide the mesh D_00428AF0 (CMODEL_NODE_HIDE) and clear the handle. Returns 1. */
-__attribute__((section(".text.func_001B81A8")))
-int func_001B81A8(MeshHideObj *self) {
+__attribute__((section(".text.cObj_hideAndFlagMesh")))
+int cObj_hideAndFlagMesh(MeshHideObj *self) {
     cMeshNode *mesh;
     int flags;
     func_001B6FB8(self);
@@ -69,8 +69,8 @@ typedef struct MsgMgr {
 extern void func_002B22E8(MsgNode *node, MsgNode *prev, MsgNode *next, short val, unsigned short id);
 
 /* Look up the message pack, chain the 16 windows into one free list and start with the first one free. */
-__attribute__((section(".text.func_002AEA18")))
-void func_002AEA18(MsgMgr *self) {
+__attribute__((section(".text.cMessage_initWinList")))
+void cMessage_initWinList(MsgMgr *self) {
     MsgNode *node;
     MsgNode *next;
     char *g = (char *)&D_007474A0;
@@ -100,8 +100,8 @@ typedef struct IdCountScreen {
 #define ARROW_NEXT  0x23
 
 /* Show min(count, limit) in the number element and switch the two arrow displays by whether it is empty, at the limit, or in between. */
-__attribute__((section(".text.func_001ED3C0")))
-void func_001ED3C0(IdCountScreen *self, int limit) {
+__attribute__((section(".text.CustomID_setArrowDisp")))
+void CustomID_setArrowDisp(IdCountScreen *self, int limit) {
     int n = self->count;
     if (n >= limit) {
         n = limit;

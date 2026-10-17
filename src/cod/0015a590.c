@@ -6,7 +6,7 @@
 extern void SetCustomIDDispOneOrAll_1F4778(void *self, int id, int on);
 extern void CustomIDOwner_setAllShown(void *self, int on);
 extern void func_001F4928(void *self, int on);
-extern void func_00306330(int a0, int a1);
+extern void Effect_killByModeB(int a0, int a1);
 extern int EffEventIsCutDataExist(unsigned int id);
 extern int SetEffect(int kind, int id, void *owner, void *param, int handle, unsigned int owner2);
 
@@ -40,7 +40,7 @@ void SetEventCutEffect(unsigned int id) {
     cEffectParam param;
     cVec *scale;
 
-    func_00306330(4, 2);
+    Effect_killByModeB(4, 2);
     if (EffEventIsCutDataExist(id) == 1) {
         param.color.x = 1.0f;
         param.color.y = 1.0f;

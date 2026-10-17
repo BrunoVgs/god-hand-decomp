@@ -15,7 +15,7 @@ extern void func_0014EA28(void);
 extern void func_002BB010(void);
 extern void func_002BF170(void *a0);
 extern void cMc_startLoadRunRelease(int a0);
-extern void func_002AE7F0(int a0);
+extern void cMc_startLoadRunReleaseB(int a0);
 extern int Forward325C98_325DC0(int a0);
 
 __attribute__((section(".text.func_003B2058")))
@@ -146,7 +146,7 @@ __attribute__((section(".text.func_002C09E8")))
 void func_002C09E8(void) { cMc_startLoadRunRelease(2); }
 
 __attribute__((section(".text.func_002C0A08")))
-void func_002C0A08(void) { func_002AE7F0(2); }
+void func_002C0A08(void) { cMc_startLoadRunReleaseB(2); }
 
 __attribute__((section(".text.func_002CA690")))
 void func_002CA690(void) { Forward325C98_325DC0(0); }

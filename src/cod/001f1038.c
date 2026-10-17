@@ -13,8 +13,8 @@ typedef struct EmHandle {
 
 /* Sets the health of the three group enemies (kinds 0 to 2) to 15 percent of
  * their maximum. */
-__attribute__((section(".text.func_001F1038")))
-void func_001F1038(void)
+__attribute__((section(".text.cEmWrap_setGroupVitalFraction")))
+void cEmWrap_setGroupVitalFraction(void)
 {
     EmHandle em[3];
     em[0].entryNo = 0;

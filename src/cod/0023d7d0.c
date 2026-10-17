@@ -21,7 +21,7 @@ extern void StoreMotionParamsBoth_2609A8(void *a0, int a1, int a2, int a3, int a
 extern void InitRenderStruct_2A8608(void *a0, int a1, int a2, int a3, int t0, int t1);
 extern void SetEffectPos(int a0, int a1, int a2, void *a3, int a4, float a5);
 extern void func_001D0B30(int a0, float a1);
-extern void func_00262980(void *a0);
+extern void cEm00_armAttackVolume(void *a0);
 
 
 
@@ -186,7 +186,7 @@ void cEm00_idleChooseNext(void *a0)
                 }
             }
         }
-        func_00262980(self);
+        cEm00_armAttackVolume(self);
         EM_AT(int, self, EM_TURNFRAMES_OFFSET) = 0;
         {
             int h = EM_AT(int, self, EM_GRABLINK_OFFSET);

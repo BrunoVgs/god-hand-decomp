@@ -19,8 +19,8 @@ extern int D_00421BB8;
 
 /* Start the second memory card load/run/release task: set the pending flag
  * (bit 31) in the system flags, then register the task with the caller's arg. */
-__attribute__((section(".text.func_002AE7F0")))
-void func_002AE7F0(int mode) {
+__attribute__((section(".text.cMc_startLoadRunReleaseB")))
+void cMc_startLoadRunReleaseB(int mode) {
     D_00747A84[1] |= 0x80000000;
     cTaskManager_execute(&D_00752C00, (void *)&cMc_loadRunReleaseB, mode);
 }
@@ -35,8 +35,8 @@ typedef struct cOmHit654 {
 extern int cOmBase_checkDamage(cOmHit654 *self, int record);
 
 /* On a plain hit (result 1) restart the four state bytes at mode 1. */
-__attribute__((section(".text.func_0018F5D0")))
-void func_0018F5D0(cOmHit654 *self) {
+__attribute__((section(".text.cOmHit_onDamageHit")))
+void cOmHit_onDamageHit(cOmHit654 *self) {
     int r = cOmBase_checkDamage(self, self->hitRecord);
     if (r == 1) {
         self->base.mode = r;
@@ -47,8 +47,8 @@ void func_0018F5D0(cOmHit654 *self) {
 }
 
 /* Run the step for the current step byte: step 0 reinitialises, step 1 runs. */
-__attribute__((section(".text.func_002BF388")))
-void func_002BF388(ScenarioCursor *self)
+__attribute__((section(".text.ScenarioCursor_runStep")))
+void ScenarioCursor_runStep(ScenarioCursor *self)
 {
     switch (self->step) {
     case SCENARIOCURSOR_STEP_REINIT:
@@ -64,8 +64,8 @@ void func_002BF388(ScenarioCursor *self)
 #define SLOT2_BANK_LAYER_ID_NUM      35
 
 /* Hide every scroll layer of the machine's second layer id table. */
-__attribute__((section(".text.func_001E3298")))
-void func_001E3298(Slot2 *self)
+__attribute__((section(".text.Slot2_hideBankLayerIds")))
+void Slot2_hideBankLayerIds(Slot2 *self)
 {
     int *id = (int *)((char *)self + SLOT2_OFFSET_BANK_LAYER_IDS);
     int i;
@@ -78,8 +78,8 @@ void func_001E3298(Slot2 *self)
 #define SUBOBJ_OFFSET  0xE40   /* sub-object this class owns, not named in cGameObj.h */
 
 /* Destructor of a game object subclass: set its method table, shut the sub-object, run the base destructor. */
-__attribute__((section(".text.func_001A8930")))
-void func_001A8930(cGameObj *self, int flags) {
+__attribute__((section(".text.cGameObj_destructWithSubE40")))
+void cGameObj_destructWithSubE40(cGameObj *self, int flags) {
     self->vt = (cGameObjVt *)&D_00427A58;
     func_002AD288((char *)self + SUBOBJ_OFFSET, 2);
     SetField214PtrThenInit_1B6F38(self, flags);
@@ -88,8 +88,8 @@ void func_001A8930(cGameObj *self, int flags) {
 #define SUBOBJ_OFFSET  0xD80   /* sub-object this class owns, not named in cGameObj.h */
 
 /* Destructor of a game object subclass: set its method table, shut the sub-object, run the base destructor. */
-__attribute__((section(".text.func_0017B8F0")))
-void func_0017B8F0(cGameObj *self, int flags) {
+__attribute__((section(".text.cGameObj_destructWithSubD80")))
+void cGameObj_destructWithSubD80(cGameObj *self, int flags) {
     self->vt = (cGameObjVt *)&D_00421BB8;
     func_002AD288((char *)self + SUBOBJ_OFFSET, 2);
     SetField214PtrThenInit_1B6F38(self, flags);

@@ -38,7 +38,7 @@ int func_001500C0(void) {
     if (D_00747A34 & 0x20000) {
         return 0;
     }
-    return func_00150538(D_00466470);
+    return EntPool_allocClearSmall(D_00466470);
 }
 
 __attribute__((section(".text.func_00187D10")))

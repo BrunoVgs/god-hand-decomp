@@ -17,7 +17,7 @@ extern void cBgmData_Reset(void *bgm);
 extern int cBgmData_LoadNumbered(void *bgm, int a1, int a2);
 extern int cBgmData_IsEmpty(void *bgm);
 extern int cBgmData_IsReady(void *bgm);
-extern void func_002D5250(int frames);
+extern void cScenario_sleepFrames(int frames);
 extern char D_00580D40[];
 extern int FindEntryValue_1FF9C0(char *table, char *name, int *size, char *key);
 extern void func_001B6FB8(void *self);
@@ -37,12 +37,12 @@ void cSnd_LoadStartupBanks(cSnd *self)
     cSeData_Release(cSnd_GetSeData(self, 0));
     cSnd_SeLoadFile(self, 0, D_0044CE28);
     while (cSnd_SeIsLoaded(self, 0) == 0) {
-        func_002D5250(1);
+        cScenario_sleepFrames(1);
     }
     cSeData_Release(cSnd_GetSeData(self, 3));
     cSnd_SeLoadFile(self, 3, D_0044CE30);
     while (cSnd_SeIsLoaded(self, 3) == 0) {
-        func_002D5250(1);
+        cScenario_sleepFrames(1);
     }
     cBgmData_Reset(cSnd_GetBgmData(self, 0));
     cBgmData_LoadNumbered(cSnd_GetBgmData(self, 0), 0, 0);
@@ -50,7 +50,7 @@ void cSnd_LoadStartupBanks(cSnd *self)
         return;
     }
     while (cBgmData_IsReady(cSnd_GetBgmData(self, 0)) == 0) {
-        func_002D5250(1);
+        cScenario_sleepFrames(1);
     }
 }
 
@@ -65,7 +65,7 @@ int cDvd_ReadToBuffer(cDvd *self, char *name, unsigned int buf, int id, int size
     if ((buf & 0x3F) != 0) {
         buf = (buf + 0x3F) & 0xFFFFFFC0;
     }
-    job = func_002017A8(self);
+    job = cDvd_takeFreeJob(self);
     if (job == 0) {
         return 0;
     }

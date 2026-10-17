@@ -36,8 +36,8 @@ typedef struct Screen1689E8 {
 
 /* Closes the casino screen: resets the casino game's bar data, hands the
  * player back, releases the three id bases and clears the host's two words. */
-__attribute__((section(".text.func_001689E8")))
-void func_001689E8(Screen1689E8 *self)
+__attribute__((section(".text.Screen_closeCasino")))
+void Screen_closeCasino(Screen1689E8 *self)
 {
     char *host;
     Obj0000_Set_D_007474A0_Fields_5D8_5E0(self);

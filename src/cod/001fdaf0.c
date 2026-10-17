@@ -1,6 +1,6 @@
 /* sn-2.95.3-136 matched TU. */
 
-extern int func_001FCA38(int a0, int a1, int a2, int a3, float f, int a5);
+extern int KeyFollower_attachScaled(int a0, int a1, int a2, int a3, float f, int a5);
 
 __attribute__((section(".text.cDamageUnit_AddDamageCollSphere")))
 int cDamageUnit_AddDamageCollSphere(int a0, int a1, int a2, float f) {
@@ -23,7 +23,7 @@ int cDamageUnit_AddDamageCollSphere(int a0, int a1, int a2, float f) {
     if (func_001FD908(a0) == 0) {
         return -1;
     }
-    result = func_001FCA38(node, func_001FD908(a0), a1, a2, f, a0);
+    result = KeyFollower_attachScaled(node, func_001FD908(a0), a1, a2, f, a0);
     if (result == -1) {
         return -1;
     }

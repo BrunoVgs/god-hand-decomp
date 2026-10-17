@@ -13,7 +13,7 @@ int cDamageManage_ReleaseDamageGive(int a0, int a1) {
     if (a1 == 0) {
         return 0;
     }
-    func_001FD580(a1);
+    cDvd_releaseAll(a1);
     func_001FCDB8(a1);
     return 1;
 }

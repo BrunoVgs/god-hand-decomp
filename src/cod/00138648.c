@@ -70,7 +70,7 @@ void cCamera_calcViewMatrix(struct cCamera *self) {
 
 
 
-extern void func_001F0360(ColiseumBattle *self, void *obj);    /* weigh one object as the nearest */
+extern void NamedHit_applyLevel(ColiseumBattle *self, void *obj);    /* weigh one object as the nearest */
 
 __attribute__((section(".text.ColiseumBattle_findNearEnemy")))
 void ColiseumBattle_findNearEnemy(ColiseumBattle *self) {
@@ -82,7 +82,7 @@ void ColiseumBattle_findNearEnemy(ColiseumBattle *self) {
 
     COLISEUM_NEAR(self) = 0;
     if (D_005CB010 == 0) {
-        func_001F0360(self, Getplayer());
+        NamedHit_applyLevel(self, Getplayer());
     }
     node = D_005869F0;
     while (node != 0) {
@@ -91,7 +91,7 @@ void ColiseumBattle_findNearEnemy(ColiseumBattle *self) {
             k = em->kind;
             ok = 0; if (k >= COLISEUM_EM_KIND_FIRST) { t = (k < COLISEUM_EM_KIND_END); ok = t; }
             if (ok & 0xFF) {
-                func_001F0360(self, em);
+                NamedHit_applyLevel(self, em);
             }
         }
         node = node->next;

@@ -15,6 +15,6 @@ void PushEntryAtField10000_299868(char *a0, long a1, long a2) {
 
 __attribute__((section(".text.CallThenReturnPlusB0_002B6420_2B61B0")))
 int CallThenReturnPlusB0_002B6420_2B61B0(int a0) {
-    func_002B6420(a0);
+    cNode_updateWorldMatrix(a0);
     return a0 + 0xB0;
 }

@@ -11,7 +11,7 @@ extern void cModel_calcParts(void *self);
 extern void cModel_calcWorldParts(void *self);
 extern cOmBase *Getplayer(void);
 extern int Obj0000_IsSet_Field_15F4_Bit_400000_10B698(cOmBase *obj);
-extern void func_002DB978(void);
+extern void cPlayer_tryTrigger(void);
 extern void cActionButton_set(void *table, int kind, int lifeKind, int arg, void *callback, void *owner, int unused);
 extern int D_00568288;
 extern void CustomIDWork_SetOffsetPosX(void *work, int x);
@@ -125,9 +125,9 @@ void PromptOwner_offerActionPrompt(PromptOwner *owner)
             if (D_005864F0.slotWait <= 0) {
                 if (owner != 0) {
                     if (func_002DB7E0(owner->target) != 0) {
-                        cActionButton_set(&D_00568288, 8, 6, 0, (void *)func_002DB978, owner, 0);
+                        cActionButton_set(&D_00568288, 8, 6, 0, (void *)cPlayer_tryTrigger, owner, 0);
                     } else {
-                        cActionButton_set(&D_00568288, 7, 6, 0, (void *)func_002DB978, owner, 0);
+                        cActionButton_set(&D_00568288, 7, 6, 0, (void *)cPlayer_tryTrigger, owner, 0);
                     }
                 }
             }

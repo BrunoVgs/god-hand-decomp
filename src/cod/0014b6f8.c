@@ -1,6 +1,6 @@
 /* SN ProDG ee-gcc 2.95.3 matched TU. */
 
-extern void func_002B6420(void *a0);
+extern void cNode_updateWorldMatrix(void *a0);
 extern void ForwardVec3At30_147C60(void *a0, void *a1);
 
 __attribute__((section(".text.CopyVec3ToField20_173908")))
@@ -42,7 +42,7 @@ __attribute__((section(".text.StoreVecFromFieldB0_2B6160")))
 void *StoreVecFromFieldB0_2B6160(void *a0, void *a1) {
     char tmp[16] __attribute__((aligned(16)));
     VU0_SQC2_VF0(tmp, 0x0);
-    func_002B6420(a1);
+    cNode_updateWorldMatrix(a1);
     ForwardVec3At30_147C60(tmp, (char *)a1 + 0xB0);
     VU0_LQC2(4, tmp, 0x0);
     VU0_SQC2(4, a0, 0x0);

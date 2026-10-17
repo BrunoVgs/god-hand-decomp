@@ -28,8 +28,8 @@ typedef struct VuFxObj {
 #define VUFX_OFFSET(field)  ((int)&((VuFxObj *)0)->field)
 
 /* Init the base fields, set the table pointer at 0x214 and clear the four quadwords. Returns self. */
-__attribute__((section(".text.func_001B0CE8")))
-VuFxObj *func_001B0CE8(VuFxObj *self) {
+__attribute__((section(".text.cObj_initVuFields610")))
+VuFxObj *cObj_initVuFields610(VuFxObj *self) {
     InitFields_1B6E90(self);
     self->vtable = (void *)&D_004282F0;
     VU0_SQC2_VF0(self, VUFX_OFFSET(vecA));
@@ -47,8 +47,8 @@ typedef struct HideObj {
 } HideObj;
 
 /* Hide the actor, clear the state word and drop the hidden bit of flags2. Returns 1. */
-__attribute__((section(".text.func_001ADBE8")))
-int func_001ADBE8(HideObj *self) {
+__attribute__((section(".text.cModel_hideAndClearState")))
+int cModel_hideAndClearState(HideObj *self) {
     func_001B6FB8(self);
     self->base.objFlags = self->base.objFlags | CMODEL_F_HIDDEN;
     self->state = 0;
@@ -57,8 +57,8 @@ int func_001ADBE8(HideObj *self) {
 }
 
 /* True for a message code with bit 15 set that ends a page or sits in the 0xA000 group. */
-__attribute__((section(".text.func_002AF068")))
-int func_002AF068(unsigned short code) {
+__attribute__((section(".text.cMessCommon_isHighCodeEnd")))
+int cMessCommon_isHighCodeEnd(unsigned short code) {
     if ((code >> 15) == 0) {
         return 0;
     }
@@ -69,8 +69,8 @@ int func_002AF068(unsigned short code) {
 }
 
 /* Return obj plus the offset stored at slot idx (+0x10 + idx * 4 in obj) when the kind is 3, else obj itself. */
-__attribute__((section(".text.func_001522C0")))
-int func_001522C0(int unused, int obj, unsigned char idx) {
+__attribute__((section(".text.cIDBase_getSlotPtr")))
+int cIDBase_getSlotPtr(int unused, int obj, unsigned char idx) {
     if (func_00151630((void *)obj) == 3) {
         int slot = obj + idx * 4;
         return *(int *)(slot + 0x10) + obj;
@@ -87,8 +87,8 @@ typedef struct ThrowerObj {
 } ThrowerObj;
 
 /* Make the waiting object the held one, else fetch one, then attach it to self. */
-__attribute__((section(".text.func_0012B5C0")))
-void func_0012B5C0(ThrowerObj *self) {
+__attribute__((section(".text.cOm_attachThrown")))
+void cOm_attachThrown(ThrowerObj *self) {
     void *next = self->pending;
     if (next != 0) {
         self->held = next;
@@ -110,8 +110,8 @@ typedef struct IdNumberScreen {
 } IdNumberScreen;
 
 /* Set the number element, then show or hide displays 6 and 5. */
-__attribute__((section(".text.func_001F2B28")))
-void func_001F2B28(IdNumberScreen *self, int number, int on) {
+__attribute__((section(".text.CustomID_setNumberAndShow")))
+void CustomID_setNumberAndShow(IdNumberScreen *self, int number, int on) {
     CustomIDWork_SetNumber(&self->number, number);
     SetCustomIDDispOneOrAll_1F29C0(self, 6, on);
     SetCustomIDDispOneOrAll_1F29C0(self, 5, on);

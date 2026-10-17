@@ -9,7 +9,7 @@
 extern void cDvd_pollJob(cDvd *self);
 extern void func_00201250(cDvd *self);
 extern void cHeap_free(void *heap, void *p);
-extern void func_002EBC50(void *self, int flags);
+extern void BlockOwner_dtor(void *self, int flags);
 extern int D_0044F448;
 extern CustomIDObj *cIDBase_getIDWork(void *idBase, int idx);
 extern int func_001717C0(cOmBase *self, void *target, cVec *pos);
@@ -23,8 +23,8 @@ extern void cSnd_SeStop(void *snd, int handle);
 extern void SetField214PtrThenInit_1B6F38(void *obj, int flag);
 
 /* Run one step of the disc queue: start the next job, poll the running one, or idle, by the state at +0x1108. */
-__attribute__((section(".text.func_00200B20")))
-void func_00200B20(cDvd *self) {
+__attribute__((section(".text.cDvd_step")))
+void cDvd_step(cDvd *self) {
     switch ((unsigned int)self->queueNum) {
     case 1:
         func_00201290(self);
@@ -48,15 +48,15 @@ typedef struct HeapOwner {
 } HeapOwner;
 
 /* Destructor: install the method table, free the block (its heap is stored just before it) and run the base destructor. */
-__attribute__((section(".text.func_002F5730")))
-void func_002F5730(HeapOwner *self, int flags) {
+__attribute__((section(".text.cHeapOwner_deletingDtor")))
+void cHeapOwner_deletingDtor(HeapOwner *self, int flags) {
     char *buf;
     self->vt = &D_0044F448;
     buf = self->buf;
     if (buf != 0) {
         cHeap_free(*(void **)(buf - 0x20), buf);
     }
-    func_002EBC50(self, flags);
+    BlockOwner_dtor(self, flags);
 }
 
 #define IDWORK_HIGHLIGHT  10            /* index of the id work whose hide bit follows the mode byte */
@@ -70,8 +70,8 @@ typedef struct IdModeScreen {
 } IdModeScreen;
 
 /* Hide the highlight element when the mode is 2, else show it. */
-__attribute__((section(".text.func_001F6A20")))
-void func_001F6A20(IdModeScreen *self) {
+__attribute__((section(".text.CustomID_toggleBit29")))
+void CustomID_toggleBit29(IdModeScreen *self) {
     if (self->mode == 2) {
         CustomIDObj *obj = cIDBase_getIDWork(self->idBase, IDWORK_HIGHLIGHT);
         obj->flags &= ~CIDW_OBJ_HIDE;
@@ -82,8 +82,8 @@ void func_001F6A20(IdModeScreen *self) {
 }
 
 /* Copy the vector vec into the aim point posA (0x490) and from there into the object's live position, then run func_001717C0. */
-__attribute__((section(".text.func_00171A08")))
-int func_00171A08(cOmBase *self, cVec *vec) {
+__attribute__((section(".text.cEm_copyPosAndRefresh")))
+int cEm_copyPosAndRefresh(cOmBase *self, cVec *vec) {
     cVec *src = &self->posA;
     cVec *dst;
     if (src != vec) {
@@ -124,8 +124,8 @@ typedef struct VuFxObj2 {
 #define VUFX_OFFSET(field)  ((int)&((VuFxObj2 *)0)->field)
 
 /* Init the base fields, set the tables at 0x214 and 0x4AC, clear three quadwords and the state block. Returns self. */
-__attribute__((section(".text.func_001C0068")))
-VuFxObj2 *func_001C0068(VuFxObj2 *self) {
+__attribute__((section(".text.cObj_initVuFields4AC")))
+VuFxObj2 *cObj_initVuFields4AC(VuFxObj2 *self) {
     InitFields_1B6E90(self);
     self->vtable = (void *)&D_00429B88;
     VU0_SQC2_VF0(self, VUFX_OFFSET(vecA));
@@ -148,8 +148,8 @@ typedef struct SeOwnerObj {
 } SeOwnerObj;
 
 /* Destructor: install the class table, kill the effect, stop the sound handle, run the base destructor. */
-__attribute__((section(".text.func_001B8140")))
-void func_001B8140(SeOwnerObj *self, int flag) {
+__attribute__((section(".text.cGiveOwner_destructB")))
+void cGiveOwner_destructB(SeOwnerObj *self, int flag) {
     self->vtable = (void *)&D_00428B58;
     KillEffect(self, 0, 2);
     if (self->seHandle != 0) {

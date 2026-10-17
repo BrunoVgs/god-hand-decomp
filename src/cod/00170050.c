@@ -25,8 +25,8 @@ extern void cDamageUnit_AddDamageCollCylinder(void *unit, void *pos, float *a, f
 extern void func_001FD9D8(void *unit, void *pos, float *a, float *b, float *size);
 
 /* True when the distance from the line, taken from the matrix position along its turned offset vector, is at most k. */
-__attribute__((section(".text.func_002BBCE0")))
-int func_002BBCE0(void *line, void *mtx, void *offset, float k)
+__attribute__((section(".text.LengthFromLineAtTurnedOffset")))
+int LengthFromLineAtTurnedOffset(void *line, void *mtx, void *offset, float k)
 {
     char buf[0x40] __attribute__((aligned(16)));
     float *zp;
@@ -71,10 +71,10 @@ typedef struct EffectOwner {
     int handle[3];              /* 0x60C */
 } EffectOwner;
 
-/* func_001A9938: destructor body. Set the method table, release the slot, the damage give and the three
+/* EffectOwner_destruct: destructor body. Set the method table, release the slot, the damage give and the three
  * handles, kill effects 3, 0xB and 0xA, then run the shared base teardown. */
-__attribute__((section(".text.func_001A9938")))
-void func_001A9938(EffectOwner *self, void *flag)
+__attribute__((section(".text.EffectOwner_destruct")))
+void EffectOwner_destruct(EffectOwner *self, void *flag)
 {
     int i;
     self->vt = &D_00427CF0;
@@ -114,10 +114,10 @@ typedef struct AtkRec {
 
 
 
-/* func_00262980: arm the enemy's attack volume: radius 3.0 for enemy 0x260 else 2.0, active, hit vector
+/* cEm00_armAttackVolume: arm the enemy's attack volume: radius 3.0 for enemy 0x260 else 2.0, active, hit vector
  * D_00747B00, then reset its counters. */
-__attribute__((section(".text.func_00262980")))
-void func_00262980(cEm00 *self)
+__attribute__((section(".text.cEm00_armAttackVolume")))
+void cEm00_armAttackVolume(cEm00 *self)
 {
     float radius;
     volatile AtkRec *rec;  /* volatile keeps the epilogue restores below these stores */
@@ -147,8 +147,8 @@ extern int D_00574380;                  /* damage manager */
 
 
 /* Set up a hit-volume object: a damage-take unit with a cylinder at its matrix, a hit point of 1, cleared state words and an eight entry table. */
-__attribute__((section(".text.func_00170050")))
-int func_00170050(cOmHitVolume *self)
+__attribute__((section(".text.cOmHitVolume_setupCylinder")))
+int cOmHitVolume_setupCylinder(cOmHitVolume *self)
 {
     float f[8];
     float *nv;
@@ -193,8 +193,8 @@ extern int D_00574380;                  /* damage manager */
 
 
 /* Set the object up: one hit point, a damage-take unit with a 2.4 x 1.1 x 0.2 volume at its position, cleared state words and a four entry table at 0x620. */
-__attribute__((section(".text.func_0019E2A8")))
-int func_0019E2A8(cOmHitVolume *self)
+__attribute__((section(".text.cOmHitVolume_setupThinBox")))
+int cOmHitVolume_setupThinBox(cOmHitVolume *self)
 {
     float f[16];
     float *m;
@@ -246,7 +246,7 @@ int func_0019E2A8(cOmHitVolume *self)
     return 1;
 }
 
-__attribute__((section(".text.func_001A0BD8"))) int func_001A0BD8(cOmHitVolume *self)
+__attribute__((section(".text.cOmHitVolume_setupBox"))) int cOmHitVolume_setupBox(cOmHitVolume *self)
 {
   float f[16];
   float *m;

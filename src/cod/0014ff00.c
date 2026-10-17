@@ -245,7 +245,7 @@ void func_001DBE18(int a0, int a1)
         c++;
     }
     if (n != 0) {
-        r = list[func_001DCE68(a0, 0, n - 1)];
+        r = list[Casino_randRange(a0, 0, n - 1)];
         *(int *)a1 = r;
         *(int *)(r + 4) &= ~1;
     }

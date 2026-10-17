@@ -252,11 +252,11 @@ int func_003B5E50(int a0, int a1, int a2) {
     return _sceSifLoadModuleBuffer(a0, a1, a2, &local);
 }
 
-int func_00150418(int *a0);
+int List_destroyChildren(int *a0);
 
 __attribute__((section(".text.func_00150078")))
 int func_00150078(void) {
-    return func_00150418(&D_00466470);
+    return List_destroyChildren(&D_00466470);
 }
 
 int func_001523F8(int a0, int a1);

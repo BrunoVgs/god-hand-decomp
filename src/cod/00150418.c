@@ -24,8 +24,8 @@ typedef struct List150418 {
 #define DELETE_FLAG  2                  /* second argument of the deleting destructor */
 
 /* Destroys every child of the list, then the list body and frees its node. */
-__attribute__((section(".text.func_00150418")))
-void func_00150418(List150418 *self)
+__attribute__((section(".text.List_destroyChildren")))
+void List_destroyChildren(List150418 *self)
 {
     Child150418 *child = (Child150418 *)func_002A9860(self, 0);
     int *node;
@@ -60,8 +60,8 @@ typedef struct Queue2AEE40 {
 
 /* Takes an entry off the free list and links it into the sorted list at the
  * place for `key`. Returns the entry, or 0 when the free list is empty. */
-__attribute__((section(".text.func_002AEE40")))
-Entry2AEE40 *func_002AEE40(Queue2AEE40 *self, short key)
+__attribute__((section(".text.Queue_insertSorted")))
+Entry2AEE40 *Queue_insertSorted(Queue2AEE40 *self, short key)
 {
     Entry2AEE40 *entry = self->freeList;
     Entry2AEE40 *prev;
@@ -100,13 +100,13 @@ extern float func_002AC5B0(void *curve, short t, int idx, CurveKey *keys);
 
 /* Samples the curve at time t: the value between the key found for t and the
  * next one, eased by func_002AC5B0. 0 if t is before the first key. */
-__attribute__((section(".text.func_002AC650")))
-float func_002AC650(void *curve, short t, int unused, CurveKey *keys)
+__attribute__((section(".text.Curve_sample")))
+float Curve_sample(void *curve, short t, int unused, CurveKey *keys)
 {
     int idx;
     float result;
     do { } while (0);                   /* loop note: moves the prologue saves to retail's order */
-    idx = func_002AC538(curve, t);
+    idx = KeyRec_findSegment(curve, t);
     if (idx >= 0) {
         float ease = func_002AC5B0(curve, t, idx, keys);
         float from;

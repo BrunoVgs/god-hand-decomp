@@ -39,7 +39,7 @@ __attribute__((section(".text.InitStructAndSubfields_1E8DA8")))
 void *InitStructAndSubfields_1E8DA8(void *a0) {
     func_003A52F0(a0, 0, 0x54);
     func_001E8E88(a0);
-    func_001E8EB8(a0);
+    Ring_pickByAngle(a0);
     return a0;
 }
 
@@ -56,7 +56,7 @@ int ClearAndResetFields_1FE278(int a0, int a1) {
     if (a1 == 0) {
         return 0;
     }
-    func_001FD580(a1);
+    cDvd_releaseAll(a1);
     ResetObjectFields_1FCDE8(a1);
     return 1;
 }

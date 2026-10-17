@@ -18,7 +18,7 @@ extern void cGameObj_SetTgtTurn(void *a0, void *a1, float f);
 extern int irand(void);
 extern int cSnd_SeCall_2CBA48(void *a, int b, int c, void *d, int e, int f, int g, int h);
 extern int cEmManage_CreateItem(void *a0, int a1, int a2, int a3);
-extern void func_001C2280(void *a0, void *a1, int a2, void *a3, void *a4);
+extern void cObj_setupAimStep2(void *a0, void *a1, int a2, void *a3, void *a4);
 extern unsigned char D_005864F0[];
 extern unsigned char D_005FEE00[];
 extern int D_007476B0;
@@ -196,7 +196,7 @@ void cEm00_stepPatrolAttackDrop(cEm00 *self)
             *(int *)(fr + 0x10) = 0;
             *(int *)(fr + 0x14) = 0;
             *(int *)(fr + 0x18) = 0;
-            func_001C2280((void *)item, self, 10, fr, fr + 0x10);
+            cObj_setupAimStep2((void *)item, self, 10, fr, fr + 0x10);
         }
         self->gotoFlags = self->gotoFlags | 4;
         func_0028FB08(self);

@@ -17,7 +17,7 @@ extern void cMessDrawFont_setBodyData(cMessDrawFont *a0, void *a1, void *a2, voi
 extern void cMessDrawFont_setRubyData(cMessDrawFont *a0, void *a1, void *a2);
 extern void cMessDrawFont_setDrawCounter(cMessDrawFont *a0, int a1, int a2);
 extern void *D_003C23A4;
-extern void func_001E6BE8(Slot2 *a0);
+extern void Slot2_blinkMark(Slot2 *a0);
 extern void Slot2_updateLineMark1(Slot2 *a0);
 extern void Slot2_updateLineMark2(Slot2 *a0);
 extern void Slot2_updateLineMark3(Slot2 *a0);
@@ -120,7 +120,7 @@ void Slot2_update(Slot2 *self) {
     int t;
 
     ((void (*)(void *))vt->e[self->state].pfn)((char *)self + vt->e[self->state].delta);
-    func_001E6BE8(self);
+    Slot2_blinkMark(self);
     Slot2_updateLineMark1(self);
     Slot2_updateLineMark2(self);
     Slot2_updateLineMark3(self);

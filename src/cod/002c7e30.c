@@ -10,8 +10,8 @@ typedef struct MotionQuad {
 } MotionQuad;                           /* 8 bytes, returned in $v0 */
 
 /* Return the 8-byte record at data when kind is 1, else a zero record. */
-__attribute__((section(".text.func_002C7E30")))
-MotionQuad func_002C7E30(void *data, unsigned char kind)
+__attribute__((section(".text.Motion_seq_readQuadData")))
+MotionQuad Motion_seq_readQuadData(void *data, unsigned char kind)
 {
     MotionQuad r;
     MotionQuad out;

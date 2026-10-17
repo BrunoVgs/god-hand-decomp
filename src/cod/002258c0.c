@@ -13,7 +13,7 @@ extern void cObjBase_addNullSpeed_Rotation(void *a0, float a1);
 extern void cObjBase_addNullSpeed(void *a0, float a1);
 extern void func_00262750(void *a0, int a1);
 extern void func_00260B30(void *a0);
-extern void func_001C2280(void *a0, void *a1, int a2, void *a3, void *a4);
+extern void cObj_setupAimStep2(void *a0, void *a1, int a2, void *a3, void *a4);
 extern void SetField_2F6_1C2308(void *a0);
 extern void func_002705D8(void *a0);
 extern void cOmBase_dieCommon(void *a0);
@@ -155,9 +155,9 @@ __attribute__((section(".text.func_002258C0"))) void func_002258C0(cEm00 *self)
                 buf[5] = z;
                 buf[6] = z;
                 if (self->unk17C3 != 0) {
-                    func_001C2280(s3, self, 0xA, buf, &buf[4]);
+                    cObj_setupAimStep2(s3, self, 0xA, buf, &buf[4]);
                 } else {
-                    func_001C2280(s3, self, 0x10, buf, &buf[4]);
+                    cObj_setupAimStep2(s3, self, 0x10, buf, &buf[4]);
                 }
                 SetField_2F6_1C2308(*(void **)((char *)self + 0x70C));
             }

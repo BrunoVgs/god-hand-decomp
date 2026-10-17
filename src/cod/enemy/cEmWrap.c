@@ -5,7 +5,7 @@ extern int D_00747B00[];
 extern unsigned char D_005864F0[];
 extern void func_0026E7A8(int a0, int a1);
 extern void func_0026E7A0(int a0, float f);
-extern void func_002736F8(int a0);
+extern void cEm00_clearSetFlags(int a0);
 extern int D_0044A878;
 extern void cEma2_SetEscPos(int a0, int a1);
 
@@ -220,7 +220,7 @@ void cEmWrap_clearNoMove(void *a0, float f) {
     if (FindResolveActor_295978(a0, f)) {
         int *p = *(int **)((char *)a0 + 4);
         if (func_003A5678(&D_0044A870, p[0x4AC / 4]) == 0) {
-            func_002736F8(*(int *)((char *)a0 + 4));
+            cEm00_clearSetFlags(*(int *)((char *)a0 + 4));
         }
     }
 }

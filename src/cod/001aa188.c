@@ -7,7 +7,7 @@ extern int cCollisionSolidManage_ChkHit(void *a0, void *a1);
 extern void SetMotionStep(void *a0, float f12);
 extern float D_00747A14;
 extern char D_00462FC0[];
-extern void func_001AA478(void *a0);
+extern void cOmBase_blinkTick(void *a0);
 extern void func_001AADE0(void *a0);
 extern void cObjBase_SetSeqEffect(void *a0);
 extern void cModel_calcParts(void *a0);
@@ -76,7 +76,7 @@ void func_001AA188(void *a0)
     th = s2 + dl;
     i = 6;
     ((void (*)(void *))fn)(th);
-    do { do { func_001AA478(s2); } while (0); } while (0);
+    do { do { cOmBase_blinkTick(s2); } while (0); } while (0);
     do { do { func_001AADE0(s2); } while (0); } while (0);
     if (*(unsigned char *)(s2 + 0x2B4) != i) {
         q20v = frame + 0x30;

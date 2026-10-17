@@ -15,8 +15,8 @@ extern void *cIDBase_getIDWork(void *self, int idx);
 
 /* Re-initialise a second scenario cursor: run the two reset steps, tell the manager,
  * then set its four state bytes (step = 2, keep = old keep value, rest 0). */
-__attribute__((section(".text.func_002BF4C8")))
-void func_002BF4C8(ScenarioCursor *self) {
+__attribute__((section(".text.ScenarioCursor_reinitStep2")))
+void ScenarioCursor_reinitStep2(ScenarioCursor *self) {
     func_002BF708(self);
     SysFlags_saveAndFreeze(self);
     func_002C09E8(D_003C264C);
@@ -43,8 +43,8 @@ typedef struct OwnerObj {
 
 /* Destructor of the object with vtable D_0044F1C8: reset the vtable, release
  * the owned object at +0x2B0 if any, then run the base destructor. */
-__attribute__((section(".text.func_002F4B30")))
-void func_002F4B30(OwnerObj *self, int flags) {
+__attribute__((section(".text.OwnerObj_destroyOwned2")))
+void OwnerObj_destroyOwned2(OwnerObj *self, int flags) {
     self->vt = D_0044F1C8;
     if (self->owned != 0)
         ReleaseObj(self->owned);
@@ -62,8 +62,8 @@ typedef struct TaskPool {
 
 
 /* Run func_002D5790 on every work record of a pool: works array at +0, count at +0xC. */
-__attribute__((section(".text.func_002D51F0")))
-void func_002D51F0(TaskPool *self) {
+__attribute__((section(".text.TaskPool_runAll")))
+void TaskPool_runAll(TaskPool *self) {
     unsigned int i;
     for (i = 0; i < self->count; i++)
         func_002D5790(self->works + i * POOL_WORK_SIZE);
@@ -82,8 +82,8 @@ typedef struct IdScreen3 {
 
 
 /* Restart the animation and refill the 3 entry pointers at 0x90 from cIDBase_getIDWork. */
-__attribute__((section(".text.func_0013F150")))
-void func_0013F150(IdScreen3 *self) {
+__attribute__((section(".text.IdScreen3_refillEntries")))
+void IdScreen3_refillEntries(IdScreen3 *self) {
     unsigned short i = 0;
     cIDBase_restartAnim(self);
     self->started = 1;
@@ -109,8 +109,8 @@ typedef struct IdScreen4 {
 
 /* Restart the animation and refill the 4 entry pointers at 0x98 from
  * cIDBase_getIDWork, then clear the selection word at 0x94. */
-__attribute__((section(".text.func_0013C298")))
-void func_0013C298(IdScreen4 *self) {
+__attribute__((section(".text.IdScreen4_refillEntries")))
+void IdScreen4_refillEntries(IdScreen4 *self) {
     unsigned short i = 0;
     self->unk90 = 0;
     cIDBase_restartAnim(self);

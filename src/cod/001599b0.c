@@ -133,7 +133,7 @@ test:
         goto plain;
     }
     func_002B04C0(self, text, arg);
-    if (func_002AF068(*text) == 0) {
+    if (cMessCommon_isHighCodeEnd(*text) == 0) {
         goto glyph;
     }
     *width -= self->unk2C[0] * self->zoomX;

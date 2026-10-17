@@ -23,8 +23,8 @@ extern float capVu0LengthSq(void *v);
 
 /* For enemy 0x251: flag the swapped state, hide the texture, swap in the
  * resource record 0x60 and show the named mesh. */
-__attribute__((section(".text.func_00273F08")))
-void func_00273F08(cEm00 *self)
+__attribute__((section(".text.cEm00_swapTextureAndShowMesh")))
+void cEm00_swapTextureAndShowMesh(cEm00 *self)
 {
     cModelNode *mesh;
 
@@ -43,8 +43,8 @@ extern float func_003A19F8(float x);    /* sin */
 
 /* Build the rotation about the z axis for angle a: a 4x4 matrix of floats
  * with cos and sin in the top left 2x2 block, 1.0 at [10] and zeros elsewhere. */
-__attribute__((section(".text.func_001482C0")))
-void func_001482C0(float *m, float a)
+__attribute__((section(".text.Mtx4_setRotZ")))
+void Mtx4_setRotZ(float *m, float a)
 {
     m[0] = func_003A18F0(a);
     m[1] = -func_003A19F8(a);
@@ -66,8 +66,8 @@ void func_001482C0(float *m, float a)
 
 /* True when the distance between the points a and b is below the sum of the
  * two radii (compared as squares). */
-__attribute__((section(".text.func_002BB3F0")))
-int func_002BB3F0(float *a, float *b, float ra, float rb)
+__attribute__((section(".text.Sphere_overlapTest")))
+int Sphere_overlapTest(float *a, float *b, float ra, float rb)
 {
     float v[4] __attribute__((aligned(16)));
     float d[4] __attribute__((aligned(16)));

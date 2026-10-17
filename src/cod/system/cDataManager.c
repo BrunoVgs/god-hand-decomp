@@ -37,9 +37,9 @@ int cDataManager_loadWait(cDataManager *self, int kind, void *buf, int keep) {
     }
     i = cDataManager_findFreeSlot(self);
     if (i < 0) return 0;
-    data = func_001FF180(&self->slot[i], kind, buf);
+    data = FileLoadRec_start(&self->slot[i], kind, buf);
     while (UpdateStateReady_1FF238(&self->slot[i]) == 0) {
-        func_002D5250(1);
+        cScenario_sleepFrames(1);
     }
     if (keep != 0) {
         func_001FF090(&self->slot[i]);
