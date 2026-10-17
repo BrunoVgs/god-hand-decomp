@@ -90739,6 +90739,39 @@
       }
     },
     {
+      "name": "asm/cod/000000.part8417",
+      "target_path": "expected/build/asm/cod/000000.part8417.o",
+      "base_path": "build/asm/cod/000000.part8417.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8418",
+      "target_path": "expected/build/asm/cod/000000.part8418.o",
+      "base_path": "build/asm/cod/000000.part8418.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
+      "name": "asm/cod/000000.part8419",
+      "target_path": "expected/build/asm/cod/000000.part8419.o",
+      "base_path": "build/asm/cod/000000.part8419.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ]
+      }
+    },
+    {
       "name": "asm/cod/000000.part842",
       "target_path": "expected/build/asm/cod/000000.part842.o",
       "base_path": "build/asm/cod/000000.part842.o",
@@ -98319,6 +98352,18 @@
       "name": "src/cod/0017d680",
       "target_path": "expected/build/src/cod/0017d680.o",
       "base_path": "build/src/cod/0017d680.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ],
+        "complete": true
+      }
+    },
+    {
+      "name": "src/cod/0017d6b0",
+      "target_path": "expected/build/src/cod/0017d6b0.o",
+      "base_path": "build/src/cod/0017d6b0.o",
       "metadata": {
         "auto_generated": true,
         "progress_categories": [
