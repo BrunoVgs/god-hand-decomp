@@ -14693,6 +14693,11 @@
     {
       "path": "src/cod/0019bca0.c",
       "compiler": "sn-2.95.3-136"
+    },
+    {
+      "path": "src/cod/Slot1.c",
+      "compiler": "sn-2.95.3-136",
+      "call_loop_pad": true
     }
   ],
   "_carved_funcs_doc": [

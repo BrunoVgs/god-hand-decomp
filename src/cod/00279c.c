@@ -1,64 +1,24 @@
 #include "godhand/vu0.h"
+#include "godhand/cEm00.h"
 
-#include "include_asm.h"
-extern void func_0028EB00(void *obj);
+/* cEm00 field not named in cEm00.h yet: 0x4AC pointer to the class name string. */
+#define CEM00_TYPENAME(self) (*(void **)((char *)(self) + 0x4AC))
 
-/* Vtable pointer (loaded into obj+0x214). Lives in .rodata at
- * 0x00447E68 as a sequence of `.word` function pointers. */
 extern int D_00447E68;
-
-/* Type-name string (loaded into obj+0x4AC). Lives in .rodata at
- * 0x00447E50 as the per-rep type-info asciz label. */
 extern int D_00447E50;
+extern void *func_0028EB00(void *obj);
 
-/* Init_Vtable214_TypeName4AC_279CE8 — sq + VU0 object constructor (84 B / 21 insns); see file header.
- *
- * Retail (asm/cod/000000.s, 0x00279CE8..0x00279D3B, 84 B):
- *
- *   addiu  $sp, $sp, -0x20
- *   sq     $s0, 0x10($sp)
- *   sd     $ra, 0x0($sp)
- *   jal    func_0028EB00
- *    daddu $s0, $a0, $zero
- *   lui    $v1, %hi(D_00447E68)
- *   addiu  $v1, $v1, %lo(D_00447E68)
- *   sw     $v1, 0x214($s0)
- *   sqc2   $vf0, 0x1530($s0)
- *   sqc2   $vf0, 0x1540($s0)
- *   sqc2   $vf0, 0x1550($s0)
- *   sqc2   $vf0, 0x1590($s0)
- *   sqc2   $vf0, 0x15A0($s0)
- *   lui    $v1, %hi(D_00447E50)
- *   daddu  $v0, $s0, $zero
- *   addiu  $v1, $v1, %lo(D_00447E50)
- *   ld     $ra, 0x0($sp)
- *   sw     $v1, 0x4AC($s0)
- *   lq     $s0, 0x10($sp)
- *   jr     $ra
- *    addiu $sp, $sp, 0x20
- */
-/* Clean-C body kept behind NON_MATCHING; the #else INCLUDE_ASM fallback keeps the
- * default (byte-identical) build exact. scripts/score_nm.sh compiles this body and
- * scores it as a fuzzy partial in the published progress report. */
-#ifdef NON_MATCHING
+/* Enemy constructor: run the base constructor, set the vtable at +0x214, clear five quadwords, set the type name at +0x4AC. */
 __attribute__((section(".text.Init_Vtable214_TypeName4AC_279CE8")))
-void *Init_Vtable214_TypeName4AC_279CE8(void *obj) {
-    int *vtable;
-    int *type_name;
-
-    func_0028EB00(obj);
-    vtable = &D_00447E68;
-    *(int **)((char *)obj + 0x214) = vtable;
-    VU0_SQC2_VF0(obj, 0x1530);
-    VU0_SQC2_VF0(obj, 0x1540);
-    VU0_SQC2_VF0(obj, 0x1550);
-    VU0_SQC2_VF0(obj, 0x1590);
-    VU0_SQC2_VF0(obj, 0x15A0);
-    type_name = &D_00447E50;
-    *(int **)((char *)obj + 0x4AC) = type_name;
-    return obj;
+void *Init_Vtable214_TypeName4AC_279CE8(cEm00 *self)
+{
+    func_0028EB00(self);
+    self->vt = (cEm00Vt *)&D_00447E68;
+    VU0_SQC2_VF0(self, 0x1530);
+    VU0_SQC2_VF0(self, 0x1540);
+    VU0_SQC2_VF0(self, 0x1550);
+    VU0_SQC2_VF0(self, 0x1590);
+    VU0_SQC2_VF0(self, 0x15A0);
+    CEM00_TYPENAME(self) = (void *)&D_00447E50;
+    return self;
 }
-#else
-INCLUDE_ASM("nonmatching", Init_Vtable214_TypeName4AC_279CE8);
-#endif
-
