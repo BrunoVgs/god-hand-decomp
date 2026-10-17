@@ -14811,6 +14811,14 @@
     {
       "path": "src/cod/001a4528.c",
       "compiler": "sn-2.95.3-136"
+    },
+    {
+      "path": "src/cod/casino/cCockBossBar.c",
+      "compiler": "sn-2.95.3-136"
+    },
+    {
+      "path": "src/cod/casino/cCockLastBossBar.c",
+      "compiler": "sn-2.95.3-136"
     }
   ],
   "_carved_funcs_doc": [

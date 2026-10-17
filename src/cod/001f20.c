@@ -1,4 +1,3 @@
-#include "include_asm.h"
 
 extern void cIDBase(void *);
 extern void CustomIDWork(void *);
@@ -81,4 +80,43 @@ void *func_001F2708(void *a0) {
     return this;
 }
 
-INCLUDE_ASM("nonmatching", func_001F27B0);
+extern void cIDBase_initialize(void *p, int a, int b);
+extern void cIDBase_restartAnim(void *p);
+extern void *cIDBase_getIDWork(void *p, int i);
+extern void CustomIDWork_Initialize(void *p, void *w);
+extern void CustomIDWork_SetMessNo(void *p, int n);
+extern void SetCustomIDDispOneOrAll_1F29C0(void *p, int n, int f);
+extern void func_001F3488(void *p, int a);
+
+#define UI_WORK_SIZE      0x7C          /* one CustomIDWork */
+#define UI_MAIN_IDBASE    0x10          /* first cIDBase inside the object */
+#define UI_MAIN_WORKS     0x60          /* its works */
+#define UI_MAIN_WORK_NUM  0x12
+#define UI_SUB_IDBASE     0x930         /* second cIDBase */
+#define UI_SUB_WORKS      0x980         /* its works */
+#define UI_SUB_WORK_NUM   3
+#define UI_SUB_TITLE      0xA78         /* the sub display's title work */
+#define UI_IDDATA_KIND    0x15
+#define UI_TITLE_MESS     0x300F
+
+/* Build the 18 custom-ID works of a UI object's main display and the 3 of its sub display, hide the main works, set the sub title message and run the final setup step. */
+__attribute__((section(".text.func_001F27B0")))
+void func_001F27B0(char *p)
+{
+    int i;
+    int j;
+
+    cIDBase_initialize(p + UI_MAIN_IDBASE, UI_IDDATA_KIND, 1);
+    cIDBase_restartAnim(p + UI_MAIN_IDBASE);
+    for (i = 0; i < UI_MAIN_WORK_NUM; i++) {
+        CustomIDWork_Initialize(p + UI_MAIN_WORKS + i * UI_WORK_SIZE, cIDBase_getIDWork(p + UI_MAIN_IDBASE, i));
+    }
+    SetCustomIDDispOneOrAll_1F29C0(p, 0x12, 0);
+    cIDBase_initialize(p + UI_SUB_IDBASE, UI_IDDATA_KIND, 2);
+    cIDBase_restartAnim(p + UI_SUB_IDBASE);
+    for (j = 0; j < UI_SUB_WORK_NUM; j++) {
+        CustomIDWork_Initialize(p + UI_SUB_WORKS + j * UI_WORK_SIZE, cIDBase_getIDWork(p + UI_SUB_IDBASE, j));
+    }
+    CustomIDWork_SetMessNo(p + UI_SUB_TITLE, UI_TITLE_MESS);
+    func_001F3488(p, 0);
+}
