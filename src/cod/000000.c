@@ -2337,7 +2337,6 @@ __attribute__((section(".text.Forward348BE0_346BE0")))
 int Forward348BE0_346BE0(int a0, int a1) {
     return MWSFSVM_Error(a1);
 }
-INCLUDE_ASM("nonmatching", chack_point_line);
 INCLUDE_ASM("nonmatching", MotionGetParam);
 INCLUDE_ASM("nonmatching", SetEv61HumanAlive);
 INCLUDE_ASM("nonmatching", Dest_ck);

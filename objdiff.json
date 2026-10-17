@@ -95767,6 +95767,18 @@
       }
     },
     {
+      "name": "src/cod/00156918",
+      "target_path": "expected/build/src/cod/00156918.o",
+      "base_path": "build/src/cod/00156918.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ],
+        "complete": true
+      }
+    },
+    {
       "name": "src/cod/00156ac0",
       "target_path": "expected/build/src/cod/00156ac0.o",
       "base_path": "build/src/cod/00156ac0.o",
