@@ -29,8 +29,8 @@ typedef struct RecTable {
 
 
 /* Returns record `n` of `group`, or 0 if the group is missing or has fewer records. */
-__attribute__((section(".text.func_002BEB00")))
-void *func_002BEB00(cRoomJump *self, unsigned short group, unsigned char n)
+__attribute__((section(".text.cRoomJump_getRecord")))
+void *cRoomJump_getRecord(cRoomJump *self, unsigned short group, unsigned char n)
 {
     RecGroup *grp = func_002BEAA8(self, group);
     char *rec = 0;
@@ -54,8 +54,8 @@ extern int D_00574380;                  /* damage manager */
 #define VOL_SIZE_Z  0.8f
 
 /* Set the object up: a damage-take unit with a 0.8 x 1.7 x 0.8 volume at its position, one hit point, a four entry table at 0x620 and the state words cleared; returns 1. */
-__attribute__((section(".text.func_001932D8")))
-int func_001932D8(cOmHitVolume *self)
+__attribute__((section(".text.cOmHitVolume_setupBox08x17x08")))
+int cOmHitVolume_setupBox08x17x08(cOmHitVolume *self)
 {
     float box[4];
     float size[4];
@@ -122,8 +122,8 @@ extern int D_00574380;                  /* damage manager */
 #define VOL_SIZE_Z  1.2f
 
 /* Set the object up: a damage-take unit with a 1.5 x 1.1 x 1.2 volume at its position, one hit point, a six entry table at 0x620 and the state words cleared; returns 1. */
-__attribute__((section(".text.func_0019EA20")))
-int func_0019EA20(cOmHitVolume *self)
+__attribute__((section(".text.cOmHitVolume_setupBox15x11x12")))
+int cOmHitVolume_setupBox15x11x12(cOmHitVolume *self)
 {
     float box[4];
     float size[4];
@@ -190,8 +190,8 @@ extern int D_00574380;                  /* damage manager */
 #define VOL_SIZE_Z  0.8f
 
 /* Set the object up: a damage-take unit with its volume at its position, one hit point, a table at 0x620 and the state words cleared; returns 1. */
-__attribute__((section(".text.func_00193050")))
-int func_00193050(cOmHitVolume *self)
+__attribute__((section(".text.cOmHitVolume_setupBox13x19x08")))
+int cOmHitVolume_setupBox13x19x08(cOmHitVolume *self)
 {
     float box[4];
     float size[4];
@@ -268,8 +268,8 @@ typedef struct cDataSlotSe {
 typedef char cDataSlotSe_size[sizeof(cDataSlotSe) == CDATA_SLOT_SIZE ? 1 : -1];
 
 /* Resets the slot: frees its heap node, ends every sound effect it started and goes back to the idle state. */
-__attribute__((section(".text.func_001FF3A0")))
-void func_001FF3A0(cDataSlotSe *self)
+__attribute__((section(".text.cDataSlot_resetSeHandles")))
+void cDataSlot_resetSeHandles(cDataSlotSe *self)
 {
     int i;
     self->useCount = 0;

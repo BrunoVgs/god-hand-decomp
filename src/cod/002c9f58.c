@@ -3,7 +3,7 @@
 extern void sceVu0UnitMatrix(void *m);
 extern void cSndMemHeap_OpenMain(void);
 extern void func_002CA220(void *a);
-extern void func_002CA390(void *a, int b);
+extern void cSnd_loadSoundGroup(void *a, int b);
 extern char D_005FFD80[];
 extern char D_00601180[];
 extern char D_005FEFF0[];
@@ -54,5 +54,5 @@ void func_002C9F58(void *arg) {
     cSndMemHeap_OpenMain();
     func_002CA220(s);
     *(int *)(s + 0x130) = -1;
-    func_002CA390(s, 0);
+    cSnd_loadSoundGroup(s, 0);
 }

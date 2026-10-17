@@ -21,8 +21,8 @@ typedef struct PhaseObj {
 } PhaseObj;
 
 /* Runs the update for the object's current phase. */
-__attribute__((section(".text.func_00383690")))
-void func_00383690(PhaseObj *self)
+__attribute__((section(".text.PhaseObj_updatePhase")))
+void PhaseObj_updatePhase(PhaseObj *self)
 {
     switch (self->phase) {
     case OBJ_PHASE_A:
@@ -51,8 +51,8 @@ extern int D_00574380;                  /* damage manager */
 #define CYL_RADIUS  0.8f
 
 /* Set up a hit-volume object: a damage-take unit with a cylinder at its matrix, a hit point of 1, cleared state words and a six entry table. */
-__attribute__((section(".text.func_0016FD68")))
-int func_0016FD68(cOmHitVolume *self)
+__attribute__((section(".text.cOmHitVolume_setupCylinderH3")))
+int cOmHitVolume_setupCylinderH3(cOmHitVolume *self)
 {
     float f[8];
     float *nv;
@@ -103,8 +103,8 @@ extern int D_00574380;                  /* damage manager */
 #define CYL_RADIUS  0.8f
 
 /* Set up a hit-volume object: a damage-take unit with a cylinder at its matrix, a hit point of 1, cleared state words and a eight entry table. */
-__attribute__((section(".text.func_00170338")))
-int func_00170338(cOmHitVolume *self)
+__attribute__((section(".text.cOmHitVolume_setupCylinderH4")))
+int cOmHitVolume_setupCylinderH4(cOmHitVolume *self)
 {
     float f[8];
     float *nv;
@@ -148,8 +148,8 @@ extern int D_00574380;                  /* damage manager */
 
 
 /* Set up a hit-volume object: a damage-take box registered with the damage manager, cleared state words and a table at 0x620. */
-__attribute__((section(".text.func_001A0208")))
-int func_001A0208(cOmHitVolume *self)
+__attribute__((section(".text.cOmHitVolume_setupBox_20")))
+int cOmHitVolume_setupBox_20(cOmHitVolume *self)
 {
     float f[16];
     float *m;

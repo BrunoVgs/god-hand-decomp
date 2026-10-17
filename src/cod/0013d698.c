@@ -11,7 +11,7 @@ extern int ClearField5B4IfFlagUnset_1B76B0(void *self);
 extern void func_002A87E8(void *self, int arg);
 extern void func_001B76D8(void *self);
 extern void LayerScreen_hideLayers(Slot2 *self, int a1);
-extern void func_001E4200(Slot2 *self, int a1, int a2, int a3);
+extern void Slot2_selectMark(Slot2 *self, int a1, int a2, int a3);
 extern void func_001E3E40(Slot2 *self, unsigned short a1, int a2, int a3);
 extern void Slot2_setMarkLayersAt464(Slot2 *self, int a1, int a2);
 extern void Slot2_setMarkLayersAt46C(Slot2 *self, int a1, int a2);
@@ -147,7 +147,7 @@ void Slot2_introStage(Slot2 *self)
         self->phase = self->phase + 1;
         break;
     case 1:
-        func_001E4200(self, SLOT2_FIELD(self, unsigned short, SLOT2_LAMP_SEL_OFFSET), 1, 1);
+        Slot2_selectMark(self, SLOT2_FIELD(self, unsigned short, SLOT2_LAMP_SEL_OFFSET), 1, 1);
         func_001E3E40(self, SLOT2_FIELD(self, unsigned short, SLOT2_LAMP_SEL_OFFSET), 1, 1);
         self->timer = SLOT2_INTRO_WAIT;
         self->phase = self->phase + 1;
@@ -163,7 +163,7 @@ void Slot2_introStage(Slot2 *self)
             Slot2_setMarkLayersAt464(self, 0, 0);
             Slot2_setMarkLayersAt46C(self, 0, 0);
             Slot2_setMarkLayers(self, 0, 0);
-            func_001E4200(self, SLOT2_FIELD(self, unsigned short, SLOT2_LAMP_SEL_OFFSET), 0, 0);
+            Slot2_selectMark(self, SLOT2_FIELD(self, unsigned short, SLOT2_LAMP_SEL_OFFSET), 0, 0);
             func_001E3E40(self, SLOT2_FIELD(self, unsigned short, SLOT2_LAMP_SEL_OFFSET), 0, 0);
             self->phase = self->phase + 1;
         }

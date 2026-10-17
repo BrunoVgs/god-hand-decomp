@@ -43,8 +43,8 @@ extern PhaseMemFn D_003BDB78[];
 /* Per-frame update: run the handler picked by the mode byte, rotate the
  * local offset by the orientation matrix into the world offset, lower its
  * height by 1 and run the shared post-update steps. */
-__attribute__((section(".text.func_001A4528")))
-void func_001A4528(cOmOffsetObj *self)
+__attribute__((section(".text.cOmOffsetObj_updateWorldOffset")))
+void cOmOffsetObj_updateWorldOffset(cOmOffsetObj *self)
 {
     char frame[0x20];
     char *s0 = (char *)self;
@@ -107,8 +107,8 @@ static __inline__ unsigned char Poker_timerDone(Poker *self)
  * animation and waits 120, phase 2 waits (or a pad press skips) and starts
  * the second animation, phase 3 waits then sets the BGM state and moves to
  * state 11. */
-__attribute__((section(".text.func_001DA158")))
-void func_001DA158(Poker *self)
+__attribute__((section(".text.Poker_updateIntro")))
+void Poker_updateIntro(Poker *self)
 {
     switch (self->phase) {
     case 0:
@@ -148,8 +148,8 @@ void func_001DA158(Poker *self)
 /* Sets the colour of the screen's element: mode 0 clears it, mode 1 fades
  * between two grey tints, mode 2 sets one tint. The colour words are built
  * byte by byte from uninitialised ints, as retail does. */
-__attribute__((section(".text.func_001E7660")))
-void func_001E7660(void *self, unsigned char mode)
+__attribute__((section(".text.CustomIDOwner_setColorMode")))
+void CustomIDOwner_setColorMode(void *self, unsigned char mode)
 {
     switch (mode) {
     case 0:

@@ -103521,7 +103521,8 @@
         "auto_generated": true,
         "progress_categories": [
           "engine"
-        ]
+        ],
+        "complete": true
       }
     },
     {
@@ -107312,6 +107313,18 @@
         "progress_categories": [
           "engine"
         ]
+      }
+    },
+    {
+      "name": "src/cod/00281638",
+      "target_path": "expected/build/src/cod/00281638.o",
+      "base_path": "build/src/cod/00281638.o",
+      "metadata": {
+        "auto_generated": true,
+        "progress_categories": [
+          "engine"
+        ],
+        "complete": true
       }
     },
     {
@@ -127833,7 +127846,8 @@
         "progress_categories": [
           "engine",
           "engine.casino"
-        ]
+        ],
+        "complete": true
       }
     },
     {
@@ -127871,7 +127885,8 @@
         "progress_categories": [
           "engine",
           "engine.casino"
-        ]
+        ],
+        "complete": true
       }
     },
     {

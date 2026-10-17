@@ -6,7 +6,7 @@ extern void SetCustomIDDispOneOrAll_1DD258(void *a0, int a1, int a2);
 extern int D_00466470;
 extern void func_002A9790(void *);
 extern int D_004664A0;
-extern void func_001508F8(void *);
+extern void EntryTable_constructPairs(void *);
 extern int D_00566E50;
 extern void func_001612C8(void *);
 extern int D_00568240;
@@ -267,7 +267,7 @@ void func_00150608(int a0, int a1) {
 __attribute__((section(".text.func_001523F8")))
 void func_001523F8(int a0, int a1) {
     if (a1 == 0xFFFF && a0 != 0) {
-        func_001508F8(&D_004664A0);
+        EntryTable_constructPairs(&D_004664A0);
     }
 }
 

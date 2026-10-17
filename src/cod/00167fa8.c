@@ -17,8 +17,8 @@ extern void **D_003C2384;
 extern float Curve_sample(void *a0, int a1, int a2, int a3);
 
 /* Find the tallest glyph on a line: walk the codes until an end code, ask func_002B0BE0 for each code's height, and keep the largest in the running maximum; each new maximum also stores arg[0] scaled by charH and zoomY to *out. Returns the end-code position. */
-__attribute__((section(".text.func_002B0830")))
-unsigned short *func_002B0830(cMessDrawFont *self, unsigned short *text, float *arg, float *out)
+__attribute__((section(".text.cMessDrawFont_measureLineHeight")))
+unsigned short *cMessDrawFont_measureLineHeight(cMessDrawFont *self, unsigned short *text, float *arg, float *out)
 {
     float best = 0.0f;
     float h;
@@ -68,8 +68,8 @@ typedef struct IdDispObj16 {
 } IdDispObj16;
 
 /* Constructor of the kind 0x16 display object: base setup, then (when its data table matches) the ID data and first animation, the four display works, and for variant 1 the copied variant byte and the hide flag cleared on the last work. */
-__attribute__((section(".text.func_00167FA8")))
-void func_00167FA8(IdDispObj16 *self)
+__attribute__((section(".text.IdDispObj16_construct")))
+void IdDispObj16_construct(IdDispObj16 *self)
 {
     int i;
     Obj0000_Set_Fields_68_6C_From_D_007474A0_1615D0(self);
@@ -128,8 +128,8 @@ typedef struct MoveCurveEnt {
 } MoveCurveEnt;
 
 /* Step an entry's curve-driven rotation: skip when held or finished, wrap or finish at the last key frame, sample the curve at the current frame into rotSpeed (as degrees) and advance the step counter unless held. */
-__attribute__((section(".text.func_002AC298")))
-void func_002AC298(void *curves, MoveCurveEnt *ent)
+__attribute__((section(".text.IdEnt_stepCurveRotation")))
+void IdEnt_stepCurveRotation(void *curves, MoveCurveEnt *ent)
 {
     MoveCurveSrc *src = ent->src;
     unsigned int flags = src->flags;

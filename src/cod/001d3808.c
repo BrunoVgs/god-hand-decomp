@@ -8,7 +8,7 @@ extern void func_001D4AA8(void *a0, int a1);
 extern void func_001D6460(void *a0, int a1);
 extern void func_001D6A30(void *a0, int a1);
 extern void func_001D6A50(void *a0, int a1);
-extern void func_001D6A70(void *a0, int a1);
+extern void IdGlow_setState(void *a0, int a1);
 extern char D_005FEE00[];
 extern long D_00747640;
 
@@ -40,7 +40,7 @@ void BlackJack_UpdateLose(BlackJack *self) {
     case 1:
         if (self->timer == 0) {
             CustomIDWork_SetNumber_1D5760(self, 0);
-            func_001D6A70(self, 1);
+            IdGlow_setState(self, 1);
             self->timer = 0x1E;
             self->phase = self->phase + 1;
         } else {
@@ -93,7 +93,7 @@ void BlackJack_UpdateLose(BlackJack *self) {
         break;
     case 5:
         if (self->timer == 0) {
-            func_001D6A70(self, 2);
+            IdGlow_setState(self, 2);
             self->timer = 0x14;
             self->phase = self->phase + 1;
         } else {

@@ -14,7 +14,7 @@ extern void cOmBase_setMeshDispFromLayer(cOmBase *self, int layer, int hide);
 extern int espSys_effDataRegist(void *table, int id, void *data);
 extern char D_007419A0[];
 extern cTaskManager D_00752C00;
-extern void func_0013ED28(void *screen);
+extern void cNowLoading_setup(void *screen);
 extern void func_0013EE58(void *screen);
 extern void Forward2AAC28_13F070(void *screen);
 extern void cTaskWork_exit(cTaskWork *task);
@@ -182,7 +182,7 @@ extern unsigned char D_003C2555;        /* the loading is finished */
 __attribute__((section(".text.cNowLoading_taskBody")))
 void cNowLoading_taskBody(void)
 {
-    func_0013ED28(D_003BD6E8 + NOWLOADING_SUB_OFFSET);
+    cNowLoading_setup(D_003BD6E8 + NOWLOADING_SUB_OFFSET);
     for (;;) {
         func_0013EE58(D_003BD6E8 + NOWLOADING_SUB_OFFSET);
         Forward2AAC28_13F070(D_003BD6E8 + NOWLOADING_SUB_OFFSET);

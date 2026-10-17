@@ -42,8 +42,8 @@ typedef struct MoveObj {
 
 /* Phase 0 starts the requested move (to a position when 0x778 is set, else a drop along the height) and falls into
  * phase 1, which steps the move and, once it ends, clears the flags and the state bytes. */
-__attribute__((section(".text.func_001BD8C8")))
-void func_001BD8C8(MoveObj *self)
+__attribute__((section(".text.cOmb2_stepMove")))
+void cOmb2_stepMove(MoveObj *self)
 {
     switch (self->base.base.phase) {
     case MOVE_STEP_PHASE_START:
@@ -116,8 +116,8 @@ extern DmgUnit *cDamageManage_CreateDamageGive(void *mgr, int kind, void *obj);
 
 /* Create the give volume (kind 3, a 2.5 sphere at the origin, hit kind 0x52, damage 20) and the take volume (a 1.5
  * sphere 3.0 up the first child), switch both off and clear bit 0 of flags2. Returns 1. */
-__attribute__((section(".text.func_001B8868")))
-int func_001B8868(cOmGiveTake *self)
+__attribute__((section(".text.cOmGiveTake_init")))
+int cOmGiveTake_init(cOmGiveTake *self)
 {
     float v[4] __attribute__((aligned(16)));
 
@@ -157,8 +157,8 @@ extern Blob18 D_00429278;
 
 /* Phase tick: run the handler of the phase's table row, then take a damage hit: with hp left the object restarts in
  * mode 1, with none it enters mode 2 and sets bit 0 of its flags (0x5B0). Both clear phase, step and step argument. */
-__attribute__((section(".text.func_001BC1C8")))
-void func_001BC1C8(cOmBase *self)
+__attribute__((section(".text.cOmBase_tickPhaseWithHit")))
+void cOmBase_tickPhaseWithHit(cOmBase *self)
 {
     char *s0 = (char *)self;
     struct Entry_func_001BC1C8 tbl[3];
@@ -216,8 +216,8 @@ void func_001BC1C8(cOmBase *self)
 /* Count one more hit of the player's combo (a new combo restarts at 1 when the window ran out) and reopen the 45 frame
  * window. The fifth hit plays a sound and adds 100 level points; every hit adds heat (1.5 for the first, 0.5 after,
  * halved at the top level) and every third hit from the first plays a sound; every call adds 50 level points. */
-__attribute__((section(".text.func_00129430")))
-void func_00129430(pl00 *self)
+__attribute__((section(".text.pl00_addComboHit")))
+void pl00_addComboHit(pl00 *self)
 {
     float heat;
 
@@ -249,8 +249,8 @@ void func_00129430(pl00 *self)
 
 /* Show the right meshes of a boss model for its damage level: actors 0x625 and 0x627 show the first mesh and hide the
  * second, and at levels 6 to 8 swap them (at level 8 only once rate is below 17). */
-__attribute__((section(".text.func_00298A78")))
-void func_00298A78(char *model, int unused, int level, float rate)
+__attribute__((section(".text.cModel_setBossMeshesB")))
+void cModel_setBossMeshesB(char *model, int unused, int level, float rate)
 {
     char *a1;
     char *b1;

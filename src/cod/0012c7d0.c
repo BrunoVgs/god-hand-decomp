@@ -27,8 +27,8 @@ extern int cSnd_SeCall(void *a0, int a1, int a2, void *a3, int a4, int a5);
 
 /* Arena wave step: phase 0 defeats every enemy; phase 1 spawns the next enemy in the cycle whenever fewer than 5 are
  * alive and the wave count is below the ring's limit, then moves to phase 2 once the limit is reached. */
-__attribute__((section(".text.func_001F14C8")))
-void func_001F14C8(ColiseumBattle *self)
+__attribute__((section(".text.ColiseumBattle_stepEnemyWaves")))
+void ColiseumBattle_stepEnemyWaves(ColiseumBattle *self)
 {
     char buf[0x10];
 
@@ -67,8 +67,8 @@ void func_001F14C8(ColiseumBattle *self)
 
 /* Set (on == 1) or clear the suspend bits of the player, then pass the state on to the jacket and to the three objects
  * that fight beside the player. */
-__attribute__((section(".text.func_0012C7D0")))
-void func_0012C7D0(pl00 *self, int on)
+__attribute__((section(".text.pl00_setSuspend")))
+void pl00_setSuspend(pl00 *self, int on)
 {
     if (on == 1)
         self->base.objFlags |= GAMEOBJ_OBJ_SUSPEND;
@@ -116,8 +116,8 @@ typedef struct SplashObj {
 /* Once, while the object is falling or its motion flag 4 is set and it sits above its ground position: cast a line
  * from the object's position; when it hits water (surface flag 0x400), spawn effect 0x55 at the hit point, play
  * sound 0x50 and set the flag. */
-__attribute__((section(".text.func_002751F0")))
-void func_002751F0(SplashObj *self)
+__attribute__((section(".text.cGameObj_checkWaterSplash")))
+void cGameObj_checkWaterSplash(SplashObj *self)
 {
     float buf[8];
     cVec *pos;

@@ -7,7 +7,7 @@ extern void CostumeObj_applyTailPartMeshes(void);
 extern void SetCostumeFlagIfMatch_2982A0(void);
 extern void ScrollCallback_hideLayers(void);
 extern void func_00297B20(void *a, void *b);
-extern void func_00298A78(void);
+extern void cModel_setBossMeshesB(void);
 extern void func_00298C18(void);
 extern void func_00298EF8(void);
 extern void cModel_setBossMeshes(void);
@@ -66,7 +66,7 @@ void Forward297B20_298310(void) {
 
 __attribute__((section(".text.Forward297B40_298A50")))
 void Forward297B40_298A50(void) {
-    func_00297B40(&D_00586AF0, (void *)&func_00298A78);
+    func_00297B40(&D_00586AF0, (void *)&cModel_setBossMeshesB);
 }
 
 /* clone */

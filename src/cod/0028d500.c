@@ -8,8 +8,8 @@ extern int cOmWeapon_setParent();
 /* Weapon-effect parameter loader, same shape as SetOrientByType_26AF20: a type (a2) picks six or fewer
  * floats, a count and zeroed slots in a 7 word stack vector, then cOmWeapon_setParent runs. No-op when a1 is 0.
  * The floats are block-local per case, which is what gives retail's $f0 to $f5 order. */
-__attribute__((section(".text.func_0028D500")))
-void func_0028D500(void *a0, int a1, unsigned int a2) {
+__attribute__((section(".text.cOmWeapon_loadEffectParamsByType")))
+void cOmWeapon_loadEffectParamsByType(void *a0, int a1, unsigned int a2) {
     void *a3 = a0;
     float buf[7];   /* sp[0..0x18] */
     int count;

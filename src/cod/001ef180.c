@@ -8,7 +8,7 @@ extern int cSnd_SeCall(void *a0, int a1, short a2, int a3, int a4, int a5);
 extern int cSnd_SeCall_2CB8A0(void *a0, int a1, int a2, int a3, int t0, int t1, int t2);
 extern void CustomIDOwner_setShown(char *a0, int a1);
 extern void DigitDisplay_setNumber(char *a0, int a1, int a2);
-extern void func_001F3488(char *a0, int a1);
+extern void CustomIDOwner_setPanelState(char *a0, int a1);
 
 extern void classFADE_start(void *p, int b, int c, int d, int e, unsigned int f, int g);
 extern void cScenario_beginRoomJump_2C4548(char *p, int a1, float f, void *buf, int a3, unsigned int t0, int t1);
@@ -183,7 +183,7 @@ void ColiseumBattle_StepResult(ColiseumBattle *self)
         if ((done & 0xFF) == 0) {
             break;
         }
-        func_001F3488(self->ui, 2);
+        CustomIDOwner_setPanelState(self->ui, 2);
         self->timer = 0x5A;
         self->state = self->state + 1;
         break;
@@ -197,7 +197,7 @@ void ColiseumBattle_StepResult(ColiseumBattle *self)
         if ((done & 0xFF) == 0) {
             break;
         }
-        func_001F3488(self->ui, 0);
+        CustomIDOwner_setPanelState(self->ui, 0);
         self->timer = 0x1E;
         self->state = self->state + 1;
         break;

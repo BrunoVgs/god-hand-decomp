@@ -8,7 +8,7 @@
 #include "godhand/cGame.h"
 
 extern int D_00747A44;
-extern float *func_002BEB00(cRoomJump *self, unsigned short id, unsigned char kind);
+extern float *cRoomJump_getRecord(cRoomJump *self, unsigned short id, unsigned char kind);
 extern cE3World D_007474A0;
 extern int D_0061A990;
 extern int D_00747A24;
@@ -43,7 +43,7 @@ void cDoor_setCasinoJumpPoint(cDoor *self, unsigned short id, unsigned char kind
     float *src;
     float w;
     cRoomJump_setTblAddr(&self->roomJump, D_00747A44);
-    src = func_002BEB00(&self->roomJump, id, kind);
+    src = cRoomJump_getRecord(&self->roomJump, id, kind);
     if (src != 0) {
         self->point[1].pos[0] = src[0];
         self->point[1].pos[1] = src[1];

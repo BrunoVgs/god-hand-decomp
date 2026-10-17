@@ -1,7 +1,7 @@
 /* sn-2.95.3-136 matched TU. */
 
 extern void LayerScreen_hideLayers(char *a0, int a1);
-extern void func_001E4200(char *a0, int a1, int a2, int a3);
+extern void Slot2_selectMark(char *a0, int a1, int a2, int a3);
 extern void MarkObj_setMarkFlag(char *a0, int a1, int a2);
 extern void displayScrollLayer(int a0, int a1);
 extern int D_005FEE00;
@@ -25,7 +25,7 @@ void func_001E2EB8(char *a0)
         *(int *)(a0 + 0xC) += 1;
         break;
     case 1:
-        func_001E4200(a0, *(unsigned short *)(a0 + 0x494), 1, 1);
+        Slot2_selectMark(a0, *(unsigned short *)(a0 + 0x494), 1, 1);
         MarkObj_setMarkFlag(a0, 0, 1);
         *(int *)(a0 + 0x10) = 0x78;
         *(int *)(a0 + 0xC) += 1;
@@ -38,7 +38,7 @@ void func_001E2EB8(char *a0)
             done = 1;
         }
         if ((done & 0xFF) != 0) {
-            func_001E4200(a0, *(unsigned short *)(a0 + 0x494), 0, 0);
+            Slot2_selectMark(a0, *(unsigned short *)(a0 + 0x494), 0, 0);
             *(int *)(a0 + 0xC) += 1;
         }
         break;

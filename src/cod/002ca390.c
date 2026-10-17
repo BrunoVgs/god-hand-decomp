@@ -26,8 +26,8 @@ extern int D_0044CE40[SNDGRP_ENTRIES];
 extern int StoreSoundEntry_3749D8(short slot, SoundRec *rec);
 
 /* Load a sound group: copy each of the group's two entries to a stack record, add its mask word and store it into the sound table; stop at the first failure, else remember the group. */
-__attribute__((section(".text.func_002CA390")))
-void func_002CA390(SoundOwner *self, int group)
+__attribute__((section(".text.cSnd_loadSoundGroup")))
+void cSnd_loadSoundGroup(SoundOwner *self, int group)
 {
     SoundRec rec[2];                    /* retail reserves 0x20 bytes for the record; only [0] is used */
     int i;

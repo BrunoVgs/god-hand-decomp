@@ -65,7 +65,7 @@ extern void cIDBase_calcEntries(cIDBaseObj *self);
 extern void func_002ABDC0(cIDBaseObj *self, cIDBaseEnt *ent);
 extern void cIDBase_stepMoveAnim(cIDBaseObj *self, cIDBaseEnt *ent);
 extern void func_002AC1C0(cIDBaseObj *self, cIDBaseEnt *ent);
-extern void func_002AC298(cIDBaseObj *self, cIDBaseEnt *ent);
+extern void IdEnt_stepCurveRotation(cIDBaseObj *self, cIDBaseEnt *ent);
 extern void func_002AC378(cIDBaseObj *self, cIDBaseEnt *ent);
 /* One frame: lay out the entries, advance the frame counter (wraps at
  * IDBASE_FRAME_MAX), step each entry, and post a message once an icon entry
@@ -90,7 +90,7 @@ void cIDBase_move(cIDBaseObj *self)
             func_002ABDC0(self, ent);
             cIDBase_stepMoveAnim(self, ent);
             func_002AC1C0(self, ent);
-            func_002AC298(self, ent);
+            IdEnt_stepCurveRotation(self, ent);
             func_002AC378(self, ent);
             if (ent->kind == IDENT_KIND_ICON) {
                 flags = ent->flags;

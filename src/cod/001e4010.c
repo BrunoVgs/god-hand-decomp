@@ -12,7 +12,7 @@ extern void Panel_showSlotMark(void *a0, int a1, int a2, int a3);
 extern void func_001F4CA8(void *a0, int a1, int a2, int a3);
 extern void CustomIDOwner_setColumnNumber(void *a0, int a1, int a2, int a3);
 extern void NoOp_1F5098(void *a0, int a1, int a2, int a3);
-extern void func_001F50A0(void *a0, int a1, int a2, int a3);
+extern void CustomIDOwner_setTimeRow(void *a0, int a1, int a2, int a3);
 extern void SetCustomIDSlotNumberAlt_1F5210(void *a0, int a1, int a2, int a3);
 extern void func_001F5278(void *a0, int a1, int a2);
 extern void func_002E0DE8(int a0, int a1, int a2, void *a3);
@@ -140,7 +140,7 @@ void func_001F4068(char *a0, unsigned short a1, short *a2, int a3)
             func_001F4CA8(s2, a1, a2[4], a3);
             CustomIDOwner_setColumnNumber(s2, a1, a2[5], a3);
             NoOp_1F5098(s2, a1, 0, a3);
-            func_001F50A0(s2, a1, *(int *)((char *)a2 + 0xC), a3);
+            CustomIDOwner_setTimeRow(s2, a1, *(int *)((char *)a2 + 0xC), a3);
             SetCustomIDSlotNumberAlt_1F5210(s2, a1,
                 cCoreSave_ckFightingRingClear(&D_00569B70, a2[0]) ? 0 : *(int *)((char *)a2 + 0x10), a3);
             func_001F5278(s2, a1, 0);
@@ -149,7 +149,7 @@ void func_001F4068(char *a0, unsigned short a1, short *a2, int a3)
             func_001F4CA8(s2, a1, a2[4], 0);
             CustomIDOwner_setColumnNumber(s2, a1, a2[5], 0);
             NoOp_1F5098(s2, a1, 0, 0);
-            func_001F50A0(s2, a1, *(int *)((char *)a2 + 0xC), 0);
+            CustomIDOwner_setTimeRow(s2, a1, *(int *)((char *)a2 + 0xC), 0);
             SetCustomIDSlotNumberAlt_1F5210(s2, a1,
                 cCoreSave_ckFightingRingClear(&D_00569B70, a2[0]) ? 0 : *(int *)((char *)a2 + 0x10), 0);
             func_001F5278(s2, a1, a3);

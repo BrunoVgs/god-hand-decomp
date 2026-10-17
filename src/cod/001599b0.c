@@ -6,7 +6,7 @@
 
 extern unsigned int cMessCommon_getCodeSize(unsigned int code);
 extern void func_002B04C0(cMessDrawFont *self, unsigned short *text, void *arg);
-extern float func_002B0908(cMessDrawFont *self, unsigned short *text, void *arg);
+extern float cMessDrawFont_measureCode(cMessDrawFont *self, unsigned short *text, void *arg);
 extern float func_002B0A58(cMessDrawFont *self, unsigned short *text, void *arg);
 extern void func_001B6FB8(void *self);
 extern void *cDamageManage_CreateDamageTake(void *mgr, void *owner, int kind);
@@ -97,7 +97,7 @@ void RecDecode_readHeader(RecOut *out, char *blob, RecIn *in)
     }
 }
 
-/* Measure a message string: walk the codes, add each plain code's advance to *width (a control code is run through func_002B04C0 and an end code stops the walk, handing back its position), take each code's glyph width and height from func_002B0908 and func_002B0A58, and keep the tallest in *height. */
+/* Measure a message string: walk the codes, add each plain code's advance to *width (a control code is run through func_002B04C0 and an end code stops the walk, handing back its position), take each code's glyph width and height from cMessDrawFont_measureCode and func_002B0A58, and keep the tallest in *height. */
 
 
 
@@ -119,7 +119,7 @@ unsigned short *cMessDrawFont_measureText(cMessDrawFont *self, unsigned short *t
 plain:
     *width += self->unk2C[0] * self->zoomX;
 glyph:
-    do { w = func_002B0908(self, text, arg); } while (0);
+    do { w = cMessDrawFont_measureCode(self, text, arg); } while (0);
     h = func_002B0A58(self, text, arg);
     if (w != z) {
         *width += w;

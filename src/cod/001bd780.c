@@ -32,8 +32,8 @@ typedef struct cOmb2Slide {
 } cOmb2Slide;
 
 /* Slide a door-like object once: phase 0 starts the move (straight in, or down when slideDown is set), plays the sound and goes to phase 1; phase 1 waits for the move to end, then marks it done and resets the state bytes. */
-__attribute__((section(".text.func_001BD780")))
-void func_001BD780(cOmb2Slide *self)
+__attribute__((section(".text.cOmb2_updateSlide")))
+void cOmb2_updateSlide(cOmb2Slide *self)
 {
     cVec v;
     switch (self->base.base.phase) {
@@ -82,8 +82,8 @@ void func_001BD780(cOmb2Slide *self)
 #define PANEL_ENTRY_C  0xF
 
 /* Put the panel in one of four states: 0 slid out, 1 in with entry B shown, 2 sliding out with entry C shown, 3 sliding in with entries B and C shown (a mode of 0 or 4 and up is state 0). */
-__attribute__((section(".text.func_001D5E08")))
-void func_001D5E08(char *p, unsigned short mode)
+__attribute__((section(".text.IdPanel_setSlideState")))
+void IdPanel_setSlideState(char *p, unsigned short mode)
 {
     int m = mode;
     if (m == 1) {
@@ -130,8 +130,8 @@ c3:
 #define GREY(c) (((((((c) & ~0x00FF0000) | 0x00800000) & ~0x0000FF00) | 0x00008000) & ~0x000000FF) | 0x00000080)
 
 /* Set the glow state: 0 stops the colour animation and hides the entry group; 1 fades from the grey built from c2 to the grey built from c1 (flagged 0x40) over 2 frames and shows the group; 2 sets the grey built from c3 over 2 frames and shows it; any other mode does nothing. */
-__attribute__((section(".text.func_001D6A70")))
-void func_001D6A70(char *p, unsigned char mode, int c1, int c2, int c3)
+__attribute__((section(".text.IdGlow_setState")))
+void IdGlow_setState(char *p, unsigned char mode, int c1, int c2, int c3)
 {
     switch (mode) {
     case 0:
@@ -160,8 +160,8 @@ void func_001D6A70(char *p, unsigned char mode, int c1, int c2, int c3)
 #define COLOR_FRAMES   1
 
 /* Set three numbers and switch the entries 7 to 10 on or off; when the flag is set, the first number is 0 and the second is below 10, tint the three number works and the label. The colour is built from an uninitialised stack word by mask steps that retail keeps, so it is always 0x8041268A. */
-__attribute__((section(".text.func_001F2B80")))
-void func_001F2B80(char *p, int show, int n0, int n1, int n2, int flag)
+__attribute__((section(".text.IdNumbers_setAndTint")))
+void IdNumbers_setAndTint(char *p, int show, int n0, int n1, int n2, int flag)
 {
     int cbuf[1];
     int color;

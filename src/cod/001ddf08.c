@@ -43,8 +43,8 @@ extern void CustomIDWork_SetColorAnimNormal_2D6898(CustomIDWork *work, int color
 /* In the arena room, when no slide runs and the enemy is armed, finds a
  * second enemy within 10 units and, if the manager allows, sends this one
  * to its position. Returns 1 when the goto was set up. */
-__attribute__((section(".text.func_0026E6B0")))
-int func_0026E6B0(cEm00 *self)
+__attribute__((section(".text.cEm00_startGotoToNearEma2")))
+int cEm00_startGotoToNearEma2(cEm00 *self)
 {
     cEma2 *target;
 
@@ -124,8 +124,8 @@ void *PullEsp(int a0)
  * and walks the BGM nodes: a started or fade-flagged node is faded out and
  * marked to free, any other is flagged to fade out. Resets the state word at
  * 0x128 and runs func_002CB070. */
-__attribute__((section(".text.func_002CAA00")))
-void func_002CAA00(cSnd *self)
+__attribute__((section(".text.cSnd_quietAll")))
+void cSnd_quietAll(cSnd *self)
 {
     short key;
     cSndSeVoice *voice;
@@ -171,8 +171,8 @@ extern ConfettiIds D_0042BEE0;                /* the five piece objects to pick 
 
 /* Throws 10 pieces, each a random one of five objects, from random spots in
  * a 20 by 20 square, each with a random spin. */
-__attribute__((section(".text.func_001F1388")))
-void func_001F1388(void *self)
+__attribute__((section(".text.ColiseumBattle_throwConfettiMixed")))
+void ColiseumBattle_throwConfettiMixed(void *self)
 {
     ConfettiIds ids;
     cVec pos;
@@ -205,8 +205,8 @@ extern PosTable D_0042B650;                       /* positions of the second ele
 
 /* Places the two elements of card display `kind` (0 to 4) from the position
  * tables and shows or hides both. Does nothing for a kind of 5 or more. */
-__attribute__((section(".text.func_001DDF08")))
-void func_001DDF08(void *self, unsigned char kind, int on)
+__attribute__((section(".text.CustomIDOwner_placeCardKind")))
+void CustomIDOwner_placeCardKind(void *self, unsigned char kind, int on)
 {
     PosTable first;
     PosTable second;
@@ -231,8 +231,8 @@ void func_001DDF08(void *self, unsigned char kind, int on)
  * 2 sliding in from off screen, 3 shown with the normal colour, anything
  * else parked off screen and hidden. The parked arm is written first, with
  * an explicit case 0, so the compare tree is rooted at 1 as in retail. */
-__attribute__((section(".text.func_001F3488")))
-void func_001F3488(void *self, unsigned short mode)
+__attribute__((section(".text.CustomIDOwner_setPanelState")))
+void CustomIDOwner_setPanelState(void *self, unsigned short mode)
 {
     CustomIDWork *work;
 

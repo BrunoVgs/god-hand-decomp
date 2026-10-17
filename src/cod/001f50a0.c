@@ -23,8 +23,8 @@ extern char *D_003BD6E8;
 /* Fills row `idx` of the time table: hides its entries, then shows the time
  * (val seconds as minutes and seconds) with visibility `show`, or the "no
  * time" message when val is 0. Does nothing for a row of 7 or more. */
-__attribute__((section(".text.func_001F50A0")))
-void func_001F50A0(void *self, unsigned short idx, int val, int show)
+__attribute__((section(".text.CustomIDOwner_setTimeRow")))
+void CustomIDOwner_setTimeRow(void *self, unsigned short idx, int val, int show)
 {
     int disp;
     int minutes;
@@ -77,8 +77,8 @@ typedef struct AnimNode {
 #define GAME_FLAGS()    (*(unsigned int *)(D_003BD6E8 + GAME_FLAGS_OFFSET))
 
 /* Per-frame step of an animation node. */
-__attribute__((section(".text.func_001F70C8")))
-int func_001F70C8(AnimNode *self)
+__attribute__((section(".text.AnimNode_stepPlayback")))
+int AnimNode_stepPlayback(AnimNode *self)
 {
     int idx;
 
@@ -121,8 +121,8 @@ int func_001F70C8(AnimNode *self)
 
 /* Quicksort of two parallel arrays: key[] (halfwords) decides the order and
  * val[] (words) is permuted the same way. Sorts the range lo..hi inclusive. */
-__attribute__((section(".text.func_002A2D60")))
-void func_002A2D60(short *key, int *val, int lo, int hi)
+__attribute__((section(".text.SortPair_quicksort")))
+void SortPair_quicksort(short *key, int *val, int lo, int hi)
 {
     short pivot = key[(lo + hi) / 2];
     int i = lo;
@@ -152,9 +152,9 @@ void func_002A2D60(short *key, int *val, int lo, int hi)
     }
     if (lo < i) {
         bound = i;
-        func_002A2D60(key, val, lo, bound);
+        SortPair_quicksort(key, val, lo, bound);
     }
     bound = j + 1;
     if (bound < hi)
-        func_002A2D60(key, val, j + 1, hi);
+        SortPair_quicksort(key, val, j + 1, hi);
 }

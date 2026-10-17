@@ -16,8 +16,8 @@ extern int D_00574380;
 
 /* Set the object up: one hit point, a damage-take unit with a 0.5 sphere half a unit up, mesh layers 0 (shown) and
  * 0x40 (hidden), and flags 8 and 0x10 set on its child objects 1 to 5. Returns 1. */
-__attribute__((section(".text.func_001790B0")))
-int func_001790B0(char *p)
+__attribute__((section(".text.cOmBase_setupSphereVolume")))
+int cOmBase_setupSphereVolume(char *p)
 {
     float f[4];
     void *slot;

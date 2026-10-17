@@ -8,7 +8,7 @@ extern void cSnd_BgmEventStart(void *a0, int a1, int a2, int a3);
 extern void func_001D49E0(void *a0, int a1);
 extern void func_001D4AA8(void *a0, int a1);
 extern void func_001D6700(void *a0, int a1);
-extern void func_001D6A70(void *a0, int a1);
+extern void IdGlow_setState(void *a0, int a1);
 extern void func_001D6D20(void *a0, int a1);
 extern char D_005FEE00[];
 extern long D_00747640;
@@ -42,7 +42,7 @@ void BlackJack_UpdateBlackJackWin(BlackJack *self) {
             CustomIDWork_SetNumber_1D5760(self, self->payout);
             func_001D6D20(self, 1);
             SetLinkedObjField2B_1D6D68(self, 1);
-            func_001D6A70(self, 1);
+            IdGlow_setState(self, 1);
             self->timer = 0x1E;
             self->phase = self->phase + 1;
         } else {
@@ -109,7 +109,7 @@ void BlackJack_UpdateBlackJackWin(BlackJack *self) {
         break;
     case 7:
         if (self->timer == 0) {
-            func_001D6A70(self, 2);
+            IdGlow_setState(self, 2);
             self->timer = 0x1E;
             self->phase = self->phase + 1;
         } else {

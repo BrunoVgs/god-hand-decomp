@@ -54,8 +54,8 @@ static __inline__ float probeDepth(float v)
 /* Refresh the node, then drop it onto the ground: cast a line from 1 above its position down by the probe depth plus
  * 1, and put the node at the hit point lifted by the data record's lift, or back at its own position on a miss.
  * Returns 1. */
-__attribute__((section(".text.func_002F4BE0")))
-int func_002F4BE0(ProbeNode *self)
+__attribute__((section(".text.ProbeNode_dropToGround")))
+int ProbeNode_dropToGround(ProbeNode *self)
 {
     cVec pos;                           /* sp+0x30 */
     cVec from;                          /* sp+0x40 */
@@ -85,10 +85,10 @@ int func_002F4BE0(ProbeNode *self)
 /* The script hook the scenario calls once a frame (field 0x104, not named in cScenario.h). */
 #define SCENARIO_HOOK(s)  (*(void (**)(void))((char *)(s) + 0x104))
 
-__attribute__((section(".text.func_002C3500")))
+__attribute__((section(".text.cScenario_moveFrame")))
 /* Every frame: track the player's death as cScenario_move does, then, unless the game is paused, reset the cursor
  * (unless a soft event runs), call the script hook and tick the screen object. */
-void func_002C3500(cScenario *self)
+void cScenario_moveFrame(cScenario *self)
 {
     char *g = (char *)&D_007474A0;
 

@@ -42,8 +42,8 @@ typedef struct PhaseEm {
 } PhaseEm;
 
 /* Per-frame enemy update unless the game is frozen: refresh the speed rate and motion step, measure the distance to the player, update the model, run the handler of the state's table entry, then the effect, parts, IK, world parts and collision updates, and copy the position. */
-__attribute__((section(".text.func_0027E0B0")))
-void func_0027E0B0(PhaseEm *self)
+__attribute__((section(".text.EmPhase_updateNearPlayer")))
+void EmPhase_updateNearPlayer(PhaseEm *self)
 {
     char *s0 = (char *)self;
     char *e;

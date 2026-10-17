@@ -13,8 +13,8 @@ typedef struct Obj1F0BF8 {
 } Obj1F0BF8;
 
 /* Create three pieces at fixed offsets from the owner: (2.9, 0, 5.4), (3.0, 0, -4.55) and (-5.4, 0, -1.0), all with angle 0. */
-__attribute__((section(".text.func_001F0BF8")))
-void func_001F0BF8(Obj1F0BF8 *self)
+__attribute__((section(".text.Obj_spawnThreePieces")))
+void Obj_spawnThreePieces(Obj1F0BF8 *self)
 {
     cVec v;
     float zero;

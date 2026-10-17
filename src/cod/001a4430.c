@@ -51,8 +51,8 @@ typedef struct Om4fObj {
 } Om4fObj;
 
 /* Set the door up: a hit sphere of 0.5 at (0, 0, 0.7) through the damage manager, 9999 life, the open/close rotation, closed, unlocked, event mode 1. Returns 1. */
-__attribute__((section(".text.func_001A4430")))
-int func_001A4430(Om4fObj *self)
+__attribute__((section(".text.cOm4f_construct")))
+int cOm4f_construct(Om4fObj *self)
 {
     cVec c;
     void *dmg;
@@ -95,8 +95,8 @@ typedef struct Slot2Marks {
 extern MarkTbl D_0042B8D0;              /* layer index of each mark */
 
 /* Select a mark: store the selector (index below 5) in the blink word, arm the blink when armFlag is set, then show only the selected mark layer (showAll) or hide all five. */
-__attribute__((section(".text.func_001E4200")))
-void func_001E4200(Slot2Marks *self, unsigned int sel, int showAll, int armFlag)
+__attribute__((section(".text.Slot2_selectMark")))
+void Slot2_selectMark(Slot2Marks *self, unsigned int sel, int showAll, int armFlag)
 {
     MarkTbl tbl;
     int i;
@@ -148,8 +148,8 @@ typedef struct ResHolder {
 } ResHolder;
 
 /* Release everything the holder owns and reset it: the 0xA8 buffer when the state is negative, the handle at 0x00, the five heap buffers; clear the whole record and set the two ids to -1 and the two shorts to 31 and 100. */
-__attribute__((section(".text.func_002D40F8")))
-void func_002D40F8(ResHolder *self)
+__attribute__((section(".text.ResHolder_release")))
+void ResHolder_release(ResHolder *self)
 {
     if (self->state < 0) {
         if (self->handle != 0) {
@@ -194,8 +194,8 @@ extern char D_005E8140[];               /* request queue */
 #define REQ_LAST_NUM  0x13
 
 /* Send the boot requests to the queue, retrying each until it is accepted: three plain ones, the 7 entry list, then (after two setup calls with no argument) the 0x13 entry list. */
-__attribute__((section(".text.func_002C9D58")))
-void func_002C9D58(void)
+__attribute__((section(".text.System_sendBootRequests")))
+void System_sendBootRequests(void)
 {
     while (func_002BE240(D_005E8140, D_0044CD20, 0, 0) < 0) {
     }
@@ -215,8 +215,8 @@ void func_002C9D58(void)
 #define COLI_WAVE_STEP_SPAWN  1         /* phase: start each waiting enemy once its entry is active */
 
 /* Arena enemy spawn step: phase 0 defeats every enemy; phase 1 starts the action of each of the three waiting enemy entries as it becomes active, counts it and clears its slot. */
-__attribute__((section(".text.func_001F0CE8")))
-void func_001F0CE8(ColiseumBattle *self)
+__attribute__((section(".text.ColiseumBattle_spawnWaitingEnemies")))
+void ColiseumBattle_spawnWaitingEnemies(ColiseumBattle *self)
 {
     char buf[0x10];
     switch (self->phase) {

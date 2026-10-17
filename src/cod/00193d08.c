@@ -8,8 +8,8 @@ extern void *cDamageManage_CreateDamageTake(void *mgr, cOmHitVolume *owner, int 
 extern void func_001FD9D8(void *take, void *pos, float *a, float *b, float *c);
 
 /* Set the object up: a damage-take unit with a 1.0 x 2.0 x 1.0 volume at its position, one hit point, a five entry table at 0x620 and the state words set; returns 1. */
-__attribute__((section(".text.func_001A0968")))
-int func_001A0968(cOmHitVolume *self)
+__attribute__((section(".text.cOmHitVolume_setupBox10x20x10")))
+int cOmHitVolume_setupBox10x20x10(cOmHitVolume *self)
 {
     float box[4];
     float sizeVec[4];
@@ -63,8 +63,8 @@ int func_001A0968(cOmHitVolume *self)
 }
 
 /* Set the object up: a damage-take unit with a 1.2 x 1.5 x 1.2 volume at its position, one hit point, a six entry table at 0x620 and the state words set; returns 1. */
-__attribute__((section(".text.func_001A0478")))
-int func_001A0478(cOmHitVolume *self)
+__attribute__((section(".text.cOmHitVolume_setupBox12x15x12")))
+int cOmHitVolume_setupBox12x15x12(cOmHitVolume *self)
 {
     float box[4];
     float sizeVec[4];
@@ -119,8 +119,8 @@ int func_001A0478(cOmHitVolume *self)
 }
 
 /* Set the object up: a damage-take unit with a 2.4306 x 1.1591 x 0.2 volume at its position, one hit point, a four entry table at 0x620 and the state words cleared; returns 1. */
-__attribute__((section(".text.func_00193D08")))
-int func_00193D08(cOmHitVolume *self)
+__attribute__((section(".text.cOmHitVolume_setupBox24x12x02")))
+int cOmHitVolume_setupBox24x12x02(cOmHitVolume *self)
 {
     float box[4];
     float sizeVec[4];

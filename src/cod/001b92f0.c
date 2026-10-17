@@ -24,8 +24,8 @@ extern PhaseTable D_003BDDA8;
 #define PHASE_OBJ_COLL_B  0x608
 
 /* Phase tick: switch off the object's two damage collision units, store the global speed rate in the object, run the handler the state byte's table entry names (from a method table found through the object, or inline), then the shared post-update steps. */
-__attribute__((section(".text.func_001B92F0")))
-void func_001B92F0(void *a0)
+__attribute__((section(".text.EmPhaseCollOff_update")))
+void EmPhaseCollOff_update(void *a0)
 {
     char *s0 = (char *)a0;
     char *e;

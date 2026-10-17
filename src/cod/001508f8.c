@@ -9,8 +9,8 @@ extern void *func_002D5070(void *a0);
 #define OWNER_STATE_RESET   0x2600
 
 /* Runs func_002D5070 on both eight-byte halves of every table entry, then resets the header words and returns self. */
-__attribute__((section(".text.func_001508F8")))
-char *func_001508F8(char *self) {
+__attribute__((section(".text.EntryTable_constructPairs")))
+char *EntryTable_constructPairs(char *self) {
     char *entry = self + ENTRY_TABLE_OFS;
     int i = ENTRY_LAST_INDEX;
     do {

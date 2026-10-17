@@ -15,14 +15,14 @@ extern int moveMotion(void *a0);
 extern void cObjBase_addNullSpeed_Rotation(void *a0, float s);
 extern void cObjBase_addNullSpeed(void *a0, float s);
 extern int cCollisionManager_checkNearCollision(void *a0, int a1, void *a2, float f);
-extern void func_00129430(void *a0);
+extern void pl00_addComboHit(void *a0);
 extern char D_005FEE00[];
 extern char D_005E8040[];
 extern void func_002D42E0(cMovieTrack *track);
 extern int D_00747A84;
 
 /* Phase machine of the enemy with the counted attack: step 1 counts 0x15B4 down each frame, and
- * when it reaches zero it raises the 0x15B0 state to 2 and calls func_00129430. */
+ * when it reaches zero it raises the 0x15B0 state to 2 and calls pl00_addComboHit. */
 __attribute__((section(".text.cEm00_stepCountedAttack"))) void cEm00_stepCountedAttack(cEm00 *self)
 {
     float v[4] __attribute__((aligned(16)));
@@ -108,7 +108,7 @@ __attribute__((section(".text.cEm00_stepCountedAttack"))) void cEm00_stepCounted
                 if (*(int *)&self->unk15B4 == 0) {
                     if (self->gotoFlags == 1) {
                         self->gotoFlags = 2;
-                        func_00129430(self);
+                        pl00_addComboHit(self);
                     }
                 }
             }
@@ -117,7 +117,7 @@ __attribute__((section(".text.cEm00_stepCountedAttack"))) void cEm00_stepCounted
     if (func_00123938(self, 1) != 0) {
         if (self->gotoFlags == 1) {
             self->gotoFlags = 2;
-            func_00129430(self);
+            pl00_addComboHit(self);
         }
     }
 }

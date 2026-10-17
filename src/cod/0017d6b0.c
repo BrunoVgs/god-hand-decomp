@@ -62,8 +62,8 @@ extern int D_0042BDC0[5];               /* local Y per slot */
 
 /* Set message `messNo` on slot `msgSlot` of both banks and move the work entry of slot `ySlot` to that slot's Y
  * from the table. Both slots must be below 5. */
-__attribute__((section(".text.func_001EE5F0")))
-void func_001EE5F0(char *self, unsigned char msgSlot, unsigned char ySlot, int messNo)
+__attribute__((section(".text.CustomIDWork_setSlotMessAndPosY")))
+void CustomIDWork_setSlotMessAndPosY(char *self, unsigned char msgSlot, unsigned char ySlot, int messNo)
 {
     SlotY tbl;
 
@@ -86,8 +86,8 @@ extern struct Table_func_0017D6B0 D_003BDA58;
 
 /* Mode tick: run the handler of the mode's table row, count the mode timer down by the speed rate (floored at 0), then
  * the shared post-update step. */
-__attribute__((section(".text.func_0017D6B0")))
-void func_0017D6B0(void *a0)
+__attribute__((section(".text.cEmObj_tickModeTimer")))
+void cEmObj_tickModeTimer(void *a0)
 {
     char *s0 = (char *)a0;
     char *e;

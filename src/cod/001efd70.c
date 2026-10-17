@@ -2,7 +2,7 @@
 #include "godhand/ColiseumBattle.h"
 
 extern float cEmManage_GetSpeedRate(void *a0);
-extern void func_001F2B80(void *a0, void *a1, int a2, int a3, int t0, int t1);
+extern void IdNumbers_setAndTint(void *a0, void *a1, int a2, int a3, int t0, int t1);
 extern int D_005864F0;
 
 /* sn-2.95.3-136 matched TU. */
@@ -32,5 +32,5 @@ void ColiseumBattle_UpdateCountdown(ColiseumBattle *self, void *a1) {
     secs = (int)(t / 30.0f);
     t = t - (float)(secs * 30);
     hund = (int)(t / 30.0f * 100.0f);
-    func_001F2B80(self->ui, a1, mins, secs, hund, 1);
+    IdNumbers_setAndTint(self->ui, a1, mins, secs, hund, 1);
 }

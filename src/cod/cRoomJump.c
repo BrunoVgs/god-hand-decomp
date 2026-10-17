@@ -6,14 +6,14 @@ typedef struct {
     unsigned char field_5BA; unsigned char pad1[5];
     float field_5C0; float field_5C4; float field_5C8; unsigned char pad2[4]; float field_5D0;
 } CGRoomJump_t;
-extern float *func_002BEB00(void *a0, int a1, unsigned char a2);
+extern float *cRoomJump_getRecord(void *a0, int a1, unsigned char a2);
 extern CGRoomJump_t D_007474A0;
 
 __attribute__((section(".text.cRoomJump_setNextPos")))
 void cRoomJump_setNextPos(void *a0, unsigned short a1, unsigned char a2, float *a3)
 {
     float *src; float w; int idx = a1 & 0xFFFF;
-    src = func_002BEB00(a0, idx, a2);
+    src = cRoomJump_getRecord(a0, idx, a2);
     if (src != 0) {
         D_007474A0.field_5C0 = src[0]; D_007474A0.field_5C4 = src[1]; D_007474A0.field_5C8 = src[2];
         w = src[3];

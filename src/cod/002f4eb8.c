@@ -50,8 +50,8 @@ typedef struct ShakeInit {
 
 /* Set the node up from its settings and the source record: starting hit points (minus a random part), kind and rates,
  * then its target and start position: the source's when it has a target, else the settings' own. Returns 1. */
-__attribute__((section(".text.func_002F4EB8")))
-int func_002F4EB8(ShakeInit *self, ShakeSrc *src)
+__attribute__((section(".text.ShakeNode_initFromCfg")))
+int ShakeNode_initFromCfg(ShakeInit *self, ShakeSrc *src)
 {
     int rnd;
     int range;

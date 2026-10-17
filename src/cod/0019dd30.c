@@ -10,8 +10,8 @@ extern int D_00574380;
 
 
 /* Set the object up: a damage-take unit with a 0.8 x 4.6 x 0.8 volume whose origin sits at half the box depth, one hit point, a six entry table at 0x620 and the state words set; returns 1. */
-__attribute__((section(".text.func_0019DD30")))
-int func_0019DD30(cOmHitVolume *self) {
+__attribute__((section(".text.cOmHitVolume_setupBox08x46x08")))
+int cOmHitVolume_setupBox08x46x08(cOmHitVolume *self) {
     float box[4];
     float sizeVec[4];
     float originVec[4];

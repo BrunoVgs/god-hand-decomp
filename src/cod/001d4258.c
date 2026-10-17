@@ -13,7 +13,7 @@ extern void BlackJack_slidePanel(BlackJack *, int);
 extern void func_001D61C0(BlackJack *, int);
 extern void func_001D5C38(BlackJack *, int);
 extern void func_001D5D20(BlackJack *, int);
-extern void func_001D5E08(BlackJack *, int);
+extern void IdPanel_setSlideState(BlackJack *, int);
 extern void PanelWork_setMode(BlackJack *, int);
 
 extern char D_005FEE00[];
@@ -83,7 +83,7 @@ void BlackJack_UpdateClearTable(BlackJack *self)
         }
         func_001D5C38(self, 2);
         func_001D5D20(self, 2);
-        func_001D5E08(self, 2);
+        IdPanel_setSlideState(self, 2);
         PanelWork_setMode(self, 2);
         self->timer = 0x1E;
         self->phase++;

@@ -17,7 +17,7 @@ extern void func_002A87E8(void *a0, int a1);
 extern void func_001B76D8(void *a0);
 extern unsigned short D_003F2060[];
 extern void func_0032A9F0(int a0, int a1);
-extern void func_001E4200(Slot1 *a0, int a1, int a2, int a3);
+extern void Slot2_selectMark(Slot1 *a0, int a1, int a2, int a3);
 extern void func_001E3D78(Slot1 *a0, int a1, int a2);
 extern void func_001E8E48(void *a0, void *a1);
 extern int cSnd_SeCall(void *a0, int a1, short a2, int a3, int a4, int a5);
@@ -245,7 +245,7 @@ void Slot1_payoutLine3(Slot1 *self) {
     switch (self->phase) {
     case 0:
         self->payMode = SLOT1_PAYMODE_ON;
-        func_001E4200(self, self->slotId, 1, 1);
+        Slot2_selectMark(self, self->slotId, 1, 1);
         func_001E3D78(self, 1, 1);
         self->timer = 0x3C;
         self->phase = self->phase + 1;
@@ -269,7 +269,7 @@ void Slot1_payoutLine3(Slot1 *self) {
         if (self->coinNum == 0 || cCoreSave_isGoldFull(&D_00569B70) != 0 || (D_00747650 & 0xF00000000L) != 0) {
             cSnd_SeStop(D_005FEE00, self->seId);
             cCoreSave_addGold(&D_00569B70, self->coinUnit * self->coinNum, 0);
-            func_001E4200(self, self->slotId, 0, 0);
+            Slot2_selectMark(self, self->slotId, 0, 0);
             func_001E3D78(self, 0, 0);
             self->phase = self->phase + 1;
             break;

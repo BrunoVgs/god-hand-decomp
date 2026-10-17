@@ -22,8 +22,8 @@ typedef struct PhaseTable { PhaseEnt e[1]; } PhaseTable;
 extern PhaseTable D_003BDC50;
 
 /* Phase tick: scale the global speed rate by D_00747A14 into the object, run the handler the state byte's table entry names (from a method table found through the object, or inline), then the shared post-update steps. */
-__attribute__((section(".text.func_001ADC38")))
-void func_001ADC38(void *a0)
+__attribute__((section(".text.EmPhaseScroll_update")))
+void EmPhaseScroll_update(void *a0)
 {
     char *s0 = (char *)a0;
     char *e;

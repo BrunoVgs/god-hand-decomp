@@ -12,8 +12,8 @@ extern void func_001FD9D8(void *take, void *mtx, float *center, float *zero, flo
 #define BOX_HALF_Z  1.6f                /* half extent along z */
 
 /* Spawn setup of an object with a box hit area: build the box, register it with the damage manager, and set the fields the step code starts from. */
-__attribute__((section(".text.func_00187838")))
-int func_00187838(cOmHitVolume *self)
+__attribute__((section(".text.cOmHitVolume_setupBox_20_16")))
+int cOmHitVolume_setupBox_20_16(cOmHitVolume *self)
 {
     float f[16];
     float *m;

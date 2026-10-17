@@ -86,7 +86,7 @@ extern void *cIDBase_getIDWork(void *p, int i);
 extern void CustomIDWork_Initialize(void *p, void *w);
 extern void CustomIDWork_SetMessNo(void *p, int n);
 extern void SetCustomIDDispOneOrAll_1F29C0(void *p, int n, int f);
-extern void func_001F3488(void *p, int a);
+extern void CustomIDOwner_setPanelState(void *p, int a);
 
 #define UI_WORK_SIZE      0x7C          /* one CustomIDWork */
 #define UI_MAIN_IDBASE    0x10          /* first cIDBase inside the object */
@@ -100,8 +100,8 @@ extern void func_001F3488(void *p, int a);
 #define UI_TITLE_MESS     0x300F
 
 /* Build the 18 custom-ID works of a UI object's main display and the 3 of its sub display, hide the main works, set the sub title message and run the final setup step. */
-__attribute__((section(".text.func_001F27B0")))
-void func_001F27B0(char *p)
+__attribute__((section(".text.IdUi_initWorks")))
+void IdUi_initWorks(char *p)
 {
     int i;
     int j;
@@ -118,5 +118,5 @@ void func_001F27B0(char *p)
         CustomIDWork_Initialize(p + UI_SUB_WORKS + j * UI_WORK_SIZE, cIDBase_getIDWork(p + UI_SUB_IDBASE, j));
     }
     CustomIDWork_SetMessNo(p + UI_SUB_TITLE, UI_TITLE_MESS);
-    func_001F3488(p, 0);
+    CustomIDOwner_setPanelState(p, 0);
 }

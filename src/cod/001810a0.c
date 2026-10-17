@@ -10,7 +10,7 @@ extern unsigned char D_005E8640[];
 extern void cRelSys_unlinkNoFree(void *a0, int a1);
 extern void cHeap_free(int heap, int *node);
 extern void func_00297660(cEvent *self);
-extern void func_001FF3A0(cDataSlot *slot);
+extern void cDataSlot_resetSeHandles(cDataSlot *slot);
 extern float fRand1_1(void);
 
 /* Hit reaction: when the damage check reports a hit, go to state 2 and mark the object active. */
@@ -82,7 +82,7 @@ int cDataManager_retireSlot(cDataSlot *slot)
         return 0;
     if (cDataSlot_releaseLoadedSe(slot) == 0)
         return 0;
-    func_001FF3A0(slot);
+    cDataSlot_resetSeHandles(slot);
     return 1;
 }
 

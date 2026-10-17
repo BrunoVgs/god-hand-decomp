@@ -7,13 +7,13 @@ extern void func_001E7888(char *a0, int a1);
 extern void func_001E78A8(char *a0, int a1);
 extern void func_001E78C8(char *a0, int a1);
 extern void func_001E78E8(char *a0, int a1);
-extern void func_001E3758(char *a0, int a1, int a2, int a3);
-extern void func_001E4200(char *a0, int a1, int a2, int a3);
+extern void MarkPanel_setMark(char *a0, int a1, int a2, int a3);
+extern void Slot2_selectMark(char *a0, int a1, int a2, int a3);
 extern void Slot2_showLayersForMode(char *a0);
 extern void func_001E3D78(char *a0, int a1, int a2);
 extern void func_001E3E40(char *a0, int a1, int a2, int a3);
 extern void MarkObj_setMarkFlag(char *a0, int a1, int a2);
-extern void func_001E7660(char *a0, int a1);
+extern void CustomIDOwner_setColorMode(char *a0, int a1);
 extern void SetUiIdWorkDispRange(char *a0, int a1);
 extern int cSnd_SeCall_2CB8A0(void *a0, int a1, short a2, short a3, short a4, int a5, int a6);
 extern char D_005FEE00[];
@@ -68,14 +68,14 @@ void func_001E0310(void *a0)
         func_001E78C8(s0, *(int *)(s1 + 0x3DC));
         func_001E78E8(s0, *(int *)(s1 + 0x3E0));
         *(unsigned short *)(s1 + 0x48E) = 0;
-        func_001E3758(s1, 0, 0, 0);
-        func_001E3758(s1, 1, 0, 0);
-        func_001E3758(s1, 2, 0, 0);
-        func_001E4200(s1, 0, 0, 0);
-        func_001E4200(s1, 1, 0, 0);
-        func_001E4200(s1, 2, 0, 0);
-        func_001E4200(s1, 3, 0, 0);
-        func_001E4200(s1, 4, 0, 0);
+        MarkPanel_setMark(s1, 0, 0, 0);
+        MarkPanel_setMark(s1, 1, 0, 0);
+        MarkPanel_setMark(s1, 2, 0, 0);
+        Slot2_selectMark(s1, 0, 0, 0);
+        Slot2_selectMark(s1, 1, 0, 0);
+        Slot2_selectMark(s1, 2, 0, 0);
+        Slot2_selectMark(s1, 3, 0, 0);
+        Slot2_selectMark(s1, 4, 0, 0);
         Slot2_showLayersForMode(s1);
         func_001E3D78(s1, 0, 0);
         func_001E3E40(s1, 0, 0, 0);
@@ -169,7 +169,7 @@ void func_001E0310(void *a0)
                 return;
             }
         }
-        func_001E7660(s1 + 0x4D0, 1);
+        CustomIDOwner_setColorMode(s1 + 0x4D0, 1);
         *(int *)(s1 + 0x10) = 0xF;
         cSnd_SeCall_2CB8A0(D_005FEE00, 0, 0x15E, -1, -1, 0, 0);
         *(int *)(s1 + 0x8) = *(int *)(s1 + 0x8) + 1;
@@ -198,7 +198,7 @@ void func_001E0310(void *a0)
             if (D_00747640 & 0x33F00000000L) {
                 char *s0 = s1 + 0x4D0;
                 SetUiIdWorkDispRange(s0, 0);
-                func_001E7660(s0, 2);
+                CustomIDOwner_setColorMode(s0, 2);
                 *(int *)(s1 + 0x10) = 0xA;
                 *(int *)(s1 + 0x8) = *(int *)(s1 + 0x8) + 1;
             }

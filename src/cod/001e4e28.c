@@ -16,7 +16,7 @@ extern void Slot2_setLineMark(char *a0, int a1, int a2);
 extern void func_001E6C80(char *a0, int a1, int a2);
 extern void func_001E6D48(char *a0, int a1, int a2);
 extern void func_001E6E10(char *a0, int a1, int a2);
-extern void func_001E7660(char *a0, int a1);
+extern void CustomIDOwner_setColorMode(char *a0, int a1);
 extern void SetUiIdWorkDispRange(char *a0, int a1);
 extern int cSnd_SeCall_2CB8A0(void *a0, int a1, short a2, short a3, short a4, int a5, int a6);
 extern char D_005FEE00[];
@@ -137,7 +137,7 @@ void Slot2_UpdateBet(Slot2 *self)
                 return;
             }
         }
-        func_001E7660(self->layer, 1);
+        CustomIDOwner_setColorMode(self->layer, 1);
         self->timer = 0xF;
         cSnd_SeCall_2CB8A0(D_005FEE00, 0, 0x15E, -1, -1, 0, 0);
         self->step = self->step + 1;
@@ -166,7 +166,7 @@ void Slot2_UpdateBet(Slot2 *self)
             if (D_00747640 & 0x33F00000000L) {
                 char *layer = self->layer;
                 SetUiIdWorkDispRange(layer, 0);
-                func_001E7660(layer, 2);
+                CustomIDOwner_setColorMode(layer, 2);
                 self->timer = 0xA;
                 self->step = self->step + 1;
             }

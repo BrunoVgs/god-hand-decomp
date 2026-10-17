@@ -151,7 +151,7 @@ void FreeResourceNode_2D3710(int *a0)
 	int x = *a0;
 	if (x != 0)
 		Forward345EE0_345EC8(x);
-	func_002D40F8(a0);
+	ResHolder_release(a0);
 }
 
 __attribute__((section(".text.EffectEventEndProc")))

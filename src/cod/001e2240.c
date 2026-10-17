@@ -4,7 +4,7 @@
 extern int SetEffect(int a0, int a1, void *a2, int a3, int t0, unsigned t1);
 extern void cSnd_BgmEventStart(void *a0, int a1, int a2, int a3);
 extern void Slot2_setMarkLayers(void *a0, int a1, int a2);
-extern void func_001E4200(void *a0, int a1, int a2, int a3);
+extern void Slot2_selectMark(void *a0, int a1, int a2, int a3);
 extern void UiPanel_setMessAndShow(void *a0, int a1, int a2);
 extern char D_003BD6E8[];
 extern char D_005FEE00[];
@@ -36,7 +36,7 @@ void func_001E2240(void *a0) {
         break;
     case 1:
         SetEffect(1, 2, 0, 0, -1, 0xFFFFFFFFU);
-        func_001E4200(s1, *(unsigned short *)(s1 + 0x494), 1, 1);
+        Slot2_selectMark(s1, *(unsigned short *)(s1 + 0x494), 1, 1);
         Slot2_setMarkLayers(s1, 1, 1);
         cSnd_BgmEventStart(D_005FEE00, 0x32, 0, 0);
         *(int *)(s1 + 0xC) = *(int *)(s1 + 0xC) + 1;
@@ -67,7 +67,7 @@ void func_001E2240(void *a0) {
         cCoreSave_addCasinoTicket(&D_00569B70, 1);
         *(int *)(*(char **)D_003BD6E8 + 0x1A10) =
             (short)cCoreSave_getCasinoTicketNum(&D_00569B70);
-        func_001E4200(s1, *(unsigned short *)(s1 + 0x494), 0, 0);
+        Slot2_selectMark(s1, *(unsigned short *)(s1 + 0x494), 0, 0);
         Slot2_setMarkLayers(s1, 0, 0);
         break;
     case 3:

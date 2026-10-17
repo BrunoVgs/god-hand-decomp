@@ -32,8 +32,8 @@ extern void cIDBase_restartAnim(cNowLoading *self);
 /* Copies the wave settings from the parameter block, clamps the entry count
  * to 1..32 (0 or less gives 25), builds the smoothing table from the squared
  * width and fills the wave table from the step. Always returns 1. */
-__attribute__((section(".text.func_002E8210")))
-int func_002E8210(WaveObj *self)
+__attribute__((section(".text.WaveObj_initFromParam")))
+int WaveObj_initFromParam(WaveObj *self)
 {
     WaveParam *param = self->param;
 
@@ -67,8 +67,8 @@ int func_002E8210(WaveObj *self)
  * frees the sound-effect slot 2, all emitter sounds and two memory heaps,
  * then walks the BGM list releasing nodes marked to free and fading in nodes
  * that asked for a fade. */
-__attribute__((section(".text.func_002CA910")))
-void func_002CA910(cSnd *self)
+__attribute__((section(".text.cSnd_shutdown")))
+void cSnd_shutdown(cSnd *self)
 {
     cSndBgmNode *node;
 
@@ -93,8 +93,8 @@ void func_002CA910(cSnd *self)
 
 /* Sets up mark `mark` (0 to 2): clears its flag word, sets the start-lit bit
  * if startLit, and shows or hides its scroll layer; showing also sets the on bit. */
-__attribute__((section(".text.func_001E3758")))
-void func_001E3758(MarkPanel *self, unsigned short mark, int show, int startLit)
+__attribute__((section(".text.MarkPanel_setMark")))
+void MarkPanel_setMark(MarkPanel *self, unsigned short mark, int show, int startLit)
 {
     switch (mark) {
     case 0:
@@ -149,8 +149,8 @@ extern PhaseMemFn D_003BDD88[];
 /* Per-frame update: run the handler picked by the mode byte (one
  * pointer-to-member record), rebuild the model parts and copy the live
  * positions to the saved ones. */
-__attribute__((section(".text.func_001B8228")))
-void func_001B8228(cOmBase *self)
+__attribute__((section(".text.cOmBase_updatePhaseAndCalcParts")))
+void cOmBase_updatePhaseAndCalcParts(cOmBase *self)
 {
     char *s0 = (char *)self;
     char *e;
@@ -199,8 +199,8 @@ static __inline__ unsigned char Poker_timerDone(Poker *self)
 /* Result screen: phase 0 starts the next wait, phase 1 waits then starts the
  * result music and the UI animation, phase 2 waits then resets the bet and
  * returns the table to idle. */
-__attribute__((section(".text.func_001DB440")))
-void func_001DB440(Poker *self)
+__attribute__((section(".text.Poker_updateResultWait")))
+void Poker_updateResultWait(Poker *self)
 {
     switch (self->phase) {
     case 1:
@@ -230,8 +230,8 @@ void func_001DB440(Poker *self)
  * animation, marks it playing, gives both slots their constants and the
  * values copied from display entries 0 and 1, and takes the bar position
  * from entry 2. */
-__attribute__((section(".text.func_0013ED28")))
-void func_0013ED28(cNowLoading *self)
+__attribute__((section(".text.cNowLoading_setup")))
+void cNowLoading_setup(cNowLoading *self)
 {
     cIDBaseEnt *ent[3];
     cIDBaseEnt *barEnt;
