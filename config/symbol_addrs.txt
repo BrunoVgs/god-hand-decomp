@@ -50413,3 +50413,4 @@ SlotList_selectPrev = 0x001F6A80; // type:func
 func_002AC538 = 0x002AC538; // type:func
 func_002BB3F0 = 0x002BB3F0; // type:func
 func_002E1468 = 0x002E1468; // type:func
+func_001FFEB8 = 0x001FFEB8; // type:func
