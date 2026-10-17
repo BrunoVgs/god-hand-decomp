@@ -50421,3 +50421,4 @@ func_002BF708 = 0x002BF708; // type:func
 Gp_drawGreyScreenQuad = 0x002C7850; // type:func
 LengthFromLineAtTurnedOffset = 0x002BBCE0; // type:func
 func_002CA390 = 0x002CA390; // type:func
+func_002A2D60 = 0x002A2D60; // type:func
