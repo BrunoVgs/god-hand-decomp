@@ -27,7 +27,7 @@
  *
  * # THIS IS NOT A FORCED-REGISTER PIN
  *
- * A pin — `register void *p __asm__("$28");` — is bucket 2 under map ticket 21,
+ * A pin — `register void *p __asm__("$28");` — is a steering construct,
  * and D-019 refuses it with a deliberately empty allowlist, because it STEERS
  * an allocation the compiler could make by itself.
  *

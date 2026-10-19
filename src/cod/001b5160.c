@@ -286,8 +286,7 @@ int func_0031FFA0(void)
     return func_0031EE10();
 }
 
-/* Trampolines relocated from src/cod/000000.c on 2026-08-31 (issue 80,
- * decision 5B).  Each body carried a `do { } while (0);` barrier whose only
+/* Trampolines relocated from src/cod/000000.c on 2026-08-31.  Each body carried a `do { } while (0);` barrier whose only
  * job was to defeat gcc's sibling-call optimisation under cygnus-2.96.  The
  * barrier is a zero-capability steering construct.  sn-2.95.3-136 does not
  * sibcall this shape, so the bare body is exact — and the six nearest

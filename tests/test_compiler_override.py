@@ -429,7 +429,7 @@ class TestCompileUnitsCFlagsDrop:
         )
 
     def test_a_flag_outside_the_vocabulary_is_rejected(self):
-        """Issue 58 closed the drop vocabulary. Before it, this config was
+        """The drop vocabulary is closed. Before it was, this config was
         accepted and the TU compiled at -O0 while calling itself a match."""
         cfg = _mkcfg(compile_units=[
             {"path": "src/cod/x.c",

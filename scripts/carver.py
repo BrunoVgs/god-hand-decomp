@@ -285,8 +285,8 @@ def is_doc_record(raw) -> bool:
     A non-dict element is documentation-shaped too: it carries no data this
     schema can read, so it is skipped here rather than crashing a caller.
 
-    **Do not test ``name.startswith("_")``.** That prefix test is the
-    defect ticket 36 removes. It silently discarded 50 real library carves
+    **Do not test ``name.startswith("_")``.** That prefix test was a
+    real defect. It silently discarded 50 real library carves
     (8,548 B) whose C identifier legitimately begins with an underscore —
     ``_IO_adjust_column``, ``__rtti_class``, ``__7filebuf``, ``_InitAlarm``,
     the C++ operator mangles ``__ls__7ostreamc`` … Those entries parsed,
@@ -614,7 +614,7 @@ class CarveSchema:
 
         The one predicate every reader of `compile_config.json`'s
         documented arrays must use. See `is_doc_record` for why a
-        `name`-prefix test is forbidden here (ticket 36).
+        `name`-prefix test is forbidden here.
         """
         return is_doc_record(raw)
 

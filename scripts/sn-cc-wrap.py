@@ -396,8 +396,7 @@ _DIV_ONLY_CLASS_RE = re.compile(r"^\s*div\.s\b")
 # `sqrt`: the mirror of `div` — the same pad on `sqrt.s`/`rsqrt.s` ALONE, for a
 # TU whose square roots are padded and whose divides are bare.  Neither `fdiv`
 # (over-pads the divide) nor `div` (under-pads the root) can express that body.
-# Measured by the batch-7 orchestrator over all 1,121 divide-class sites in
-# retail; see issue 77 section 3.
+# Measured over all 1,121 divide-class sites in retail.
 _SQRT_ONLY_CLASS_RE = re.compile(r"^\s*(?:sqrt|rsqrt)\.s\b")
 # `fpfence`: the FP ARITHMETIC class ee-as will hoist into a delay slot.
 # Deliberately excludes the COP1 moves and the FP loads/stores: ee-as already
@@ -1220,7 +1219,7 @@ def main(argv: list[str]) -> int:
     # wrapper would accept the same argv shape. The ``-P`` the flag names was
     # never added to the cpp0 command, so the parser read the flag and then
     # discarded it in silence, and a caller who passed it got unstripped line
-    # info while it believed the opposite. Issue 60 measured that.
+    # info while it believed the opposite.
     #
     # Refuse rather than implement. ``-P`` removes cpp0's line markers, and SN
     # cc1 then names its own INPUT in the ``.file`` directive — an absolute
@@ -1236,7 +1235,7 @@ def main(argv: list[str]) -> int:
     # byte. It only turns a silent wrong answer into a named one.
     if args.no_line_info:
         die("--no-line-info is not implemented on the SN route. It was "
-            "accepted and silently ignored until issue 60. cpp0 -P would make "
+            "accepted and silently ignored until 2026-08. cpp0 -P would make "
             "SN cc1 stamp this wrapper's random tempdir into the .file "
             "directive, so the .s and the .o would change on every run. Use "
             "--compiler cygnus-2.96 / ee-2.9-991111 for a line-info-free "

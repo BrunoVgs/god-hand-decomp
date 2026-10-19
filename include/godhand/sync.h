@@ -14,7 +14,7 @@
  * `eekernel.h` groups them with `sync`, which is why they live here and not in
  * a file of their own.
  *
- * It is therefore a **bucket-1** construct under map ticket 21: a per-op macro
+ * It is therefore an additive construct: a per-op macro
  * that ADDS an instruction the compiler cannot emit.  It does not steer
  * register allocation, it does not move code the compiler could place itself,
  * and it expands to exactly one instruction.  That is the same ground

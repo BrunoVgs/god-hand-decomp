@@ -276,7 +276,8 @@ class Config:
             # by construction; an unbounded ADD would let one TU select any
             # code-generation option and call the result a match. Every other
             # per-TU key in this file is a closed set too (`compiler`, `as`) or
-            # a bool. Widening the set is a map decision, not an edit.
+            # a bool. Widening the set needs a measured case that the new flag changes
+            # bytes in the TUs that carry it, not an edit.
             add = raw.get("c_flags_add", [])
             if not isinstance(add, list) or not all(isinstance(f, str) for f in add):
                 raise BuildError(
@@ -288,8 +289,8 @@ class Config:
                     raise BuildError(
                         f"compile_units[{path!r}]: c_flags_add {f!r} is not in "
                         f"the allowed set {sorted(SUPPORTED_C_FLAG_ADDS)}; "
-                        f"widening it is a map decision (see issue 45), not a "
-                        f"config edit"
+                        f"widening it needs a measured case that the flag changes "
+                        f"bytes in the TUs that carry it, not a config edit"
                     )
             if len(set(add)) != len(add):
                 raise BuildError(
@@ -307,19 +308,19 @@ class Config:
             # above, so a TU that both adds and drops one flag reports the
             # contradiction rather than the vocabulary.
             #
-            # `c_flags_drop` was open until issue 58: any string was accepted.
+            # `c_flags_drop` was open until 2026-08: any string was accepted.
             # An open subtractive key is not as dangerous as an open additive
             # one, but it is not safe either — a TU could drop `-O2` and call
             # an unoptimised compile a match. Closing the set makes the key say
             # exactly one thing, as `compiler`, `as` and `c_flags_add` already
-            # do. Widening it is a map decision, not a config edit.
+            # do. Widening it needs a measured case, not a config edit.
             for f in drop:
                 if f not in SUPPORTED_C_FLAG_DROPS:
                     raise BuildError(
                         f"compile_units[{path!r}]: c_flags_drop {f!r} is not "
                         f"in the allowed set {sorted(SUPPORTED_C_FLAG_DROPS)}; "
-                        f"widening it is a map decision (see issue 58), not a "
-                        f"config edit"
+                        f"widening it needs a measured case that the flag changes "
+                        f"bytes in the TUs that carry it, not a config edit"
                     )
             if len(set(drop)) != len(drop):
                 raise BuildError(
@@ -429,7 +430,7 @@ class Config:
                     raise BuildError(
                         f"compile_units[{path!r}]: as_flags {f!r} is not in "
                         f"the allowed set {sorted(SUPPORTED_AS_FLAGS)}; "
-                        f"widening it is a map decision, not a config edit"
+                        f"widening it needs a measured case, not a config edit"
                     )
             if len(set(asf)) != len(asf):
                 raise BuildError(
@@ -455,7 +456,7 @@ class Config:
             # owns the vocabulary and rejects an unknown name). Setting it
             # implies fp_hazard_nops, exactly as the wrapper flag does.
             # Without this key a match found with `--fp-hazard-rules fdiv`
-            # scores green and cannot be integrated (ticket 40 §10).
+            # scores green and cannot be integrated.
             fp_rules = raw.get("fp_hazard_rules")
             if fp_rules is not None and not isinstance(fp_rules, str):
                 raise BuildError(
@@ -492,8 +493,8 @@ class Config:
 
         This property used to test ``name.startswith("_")`` instead, which
         silently discarded 50 real library carves (8,548 B) whose C
-        identifier legitimately begins with an underscore.  Ticket 36
-        removed that test; ``test_carve_doc_record_predicate.py`` pins it
+        identifier legitimately begins with an underscore.  That test is
+        gone; ``test_carve_doc_record_predicate.py`` pins it
         out.  A malformed entry — one that has a ``name`` key with an empty
         value — now raises instead of vanishing.
         """
@@ -521,12 +522,12 @@ class Config:
         a no-op in that case.
 
         This array carried a **copy** of ``carved_funcs``'s
-        ``name.startswith("_")`` test.  Ticket 36 replaced both with the
+        ``name.startswith("_")`` test.  Both now use the
         shared ``scripts.carver.is_doc_record``.  A REL named ``_boot``
         would have been dropped here for the same reason 50 library carves
         were dropped there; no REL is named that today, so the copy cost
         nothing yet.  It is fixed rather than justified, because a copied
-        predicate is exactly how ticket 29's defect survived one fix.
+        predicate is exactly how an earlier copy of this defect survived one fix.
         """
         out: list[RelDescriptor] = []
         for raw in self.raw.get("rels", []):
@@ -1154,7 +1155,7 @@ SUPPORTED_COMPILERS = frozenset(
 # Retail materialises the same `sp+K` address twice at two call sites; gcse
 # unifies the two `plus(sp,K)` computations into one pseudo whose live range
 # crosses the call, which forces an extra callee-saved GPR and renames every
-# register downstream (issue 42). Turning the pass off reproduces retail's
+# register downstream. Turning the pass off reproduces retail's
 # two materialisations.
 #
 # It is a per-TU key and NEVER a global flag: measured over every C TU in the
@@ -1168,7 +1169,7 @@ SUPPORTED_COMPILERS = frozenset(
 # 67 unmatched functions / 83,012 B carry a BARE `sqrt.s` that no source
 # spelling and no other flag reaches: 10 spellings, 6 other `-f` flags, both
 # assemblers and all 13 installed builds were falsified on func_002C0CB0,
-# which then compiled byte-identical to retail WITH the flag (issue 76).
+# which then compiled byte-identical to retail WITH the flag.
 #
 # It is the FIRST member of this vocabulary that changes semantics rather
 # than an optimisation pass. Two facts carried the decision. First, the
@@ -1242,14 +1243,14 @@ SUPPORTED_C_FLAG_ADDS = frozenset(
 # one TU restores ee-gcc 2.96's default basic-block order, which is what retail
 # emitted for the near-miss TUs that carry the key. 70 TUs carry it today and
 # every one is byte-verified: removing the drop moves a code or data byte on
-# all 70 (issue 58).
+# all 70.
 #
-# The set is closed for the same reason `c_flags_add`'s is (issue 45): the ELF
+# The set is closed for the same reason `c_flags_add`'s is: the ELF
 # byte gate cannot see a per-TU key that is invisible on its own TU, so the key
 # needs a vocabulary and a necessity gate instead. The subtractive direction is
 # less dangerous than the additive one, but it is not safe: an open set lets a
-# TU drop `-O2` and call an unoptimised compile a match. Widening the set is a
-# map decision, not a config edit.
+# TU drop `-O2` and call an unoptimised compile a match. Widening the set needs
+# a measured case, not a config edit.
 #
 # scripts/checks/c_flags_necessary.py gates the other half — that each key a TU
 # carries actually moves a byte.
@@ -2554,11 +2555,11 @@ def do_reseed_paths(unit_names: Sequence[str], cfg: Config, log: Logger) -> None
     The plural form of ``do_reseed_path``, and the code path both use: the
     singular flag calls this with a one-element list.
 
-    WHY IT EXISTS (2026-08-10, ticket 49).  The work of a reseed is *one*
+    WHY IT EXISTS (2026-08-10).  The work of a reseed is *one*
     carve + discover + compile pass, and the mirror refresh is a file copy.
     Driving the singular flag in a loop repeats the whole build once per
-    mirror, so a landing that re-indexes the monolith fragments — ticket 36
-    drifted 1,073 mirrors at once — paid ~15 s x 1,073, over four hours, for
+    mirror, so a landing that re-indexes the monolith fragments (one such
+    landing drifted 1,073 mirrors at once) paid ~15 s x 1,073, over four hours, for
     work that costs one build. Reseeding is ``O(1)`` builds; the tool made it
     ``O(n)``.
 

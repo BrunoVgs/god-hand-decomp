@@ -1,6 +1,6 @@
 """Pin the documentation-record predicate for ``compile_config.json``.
 
-Ticket 36. ``compile.py``'s ``Config.carved_funcs`` used to drop an entry
+``compile.py``'s ``Config.carved_funcs`` used to drop an entry
 whose ``name`` starts with ``_`` and that has no ``tu``::
 
     if not name or (name.startswith("_") and not raw.get("tu")):
@@ -116,7 +116,7 @@ class TestIsDocRecord:
 
     def test_schema_static_alias_is_the_same_predicate(self):
         # One definition, four call sites. A second spelling is how this
-        # defect survived the first fix (ticket 29).
+        # defect survived the first fix.
         for probe in ({"_comment": "x"}, {"name": "_IO_init"}, "str"):
             assert CarveSchema.is_doc_record(probe) is is_doc_record(probe)
 

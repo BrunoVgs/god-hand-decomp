@@ -83,8 +83,8 @@ def filter_carved_funcs(raw: list) -> list[dict]:
     that is not a documentation record.
 
     The two filters must stay identical or the fragment split — and every
-    ``partN`` index — drifts from the real ``objdiff.json``.  Ticket 36
-    changed the shared rule: ``_``-prefixed C++ operator mangles such as
+    ``partN`` index — drifts from the real ``objdiff.json``.  The shared
+    rule changed: ``_``-prefixed C++ operator mangles such as
     ``__ls__7ostreamc`` ARE carved by the build now, so they are kept here
     too.  The predicate itself lives in ``scripts.carver.is_doc_record``;
     this function must never re-spell it.

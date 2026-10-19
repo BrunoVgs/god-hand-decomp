@@ -1,8 +1,8 @@
 """The per-TU flag DROP key, ``compile_units[].c_flags_drop``.
 
-Issue 58.  ``c_flags_drop`` removes one flag from the global ``c_flags`` for a
+``c_flags_drop`` removes one flag from the global ``c_flags`` for a
 single translation unit.  It shipped years before ``c_flags_add`` and it
-shipped with neither of the two guards issue 45 built for the additive key:
+shipped with neither of the two guards built for the additive key:
 
   * no CLOSED vocabulary — any string was accepted, so a TU could drop ``-O2``
     and call an unoptimised compile a match;
@@ -20,7 +20,7 @@ Inventory (one ``-k`` slice per behaviour):
     the live config      — every drop in compile_config.json is in the set
     the necessity gate   — inert / load-bearing / one key at a time /
                            the unreachable-flag state
-    exit-code classes    — the four non-pass terminal paths (issue 44)
+    exit-code classes    — the four non-pass terminal paths
     the control          — the compile is reproducible, so an inert key can
                            actually be detected
 """
@@ -84,8 +84,8 @@ def _one_unit_cfg(tmp_path, monkeypatch, **unit_keys) -> cm.Config:
 class TestVocabulary:
 
     def test_the_set_holds_exactly_the_reorder_flag_today(self):
-        """Widening this set is a map decision. If this test fails, the map
-        owes the record an argument for the new member."""
+        """Widening this set needs a measured case. If this test fails, the
+        change owes the record an argument for the new member."""
         assert cm.SUPPORTED_C_FLAG_DROPS == frozenset({REORDER})
 
     def test_the_allowed_flag_is_accepted(self):
@@ -175,7 +175,7 @@ class TestNecessityGate:
 
     def test_only_the_named_key_is_neutralised(self, tmp_path, monkeypatch):
         """A TU may carry both keys. Neutralising both at once would test a
-        compile the build never performs, exactly the defect issue 45 found
+        compile the build never performs, exactly the defect found
         in an earlier sample."""
         cfg = _one_unit_cfg(tmp_path, monkeypatch,
                             c_flags_drop=[REORDER], c_flags_add=[GCSE])
@@ -229,7 +229,7 @@ class TestNecessityGate:
 
 
 # --------------------------------------------------------------------------- #
-# exit-code classes — issue 44's rule applied to this gate
+# exit-code classes: a void verdict is never a pass or a skip
 # --------------------------------------------------------------------------- #
 class TestExitCodes:
 
@@ -247,7 +247,7 @@ class TestExitCodes:
 
     def test_an_invalid_config_is_a_void_verdict_not_a_skip(
             self, tmp_path, monkeypatch):
-        """Before issue 58 the gate caught every BuildError and returned 77,
+        """Before 2026-08 the gate caught every BuildError and returned 77,
         so a config error read as 'toolchain unavailable' — a skip, which
         session_check.sh treats as non-fatal."""
         monkeypatch.setattr(cm, "ROOT", tmp_path)

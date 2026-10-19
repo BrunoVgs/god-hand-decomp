@@ -1,10 +1,10 @@
 """Unit tests for the per-TU flag ADD key, ``compile_units[].c_flags_add``.
 
-Issue 45.  ``c_flags_drop`` removes one of the three global ``c_flags`` from a
+``c_flags_drop`` removes one of the three global ``c_flags`` from a
 single translation unit; ``c_flags_add`` appends one.  The additive direction
 is the one retail needs for ``-f=-fno-gcse``, which stops gcc 2.9x unifying
 two ``sp+K`` address computations into one pseudo whose live range crosses a
-call (issue 42).
+call.
 
 The additive direction is also the dangerous one: ``c_flags_drop`` is bounded
 by construction (there are only three flags to remove), while an unbounded ADD
@@ -22,7 +22,7 @@ Inventory (one ``-k`` slice per behaviour):
     dual_compiler_regress  — the gate honours the key
     the necessity gate     — an inert c_flags_add fails scripts/checks
 
-Issue 58 generalised the necessity gate to BOTH keys and renamed it
+A later change generalised the necessity gate to BOTH keys and renamed it
 ``scripts/checks/c_flags_necessary.py``.  The drop side of it, and the drop
 vocabulary this file's docstring calls "bounded by construction", live in
 tests/test_c_flags_drop_key.py.
@@ -123,10 +123,10 @@ class TestValidation:
             cfg.compile_units
 
     def test_the_vocabulary_holds_exactly_four_flags_today(self):
-        """Widening this set is a map decision. If this test fails, the map
-        owes the record an argument for the new member.
+        """Widening this set needs a measured case. If this test fails, the
+        change owes the record an argument for the new member.
 
-        `-f=-ffast-math` joined on 2026-08-18 (issue 76): it is the only
+        `-f=-ffast-math` joined on 2026-08-18: it is the only
         route to a bare `sqrt.s`, it changes 2 of 1,499 C objects, and
         func_002C0CB0 is byte-exact with it and unreachable without it.
 
@@ -233,7 +233,7 @@ class TestGateHonoursTheKey:
         assert seen and seen[0].c_flags_add == (GCSE,)
 
     def test_dual_compiler_regress_forwards_fp_hazard_rules(self, monkeypatch, tmp_path):
-        """The sibling key issue 40 shipped in the cc-wraps and could not
+        """The sibling key first shipped in the cc-wraps alone and could not
         land. Same rail, same failure mode."""
         seen: list[cm.CompileUnit] = []
         monkeypatch.setattr(dcr.cpy, "_cc",
@@ -290,7 +290,7 @@ class TestNecessityGate:
     def test_the_gate_compiles_the_tu_exactly_as_the_build_does(
             self, tmp_path, monkeypatch):
         """It must call compile.py's own _cc, not a hand-rolled invocation.
-        Issue 42's sample used `-I include -I src` and no defines, so it
+        An earlier sample used `-I include -I src` and no defines, so it
         measured a compile the build never performs."""
         cfg = self._cfg_with_one_unit(tmp_path, monkeypatch)
         seen: list[cm.CompileUnit] = []

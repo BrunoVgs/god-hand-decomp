@@ -373,8 +373,8 @@ _DIV_ONLY_CLASS_RE = re.compile(r"^\s*div\.s\b")
 # `sqrt`: the mirror of `div` — the same pad on `sqrt.s`/`rsqrt.s` ALONE.
 # Four unmatched functions carry a PADDED `sqrt.s` and a BARE `div.s` in one
 # body, which neither `fdiv` (over-pads the divide) nor `div` (under-pads the
-# root) can express.  Measured by the batch-7 orchestrator over all 1,121
-# divide-class sites in retail; see issue 77 section 3.
+# root) can express.  Measured over all 1,121 divide-class sites in
+# retail.
 _SQRT_ONLY_CLASS_RE = re.compile(r"^\s*(?:sqrt|rsqrt)\.s\b")
 # `fpfence`: the FP ARITHMETIC class ee-as will hoist into a delay slot.
 # Deliberately excludes the COP1 moves and the FP loads/stores: ee-as already

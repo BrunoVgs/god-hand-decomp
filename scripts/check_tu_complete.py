@@ -177,7 +177,7 @@ def load_carved_funcs(config_path: Path) -> list[dict]:
     out: list[dict] = []
     for entry in raw.get("carved_funcs", []):
         # Documentation records only.  A `_`-prefix test lived here as a
-        # third copy of compile.py's; ticket 36 replaced all of them with
+        # third copy of compile.py's; all of them now use
         # the shared predicate, so a `_IO_*` carve bound to a TU is now
         # visible to the TU-completion cross-reference.
         if CarveSchema.is_doc_record(entry):

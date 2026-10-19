@@ -71,7 +71,7 @@ class TestExtractFuncs:
 # filter_carved_funcs — replicate compile.py's Config.carved_funcs so the carve
 # name-list (and thus the fragment split) matches the build EXACTLY.  The build
 # drops documentation records only: a non-dict element, or a dict with no
-# `name` key.  Ticket 36: a `_`-prefixed name is a real C++ operator mangle
+# `name` key.  A `_`-prefixed name is a real C++ operator mangle
 # (`__ls__7ostreamc`) or a real library symbol (`_IO_adjust_column`), so it IS
 # carved.  This filter and compile.py's had drifted 7 entries apart — the old
 # text here dropped `__umoddi3` and `__dynamic_cast`, which the build carves.

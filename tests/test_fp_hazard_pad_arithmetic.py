@@ -66,7 +66,7 @@ if __name__ == "__main__":
     print("OK")
 
 
-# --- the `sqrt` rule: the mirror of `div` (issue 77 Route A) -----------------
+# --- the `sqrt` rule: the mirror of `div` -----------------------------------
 #
 # `fdiv` pads div.s + sqrt.s + rsqrt.s; `div` pads div.s alone; `sqrt` pads
 # sqrt.s + rsqrt.s alone. Four unmatched functions carry a PADDED sqrt.s and a

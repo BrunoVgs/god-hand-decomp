@@ -99,10 +99,10 @@ def reseed_stale(root=ROOT):
     []) when the ELF/retail pair is absent (can't verify) or the staleness
     detector is not installed (plain checkout).
 
-    ONE BUILD, NOT N (2026-08-10, ticket 49). A reseed is one carve + discover
+    ONE BUILD, NOT N (2026-08-10). A reseed is one carve + discover
     + compile pass plus a file copy per mirror, so the build is shared and the
     copies are free. This used to run ``compile.py --reseed-path`` once per
-    mirror, at ~15 s each: ticket 36's 1,073 drifted mirrors would have cost
+    mirror, at ~15 s each: one landing's 1,073 drifted mirrors would have cost
     over four hours for work that costs one build. ``--reseed-paths`` takes the
     whole list."""
     root = Path(root)

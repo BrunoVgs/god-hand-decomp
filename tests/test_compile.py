@@ -155,7 +155,7 @@ class TestParseCarvedEntries:
     def test_doc_entries_filtered_by_absent_name_key(self):
         # A documentation record carries NO `name` key. It is dropped by
         # Config.carved_funcs before _parse_carved_entries sees it.
-        # Ticket 36: an underscore-NAMED entry is data, never doc — it is
+        # An underscore-NAMED entry is data, never doc — it is
         # a real library carve (`_IO_*`, `__rtti_*`, `__7filebuf`).
         cfg = _mkcfg(carved_funcs=[
             {"_comment": "PERMANENT: jump-table labels would orphan"},
@@ -1032,7 +1032,7 @@ class TestConfigRels:
         assert cfg.rels == []
 
     def test_doc_keys_are_filtered(self):
-        # Ticket 36: only a record with no `name` key is documentation.
+        # Only a record with no `name` key is documentation.
         # The old `name.startswith("_")` test here was a copy of the
         # carved_funcs one and would have dropped a REL named `_boot`.
         cfg = _mkcfg(rels=[
