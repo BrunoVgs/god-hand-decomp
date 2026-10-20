@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void KillEffect(void *, int, int);
 extern void cOmBase_dieCommon(void *);
 

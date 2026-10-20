@@ -56,6 +56,44 @@ typedef struct SjTagRec {
     SjChunk ck;                 /* 0x04 */
 } SjTagRec;
 
+/* The ring-buffer stream joint (CRI's SJRBF), one of a pool of 0x40-byte objects. */
+typedef struct SjRbf {
+    void *vtbl;                 /* 0x00 */
+    int used;                   /* 0x04 */
+    void *uuid;                 /* 0x08 */
+    int data;                   /* 0x0C bytes of data */
+    int free;                   /* 0x10 bytes free */
+    int freePos;                /* 0x14 */
+    int dataPos;                /* 0x18 */
+    int buf;                    /* 0x1C */
+    int size;                   /* 0x20 */
+    int extra;                  /* 0x24 */
+    char unk28[0x10];
+    void (*err)(void *obj, int code);   /* 0x38 */
+    void *errObj;               /* 0x3C */
+} SjRbf;
+
+/* One chunk of the unified stream joint (CRI's SJUNI). */
+typedef struct SjUniChunk {
+    struct SjUniChunk *next;    /* 0x00 */
+    int unk4;
+    void *unk8;
+    int unkC;
+} SjUniChunk;
+
+/* The unified stream joint (CRI's SJUNI). */
+typedef struct SjUni {
+    void *f0;
+    signed char f4;
+    signed char f5;
+    char pad6[2];
+    void *f8;
+    SjUniChunk *buf;            /* 0x0C */
+    int nchunk;                 /* 0x10 */
+    SjUniChunk *free;           /* 0x14 */
+    SjUniChunk *list[4];        /* 0x18 */
+} SjUni;
+
 extern Sint8 *SJ_SearchTag(SjChunk *ck, Sint8 *tag, Sint8 *endtag, SjChunk *tagck);
 
 /* Sofdec stream-joint position feed (0x327818..). */

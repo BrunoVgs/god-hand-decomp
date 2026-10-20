@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern int moveMotion(void *);
 
 __attribute__((section(".text.func_001CA1F8")))

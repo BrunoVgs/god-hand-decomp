@@ -119,4 +119,34 @@ extern void func_003260C8(const char *fmt, ...);
 /* memset; callers depend on the void * return. */
 extern void *func_003A52F0(void *dst, int c, int n);
 
+/* A queued asynchronous call (0x104 bytes; 16 of them at D_003E9D60). */
+typedef struct AsyncCall {
+    short used;
+    char pad2[6];
+    void *pd;
+    char padC[0x38 - 0xC];
+    int a0;
+    int a1;
+    int a2;
+    int a3;
+    char pad48[0x78 - 0x48];
+    void *cb;
+    struct AsyncCall *cbarg;
+    void (*fn)(void);
+    struct AsyncCall *fnarg;
+    char pad88[0x104 - 0x88];
+} AsyncCall;
+
+extern AsyncCall D_003E9D60[16];
+
+/* A stream handle as the volume calls see it. */
+typedef struct StmVolHn {
+    char unk00;
+    char stat;                  /* 0x01 */
+    char unk02[0x38 - 0x02];
+    int vol;                    /* 0x38 */
+    char unk3C[0x56 - 0x3C];
+    char mode;                  /* 0x56 */
+} StmVolHn;
+
 #endif /* GODHAND_CRISTM_H */

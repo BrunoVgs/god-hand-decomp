@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern char D_005CAC90[];
 extern char D_005CAE50[];
 extern void *func_002A5AD0(char *);

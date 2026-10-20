@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 
 __attribute__((section(".text.func_00373118")))
 int func_00373118(char *object, int value, char *source, int enabled)

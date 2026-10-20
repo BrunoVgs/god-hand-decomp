@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void cDamageUnit_SetDamageCollActive(void *, int);
 
 __attribute__((section(".text.func_0018A3B8")))

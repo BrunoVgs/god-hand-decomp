@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void System_sendBootRequests(void *);
 extern void func_002C9E78(void *);
 extern void func_002C9F58(void *);

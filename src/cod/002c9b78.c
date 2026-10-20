@@ -1,5 +1,4 @@
 extern char D_00569B70[];
-extern char D_005FEE00[];
 extern void cCoreSave_setSkill(void *, int, signed char);
 
 __attribute__((section(".text.func_002C9BB0")))

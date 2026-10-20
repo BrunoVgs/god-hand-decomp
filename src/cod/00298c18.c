@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void displayScrollLayer(int, int);
 
 __attribute__((section(".text.func_00298C18")))

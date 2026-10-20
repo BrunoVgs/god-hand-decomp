@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern int Obj0000_Get_Field_1560_Bit0_27DD00(int);
 
 __attribute__((section(".text.func_00275D68")))

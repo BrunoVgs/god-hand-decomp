@@ -9,4 +9,11 @@ extern const char D_00454BB0[];   /* "host:" */
 
 extern char *func_003A57C4(char *dst, const char *src);
 
+/* What the file lookup at 0x333C00 fills in (0x30 bytes). */
+typedef struct CriFileStat {
+    int unk00;
+    int found;                  /* 0x04 nonzero once the file is located */
+    char unk08[0x30 - 0x08];
+} CriFileStat;
+
 #endif /* GODHAND_CRIFS_H */

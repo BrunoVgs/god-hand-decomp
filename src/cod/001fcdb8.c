@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void ActorRec_reset(void *);
 
 __attribute__((section(".text.func_001FCDB8")))

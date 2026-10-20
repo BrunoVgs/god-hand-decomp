@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void func_0037BE98(void);
 extern void ClearPendingFlagEvents_376E38(void);
 extern void func_00376EA0(void);

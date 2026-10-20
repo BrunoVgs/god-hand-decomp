@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern int ReqQueue_push(int, int, int, int, int);
 
 __attribute__((section(".text.func_002D30E0")))

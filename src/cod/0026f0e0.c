@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 
 __attribute__((section(".text.cEm00_ckDown")))
 int cEm00_ckDown(char *self)

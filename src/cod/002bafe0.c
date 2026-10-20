@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern char D_0044BED0[];
 extern void func_002BB018(void *, int);
 

@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void IdPair_init(void *);
 extern void cIDBase_restartAnim(void *);
 

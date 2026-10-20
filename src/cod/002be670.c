@@ -1,13 +1,12 @@
 typedef struct {
     int f0;
     unsigned char f4;
-} PhaseARelEnt;
+} ReleaseEnt;
 
-extern char D_005FEE00[];
 extern int func_002BE6C8(void *);
 
 __attribute__((section(".text.func_002BE670")))
-void func_002BE670(PhaseARelEnt *entry)
+void func_002BE670(ReleaseEnt *entry)
 {
     func_002BE6C8(entry);
     entry->f4 = 0;

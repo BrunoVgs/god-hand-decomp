@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void ClearFields_1614D0(void *);
 
 __attribute__((section(".text.func_00164EF8")))

@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern int ForwardSoundEventAll_375DE0(short, short);
 extern int BuildSoundEventEntry_375E78(int, short, short);
 

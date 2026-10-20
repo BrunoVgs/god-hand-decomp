@@ -106,4 +106,33 @@ extern void func_00380EB0(MenuCtl *ctl, MenuInfo *info, MenuList *list);
 extern int func_0037FD28(FileSel *sel, FileSelWork *work);
 extern int func_00323918(int a0, int idx);
 
+/* One row of the option menu pages (D_003F21E8, D_003F2368, D_003F24D0). */
+typedef struct MenuRowEnt {
+    short unk0;
+    short unk2;
+    short unk4;
+    short y;                            /* 0x06 */
+    char unk8;
+    signed char handler;                /* 0x09 index into D_003F2628 */
+    char unkA[0xA];
+} MenuRowEnt;
+
+extern MenuRowEnt D_003F21E8[];
+extern MenuRowEnt D_003F2368[];
+extern MenuRowEnt D_003F24D0[];
+
+/* The track set a sound option drives: its count and the player handle (0x24 bytes). */
+typedef struct SndTrkSet {
+    char unk00[8];
+    int count;                          /* 0x08 */
+    char unk0C[0x20 - 0x0C];
+    void *ply;                          /* 0x20 player handle */
+} SndTrkSet;
+
+/* The voice reference of a sound option (the handle at 0x30). */
+typedef struct SndVoiceRef {
+    char unk00[0x30];
+    void *voice;                        /* 0x30 voice handle */
+} SndVoiceRef;
+
 #endif /* GODHAND_MENUCTL_H */

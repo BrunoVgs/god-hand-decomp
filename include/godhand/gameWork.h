@@ -58,6 +58,8 @@ typedef struct GameWork {
     int flags5E4;               /* 0x5E4 */
     char pad5E8[0x5F4 - 0x5E8];
     void *playerObj;            /* 0x5F4 */
+    char pad5F8[0x600 - 0x5F8];
+    unsigned char pairNum;      /* 0x600 entries used in D_007558A8 */
 } GameWork;
 
 extern GameWork D_007474A0;
@@ -65,7 +67,7 @@ extern GameWork D_007474A0;
 /* The block from GameWork 0x58C on, which code also reaches as its own symbol D_00747A2C.
  * cSaveLoad.h (cSaveLoadGlobals) and cE3.h (cE3Sys) describe parts of the same block. */
 typedef struct GameSys {
-    unsigned int unk00;         /* 0x00 bit 3 skips hit checks; bit 0x08000000 stops pad vibration */
+    int unk00;                  /* 0x00 bit 3 skips hit checks; bit 0x08000000 stops pad vibration */
     char unk04[4];
     unsigned int flags;         /* 0x08 */
     int stage;                  /* 0x0C negative while no stage is loaded */
@@ -79,13 +81,13 @@ extern GameSys D_00747A2C;
 extern int D_00747A24;          /* D_007474A0.flags under its own symbol */
 
 /* One 0x80-byte DMA packet; the chain has 11, each double-buffered. */
-typedef struct Pkt31A3 {
+typedef struct DmaPkt {
     char data[0x80];
-} Pkt31A3;
+} DmaPkt;
 
-typedef struct PktSet31A3 {
-    Pkt31A3 pkt[11][2];
-} PktSet31A3;
+typedef struct DmaPktSet {
+    DmaPkt pkt[11][2];
+} DmaPktSet;
 
 typedef struct cTaskWorkRef {
     int unk0;

@@ -1,7 +1,8 @@
 /* cygnus-2.96 matched TU. */
+#include "godhand/criStm.h"
 #include "godhand/sync.h"
 
-extern void func_003A52F0(void *p, int v, int n);
+extern void *func_003A52F0(void *p, int v, int n);
 extern void func_00325DF0(void);
 extern void func_00325FA8(void);
 extern void func_0033BFB8(void);
@@ -15,15 +16,8 @@ extern void func_0036CB58(int);
 extern int D_003F1EC8;
 extern int D_00760D88;
 extern int D_00760D8C;
-extern void func_003A7B48(void) __attribute__((noreturn));
 extern int GetArrayElemA0C_35A1C8(int, int);
 extern int func_0035E080(int, int *);
-extern int D_003DECF8;
-extern int D_003DED08;
-extern int D_003D90D0;
-extern int D_003D90E8;
-extern void func_00333E88(int);
-extern char D_003E9D60[];
 extern void Obj33F8_Init_D003EB858_F888(void);
 extern int func_0033C520(void);
 extern void func_0033C708(int);
@@ -33,7 +27,7 @@ void func_0033C728(void)
 {
     Obj33F8_Init_D003EB858_F888();
     func_0033C520();
-    func_003A52F0(D_003E9D60, 0, 0x1040);
+    func_003A52F0(D_003E9D60, 0, sizeof(D_003E9D60));
     func_0033C708(0);
 }
 

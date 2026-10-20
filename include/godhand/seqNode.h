@@ -27,22 +27,35 @@ typedef struct SeqNode {
     struct SeqNode *parent;     /* 0x08 */
     int busy;                   /* 0x0C */
     int owner;                  /* 0x10 */
-    char unk14[0x30 - 0x14];
+    int unk14;                  /* 0x14 */
+    unsigned short unk18;       /* 0x18 */
+    unsigned short unk1A;       /* 0x1A */
+    unsigned short unk1C;       /* 0x1C */
+    unsigned short unk1E;       /* 0x1E */
+    unsigned short unk20;       /* 0x20 */
+    unsigned short unk22;       /* 0x22 */
+    char unk24[0x30 - 0x24];
     SeqTimer timer;             /* 0x30 */
     char unk38[0x3E - 0x38];
     unsigned short weight;      /* 0x3E high byte is the update weight */
-    char unk40[0x50 - 0x40];
+    char unk40[0x4A - 0x40];
+    unsigned short unk4A;       /* 0x4A */
+    unsigned short unk4C;       /* 0x4C */
+    unsigned short unk4E;       /* 0x4E */
 } SeqNode;
 
 typedef struct SeqLink {
     unsigned short flags;       /* 0x00 */
-    char unk02[3];
+    short id;                   /* 0x02 */
+    char unk04;
     unsigned char kind;         /* 0x05 */
     char unk06[2];
     SeqNode *node;              /* 0x08 */
     char unk0C[4];
     int owner;                  /* 0x10 */
-    char unk14[0x20 - 0x14];
+    char unk14[0x1E - 0x14];
+    char unk1E;                 /* 0x1E */
+    char unk1F;
 } SeqLink;
 
 typedef struct SeqCmd {
@@ -54,9 +67,51 @@ typedef struct SeqCmd {
     short arg;                  /* 0x10 */
 } SeqCmd;
 
-extern char D_0076A600[];       /* node data, 0x84 stride */
-extern SeqLink D_0076C8C0[];    /* 51 entries */
-extern SeqNode D_0076CF20[];    /* 51 entries */
+/* A sound voice node: its work and the method table it dispatches through. */
+typedef struct SndVoiceNode {
+    char unk00[0x80];
+    struct cVtEnt *vt;          /* 0x80 */
+} SndVoiceNode;                 /* 0x84 */
+
+extern SndVoiceNode D_0076A600[3];
+
+/* A sound channel (0xA0 bytes); flags is nonzero while it is in use. */
+typedef struct SndCh {
+    unsigned short flags;       /* 0x00 */
+    char unk02[2];
+    int unk04;                  /* 0x04 */
+    unsigned short unk08;       /* 0x08 */
+    unsigned short unk0A;       /* 0x0A */
+    unsigned short unk0C;       /* 0x0C */
+    unsigned char unk0E;        /* 0x0E */
+    unsigned char unk0F;        /* 0x0F */
+    char unk10[2];
+    unsigned short unk12;       /* 0x12 */
+    unsigned short kind;        /* 0x14 indexes the channel handler table */
+    short unk16;                /* 0x16 */
+    char unk18[0x78 - 0x18];
+    int unk78[6];               /* 0x78 */
+    char unk90[0x10];
+} SndCh;
+
+extern SndCh D_0076E910[];
+
+/* One voice in the output block posted to the sound driver (0x20 bytes, 64 of them). */
+typedef struct SndVoiceOut {
+    unsigned short flags;       /* 0x00 */
+    unsigned char b2;
+    unsigned char b3;
+    int w4;
+    int w8;
+    unsigned short hC, hE, h10, h12, h14, h16, h18, h1A, h1C;
+    char pad1E[2];
+} SndVoiceOut;
+
+extern SndVoiceOut D_0076A9C0[64];
+#define SEQ_NUM 51
+
+extern SeqLink D_0076C8C0[SEQ_NUM];
+extern SeqNode D_0076CF20[SEQ_NUM];
 
 extern void func_0037D148(SeqNode *n);
 extern void func_0037D3B0(SeqNode *n);

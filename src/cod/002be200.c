@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern char D_00583F20[];
 extern int GetField_110C_2019F8(char *);
 extern void func_0031A808(void *);

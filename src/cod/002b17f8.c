@@ -5,13 +5,12 @@ typedef struct {
     char mid[4];
     unsigned short ae;
     unsigned short b0;
-} PhaseAPanel;
+} MessPanelPos;
 
-extern char D_005FEE00[];
 extern void func_002B1C80(void *);
 
 __attribute__((section(".text.func_002B17F8")))
-void func_002B17F8(PhaseAPanel *panel)
+void func_002B17F8(MessPanelPos *panel)
 {
     panel->ae = panel->a6;
     panel->b0 = panel->a8;

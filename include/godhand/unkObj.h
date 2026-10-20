@@ -5,7 +5,7 @@
 #ifndef GODHAND_UNKOBJ_H
 #define GODHAND_UNKOBJ_H
 
-#include "godhand/vec.h"
+#include "godhand/cOmBase.h"
 
 /* Object behind cOmBase_rollChance; flags bit 29 blocks the random roll. */
 typedef struct ActObj {

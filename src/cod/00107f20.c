@@ -1,5 +1,4 @@
 extern int D_00747A80;
-extern char D_005FEE00[];
 extern int cGameObj_isClip(void *);
 
 __attribute__((section(".text.func_00107F20")))

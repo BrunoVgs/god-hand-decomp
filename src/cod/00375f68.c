@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void ClearEventFlagsPending_375FA0(void);
 extern void ClearPendingEntries_376008(void);
 extern void func_00376370(void);

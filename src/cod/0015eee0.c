@@ -1,7 +1,7 @@
 typedef union {
     float f;
     unsigned int u;
-} PhaseAFloatBits;
+} FloatBits;
 
 typedef struct {
     long v0;
@@ -13,14 +13,13 @@ typedef struct {
     long v60;
     char pad3[0x18];
     long v80;
-} PhaseAFloatState;
+} FloatRows;
 
-extern char D_005FEE00[];
 
 __attribute__((section(".text.func_0015EEE0")))
-void func_0015EEE0(PhaseAFloatState *p)
+void func_0015EEE0(FloatRows *p)
 {
-    PhaseAFloatBits bits;
+    FloatBits bits;
     bits.f = 1.0f;
     p->v20 = 0;
     p->v80 = 0;

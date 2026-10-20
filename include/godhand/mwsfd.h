@@ -7,6 +7,7 @@
 #define GODHAND_MWSFD_H
 
 #include "godhand/sftim.h"
+#include "godhand/criSj.h"
 
 /* Frame info as the decoder hands it over (at 0x88 of the handle). */
 typedef struct MwsfdFrmInf {
@@ -30,6 +31,14 @@ typedef struct MwsfSubVtbl {
 struct MwsfSubObj {
     MwsfSubVtbl *vt;
 };
+
+/* One of the handle's two stream slots (0x20 bytes). */
+typedef struct MwsfdSlot {
+    char unk00[0x14];
+    SjObj *sj;                  /* 0x14 */
+    char *buf;                  /* 0x18 */
+    char unk1C[4];
+} MwsfdSlot;
 
 typedef struct MwsfdHn {
     int used;                   /* 0x000 */
@@ -58,8 +67,7 @@ typedef struct MwsfdHn {
     char unk1C4[0x1E0 - 0x1C4];
     MwsfSubObj *sub1E0;         /* 0x1E0 */
     char unk1E4[0x284 - 0x1E4];
-    char q0[0x20];              /* 0x284 */
-    char q1[0x20];              /* 0x2A4 */
+    MwsfdSlot slot[2];          /* 0x284 */
     char unk2C4[0x2CC - 0x2C4];
     int unk2CC;                 /* 0x2CC */
     void *unk2D0;               /* 0x2D0 */

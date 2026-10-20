@@ -1,9 +1,8 @@
 typedef struct {
     char bytes[16];
-} PhaseAQuadword;
+} QWord;
 
-extern char D_005FEE00[];
-extern PhaseAQuadword D_0061B660;
+extern QWord D_0061B660;
 
 __attribute__((section(".text.func_002F1AA0")))
 void func_002F1AA0(int enabled, unsigned int type)

@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void cOmBase_tickModeTableSkip381(void *);
 extern void func_001B7EE0(void *, float);
 

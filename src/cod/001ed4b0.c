@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void CustomIDWork_SetMoveOffsetPosXSin(
     void *, int, unsigned short);
 extern void CustomIDWork_ResetMoveOffsetPos(void *);

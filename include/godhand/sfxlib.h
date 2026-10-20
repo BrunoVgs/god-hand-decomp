@@ -16,20 +16,20 @@ typedef struct {
     void *unk38;
     char pad3C[0x34];
     void (*unk70)(void *);      /* 0x70 callback */
-} Obj35E8;
+} SfxCtx;
 
 typedef struct {
     char pad0[0x44];
     int unk44;
     int unk48;
     int unk4C;
-} Obj35E8Arg;
+} SfxCtxArg;
 
 /* Stream type id at 0x4 (0x11..0x1001). */
-typedef struct { char pad0[0x4]; int unk4; } Obj35E8Type;
-typedef struct { char pad0[0x90]; int unk90; int unk94; } Obj35E8Mode;
+typedef struct { char pad0[0x4]; int unk4; } SfxTypeView;
+typedef struct { char pad0[0x90]; int unk90; int unk94; } SfxModeView;
 
-/* Stream type/rate view of the stream context (type is Obj35E8Type.unk4). */
+/* Stream type/rate view of the stream context (type is SfxTypeView.unk4). */
 typedef struct SfxStm {
     int unk0;
     int type;                   /* 0x04 */

@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern int SearchCameraData(int);
 extern int func_002B4428(void *, int, int);
 extern int func_002B4518(void *, int);

@@ -1,7 +1,8 @@
 /* cygnus-2.96 matched TU. */
+#include "godhand/mwsfd.h"
 
 extern int Forward33BBD8_348C78();
-extern void func_00348498(void *a0);
+extern void func_00348498(MwsfdSlot *slot);
 extern void func_003483F8(int a0, int a1);
 extern void func_003482C8(int a0);
 

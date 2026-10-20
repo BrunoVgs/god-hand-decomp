@@ -33,26 +33,21 @@ typedef struct AdxPlay {
     short mode;                 /* 0x9C */
 } AdxPlay;
 
-typedef struct SfdSt1128 {
+typedef struct SfdStView {
     char unk00[0x0C];
     int fC;                     /* 0x0C */
     char unk10[0x20 - 0x10];
     int f20;                    /* 0x20 */
-} SfdSt1128;
+} SfdStView;
 
 typedef struct SfdTbl {
     char unk0000[0x1128];
-    SfdSt1128 st;               /* 0x1128 */
+    SfdStView st;               /* 0x1128 */
 } SfdTbl;
 
 typedef struct SfdWkT {
     char unk0000[0x1FC0];
     SfdTbl *tbl;                /* 0x1FC0 */
 } SfdWkT;
-
-typedef struct MwsfHn48 {
-    char unk00[0x48];
-    void *f48;                  /* 0x48 */
-} MwsfHn48;
 
 #endif /* GODHAND_MWSFVIEWS_H */

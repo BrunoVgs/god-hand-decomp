@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void UpdateObjByIndexedOp_2FBE50(void *, int, int);
 
 __attribute__((section(".text.func_002FEB80")))

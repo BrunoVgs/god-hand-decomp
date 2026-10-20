@@ -3,7 +3,7 @@
  * A set-data group holds a count at 0x08 and offsets to its records from
  * 0x10; each record starts with the offset of its mesh. func_0031D3D0 builds
  * one object per record. Records flagged 0x400000 also queue a mesh pair
- * (D_007558A8, count in GameWork byte 0x600) that func_0031D2F8 later adds
+ * (D_007558A8, count in GameWork.pairNum) that func_0031D2F8 later adds
  * to a model.
  */
 #ifndef GODHAND_STAGESET_H

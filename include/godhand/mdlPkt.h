@@ -46,9 +46,9 @@ typedef struct GifTagEnt {
     unsigned int w1;
 } GifTagEnt;
 
-typedef struct Pkt0B0 {
+typedef struct MdlPktBuf {
     unsigned long q[22];        /* 0xB0, double-buffered */
-} Pkt0B0;
+} MdlPktBuf;
 
 extern GifTagEnt D_004A5D80[];
 

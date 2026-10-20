@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void *D_003C2F84;
 extern void ForwardEntityAndExit_2C2368(char *a0);
 extern int cScenario_taskExec(void *, void *, void *, int);

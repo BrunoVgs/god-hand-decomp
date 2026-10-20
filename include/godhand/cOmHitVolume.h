@@ -23,7 +23,7 @@ typedef struct cOmHitVolume {
     short unk5F6;                       /* 0x5F6 0 or 0x2E at setup, per kind */
     char unk5F8[8];
     void *damageTake;                   /* 0x600 the unit the damage manager returned, 0 when none */
-    char unk604[4];
+    void *damageGive;                   /* 0x604 damage-give unit, on the kinds that have one */
     void *table;                        /* 0x608 points at tableData */
     unsigned char count;                /* 0x60C number of table entries in use */
     char unk60D[0x13];

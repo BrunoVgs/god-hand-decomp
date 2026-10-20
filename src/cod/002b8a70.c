@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void UpdateObjWithVtableDispatch_2BB1F0(void *);
 extern int func_002B8A30(void *, int);
 extern int D_005E8040;

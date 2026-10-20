@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern int func_0037D1A8(int, int);
 extern unsigned char D_0076A7B4;
 

@@ -29,6 +29,11 @@ typedef struct SndBank {
     char *tbl3;                 /* 0x1C */
 } SndBank;
 
+/* The bank tables: two bank sets with 48 slots, and a third set read the same way. */
+extern SndBank D_0076DF10[];
+extern SndBank D_0076E510[];
+extern SndBank D_0076EA50[];
+
 /* The command record posted to the sound driver for a bank (D_0076A880). */
 typedef struct SndBankCmd {
     int unk00;
@@ -42,5 +47,7 @@ typedef struct SndBankCmd {
     char *tbl2;                 /* 0x20 */
     char *tbl3;                 /* 0x24 */
 } SndBankCmd;
+
+extern SndBankCmd D_0076A880;
 
 #endif /* GODHAND_SNDBANK_H */

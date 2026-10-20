@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern int GuardedCall_00329FD0_329F98(int);
 
 __attribute__((section(".text.func_00374170")))

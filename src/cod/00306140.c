@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void Esp_killByGroup(int);
 extern void func_00300C00(int, int);
 

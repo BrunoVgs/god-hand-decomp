@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern void cIDBase_trans(void *);
 
 __attribute__((section(".text.func_001F2990")))

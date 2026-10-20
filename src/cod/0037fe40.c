@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern int func_0037FE78(void *, void *);
 
 __attribute__((section(".text.func_0037FE40")))

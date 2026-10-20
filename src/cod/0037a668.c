@@ -1,4 +1,3 @@
-extern char D_005FEE00[];
 extern int BuildSoundEvent_375BF0(void *);
 
 __attribute__((section(".text.func_0037A668")))
