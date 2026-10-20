@@ -42,7 +42,7 @@ extern void PushGlobalD8478History_331C78(int code);
 extern int func_00398DA0(int mode);
 
 extern SRD_OBJ D_003D8410;              /* srd_obj */
-extern volatile Sint32 D_003D8474;      /* destroy count */
+extern Sint32 D_003D8474;      /* destroy count */
 extern char D_00453E30[];               /* "SRD: SRD_Destroy, invalidate srd handle..." */
 extern char D_00453E70[];
 

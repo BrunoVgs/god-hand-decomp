@@ -20,12 +20,11 @@ void func_003577A8(A0CObj *p)
     unsigned int st;
     int val;
 
-    {
-        int one = 1;
-        st = f->on1 == one;
-        if (f->on2 == one)
-            st |= 2;
-    }
+    st = 0;
+    if (f->on1 == 1)
+        st = 1;
+    if (f->on2 == 1)
+        st |= 2;
     switch (st) {
     case 1:
         val = 1;

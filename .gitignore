@@ -3323,9 +3323,7 @@
 !src/cod/00359080.c
 !src/cod/00374cb8.c
 !src/cod/phase_a_cygnus.c
-!src/cod/phase_a_cygnus_40.c
 !src/cod/phase_a_cygnus_56.c
-!src/cod/phase_a_cygnus_80_noreorder.c
 !src/cod/phase_a_cygnus_88.c
 !src/cod/phase_a_cygnus_88_noreorder.c
 !src/cod/phase_a_cygnus_96.c
@@ -3400,7 +3398,6 @@
 !src/cod/sa_001b4460.c
 !src/cod/sa_001b48e0.c
 !src/cod/sa_001cd7a8.c
-!src/cod/sa_001d4720.c
 !src/cod/sa_001d9ca0.c
 !src/cod/sa_001dbf18.c
 !src/cod/sa_001dc798.c
@@ -3470,7 +3467,6 @@
 !src/cod/sa_0030ecf8.c
 !src/cod/sa_0030f228.c
 !src/cod/sa_0030fb20.c
-!src/cod/sa_003127b0.c
 !src/cod/sa_00312db8.c
 !src/cod/sa_00319848.c
 !src/cod/sa_00319cc0.c
@@ -3500,18 +3496,15 @@
 !src/cod/sa_00324ac8.c
 !src/cod/sa_00324c90.c
 !src/cod/sa_00324eb0.c
-!src/cod/sa_003253c0.c
 !src/cod/sa_00325818.c
 !src/cod/sa_00325a58.c
 !src/cod/sa_00327568.c
 !src/cod/sa_003278e8.c
 !src/cod/sa_00327e88.c
-!src/cod/sa_00328bb0.c
 !src/cod/sa_00329e08.c
 !src/cod/sa_0032a018.c
 !src/cod/sa_0032a720.c
 !src/cod/sa_0032a900.c
-!src/cod/sa_0032afb0.c
 !src/cod/sa_0032b1c8.c
 !src/cod/sa_0032bb98.c
 !src/cod/sa_0032bc98.c
@@ -3519,7 +3512,6 @@
 !src/cod/sa_0032bf90.c
 !src/cod/sa_0032c1e0.c
 !src/cod/sa_0032cb90.c
-!src/cod/sa_0032d1a0.c
 !src/cod/sa_0032d250.c
 !src/cod/sa_0032d720.c
 !src/cod/sa_0032da78.c
@@ -3535,7 +3527,6 @@
 !src/cod/sa_00331110.c
 !src/cod/sa_00331310.c
 !src/cod/sa_00331458.c
-!src/cod/sa_00331ad8.c
 !src/cod/sa_00332508.c
 !src/cod/sa_00332a60.c
 !src/cod/sa_00332ae8.c
@@ -3558,11 +3549,9 @@
 !src/cod/sa_003397c8.c
 !src/cod/sa_00339f00.c
 !src/cod/sa_0033a4f8.c
-!src/cod/sa_0033b5c8.c
 !src/cod/sa_0033ba80.c
 !src/cod/sa_0033bdd8.c
 !src/cod/sa_0033c7f8.c
-!src/cod/sa_0033f3f0.c
 !src/cod/sa_0033f4c8.c
 !src/cod/sa_0033f5b8.c
 !src/cod/sa_00340130.c
@@ -3597,8 +3586,6 @@
 !src/cod/sa_003487c0.c
 !src/cod/sa_00348d58.c
 !src/cod/sa_003490b0.c
-!src/cod/sa_00349328.c
-!src/cod/sa_00349590.c
 !src/cod/sa_00349840.c
 !src/cod/sa_003498e8.c
 !src/cod/sa_00349988.c
@@ -3660,15 +3647,11 @@
 !src/cod/sa_00360298.c
 !src/cod/sa_00360520.c
 !src/cod/sa_00360878.c
-!src/cod/sa_00360aa8.c
-!src/cod/sa_00360b18.c
 !src/cod/sa_00366ec0.c
 !src/cod/sa_00366fe0.c
 !src/cod/sa_00368a28.c
-!src/cod/sa_00368ce8.c
 !src/cod/sa_0036b798.c
 !src/cod/sa_0036ba50.c
-!src/cod/sa_0036be00.c
 !src/cod/sa_0036c080.c
 !src/cod/sa_0036c0b0.c
 !src/cod/sa_0036c6c8.c
@@ -3722,7 +3705,6 @@
 !src/cod/sa_003813c8.c
 !src/cod/sa_00381bc8.c
 !src/cod/sa_00381ea0.c
-!src/cod/sa_003820c0.c
 !src/cod/sa_003821d8.c
 !src/cod/sa_003825a8.c
 !src/cod/sa_00382850.c

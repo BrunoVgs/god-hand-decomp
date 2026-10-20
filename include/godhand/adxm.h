@@ -1,13 +1,11 @@
 /* include/godhand/adxm.h - the ADX manager threads (cygnus code at 0x324C90..).
  *
- * The prototypes keep the return types the callers were compiled against:
- * adxm_ResumeThread is called as returning char, and func_00325360 as
- * returning int; both shapes change the callers' register allocation.
+ * Prototypes match the definitions in 003252f8.c.
  */
 #ifndef GODHAND_ADXM_H
 #define GODHAND_ADXM_H
 
-extern char adxm_ResumeThread(int thid);
+extern int adxm_ResumeThread(int thid);
 extern int func_00325360(int thid);     /* server suspend */
 extern void func_00325290(int thid);
 extern void func_0033B790(const char *msg);

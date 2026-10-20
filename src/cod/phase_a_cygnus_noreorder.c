@@ -1,4 +1,5 @@
 /* Cygnus helper requiring the compiler's original block order. */
+#include "include_asm.h"
 
 extern long long D_00766C80;
 extern void func_0035BA58(void);
@@ -58,9 +59,9 @@ void func_00328190(char *self)
     *(int *)(self + 0x34) = 0;
     *(int *)(self + 0x4C) = 0;
     if (state == 0)
-        *(volatile char *)(self + 1) = 3;
+        *(char *)(self + 1) = 3;
     else
-        *(volatile char *)(self + 1) = 2;
+        *(char *)(self + 1) = 2;
     self[2] = 0;
     *(int *)(self + 0x24) = 0;
     *(int *)(self + 0x28) = 0;
@@ -95,22 +96,7 @@ void func_00348DD8(char *object)
         func_00348F68(object);
 }
 
-__attribute__((section(".text.func_003BA8C0")))
-void func_003BA8C0(char *object, void *a, void *b)
-{
-    if (object == 0)
-        goto error;
-    if (a == 0)
-        goto error;
-    if (b != 0)
-        goto valid;
-error:
-    func_003B9DE0(D_00460B20);
-    return;
-valid:
-    ((volatile int *)(object + 0x10))[1] = (int)b;
-    ((volatile int *)(object + 0x10))[0] = (int)a;
-}
+INCLUDE_ASM("nonmatching", func_003BA8C0);
 
 __attribute__((section(".text.func_003279B8")))
 int func_003279B8(void)

@@ -19,9 +19,9 @@ extern int D_00760D8C;
 extern void func_003A7B48(void) __attribute__((noreturn));
 extern int GetArrayElemA0C_35A1C8(int, int);
 extern int func_0035E080(int, int *);
-extern volatile int D_003DECF8;
+extern int D_003DECF8;
 extern int D_003DED08;
-extern volatile int D_003D90D0;
+extern int D_003D90D0;
 extern int D_003D90E8;
 extern void func_00333E88(int);
 extern char D_003E9D60[];
@@ -56,20 +56,9 @@ int func_00344F30(int value)
     return -1;
 }
 
-__attribute__((section(".text.func_00336318")))
-int *func_00336318(void)
-{
-    (void)D_003DECF8;
-    return &D_003DED08;
-}
+INCLUDE_ASM("nonmatching", func_00336318);
 
-__attribute__((section(".text.func_003327D8")))
-int *func_003327D8(void)
-{
-    (void)D_003D90D0;
-    func_00333E88(0);
-    return &D_003D90E8;
-}
+INCLUDE_ASM("nonmatching", func_003327D8);
 
 __attribute__((section(".text.func_003B06C8")))
 unsigned int func_003B06C8(void)
@@ -93,15 +82,7 @@ void func_00325F20(void)
     func_0033BFE8();
 }
 
-__attribute__((section(".text.func_0033C7C0")))
-void func_0033C7C0(char *self)
-{
-    *(volatile short *)(self + 0xE4) = -128;
-    *(volatile int *)(self + 0xCC) = 0;
-    *(volatile short *)(self + 0xE0) = 0;
-    *(volatile short *)(self + 0xE2) = -128;
-    func_003A52F0(self + 0xD0, 0, 0x10);
-}
+INCLUDE_ASM("nonmatching", func_0033C7C0);
 
 __attribute__((section(".text.func_00348A70")))
 int func_00348A70(int arg0, int arg1, int arg2)

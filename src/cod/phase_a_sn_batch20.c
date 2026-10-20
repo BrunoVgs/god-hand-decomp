@@ -1,4 +1,5 @@
 /* Batch 20: seven SN exact clone pairs. */
+#include "include_asm.h"
 #include "godhand/vu0.h"
 
 extern void EntList_destroy(void *self);
@@ -8,43 +9,9 @@ extern void *EnsureInitThenForward_2A9538_30EE08(int size, int align, void *regi
 extern void func_002A96D8(void *self, void *buf, int stride, int count, int align);
 extern void *D_003C3CF0;
 
-__attribute__((section(".text.func_00149400")))
-void func_00149400(void *self, int count)
-{
-    int size;
-    void *buf;
+INCLUDE_ASM("nonmatching", func_00149400);
 
-    EntList_destroy(self);
-    size = func_002A96C0(0x480, count, 0x80);
-    buf = EnsureInitThenForward_2A9538_30EE08(size, 0x80, D_003C3CF0);
-    func_002A96D8(self, buf, 0x480, count, 0x80);
-    {
-        volatile int *p = (volatile int *)self;
-        p[0x20 / 4] = size;
-        p[0x24 / 4] = count;
-        p[0x18 / 4] = count;
-        p[0x1C / 4] = count;
-    }
-}
-
-__attribute__((section(".text.func_001504B0")))
-void func_001504B0(void *self, int count)
-{
-    int size;
-    void *buf;
-
-    List_destroyChildren(self);
-    size = func_002A96C0(0x220, count, 0x10);
-    buf = EnsureInitThenForward_2A9538_30EE08(size, 0x10, D_003C3CF0);
-    func_002A96D8(self, buf, 0x220, count, 0x10);
-    {
-        volatile int *p = (volatile int *)self;
-        p[0x20 / 4] = size;
-        p[0x24 / 4] = count;
-        p[0x18 / 4] = count;
-        p[0x1C / 4] = count;
-    }
-}
+INCLUDE_ASM("nonmatching", func_001504B0);
 
 extern void func_001C7D98(void *self);
 extern void InitFields_1B6E90(void *self);

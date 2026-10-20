@@ -19,7 +19,6 @@ extern void InitSoundEntry_375B90(short a0, short a1, short *a2);
 __attribute__((section(".text.func_00374CB8")))
 int func_00374CB8(short a0, short a1, short *a2)
 {
-    short new_var;
     SoundSlot32 *ent;
     char *src;
 
@@ -29,8 +28,9 @@ int func_00374CB8(short a0, short a1, short *a2)
         src = src + (a1 * 0x30);
         if (((*((unsigned short *)(src + 0xE))) & 0x8000) == 0) {
             *((SoundBlk48 *)a2) = *((SoundBlk48 *)src);
-            new_var = (a2[0] = a0);
-            return a2[1] = a1, new_var, 0;
+            a2[0] = a0;
+            a2[1] = a1;
+            return 0;
         }
     }
     InitSoundBlock_374D98(a0, a1, a2);
@@ -40,7 +40,6 @@ int func_00374CB8(short a0, short a1, short *a2)
 __attribute__((section(".text.func_00375AB0")))
 int func_00375AB0(short a0, short a1, short *a2)
 {
-    short new_var;
     char *ent;
     char *src;
 
@@ -51,8 +50,9 @@ int func_00375AB0(short a0, short a1, short *a2)
         src = src + (a1 * 0x30);
         if (((*((unsigned short *)(src + 0xE))) & 0x8000) == 0) {
             *((SoundBlk48 *)a2) = *((SoundBlk48 *)src);
-            new_var = (a2[0] = a0);
-            return a2[1] = a1, new_var, 0;
+            a2[0] = a0;
+            a2[1] = a1;
+            return 0;
         }
     }
     InitSoundEntry_375B90(a0, a1, a2);

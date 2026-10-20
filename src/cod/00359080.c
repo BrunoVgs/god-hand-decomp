@@ -3,7 +3,7 @@
 extern int Obj34D8_SetGlobalEE0B8_IfField48(void);
 extern void func_0034DD70(int a, int b);
 extern int SetFieldIfUnset_359218(void *self, int flag);
-extern volatile int func_0035C2D0(void *self, int a, int b, int *c, int *d);
+extern int func_0035C2D0(void *self, int a, int b, int *c, int *d);
 extern void (*D_003EE304)(void *self, int v);
 extern long func_0035BA58(void);
 __attribute__((section(".text.func_00359080")))

@@ -819,25 +819,9 @@ void func_0018A3B8(char *self, int index)
         cDamageUnit_SetDamageCollActive(unit, 0);
 }
 
-__attribute__((section(".text.func_001D4980")))
-int func_001D4980(char *self)
-{
-    volatile unsigned short *hp =
-        (volatile unsigned short *)(self + 0x17FC);
-    if (*hp != 5)
-        return 0;
-    return func_001D4720() < 22;
-}
+INCLUDE_ASM("nonmatching", func_001D4980);
 
-__attribute__((section(".text.func_001D49B0")))
-int func_001D49B0(char *self)
-{
-    volatile unsigned short *hp =
-        (volatile unsigned short *)(self + 0x17FE);
-    if (*hp != 5)
-        return 0;
-    return func_001D47E8() < 22;
-}
+INCLUDE_ASM("nonmatching", func_001D49B0);
 
 __attribute__((section(".text.func_001D4F48")))
 void func_001D4F48(char *self)
