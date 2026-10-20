@@ -1,4 +1,4 @@
-/* cygnus-2.96, -freorder-blocks dropped, as=sn: func_003382A0, sets the transfer group's pause request; any request other than 1
+/* cygnus-2.96: func_003382A0, sets the transfer group's pause request; any request other than 1
  * stops every transfer in the group. */
 extern int D_003E0710;
 extern int D_003E0708;

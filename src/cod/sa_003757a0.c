@@ -1,6 +1,4 @@
-/* sn-2.95.3-136, call_loop_pad: NM closer handoff. */
 #include "godhand/cModel.h"
-/* sn-2.95.3-136: func_003757A0, split from src/cod/batch49_nm.c by the NM closer. */
 extern void *Obj0000_Set_Field_80_372C68(void *arg0);
 
 typedef struct { char data[0x80]; cVtEnt *vt; } SndVtNode;

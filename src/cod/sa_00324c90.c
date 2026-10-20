@@ -1,4 +1,4 @@
-/* cygnus-2.96 (no -freorder-blocks): ADX manager lock (raise the caller to the ADX priority) and the server wait (0x324C90..). */
+/* cygnus-2.96: ADX manager lock (raise the caller to the ADX priority) and the server wait (0x324C90..). */
 
 #include "godhand/adxm.h"
 

@@ -1,4 +1,4 @@
-/* sn-2.95.3-136, as=sn: func_002BDC00, step a pad vibration sequence (cPadVib). */
+/* sn-2.95.3-136: func_002BDC00, step a pad vibration sequence (cPadVib). */
 #include "godhand/gameWork.h"
 typedef struct {
     int active;

@@ -1,5 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
-/* sn-2.95.3-136: cCoreSave_ckFightingRingClear, split from src/cod/batch28_nm.c by the NM closer. */
 #include "godhand/cCoreSave.h"
 
 __attribute__((section(".text.cCoreSave_ckFightingRingClear")))

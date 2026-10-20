@@ -1,4 +1,4 @@
-/* cygnus-2.96, -freorder-blocks dropped, as=sn: func_0032A900, clamp the pan to -15..15 into +0x46 and forward it to the voice at +0xC
+/* cygnus-2.96: func_0032A900, clamp the pan to -15..15 into +0x46 and forward it to the voice at +0xC
  * (-0x80 while D_003C7410 mutes). */
 typedef struct {
     char pad00[0x0C];

@@ -199,10 +199,8 @@ extern void Thunk_func_0033B658(char *guard);
 extern void Thunk_func_0033B670(char *guard);
 extern SfdFrm *func_003555A8(SftimHn *hn);
 
-
 extern int D_00459730[];        /* picture/extension type by 3-bit code */
 extern int D_003EE2F0;          /* delimiter search error count */
-
 
 /* Timecode source info passed to func_00352790. */
 typedef struct SftimInfo {

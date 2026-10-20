@@ -1,5 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
-/* sn-2.95.3-136: func_0037CE20, split from src/cod/batch51_nm.c by the NM closer. */
 typedef struct {
     unsigned short flags;
     unsigned char b2;

@@ -1,4 +1,4 @@
-/* sn-2.95.3-136 matched (permuter zero from batch23_nm). */
+/* sn-2.95.3-136. */
 
 typedef struct {
     char b[0x30];

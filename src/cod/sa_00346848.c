@@ -1,4 +1,4 @@
-/* cygnus-2.96 (drop-reorder): MWSF handle status / play time (0x346848..). */
+/* cygnus-2.96: MWSF handle status / play time (0x346848..). */
 
 #include "godhand/mwsfHn.h"
 

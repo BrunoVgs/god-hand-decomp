@@ -1,4 +1,4 @@
-/* sn-2.95.3-136, as=sn (ps2eeas dli chains): builds the GIF packet header and 12 textured quad records. */
+/* sn-2.95.3-136: builds the GIF packet header and 12 textured quad records. */
 typedef struct {
     unsigned long rgbaq;
     unsigned long rgbaq_reg;

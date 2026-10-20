@@ -1,4 +1,4 @@
-/* cygnus-2.96, -freorder-blocks dropped, as=sn: func_00350C78, decode chunks until stopped (+0x60), an error, or no more data;
+/* cygnus-2.96: func_00350C78, decode chunks until stopped (+0x60), an error, or no more data;
  * then flush. Returns the last error. */
 extern int func_00350D08(char *self, int *data, int *len, int *arg);
 extern int func_003514B8(char *self, int data, int len, int arg, int *more);

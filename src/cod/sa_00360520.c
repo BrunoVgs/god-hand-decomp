@@ -1,4 +1,3 @@
-/* cygnus-2.96, as=sn, --f=-freorder-blocks: NM closer handoff. */
 extern int GetD003EE804_360720(void);
 extern void SFXLIB_Error(void *a0, void *a1, char *msg);
 extern char D_0045A0A0[];

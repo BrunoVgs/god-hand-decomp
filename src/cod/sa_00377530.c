@@ -1,4 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
 extern void func_00377A28(void *self);
 
 typedef struct SndSeqCtl {

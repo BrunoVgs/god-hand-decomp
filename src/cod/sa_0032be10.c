@@ -1,6 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
-/* cygnus-2.96 (drop-reorder): func_0032BE10, split from src/cod/sa_nm_0032be10.c by the NM closer. */
-
 extern void func_0033F130(const char *msg);
 extern void func_00329EA8(void *self);
 extern void Forward33B658_33E678(void);

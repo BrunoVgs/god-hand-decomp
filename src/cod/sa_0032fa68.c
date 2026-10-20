@@ -1,4 +1,4 @@
-/* cygnus-2.96 (drop-reorder): CRI AIX header parse / chunk server (0x32F988..). */
+/* cygnus-2.96: CRI AIX header parse / chunk server (0x32F988..). */
 
 #include "godhand/criAix.h"
 

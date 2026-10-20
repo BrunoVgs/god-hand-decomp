@@ -1,4 +1,4 @@
-/* sn-2.95.3-136 matched TU: pack key lookup (0x152340). */
+/* sn-2.95.3-136 TU: pack key lookup (0x152340). */
 
 #include "godhand/pack.h"
 

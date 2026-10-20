@@ -1,4 +1,4 @@
-/* sn-2.95.3-136, as=sn: func_003774A8, run the per-kind update for both active task slots. */
+/* sn-2.95.3-136: func_003774A8, run the per-kind update for both active task slots. */
 typedef struct TaskEnt {
     unsigned short active;
     char pad02[0x14 - 0x02];

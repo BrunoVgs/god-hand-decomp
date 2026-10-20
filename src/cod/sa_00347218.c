@@ -1,4 +1,3 @@
-/* cygnus-2.96: NM closer handoff. */
 extern int GetField0OrZero_346828(void);
 extern int func_00346C48(int a0);
 extern void func_0035FC60(int h, int a1, int a2);

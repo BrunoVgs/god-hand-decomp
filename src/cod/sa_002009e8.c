@@ -1,6 +1,4 @@
-/* sn-2.95.3-136: NM closer handoff. */
 #include "godhand/vec.h"
-/* sn-2.95.3-136: func_002009E8, split from src/cod/batch52_nm.c by the NM closer. */
 extern void cRoomJump(void *a0);
 extern unsigned char D_00583EC0[];
 

@@ -1,4 +1,3 @@
-/* sn-2.95.3-136, as=sn: NM closer handoff. */
 extern char *Getplayer(void);
 
 __attribute__((section(".text.func_00270D00")))

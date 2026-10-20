@@ -1,4 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 __attribute__((section(".text.func_003BA370")))
 int func_003BA370(unsigned char *p, int n)
 {

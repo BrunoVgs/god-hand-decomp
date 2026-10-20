@@ -1,7 +1,6 @@
 /* sn-2.95.3-136: enemy setup with a damage-take volume, then the enemy work defaults (0x19DD30);
- * volume build as SpawnDamageTakeVolumeE. func_001C28A0 takes only self (it clobbers a1/a2 at once). */
+ * volume build as SpawnDamageTakeVolumeE. */
 #include "godhand/emDamageVol.h"
-
 
 __attribute__((section(".text.func_00193A80")))
 int func_00193A80(EmDmgVol *em)

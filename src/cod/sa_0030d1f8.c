@@ -1,6 +1,4 @@
-/* sn-2.95.3-136, as=sn: NM closer handoff. */
-/* sn-2.95.3-136, as=sn: func_0030D1F8, split from src/cod/sa_nm_0030d1f8.c by the NM closer. */
-/* NM, not registered. sn-2.95.3-136: EE timer 0 interrupt and the VRAM clear at 0x30D1F8. */
+/* sn-2.95.3-136: EE timer 0 interrupt and the VRAM clear at 0x30D1F8. */
 
 typedef unsigned int u_int;
 #define T0_COUNT (*(volatile u_int *)0x10000000)

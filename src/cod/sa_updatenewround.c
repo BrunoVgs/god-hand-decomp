@@ -26,7 +26,7 @@ void BlackJack_UpdateNewRound(BlackJack *self)
     CustomIDWork_SetNumber_1D5760(self, 0);
     gold = cCoreSave_getGold(D_00569B70);
     func_001D5780(self, gold);
-    /* retail tests the flag as a 64-bit value (lwu, dsra) */
+    /* the flag is tested as a 64-bit value */
     flags = self->flags;
     tmp = flags;
     tmp = tmp >> 3;

@@ -1,5 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
-/* halt demote func_001DD340 */
 __attribute__((section(".text.func_001DD340")))
 
 void func_001DD340(int arg0) {

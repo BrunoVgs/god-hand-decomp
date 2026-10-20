@@ -1,4 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 #include "godhand/sftim.h"
 extern char D_004578B8[];
 extern void MWSFSVM_Error(char *msg);

@@ -1,5 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
-/* sn-2.95.3-136: func_002D4248, split from src/cod/batch36_nm.c by the NM closer. */
 extern int func_003447A8(void *a0, void *a1, void *a2);
 extern int func_00344E88(int a0, int a1);
 

@@ -1,4 +1,4 @@
-/* cygnus-2.96, -freorder-blocks dropped, as=sn: func_00359F78, run func_0035A000(hn, a0, a1) on every handle that is not busy;
+/* cygnus-2.96: func_00359F78, run func_0035A000(hn, ...) on every handle that is not busy;
  * twin of sa_0035a620.c. */
 extern void *D_003EE2C4[8];
 extern int Obj34D8_SetGlobalEE0B8_IfField48(void *hn);

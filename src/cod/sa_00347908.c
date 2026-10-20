@@ -1,4 +1,4 @@
-/* cygnus-2.96 singletons (batch 40, part 2). */
+/* cygnus-2.96: MWSFD handle setters. */
 
 #include "godhand/mwsfViews.h"
 

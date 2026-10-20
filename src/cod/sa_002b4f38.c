@@ -1,5 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
-/* sn-2.95.3-136: func_002B4F38, split from src/cod/batch28_nm.c by the NM closer. */
 #include "godhand/cCoreSave.h"
 
 static inline unsigned char slotUsed(char *p)

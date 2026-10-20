@@ -1,4 +1,4 @@
-/* cygnus-2.96, -freorder-blocks dropped: func_00350718, per-frame movie step: skipped while element 5 is unset or the handle is idle. */
+/* cygnus-2.96: func_00350718, per-frame movie step: skipped while element 5 is unset or the handle is idle. */
 extern int GetArrayElemA0C_35A1C8(char *hn, int i);
 extern int func_003508C0(char *hn);
 extern void sfmpv_SetCondY16(char *hn);

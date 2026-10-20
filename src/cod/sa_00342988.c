@@ -1,4 +1,4 @@
-/* cygnus-2.96, -freorder-blocks dropped: func_00342988, allocate size - 0x1800 bytes and copy the trailing 0x1800 bytes of src there; hangs on failure. */
+/* cygnus-2.96: func_00342988, allocate size - 0x1800 bytes and copy the trailing 0x1800 bytes of src there; hangs on failure. */
 extern int func_00329438(int kind, int src, int size);
 extern void func_003B9998(int dst, int src, int size);
 

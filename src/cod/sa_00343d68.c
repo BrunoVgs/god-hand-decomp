@@ -1,4 +1,4 @@
-/* cygnus-2.96, -freorder-blocks dropped, as=sn: func_00343D68, starts playback of the attached movie handle
+/* cygnus-2.96: func_00343D68, starts playback of the attached movie handle
  * with func_00345848 as its callback; reports and returns -1 on failure. */
 extern int func_00358968(char *mv);
 extern int func_0034DE20(char *mv, int cb, int arg);

@@ -1,6 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
-/* sn-2.95.3-136: func_001CD7A8, split from src/cod/batch30_nm.c by the NM closer. */
-
 __attribute__((section(".text.func_001CD7A8")))
 void func_001CD7A8(char *self)
 {

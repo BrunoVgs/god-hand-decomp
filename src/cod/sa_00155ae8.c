@@ -1,7 +1,5 @@
-/* sn-2.95.3-136: NM closer handoff. */
 /* sn-2.95.3-136: GIF tag pair into a model packet (0x155AE8). */
 #include "godhand/mdlPkt.h"
-
 
 __attribute__((section(".text.func_00155AE8")))
 void func_00155AE8(Pkt0B0 *pkt, int id, int buf)

@@ -1,5 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
-/* sn-2.95.3-136: func_0030FB20, split from src/cod/batch29_nm.c by the NM closer. */
 #include "godhand/vu0.h"
 
 extern int func_0030FCC0(void *a0);

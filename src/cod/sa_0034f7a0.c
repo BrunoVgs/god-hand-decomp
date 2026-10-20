@@ -1,4 +1,4 @@
-/* cygnus-2.96 (no -freorder-blocks): Sofdec per-channel helpers (0x34F7A0..). */
+/* cygnus-2.96: Sofdec per-channel helpers (0x34F7A0..). */
 #include "godhand/mwsfd.h"
 
 __attribute__((section(".text.func_0034F7A0")))

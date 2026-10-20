@@ -1,4 +1,4 @@
-/* cygnus-2.96 (drop-reorder): sets the block count from the rate (144000 / (n * 0x600) + 1), error trap on NULL or n <= 0. */
+/* cygnus-2.96: sets the block count from the rate (144000 / (n * 0x600) + 1), error trap on NULL or n <= 0. */
 extern void func_003B9DE0(int msg);
 extern char D_00460B48[];
 extern char D_00460B70[];

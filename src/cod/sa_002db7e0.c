@@ -1,4 +1,3 @@
-/* sn-2.95.3-136, as=sn: NM closer handoff. */
 extern char *Getplayer(void);
 extern float capVu0MagnitudeSqXZ(void *a0, void *a1);
 extern float Turn_dest(void *a0, void *a1, float f12, float f13);

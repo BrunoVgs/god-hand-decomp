@@ -1,4 +1,4 @@
-/* sn-2.95.3-136, as=sn (ps2eeas dli chains): option cursor (0xBC) driven by the pad repeat bits, confirm/cancel SEs. */
+/* sn-2.95.3-136: option cursor (0xBC) driven by the pad repeat bits, confirm/cancel SEs. */
 #include "godhand/gameWork.h"
 extern int D_00747A28;
 extern char D_005FEE00[];

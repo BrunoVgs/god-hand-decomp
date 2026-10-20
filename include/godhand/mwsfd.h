@@ -1,8 +1,7 @@
 /* include/godhand/mwsfd.h - Sofdec (MWSFD) handle views used by the cygnus code at 0x347008..
  *
  * Field names are ours; offsets are exact. The SFX side stores its converted
- * values as an enum and the decoder side keeps three pointer-typed words, so
- * the copies between them don't alias; retail schedules them that way.
+ * values as an enum and the decoder side keeps three pointer-typed words.
  */
 #ifndef GODHAND_MWSFD_H
 #define GODHAND_MWSFD_H

@@ -1,4 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
 typedef struct {
     short id; /* 0x00 */
     short code; /* 0x02 */

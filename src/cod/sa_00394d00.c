@@ -1,6 +1,4 @@
-/* sn-2.95.3-136: NM closer handoff. */
 #include "godhand/regTbl.h"
-/* sn-2.95.3-136: func_00394D00, split from src/cod/batch31_nm.c by the NM closer. */
 
 __attribute__((section(".text.func_00394D00")))
 int func_00394D00(int key)

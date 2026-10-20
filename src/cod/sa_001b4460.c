@@ -1,4 +1,4 @@
-/* sn-2.95.3-136, as=sn (ps2eeas keeps the mtc1 hazard nops): 30-frame Y-rotation shake around a saved yaw. */
+/* sn-2.95.3-136: 30-frame Y-rotation shake around a saved yaw. */
 typedef struct {
     char pad000[0x104];
     float rotY;

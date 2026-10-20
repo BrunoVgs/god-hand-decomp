@@ -1,4 +1,4 @@
-/* cygnus-2.96, as=sn: func_0035A620, vblank-in: count the vblank and tick the timer of every active handle. */
+/* cygnus-2.96: func_0035A620, vblank-in: count the vblank and tick the timer of every active handle. */
 typedef struct {
     int vcount;
     char pad04[0x54 - 0x04];

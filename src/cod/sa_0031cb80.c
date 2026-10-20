@@ -1,4 +1,4 @@
-/* sn-2.95.3-136, as=sn (ps2eeas keeps the mtc1 hazard nops): quad from short xy pairs, z + 65528, then Draw_Poly_sc. */
+/* sn-2.95.3-136: quad from short xy pairs, z + 65528, then Draw_Poly_sc. */
 extern unsigned int func_0031CA58(unsigned int a0);
 extern void Draw_Poly_sc(float (*v)[4], unsigned int col);
 

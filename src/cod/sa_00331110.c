@@ -1,6 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
-/* cygnus-2.96 (drop-reorder): func_00331110, split from src/cod/sa_nm_00331070.c by the NM closer. */
-
 typedef signed char Sint8;
 typedef char Char8;
 typedef int Sint32;

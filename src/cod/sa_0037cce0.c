@@ -1,4 +1,4 @@
-/* sn-2.95.3-136, as=sn (ps2eeas keeps the mtc1 hazard nops): dispatch the pending update flags at +6, then clear them. */
+/* sn-2.95.3-136: dispatch the pending update flags at +6, then clear them. */
 #include "godhand/seqNode.h"
 
 extern void func_0037D3C8(SeqNode *self);

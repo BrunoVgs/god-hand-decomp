@@ -1,6 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
-/* cygnus-2.96 (drop-reorder): func_00356E98, split from src/cod/sa_nm_00345250.c by the NM closer. */
-
 #include "godhand/mwsfViews.h"
 
 extern int func_00356358(SfdWkT *w);

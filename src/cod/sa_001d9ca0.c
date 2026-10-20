@@ -1,5 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
-/* halt demote func_001D9CA0 */
 extern int PartHolder_classify(void *self);
 extern void func_001DE858(void *self, unsigned char n);
 extern void cSnd_SetBgmState(void *snd, int state);

@@ -1,4 +1,3 @@
-/* cygnus-2.96: NM closer handoff. */
 extern int func_00324500(int h);
 extern void OpenStreamHandle(int h);
 extern void func_00322F18(void);

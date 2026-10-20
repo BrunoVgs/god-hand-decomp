@@ -1,0 +1,13 @@
+extern void func_0032ABE8(int, int, int, float);
+
+__attribute__((section(".text.func_003741B0")))
+void func_003741B0(int *self, float scale)
+{
+    int object = self[0];
+    if (object == 0)
+        return;
+    if (scale == 0.0f)
+        func_0032ABE8(object, self[4], self[3], 2.0f);
+    else
+        func_0032ABE8(object, self[4], self[3], scale);
+}

@@ -1,4 +1,3 @@
-/* cygnus-2.96: NM closer handoff. */
 typedef struct {
     char pad0[0x4C];
     int chbuf; /* 0x4C */

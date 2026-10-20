@@ -1,4 +1,4 @@
-/* cygnus-2.96 (drop-reorder): forwards entry idx (116-byte records at 0x1310) to func_0035C2D0 when it is idle. */
+/* cygnus-2.96: forwards entry idx (116-byte records at 0x1310) to func_0035C2D0 when it is idle. */
 typedef struct {
     int f00;
     int busy;

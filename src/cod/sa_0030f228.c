@@ -1,5 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
-/* sn-2.95.3-136: MoveEffect, split from src/cod/batch44_nm.c by the NM closer. */
 extern void MoveEmitter(void);
 extern void MoveEsp(void);
 extern int D_003C3BB8;

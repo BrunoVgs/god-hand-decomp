@@ -1,6 +1,5 @@
 /* cygnus-2.96 matched TU. */
 #include "godhand/sync.h"
-#include "include_asm.h"
 
 extern void func_003A52F0(void *p, int v, int n);
 extern void func_00325DF0(void);
@@ -38,7 +37,6 @@ void func_0033C728(void)
     func_0033C708(0);
 }
 
-INCLUDE_ASM("nonmatching", func_00320270);
 
 __attribute__((section(".text.func_0034B8D8")))
 int func_0034B8D8(int value)
@@ -56,9 +54,7 @@ int func_00344F30(int value)
     return -1;
 }
 
-INCLUDE_ASM("nonmatching", func_00336318);
 
-INCLUDE_ASM("nonmatching", func_003327D8);
 
 __attribute__((section(".text.func_003B06C8")))
 unsigned int func_003B06C8(void)
@@ -68,9 +64,7 @@ unsigned int func_003B06C8(void)
     return !(status & 1);
 }
 
-INCLUDE_ASM("nonmatching", func_003312B8);
 
-INCLUDE_ASM("nonmatching", func_00333FD8);
 
 __attribute__((section(".text.func_00325F20")))
 void func_00325F20(void)
@@ -82,7 +76,6 @@ void func_00325F20(void)
     func_0033BFE8();
 }
 
-INCLUDE_ASM("nonmatching", func_0033C7C0);
 
 __attribute__((section(".text.func_00348A70")))
 int func_00348A70(int arg0, int arg1, int arg2)

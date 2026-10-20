@@ -1,4 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 extern unsigned int strlen(const char *s);
 extern void *func_003A5148(void *d, const void *s, unsigned int n);
 extern char D_00756080[];

@@ -1,4 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 extern char *GetD003EC7E0_3452B0(void);
 extern void Forward3443E0_3443C8(void *p);
 extern void func_00349738(int a0, int a1);

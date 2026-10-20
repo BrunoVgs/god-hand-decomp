@@ -1,4 +1,4 @@
-/* cygnus-2.96 (drop-reorder): SFD ring-buffer write and per-channel term / done checks (0x34F200..). */
+/* cygnus-2.96: SFD ring-buffer write and per-channel term / done checks (0x34F200..). */
 
 #include "godhand/sftim.h"
 

@@ -1,17 +1,10 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
-/* NM, not registered. cygnus-2.96 (drop-reorder): Sofdec stream setup (0x32BE10)
- * and stream feed (0x32C1E0).
- * func_0032BE10: 1 insn - retail fills the delay slot of the second NULL test
- *   with an annulled lui (beql), ours uses beq.
- * func_0032C1E0: block order/tail calls differ; written before the file's
- *   drop-reorder setting was known (attempts exhausted). */
+/* cygnus-2.96: Sofdec stream setup (0x32BE10) and stream feed (0x32C1E0). */
 
 extern int func_00327830(void *sj);
 extern int Obj3270_GetField_30(void *sj);
 extern void Obj3270_SetField_3C(void *sj, int v);
 extern void func_00328448(void *sj, int len);
 extern void func_003280D8(void *sj, int sectors);
-
 
 __attribute__((section(".text.func_0032C1E0")))
 void func_0032C1E0(char *self)

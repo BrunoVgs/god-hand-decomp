@@ -1,4 +1,3 @@
-/* sn-2.95.3-136, as=sn: NM closer handoff. */
 /* func_00271148 (sn-2.95.3-136): written like func_00271298 (zero local, copies into the abs temps, m reused). */
 
 extern char *Getplayer(void);

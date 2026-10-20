@@ -1,4 +1,4 @@
-/* cygnus-2.96 (drop-reorder): CRI stream handle pool (0x336E88..). */
+/* cygnus-2.96: CRI stream handle pool (0x336E88..). */
 
 #include "godhand/criStm.h"
 

@@ -1,10 +1,4 @@
-/* sn-2.95.3-136: NM closer handoff. */
-/* NM, not registered. sn-2.95.3-136: stage set-data mesh placement (0x31D3D0).
- * With cBoundingBox returning BoundingBox* (as in src/cod/sa_0031d2f8.c) the
- * prologue through cModel_addMesh matches and 79 insns remain.
- * func_0031D3D0: 81 insns - frame, flags build and cast branch match; the
- *   state/flags copies after GetActiveState and the vector copies are
- *   scheduled differently. */
+/* sn-2.95.3-136: stage set-data mesh placement (0x31D3D0). */
 
 #include "godhand/stageSet.h"
 

@@ -1,5 +1,5 @@
 /* func_00328F30: exact clone of func_00323000 (src/cod/002b62f8.c). */
-/* cygnus-2.96 matched TU. */
+/* cygnus-2.96 TU. */
 
 extern void Obj3290_Tramp_0033E6A8_9070(int a0);
 extern int func_00328F68(int a0);

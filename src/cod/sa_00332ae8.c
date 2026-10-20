@@ -1,4 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 typedef struct {
     int pad0;
     int found; /* 0x4 */

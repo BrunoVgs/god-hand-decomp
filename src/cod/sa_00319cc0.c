@@ -1,6 +1,4 @@
 #include "godhand/gameWork.h"
-/* sn-2.95.3-136: NM closer handoff. */
-/* sn-2.95.3-136: func_00319CC0, split from src/cod/batch46_nm.c by the NM closer. */
 extern int GetField_2B1_14B638(void *self);
 extern void *cModel_getMeshPtr(void *self, int i);
 extern void Forward155AE8_148F00(void *a0, int a1);

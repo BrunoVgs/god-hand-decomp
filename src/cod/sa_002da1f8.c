@@ -1,5 +1,3 @@
-/* sn-2.95.3-136, as=sn: NM closer handoff. */
-
 static inline float Absf(float x)
 {
     if (x > 0.0f)

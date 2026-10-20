@@ -1,4 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
 typedef struct {
     short unk0;
     short unk2;

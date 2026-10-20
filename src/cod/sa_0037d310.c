@@ -1,4 +1,4 @@
-/* sn-2.95.3-136, as=sn: func_0037D310, first free entry in the 24-entry bank holding n
+/* sn-2.95.3-136: func_0037D310, first free entry in the 24-entry bank holding n
  * (the third bank has only 3 entries). */
 typedef struct {
     unsigned short active;

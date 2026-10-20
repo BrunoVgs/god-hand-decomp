@@ -1,4 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 extern int Obj33C8_GetField_CC(int a0);
 extern short Obj33C8_GetShortArrayE2_idx(int a0, int idx);
 

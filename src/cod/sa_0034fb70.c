@@ -1,4 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 typedef struct {
     int busy; /* 0x00 */
     int rate; /* 0x04 */

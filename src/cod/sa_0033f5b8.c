@@ -1,4 +1,3 @@
-/* cygnus-2.96: NM closer handoff. */
 extern void Forward33B658_33E678(void);
 extern void Forward33B670_33E690(void);
 extern void func_00331AD8(void);

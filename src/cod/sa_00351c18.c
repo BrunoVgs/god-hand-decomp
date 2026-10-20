@@ -1,4 +1,4 @@
-/* cygnus-2.96, -freorder-blocks dropped, as=sn: func_00351C18, maps a decoder status to an error report: 0 is fine, -2/-3 are only
+/* cygnus-2.96: func_00351C18, maps a decoder status to an error report: 0 is fine, -2/-3 are only
  * errors when nothing was decoded, anything else reports code. */
 #include "godhand/sftim.h"
 

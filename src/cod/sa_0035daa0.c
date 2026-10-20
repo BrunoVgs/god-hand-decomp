@@ -1,4 +1,3 @@
-/* cygnus-2.96: NM closer handoff. */
 typedef struct { char c[32]; } Name32;
 
 extern int func_0035D800(char *hn);

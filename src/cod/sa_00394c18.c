@@ -1,6 +1,5 @@
 #include "godhand/regTbl.h"
 
-
 __attribute__((section(".text.func_00394C18")))
 int func_00394C18(int a, int b)
 {

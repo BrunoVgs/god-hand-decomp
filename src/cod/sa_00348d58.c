@@ -1,4 +1,4 @@
-/* cygnus-2.96, -freorder-blocks dropped: func_00348D58, clear the pending flag at +0x1AC once acknowledged, step, and set state 2
+/* cygnus-2.96: func_00348D58, clear the pending flag at +0x1AC once acknowledged, step, and set state 2
  * when the sound at +0x3C reports 4 or 6. */
 extern int func_00348FF0(char *self);
 extern void func_00348DD8(char *self);

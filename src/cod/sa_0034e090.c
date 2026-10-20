@@ -1,4 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 #include "godhand/mwsfd.h"
 extern int Obj34D8_SetGlobalEE0B8_IfField48(void *obj);
 extern int func_0034DD70(int a0, unsigned int a1);

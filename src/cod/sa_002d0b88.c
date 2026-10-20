@@ -1,5 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
-/* sn-2.95.3-136: func_002D0B88, split from src/cod/sa_nm_002d0b88.c by the NM closer. */
 #include "godhand/ColiseumBattle.h"
 #include "godhand/cSnd.h"
 

@@ -1,4 +1,4 @@
-/* cygnus-2.96 (drop-reorder): drops one reference and calls the release hook when the count reaches zero. */
+/* cygnus-2.96: drops one reference and calls the release hook when the count reaches zero. */
 typedef struct Obj348 {
     int f00;
     void (*release)(struct Obj348 *o);

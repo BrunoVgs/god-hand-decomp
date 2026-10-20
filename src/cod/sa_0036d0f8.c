@@ -1,4 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 typedef unsigned char Uint8;
 typedef int Sint32;
 extern Uint8 *MPV_SearchDelim(Uint8 *buf, Sint32 len, Sint32 type);

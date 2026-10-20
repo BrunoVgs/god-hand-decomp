@@ -1,4 +1,4 @@
-/* cygnus-2.96 (no -freorder-blocks): Sofdec picture decode helpers (0x353928..). */
+/* cygnus-2.96: Sofdec picture decode helpers (0x353928..). */
 
 #include "godhand/sftim.h"
 

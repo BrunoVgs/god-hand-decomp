@@ -1,4 +1,3 @@
-/* sn-2.95.3-136, as=sn, fp_hazard_rules mtc1: NM closer handoff. */
 #include "godhand/cMessDrawFontCode.h"
 
 extern unsigned short *cMessage_getRubyAddr(int mess, unsigned short id);

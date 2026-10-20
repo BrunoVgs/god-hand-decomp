@@ -1,4 +1,4 @@
-/* cygnus-2.96, as=sn: func_003B9B20, shuts the stream's decoder down (under the lock) and resets the object. */
+/* cygnus-2.96: func_003B9B20, shuts the stream's decoder down (under the lock) and resets the object. */
 extern void func_00329EA8(char *obj);
 extern void Forward33B658_325C60(void);
 extern void func_003BA058(int dec);

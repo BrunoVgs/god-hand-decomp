@@ -1,4 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 #include "godhand/criSj.h"
 typedef struct AdxtHn {
     char used;

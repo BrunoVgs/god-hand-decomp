@@ -1,4 +1,4 @@
-/* sn-2.95.3-136, as=sn (ps2eeas keeps the mtc1 hazard nops): line strip from short xy pairs into a VLA of float4, then Draw_Line_sc. */
+/* sn-2.95.3-136: line strip from short xy pairs into a VLA of float4, then Draw_Line_sc. */
 extern unsigned int func_0031CA58(unsigned int a0);
 extern void Draw_Line_sc(float (*v)[4], int n, unsigned int col, int a3);
 

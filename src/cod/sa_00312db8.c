@@ -1,5 +1,4 @@
-/* sn-2.95.3-136: NM closer handoff. */
-/* inbox near-miss func_00312DB8 */
+/* sn-2.95.3-136: linear search for *val in [first, last), unrolled by four. */
 
 __attribute__((section(".text.func_00312DB8")))
 int *func_00312DB8(int *first, int *last, int *val) {

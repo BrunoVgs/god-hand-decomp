@@ -1,4 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
 extern void func_0031A0E8(void *p);
 extern void InitSubBufferPool_2C3280(int a0);
 extern void EntTable_init(void *p, int a1, int a2, int a3);

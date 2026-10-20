@@ -1,4 +1,4 @@
-/* cygnus-2.96 (no -freorder-blocks): Sofdec timecode (0x3525F0..). */
+/* cygnus-2.96: Sofdec timecode (0x3525F0..). */
 
 #include "godhand/sftim.h"
 

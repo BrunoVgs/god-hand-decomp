@@ -1,5 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
-/* halt demote func_001582A0 */
 extern int setMotionInfo(void *a0, int a1, int a2, int a3, float f12, float f13, int t0);
 extern void moveMotion(char *a0);
 

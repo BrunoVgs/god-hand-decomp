@@ -1,6 +1,4 @@
-/* sn-2.95.3-136: NM closer handoff. */
 #include "godhand/vec.h"
-/* sn-2.95.3-136: func_001573C8, split from src/cod/sa_nm_001573c8.c by the NM closer. */
 
 /* 1 when pt lies inside the quad a-b-c-d on the XZ plane. */
 __attribute__((section(".text.func_001573C8")))

@@ -1,4 +1,4 @@
-/* sn-2.95.3-136, as=sn (ps2eeas keeps the mtc1 hazard nops): one-segment line; retail uses (x0, y0) for both ends. */
+/* sn-2.95.3-136: one-segment line; the game passes (x0, y0) for both ends. */
 extern unsigned int func_0031CA58(unsigned int a0);
 extern void Draw_Line_sc(float (*v)[4], int n, unsigned int col, int a3);
 

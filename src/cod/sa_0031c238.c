@@ -1,4 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
 typedef struct { char pad[0x10]; int ofs; char pad2[0x0C]; } RelocEnt;
 typedef struct { int n0; int o4; int n8; int oC; int n10; int o14; } RelocHdr;
 typedef struct {

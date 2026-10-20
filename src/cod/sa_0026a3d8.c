@@ -1,4 +1,3 @@
-/* sn-2.95.3-136, as=sn: NM closer handoff. */
 typedef struct {
     char pad000[0x150];
     float sway;

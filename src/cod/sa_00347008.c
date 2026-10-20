@@ -1,4 +1,4 @@
-/* cygnus-2.96 (no -freorder-blocks): Sofdec frame-info conversion to the SFX layout (0x347008..). */
+/* cygnus-2.96: Sofdec frame-info conversion to the SFX layout (0x347008..). */
 #include "godhand/mwsfd.h"
 
 extern char D_004588D8[];

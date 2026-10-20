@@ -1,4 +1,4 @@
-/* cygnus-2.96 matched (permuter zero); drop -freorder-blocks. */
+/* cygnus-2.96. */
 
 extern int Obj34D8_SetGlobalEE0B8_IfField48(void);
 extern void func_0034DD70(int a, int b);

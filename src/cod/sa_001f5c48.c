@@ -1,4 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
 extern void cSnd_BgmEventFade(void *snd, int a1, float f12, float f13, float f14);
 extern int cIDBase_release(void *p);
 extern void cHeap_free(void *heap, void *block);

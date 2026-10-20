@@ -1,15 +1,8 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
-/* cygnus-2.96 (drop-reorder): func_00352888, split from src/cod/sa_nm_003525f0.c by the NM closer. */
 #include "godhand/sftim.h"
 
 int func_003526D0(SftimHn *hn, SftimInfo *info);
 void func_00352790(SftimHn *hn, SftimInfo *info, int time, int update);
 
-/* Register allocation: retail builds the result in v0 directly; ours uses a3 plus a move. */
-
-/* Register allocation: retail loads rate straight into a1; ours goes through v1 (8 insns). */
-
-/* Retail computes the field parity before the shift, and allocates the non-drop h/m/s chain differently (12 insns). */
 __attribute__((section(".text.func_00352888")))
 void func_00352888(int time, int rate, int drop, int ofs, SftimTc *tc)
 {
@@ -69,6 +62,3 @@ void func_00352888(int time, int rate, int drop, int ofs, SftimTc *tc)
     tc->frame = frame;
 }
 
-/* Scheduling and register allocation of the div/mod chain differ (39 insns). */
-
-/* Retail keeps &rec[0] in a register and does not write the difference back to the stack. */

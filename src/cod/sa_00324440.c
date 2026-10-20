@@ -1,4 +1,4 @@
-/* cygnus-2.96, -freorder-blocks dropped: func_00324440, stream size; refreshed from the handle while the cached value is the 0x7FFFF800+ marker. */
+/* cygnus-2.96: func_00324440, stream size; refreshed from the handle while the cached value is the 0x7FFFF800+ marker. */
 typedef struct {
     int pad0;
     int handle;

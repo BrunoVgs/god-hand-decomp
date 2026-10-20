@@ -1,4 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
 typedef struct {
     char pad[0x1C];
     int mask[1];

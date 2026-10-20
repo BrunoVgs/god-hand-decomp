@@ -1,4 +1,4 @@
-/* cygnus-2.96 (drop-reorder): Sofdec stream-joint position feed (0x32BF90..0x32C1E0). */
+/* cygnus-2.96: Sofdec stream-joint position feed (0x32BF90..0x32C1E0). */
 
 #include "godhand/criSj.h"
 

@@ -1,4 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 extern int D_003E0710;
 extern int D_003E0708;
 extern int D_003E0750;

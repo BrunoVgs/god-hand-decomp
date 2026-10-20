@@ -1,4 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 #define MPS_DELIM_PACK    0x10000
 #define MPS_DELIM_SYSHDR  0x20000
 #define MPS_DELIM_PES     0x40000

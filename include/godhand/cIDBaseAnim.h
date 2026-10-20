@@ -31,8 +31,7 @@ typedef struct cIDBaseSrcAnim {
     short framesD;              /* 0x278 */
 } cIDBaseSrcAnim;
 
-/* Set or clear an entry flag. The (unsigned char) test is what gives the
- * retail andi 0xFF after the compare. */
+/* Set or clear an entry flag; on is tested as a byte. */
 static inline void cIDBaseEnt_setFlag(cIDBaseEnt *ent, int bit, int on)
 {
     if ((unsigned char)on)

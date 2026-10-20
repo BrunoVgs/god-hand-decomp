@@ -1,4 +1,4 @@
-/* cygnus-2.96, -freorder-blocks dropped, as=sn: func_00358228, creates a handle in a free slot of D_003EE2C4;
+/* cygnus-2.96: func_00358228, creates a handle in a free slot of D_003EE2C4;
  * reports when every slot is taken. */
 extern void *D_003EE2C4[8];
 extern int func_003582C0(int a0);

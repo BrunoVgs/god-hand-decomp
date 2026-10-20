@@ -1,4 +1,4 @@
-/* cygnus-2.96 (drop-reorder): MWSF handle playback server tick / start time (0x347F20, 0x348098). */
+/* cygnus-2.96: MWSF handle playback server tick / start time (0x347F20, 0x348098). */
 
 #include "godhand/mwsfHn.h"
 

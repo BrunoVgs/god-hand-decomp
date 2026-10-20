@@ -1,4 +1,3 @@
-/* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 #include "godhand/mwsfd.h"
 extern int func_0034C7D0(SfdHn *hn, int index);
 

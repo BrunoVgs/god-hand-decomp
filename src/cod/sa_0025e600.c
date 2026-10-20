@@ -1,4 +1,3 @@
-/* sn-2.95.3-136: NM closer handoff. */
 #include "godhand/cModel.h"
 typedef void (*Pfn)(void *self);
 

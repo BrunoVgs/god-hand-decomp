@@ -1,4 +1,4 @@
-/* cygnus-2.96 (drop-reorder): SFX stream decoder callback setup (0x35F698). */
+/* cygnus-2.96: SFX stream decoder callback setup (0x35F698). */
 
 #include "godhand/sfxlib.h"
 

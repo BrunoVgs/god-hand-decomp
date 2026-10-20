@@ -1,5 +1,3 @@
-/* sn-2.95.3-136, call_loop_pad: NM closer handoff. */
-/* sn-2.95.3-136: func_00376A90, split from src/cod/batch29_nm.c by the NM closer. */
 extern char D_00770850[];
 
 __attribute__((section(".text.func_00376A90")))

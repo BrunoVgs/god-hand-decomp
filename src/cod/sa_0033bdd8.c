@@ -1,4 +1,3 @@
-/* cygnus-2.96: NM closer handoff. */
 extern void *func_003A52F0(void *d, int c, unsigned int n);
 extern int D_003E9950[6];
 extern char D_003E9970[];

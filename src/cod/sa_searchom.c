@@ -1,6 +1,4 @@
-/* sn-2.95.3-136: NM closer handoff. */
 #include "godhand/cGameObj.h"
-/* halt demote cObjBaseArray_SearchOM */
 __attribute__((section(".text.cObjBaseArray_SearchOM")))
 void *cObjBaseArray_SearchOM(char *arr, long mask)
 {
