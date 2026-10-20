@@ -1,4 +1,4 @@
-/* cygnus-2.96 88-byte function that needs the original block order. */
+/* cygnus-2.96 */
 
 extern int Forward328098_349B88(void *);
 extern void func_00358F68(void *);

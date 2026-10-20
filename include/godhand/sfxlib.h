@@ -1,6 +1,6 @@
 /* include/godhand/sfxlib.h - the SFX library stream context (0x35E8.. cygnus code).
  *
- * Field names are ours; offsets are exact. Only the words the matched
+ * Field names are ours; offsets are exact. Only the words this code
  * bodies touch are named.
  */
 #ifndef GODHAND_SFXLIB_H

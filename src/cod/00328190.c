@@ -1,4 +1,4 @@
-/* Cygnus helper requiring the compiler's original block order. */
+/* cygnus-2.96 */
 
 __attribute__((section(".text.func_00328190")))
 void func_00328190(char *self)

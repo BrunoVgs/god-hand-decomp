@@ -1,4 +1,4 @@
-/* Cygnus helper requiring the compiler's original block order. */
+/* cygnus-2.96 */
 
 extern void func_00348E18(void *);
 extern void func_00348F68(void *);

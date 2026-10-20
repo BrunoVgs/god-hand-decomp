@@ -1,5 +1,4 @@
-/* cygnus-2.96: CRI stream-joint object create, 256-entry pool of 0x40-byte objects (0x3395F8);
- * same shape as SJMEM_Create with three init arguments. */
+/* cygnus-2.96: CRI stream-joint object create, 256-entry pool of 0x40-byte objects (0x3395F8), with three init arguments. */
 
 #define SJ3_POOL_NUM  0x100
 

@@ -10,26 +10,22 @@ int func_0019E7A8(EmDmgVol *em)
     Vec4f *rot;
     Vec4f *size;
     void *slot;
-    float one, ca, cb;
 
     func_001B6FB8(em);
-    one = 1.0f;
-    ca = 0.8f;
-    cb = 1.15f;
     size = &v[1];
     ofs = &v[2];
-    v[0].x = ca;
-    v[0].y = cb;
-    v[0].z = ca;
-    v[1].y = cb;
-    v[0].w = one;
-    v[1].x = ca;
-    v[1].z = ca;
-    size->w = one;
+    v[0].x = 0.8f;
+    v[0].y = 1.15f;
+    v[0].z = 0.8f;
+    v[1].y = 1.15f;
+    v[0].w = 1.0f;
+    v[1].x = 0.8f;
+    v[1].z = 0.8f;
+    size->w = 1.0f;
     v[2].x = 0.0f;
     v[2].y = 0.0f;
     v[2].z = 0.0f;
-    ofs->w = one;
+    ofs->w = 1.0f;
     slot = cDamageManage_CreateDamageTake(D_00574380, em, 2);
     em->dmgTake = slot;
     if (slot != 0) {
@@ -37,7 +33,7 @@ int func_0019E7A8(EmDmgVol *em)
         v[3].x = 0.0f;
         v[3].y = 0.0f;
         v[3].z = 0.0f;
-        rot->w = one;
+        rot->w = 1.0f;
         func_001FD9D8(slot, (char *)em + 0x80, ofs, rot, size);
     }
     em->base.hpMax = 1;

@@ -4,13 +4,12 @@ __attribute__((section(".text.func_00383B60")))
 void func_00383B60(char *self, char *ctrl, unsigned char flag)
 {
     char *sub = self + 0x370;
-    unsigned char f = flag;
     short *slot;
     short c;
     unsigned short u;
     int lim;
 
-    if (f != 0)
+    if (flag != 0)
         slot = (short *)(sub + (*(unsigned char *)(sub + 4) * 2 + 0x26));
     else
         slot = (short *)(sub + (*(unsigned char *)(sub + 4) * 2 + 0x1C));
@@ -31,7 +30,7 @@ void func_00383B60(char *self, char *ctrl, unsigned char flag)
     clamp_lo2:
         *slot = lim;
     do_dec_call2:
-        func_00383C70(self, sub, f);
+        func_00383C70(self, sub, flag);
     }
     lim = -0x80;
     if ((*(int *)(ctrl + 0x38) & 0x2000) != 0) {
@@ -49,6 +48,6 @@ void func_00383B60(char *self, char *ctrl, unsigned char flag)
     clamp_hi2:
         *slot = lim;
     do_inc_call2:
-        func_00383C70(self, sub, f);
+        func_00383C70(self, sub, flag);
     }
 }

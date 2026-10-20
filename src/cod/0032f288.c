@@ -1,4 +1,4 @@
-/* Cygnus helper requiring the compiler's original block order. */
+/* cygnus-2.96 */
 
 extern void func_003A52F0(void *, int, int);
 extern int Obj33F8_Tramp_0033B658_FC70(void);

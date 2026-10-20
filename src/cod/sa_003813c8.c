@@ -1,5 +1,5 @@
 /* sn-2.95.3-136: left/right pad input steps the current item's value through -15..15
- * with wrap-around and pushes it to the bound object (0x3813C8); same shape as func_00383EB0. */
+ * with wrap-around and pushes it to the bound object (0x3813C8). */
 
 #define PAD_LEFT    0x8000
 #define PAD_RIGHT   0x2000

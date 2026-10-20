@@ -1,5 +1,5 @@
 /* cygnus-2.96: build a request block for the handle's player, submit it with the block's own
- * two words at 0x44/0x48, then commit through func_0035F698 (twin of func_00349988). */
+ * two words at 0x44/0x48, then commit through func_0035F698. */
 extern void func_00346C58(char *h, int a1, char *req);
 extern void func_0035F578(void *ply, char *req, int a2, char *rep, int a3, int a4, int a5, int a6);
 extern void func_0035F698(void *ply, char *req, char *rep);

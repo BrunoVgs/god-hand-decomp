@@ -1,4 +1,4 @@
-/* Cygnus helper requiring the compiler's original block order. */
+/* cygnus-2.96 */
 
 extern int D_003D8480;
 extern char D_00454098[];

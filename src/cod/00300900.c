@@ -13,12 +13,10 @@ void KillEventEmitter(void)
     unsigned int mask;
     int w;
     char *p;
-    unsigned int top;
-    int skip;
 
-    for (i = 0, top = 0x80000000u, skip = 0xD7; i < 0x100; i++) {
+    for (i = 0; i < 0x100; i++) {
         w = (unsigned int)i >> 5;
-        mask = top >> (i & 0x1F);
+        mask = 0x80000000u >> (i & 0x1F);
         if ((D_00741940[w] & mask) == 0)
             goto next;
         if ((D_00741960[w] & mask) != 0)
@@ -28,7 +26,7 @@ void KillEventEmitter(void)
         p = (char *)D_0071B940 + i * 0x260;
         if ((*(int *)(p + 0x118) & 2) == 0)
             goto next;
-        if (*(short *)(p + 0x18C) == skip)
+        if (*(short *)(p + 0x18C) == 0xD7)
             goto next;
         func_00302918(p);
 next:

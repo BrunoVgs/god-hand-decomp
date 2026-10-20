@@ -1,4 +1,4 @@
-/* Cygnus helper requiring the compiler's original block order. */
+/* cygnus-2.96 */
 
 extern long long D_00766C80;
 extern void func_0035BA58(void);

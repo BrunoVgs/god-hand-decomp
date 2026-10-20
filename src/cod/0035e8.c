@@ -230,7 +230,6 @@ void Obj35E8_SetField_70(char *a0, int a1)
 /* 0x0035EF78 — large call-chain (0x258 bytes; jal×4)                       */
 /* ════════════════════════════════════════════════════════════════════════ */
 
-
 extern void func_0035FD98(void *a, int b, int c);
 extern char D_00459C70[];
 extern char D_00459ED8[];
@@ -251,22 +250,8 @@ void func_0035EA30(void *self, Obj35E8Arg *b, int c, int d, int e, int f)
     func_0035FD98(b, c, d);
 }
 
-__attribute__((section(".text.func_0035EB60")))
-int func_0035EB60(Obj35E8Type *a, Obj35E8Mode *b)
-{
-    int t = a->unk4;
-    int r;
-
-    if (t == 0x51U)
-        return 4;
-    if (t == 0x61)
-        return 5;
-    if (b->unk94 == 0x51U) {
-        r = 4;
-        return r;
-    }
-    return 5;
-}
+extern int func_0035EB60(Obj35E8Type *a, Obj35E8Mode *b);
+INCLUDE_ASM("nonmatching", func_0035EB60);
 
 __attribute__((section(".text.func_0035EB98")))
 void func_0035EB98(void *a, void *b, int mode)

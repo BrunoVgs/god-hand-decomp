@@ -1,4 +1,4 @@
-/* sn-2.95.3-136: func_00378AE0, actor update step when the actor is idle (twin of func_0037ACA0). */
+/* sn-2.95.3-136: func_00378AE0, actor update step when the actor is idle. */
 extern int func_00378B58(void *self);
 extern int IsActorActiveOrReady_379EC0(void *self);
 extern void func_0037A1F0(void *self);

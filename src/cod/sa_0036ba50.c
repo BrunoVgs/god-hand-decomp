@@ -23,7 +23,6 @@ int func_0036BA50(MpvSeqHn *m, char *buf, int size)
     int v;
 
     n = size - 4;
-    i = 0;
     base = buf + 4;
     for (i = 0; i < n;) {
         p = base + i;

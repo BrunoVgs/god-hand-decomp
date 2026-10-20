@@ -11,7 +11,7 @@ extern void func_001490B0(cModelNode *node, cMeshData **data, void *box);
 __attribute__((section(".text.func_001485A0")))
 int func_001485A0(cModelNode *node, cMeshData *data, int b, int flags, int n, void *box, int buf)
 {
-    cMeshData *hold[4];
+    cMeshData *ref;
     int big;
     unsigned short num;
 
@@ -20,7 +20,7 @@ int func_001485A0(cModelNode *node, cMeshData *data, int b, int flags, int n, vo
     node->dispFlags = flags;
     node->tag = 0;
     node->data = data;
-    hold[0] = data;
+    ref = data;
     num = data->num;
     node->meshNum = num;
     big = data->num >= 2;
@@ -36,9 +36,9 @@ int func_001485A0(cModelNode *node, cMeshData *data, int b, int flags, int n, vo
         buf += size;
     }
     if (flags & 0x01000000) {
-        func_00148F50(node, hold, box);
+        func_00148F50(node, &ref, box);
     } else {
-        func_001490B0(node, hold, box);
+        func_001490B0(node, &ref, box);
     }
     return buf;
 }
