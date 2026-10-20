@@ -27,12 +27,12 @@ typedef struct FsCacheCtl {
 extern char D_00455000[];
 extern unsigned int strlen(const char *s);
 extern void func_00335D40(char *fmt, ...);
-extern void func_003282D0(void *h);
-extern void func_00327FA8(void *h);
-extern void func_00327E18(void *h, char *name, int a, int b, int c);
+extern int func_003282D0(void *h);
+extern int func_00327FA8(void *h);
+extern int func_00327E18(void *h, char *name, int a, int b, int c);
 extern void func_00328448(void *h, int a);
-extern void func_00328C80(void *h, int a, int b);
-extern void func_003280D8(void *h, int a);
+extern int func_00328C80(void *h, int a, int b);
+extern int func_003280D8(void *h, int a);
 extern int func_003281C8(void *h);
 
 __attribute__((section(".text.func_00335F20")))

@@ -11,7 +11,7 @@ typedef struct AdxDecSlot {
     int h[(0x1964 - 0x20) / 4]; /* 0x20 */
 } AdxDecSlot;
 
-extern void func_003A52F0(void *dst, int c, int n);
+extern void *func_003A52F0(void *dst, int c, int n);
 extern AdxDecSlot D_003D1E70[4];
 
 __attribute__((section(".text.func_0032F330")))

@@ -1,5 +1,5 @@
 /* sn-2.95.3-136: copy the B0 field vector to 0x2B0, scale 0x110->0x18C by 0.01. */
-extern void StoreVecFromFieldB0_2B6160(void *dst, void *self);
+extern void *StoreVecFromFieldB0_2B6160(void *dst, void *self);
 
 static inline void Copy3(float *d, float *s)
 {

@@ -4,7 +4,7 @@ extern float capVu0LengthSq(void *a0);
 extern float sqrtf(float x);
 extern void func_002BCF28(void *a0, float f12, float f13, void *a1, float f14, float f15);
 extern void cNode_clearActiveRecursive(void *self);
-extern void cHeap_free(int heap);
+extern void cHeap_free(void *heap, void *p);
 
 typedef void (*UpdateFn)(void *self);
 
@@ -55,7 +55,7 @@ __attribute__((section(".text.func_002BAE20")))
 void func_002BAE20(int unused, char *allocation)
 {
     if (allocation != 0) {
-        cHeap_free(*(int *)(allocation - 0x20));
+        cHeap_free(*(void **)(allocation - 0x20), allocation);
     }
 }
 

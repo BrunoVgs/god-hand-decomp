@@ -3,7 +3,7 @@ extern int GetArrayElemA0C_35A1C8(void *hn, int idx);
 extern int func_0034AAE0(void *hn);
 extern void func_00349EE8(void *hn);
 extern int func_00349EF0(void *hn, int *out);
-extern void func_0034A748(void *hn);
+extern int func_0034A748(void *hn);
 extern void func_0034A818(void *hn, int v);
 extern void func_0034AB18(void *hn);
 extern void func_0034ABF8(void *hn);

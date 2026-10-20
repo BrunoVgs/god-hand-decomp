@@ -1,8 +1,8 @@
 extern char D_005FEE00[];
 extern char D_005CB020[];
 extern char D_005CB300[];
-extern void cIDParam(void *);
-extern void func_00309000(void *);
+extern void *cIDParam(void *);
+extern void *func_00309000(void *);
 
 __attribute__((section(".text.func_002ACBE8")))
 void func_002ACBE8(int init, int priority)

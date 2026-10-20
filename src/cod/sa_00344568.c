@@ -11,7 +11,7 @@ extern char D_00457748[];
 extern void MWSFSVM_Error(char *msg);
 extern void *func_00344610(MwsfCre *c, int size);
 extern void *mwsfcre_UsrMalloc(int size);
-extern void func_00344770(MwsfCre *c);
+extern int func_00344770(MwsfCre *c);
 
 __attribute__((section(".text.func_00344568")))
 void *func_00344568(MwsfCre *c, int size)

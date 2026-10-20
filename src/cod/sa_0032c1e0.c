@@ -4,7 +4,7 @@ extern int func_00327830(void *sj);
 extern int Obj3270_GetField_30(void *sj);
 extern void Obj3270_SetField_3C(void *sj, int v);
 extern void func_00328448(void *sj, int len);
-extern void func_003280D8(void *sj, int sectors);
+extern int func_003280D8(void *sj, int sectors);
 
 __attribute__((section(".text.func_0032C1E0")))
 void func_0032C1E0(char *self)

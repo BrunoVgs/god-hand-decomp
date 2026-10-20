@@ -1,4 +1,4 @@
-extern int func_002E0DE8(int a0, int a1, int a2, void *msg);
+extern void func_002E0DE8(int a0, int a1, int a2, const char *fmt, ...);
 extern int func_003750E0(void *p);
 extern char D_0045BD90[];
 extern char D_0045BDA0[];

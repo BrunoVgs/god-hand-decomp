@@ -225,7 +225,9 @@ __attribute__((section(".text.Forward35F970_346C18")))
 int Forward35F970_346C18(void){ return func_0035F970(); }
 
 __attribute__((section(".text.Forward35FB88_346C30")))
-int Forward35FB88_346C30(void){ return func_0035FB88(); }
+int Forward35FB88_346C30(int a0) {
+    return func_0035FB88(a0);
+}
 
 __attribute__((section(".text.Forward347218_3471F0")))
 int Forward347218_3471F0(int a0, int a1, int a2){ return func_00347218(a0, a1, a2, 0); }

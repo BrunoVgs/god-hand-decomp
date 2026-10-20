@@ -7,7 +7,7 @@ typedef struct {
     void *stm; /* 0x04 */
 } StmHandle;
 extern void func_003228C0(int kind, int phase, void *hn, int a, int b);
-extern void OpenStreamHandle(StmHandle *hn);
+extern int OpenStreamHandle(StmHandle *hn);
 extern void func_00328018(void *stm);
 extern void func_00327D90(void *stm);
 extern void *func_003A52F0(void *d, int c, unsigned int n);

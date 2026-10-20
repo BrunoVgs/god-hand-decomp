@@ -2,7 +2,7 @@
 
 extern void *func_002B6310(void *dst, void *node);
 extern void cNode_setLocalTranslation(void *node, void *vec);
-extern void StoreVecFromFieldB0_2B6160(void *dst, void *node);
+extern void *StoreVecFromFieldB0_2B6160(void *dst, void *node);
 
 __attribute__((section(".text.func_002F71A0")))
 void *func_002F71A0(void *out, void *node, void *add)

@@ -164,13 +164,13 @@ void Forward33D4D8_33D578(short *a0, int a1, int a2, int a3) {
 }
 
 __attribute__((section(".text.Forward33B658_33E678")))
-int Forward33B658_33E678(int a0, int a1, int a2, int a3) {
-    return Forward33B568_33B658(a0, a1, a2, a3);
+void Forward33B658_33E678(int a0, int a1, int a2, int a3) {
+    Forward33B568_33B658(a0, a1, a2, a3);
 }
 
 __attribute__((section(".text.Forward33B670_33E690")))
-int Forward33B670_33E690(int a0, int a1, int a2, int a3) {
-    return Forward33B5C8_33B670(a0, a1, a2, a3);
+void Forward33B670_33E690(int a0, int a1, int a2, int a3) {
+    Forward33B5C8_33B670(a0, a1, a2, a3);
 }
 
 __attribute__((section(".text.Forward3B0640_33F3D0")))

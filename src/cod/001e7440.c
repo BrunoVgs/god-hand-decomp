@@ -1,5 +1,5 @@
 extern char D_005FEE00[];
-extern int cIDBase_trans(void *);
+extern void cIDBase_trans(void *);
 
 __attribute__((section(".text.func_001E7440")))
 void func_001E7440(char *self)

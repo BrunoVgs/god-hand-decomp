@@ -37,8 +37,8 @@ typedef struct {
 extern char D_0044EED0[];
 extern char D_0044EEE8[];
 extern void func_002D9F68(EmAct *a, char *msg, int v);
-extern void func_002B6310(Vec3f *out, EmAct *a);
-extern void StoreVecFromFieldB0_2B6160(Vec3f *out, EmAct *a);
+extern void *func_002B6310(Vec3f *out, EmAct *a);
+extern void *StoreVecFromFieldB0_2B6160(Vec3f *out, EmAct *a);
 extern int func_0031D098(void *work);
 
 static inline void setVec4(Vec4f *d, float x, float y, float z)

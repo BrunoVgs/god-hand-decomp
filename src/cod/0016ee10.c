@@ -23,13 +23,13 @@ extern void ClearFields_1614D0(void *self);
 extern void EmClothInit(int id, void *self, void *data, void *anchor);
 extern void EmClothMove(int id, void *self, void *data, void *anchor);
 extern void Obj0000_Clear_Fields_50_To_7C_13C5C8(void *self);
-extern void SetCustomIDDispOneOrAll_1F4778(void *self, int id);
+extern void SetCustomIDDispOneOrAll_1F4778(void *self, int id, int on);
 extern void func_002949C8(void *self);
 extern void func_002B4528(void *self, int value);
 extern void func_002D5918(void *self);
 extern void func_002D5990(void *self);
 extern int func_00394DD8(void *value, int mode);
-extern void SetEffect(
+extern int SetEffect(
     int effect, int resource, void *owner, int arg3,
     int arg4, unsigned int arg5);
 
@@ -127,10 +127,10 @@ void func_0016C238(char *self)
 }
 
 __attribute__((section(".text.func_001F5278")))
-void func_001F5278(void *self, unsigned short value)
+void func_001F5278(void *self, unsigned short value, int on)
 {
     if (value < 7) {
-        SetCustomIDDispOneOrAll_1F4778(self, value + 0x49);
+        SetCustomIDDispOneOrAll_1F4778(self, value + 0x49, on);
     }
 }
 

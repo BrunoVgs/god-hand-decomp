@@ -2,7 +2,7 @@
 
 extern int D_003D04B0;
 extern char D_003D04D0[];
-extern void func_003A52F0(void *, int, int);
+extern void *func_003A52F0(void *, int, int);
 
 __attribute__((section(".text.func_003279B8")))
 int func_003279B8(void)

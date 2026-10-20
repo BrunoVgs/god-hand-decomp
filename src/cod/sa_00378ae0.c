@@ -4,7 +4,7 @@ extern int IsActorActiveOrReady_379EC0(void *self);
 extern void func_0037A1F0(void *self);
 extern int func_0037A4C8(void *self);
 extern int func_0037A6A8(void *self);
-extern void func_0037A740(void *self);
+extern int func_0037A740(void *self);
 extern void func_0037A298(void *self);
 
 __attribute__((section(".text.func_00378AE0")))

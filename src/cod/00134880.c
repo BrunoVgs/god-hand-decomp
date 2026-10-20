@@ -9,7 +9,7 @@ extern void CustomIDWork_SetNumber(void *p);
 extern int D_00429DD8;
 extern int SetField214PtrThenInit_1B6F38(void *obj);
 extern char *InitFields_1B6E90(char *a0);
-extern void func_00305908(void);
+extern void func_00305908(int, int, int);
 extern void cActionButton_set(void *a0, int a1, int a2, int a3, int a4, int a5, int a6);
 extern char D_00568288;
 extern void MtxInitRotVec(void *a0, int a1, int a2);
@@ -109,9 +109,8 @@ char *func_001C7D98(char *a0) {
 }
 
 __attribute__((section(".text.espSys_effDataRegist")))
-void espSys_effDataRegist(void)
-{
-    func_00305908();
+void espSys_effDataRegist(int a0, int a1, int a2) {
+    func_00305908(a0, a1, a2);
 }
 
 __attribute__((section(".text.func_002DB770")))

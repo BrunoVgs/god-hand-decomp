@@ -3,7 +3,7 @@ extern int D_00455AD0;
 extern int D_00455A80;
 extern int D_00455AE0;
 extern int D_00455AB0;
-extern void func_00339458(void *a0, void *a1);
+extern int func_00339458(void *a0, void *a1);
 
 typedef struct {
     int field_0;

@@ -1,6 +1,6 @@
 /* cygnus-2.96 matched TU. */
 
-extern void func_00366918(void);
+extern int func_00366918(int, int, int, int);
 
 __attribute__((section(".text.func_002B45E8")))
 void func_002B45E8(void) {
@@ -17,8 +17,8 @@ int func_0032F570(void *a0) {
 }
 
 __attribute__((section(".text.func_0035AEC8")))
-void func_0035AEC8(void) {
-    func_00366918();
+int func_0035AEC8(int a0, int a1, int a2, int a3) {
+    return func_00366918(a0, a1, a2, a3);
 }
 
 __attribute__((section(".text.cMessDrawFont_setBodyData")))

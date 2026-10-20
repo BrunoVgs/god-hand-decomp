@@ -1,6 +1,6 @@
 /* cygnus-2.96 */
 
-extern int func_003B9DE0(void *);
+extern void func_003B9DE0(void *);
 extern char D_00460928[];
 
 __attribute__((section(".text.func_003BA088")))

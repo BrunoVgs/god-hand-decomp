@@ -1,5 +1,5 @@
 /* sn-2.95.3-136: menu slot status message for a slot kind (0x380048). */
-extern void func_002E0DE8(int a0, int a1, int a2, const char *msg);
+extern void func_002E0DE8(int a0, int a1, int a2, const char *fmt, ...);
 extern const char *D_003F28A0[];
 extern const char *D_003F28B0[];
 extern char D_0045C328[];

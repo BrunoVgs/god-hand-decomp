@@ -10,7 +10,7 @@ typedef struct {
 extern char D_00454458[];
 extern char D_004544B8[];
 extern void func_00332808(CdStreamCtl *, char *);
-extern void func_00331570(void *);
+extern int func_00331570(void *);
 extern void func_00331AD8(void);
 extern void func_00332958(void);
 extern int func_00333130(CdStreamCtl *);

@@ -6,9 +6,9 @@ typedef struct {
 
 extern char D_003D9C90[];
 extern int func_00333C00(char *file, FileStat332 *st);
-extern void func_00333390(char *file, char *dst);
+extern int func_00333390(char *file, char *dst);
 extern void PushGlobalD8478History_331C78(int tag);
-extern void func_00398DA0(int a0);
+extern int func_00398DA0(int a0);
 extern int func_00332838(FileStat332 *st, char *dst);
 
 __attribute__((section(".text.func_00332A60")))

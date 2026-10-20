@@ -3,7 +3,7 @@ typedef struct {
 } PhaseASlot32;
 
 extern char D_005FEE00[];
-extern void func_003A52F0(void *, int, int);
+extern void *func_003A52F0(void *, int, int);
 extern PhaseASlot32 D_0076EA50[];
 
 __attribute__((section(".text.func_00375A78")))

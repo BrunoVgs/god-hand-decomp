@@ -15,7 +15,7 @@ typedef struct SfdSyncCond {
 
 extern void Obj35C0_Set_a1_0_a2_C140(SfdSync *sfd, int a, int b);
 extern void func_0035BEF0(SfdSync *sfd, SfdSyncCond *c);
-extern void sftrn_BuildVideo(SfdSync *sfd, SfdSyncCond *c);
+extern int sftrn_BuildVideo(SfdSync *sfd, SfdSyncCond *c);
 extern void sftrn_BuildAudio(SfdSync *sfd, SfdSyncCond *c);
 extern void sftrn_BuildUsr(SfdSync *sfd, SfdSyncCond *c);
 extern void func_0035A000(SfdSync *sfd, int tr, int v);

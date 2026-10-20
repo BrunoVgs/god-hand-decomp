@@ -1,7 +1,7 @@
 /* cygnus-2.96 */
 
 extern int Forward328098_349B88(void *);
-extern void func_00358F68(void *);
+extern int func_00358F68(void *);
 
 __attribute__((section(".text.func_00346158")))
 void func_00346158(char *self)

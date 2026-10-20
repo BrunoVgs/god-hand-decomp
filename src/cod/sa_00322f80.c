@@ -1,5 +1,5 @@
 extern int func_00324500(int h);
-extern void OpenStreamHandle(int h);
+extern int OpenStreamHandle(int h);
 extern void func_00322F18(void);
 extern int D_003EB838;
 extern int D_003EB83C;

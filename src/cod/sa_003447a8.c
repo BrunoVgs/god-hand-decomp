@@ -10,7 +10,7 @@ typedef struct SfdHdrInf {
 } SfdHdrInf;         /* 0x90 */
 
 extern char D_004577D0[];
-extern void func_003A52F0(void *p, int c, int n);
+extern void *func_003A52F0(void *p, int c, int n);
 extern int GetField0OrZero_346828(MwsfdHn *m);
 extern void func_003448B0(MwsfdHn *m, int stat);
 extern void *func_003466F8(MwsfdHn *m);

@@ -18,7 +18,7 @@ typedef struct {
 } SndActor;
 
 extern int GetSoundEntryStatus_375EF8(void *snd);
-extern void BuildSoundEventCd0_375CD0(void *snd, SndSlot *slot);
+extern int BuildSoundEventCd0_375CD0(void *snd, SndSlot *slot);
 
 __attribute__((section(".text.func_0037AB00")))
 void func_0037AB00(SndActor *a)

@@ -2,10 +2,10 @@
  * with func_00345848 as its callback; reports and returns -1 on failure. */
 extern int func_00358968(char *mv);
 extern int func_0034DE20(char *mv, int cb, int arg);
-extern void func_00345848(void);
-extern void func_00345750(int code);
+extern void func_00345848(int a0, int a1);
+extern int func_00345750(int code);
 extern void MWSFSVM_Error(char *msg);
-extern void func_00343AE8(int ply);
+extern int func_00343AE8(int ply);
 extern char D_004573D8[];
 extern char D_00457410[];
 

@@ -3,7 +3,7 @@
 extern int D_00428A20;
 extern int D_004289F0;
 extern void cOmWeapon_setFall(int arg);
-extern void ReleaseObj(void);
+extern void ReleaseObj(int);
 extern int D_00785878;
 extern int D_00428AD0;
 extern int D_007854D8;
@@ -59,7 +59,9 @@ void CallWithAndClearField698_12AC28(char *a0) {
 }
 
 __attribute__((section(".text.cOmBase_dieCommon")))
-void cOmBase_dieCommon(void) { ReleaseObj(); }
+void cOmBase_dieCommon(int a0) {
+    ReleaseObj(a0);
+}
 
 __attribute__((section(".text.GetOrInitGlobal785878_1B8058")))
 void *GetOrInitGlobal785878_1B8058(void) {

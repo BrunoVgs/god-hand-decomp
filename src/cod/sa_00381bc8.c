@@ -26,7 +26,7 @@ extern void func_003821D8(FileNameSel *sel, FileLoadWork *work);
 extern void func_003825A8(FileNameSel *sel, FileLoadWork *work);
 extern char *func_003A53A8(char *dst, const char *src);
 extern void func_0032D9B8(int handle, char *name, int a2);
-extern void func_0032E040(int handle, int a1);
+extern int func_0032E040(int handle, int a1);
 extern FileName D_0045C7F0;
 extern FileName D_0077BF80;
 extern char D_0045C800[];

@@ -1,5 +1,5 @@
 extern char D_003EE800[];
-extern int func_003A52F0(void *, int, int);
+extern void *func_003A52F0(void *, int, int);
 extern void func_00360710(int);
 
 __attribute__((section(".text.func_0035FEA8")))

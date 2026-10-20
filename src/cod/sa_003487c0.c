@@ -15,7 +15,7 @@ typedef struct {
 } SlotHn;
 extern int func_00348968(SlotEnt *s);
 extern void func_00348498(SlotEnt *s);
-extern void func_0034E090(void *pool, char *buf, SjObj *sj, int a, int b);
+extern int func_0034E090(void *pool, char *buf, SjObj *sj, int a, int b);
 
 __attribute__((section(".text.func_003487C0")))
 void func_003487C0(SlotHn *hn, int n)

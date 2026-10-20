@@ -14,7 +14,7 @@ extern FileLocTbl D_003D9DC0;
 extern int func_003A5678(char *, char *);
 extern void func_003260C8(char *, int);
 extern int func_00333B00(char *);
-extern void func_00333B40(char *, int *, int *);
+extern int func_00333B40(char *, int *, int *);
 extern void func_00333A10(FileLoc *, char *, void *, int);
 
 __attribute__((section(".text.func_00333C00")))

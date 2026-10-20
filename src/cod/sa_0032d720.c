@@ -1,4 +1,5 @@
 #include "godhand/criSj.h"
+#include "godhand/mwPly.h"
 typedef struct AdxtHn {
     char used;
     char pad1[2];
@@ -14,8 +15,8 @@ typedef struct AdxtHn {
 
 extern char D_004529F8[];
 extern void Obj33F8_Tramp_0033F130_FCB0(char *msg);
-extern void func_0032DBA0(void);
-extern void func_003283E8(int stm, int a, int b);
+extern void func_0032DBA0(MwPly *ply);
+extern int func_003283E8(int stm, int a, int b);
 extern void func_00327D90(int stm);
 extern void func_0032EE88(AdxtHn *adxt);
 extern void Obj33F8_Tramp_0033B658_FC70(void);
@@ -35,7 +36,7 @@ void func_0032D720(AdxtHn *adxt)
         Obj33F8_Tramp_0033F130_FCB0(D_004529F8);
         return;
     }
-    func_0032DBA0();
+    func_0032DBA0((MwPly *)adxt);
     stm = adxt->stm;
     if (stm != 0) {
         adxt->stm = 0;

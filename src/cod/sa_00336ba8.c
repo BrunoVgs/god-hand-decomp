@@ -30,11 +30,11 @@ extern void Forward33B658_325C60(void);
 extern void Forward33B670_325C78(void);
 extern int func_00340538(int a, int b);
 extern void func_00340920(int dma, int a, int b);
-extern void Forward33F130_336E70(void);
-extern void func_00336DB0(void);
-extern void Forward340740_336E38(void);
-extern void Forward3406D0_336E20(void);
-extern void Forward340A20_336E58(void);
+extern void Forward33F130_336E70(int a0, int a1);
+extern void func_00336DB0(void *a0);
+extern int Forward340740_336E38(int a0, int a1, int a2, int a3);
+extern int Forward3406D0_336E20(int a0);
+extern int Forward340A20_336E58(int a0, int a1);
 
 __attribute__((section(".text.func_00336BA8")))
 void func_00336BA8(AdxtPs2Hn *adxt, int a1, int a2)

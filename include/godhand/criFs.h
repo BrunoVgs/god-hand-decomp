@@ -7,6 +7,6 @@ extern char D_003DA4A0[];         /* device prefix */
 extern const char D_00454A00[];   /* "/" */
 extern const char D_00454BB0[];   /* "host:" */
 
-extern void func_003A57C4(char *dst, const char *src);
+extern char *func_003A57C4(char *dst, const char *src);
 
 #endif /* GODHAND_CRIFS_H */

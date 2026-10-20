@@ -14,7 +14,7 @@ extern int IsActorActiveOrReady_379EC0(BlinkActor *a);
 extern void func_0037A1F0(BlinkActor *a);
 extern int func_0037A4C8(BlinkActor *a);
 extern int func_0037B798(BlinkActor *a);
-extern void func_0037B808(BlinkActor *a);
+extern int func_0037B808(BlinkActor *a);
 extern void func_0037A298(BlinkActor *a);
 
 __attribute__((section(".text.func_0037B660")))

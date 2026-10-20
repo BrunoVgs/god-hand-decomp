@@ -28,7 +28,7 @@ extern int func_00394828(IopModule *m, IopModule *m2);
 extern void func_003951D0(void);
 extern int func_00394C18(int arg, IopModule *m);
 extern void func_003951B0(void);
-extern void func_003A6A20(char *fmt, ...);
+extern int func_003A6A20(const char *fmt, ...);
 
 __attribute__((section(".text.func_00394DD8")))
 int func_00394DD8(IopModule *m, int *res)

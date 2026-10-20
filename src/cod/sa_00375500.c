@@ -5,7 +5,7 @@
 extern unsigned long GetTimerSystemTime(void);
 extern void TimerBusClock2USec(unsigned long clock, unsigned int *sec, unsigned int *usec);
 extern void SyncDCache(void *start, void *end);
-extern void func_003758E8(int mode);
+extern int func_003758E8(int mode);
 extern char D_0076A9C0[];
 extern char D_0076B1C0[];
 

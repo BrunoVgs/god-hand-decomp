@@ -23,8 +23,8 @@ typedef struct StmReqRing {
     StmReq req[16];  /* 0x38 */
 } StmReqRing;
 
-extern void func_00335C30();
-extern void func_00335638(StmReqRing *r, int a, int b, int c, int d);
+extern void func_00335C30(void);
+extern int func_00335638(StmReqRing *r, int a, int b, int c, int d);
 
 __attribute__((section(".text.func_00336110")))
 void func_00336110(StmReqRing *r)

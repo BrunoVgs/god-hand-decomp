@@ -3,8 +3,8 @@
 #include "godhand/adxm.h"
 #include "godhand/adxmThread.h"
 
-extern void ChangeThreadPriority(int thid, int prio);
-extern void WakeupThread(int thid);
+extern int ChangeThreadPriority(int thid, int prio);
+extern int WakeupThread(int thid);
 
 #define ADX_STOP_THREAD(name, ack, req, thread)                 \
     __attribute__((section(".text." #name)))                    \

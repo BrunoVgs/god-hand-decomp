@@ -27,7 +27,7 @@ typedef struct {
 extern SfdIfInfo D_00760D90;
 extern int ReturnK_003EE2BC_00358A38_358A38(void);
 extern int func_0034B270(int);
-extern void func_0034B2C8(SfdIfObj *);
+extern int func_0034B2C8(SfdIfObj *);
 extern int Obj0000_Set_D_003EE2C0_34B290(int);
 extern void func_00360AA8(void);
 

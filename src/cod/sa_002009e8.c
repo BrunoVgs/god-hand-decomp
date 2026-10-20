@@ -1,5 +1,5 @@
 #include "godhand/vec.h"
-extern void cRoomJump(void *a0);
+extern int *cRoomJump(void *a0);
 extern unsigned char D_00583EC0[];
 
 extern Vec4f D_00583F00[2];

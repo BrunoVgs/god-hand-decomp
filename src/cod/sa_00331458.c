@@ -7,8 +7,8 @@ typedef struct IopReqMgr {
 extern IopReqMgr D_003D8410;
 extern int D_003D844C;
 extern int D_003D846C;
-extern void Forward33B568_33B658(void);
-extern void Forward33B5C8_33B670(void);
+extern int Forward33B568_33B658(void);
+extern int Forward33B5C8_33B670(void);
 extern void func_003312B8(void);
 extern void func_003312E8(IopReq *r);
 extern void func_00331310(IopReq *r);

@@ -18,7 +18,7 @@ extern MenuRowEnt D_003F2368[];
 extern MenuRowEnt D_003F24D0[];
 extern char D_0045B758[];
 extern char D_0045B760[];
-extern void func_002E0DE8(int, int, int, char *);
+extern void func_002E0DE8(int a0, int a1, int a2, const char *fmt, ...);
 
 __attribute__((section(".text.func_00379838")))
 void func_00379838(MenuRowObj *o)

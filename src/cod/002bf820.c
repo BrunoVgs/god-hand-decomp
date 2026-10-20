@@ -1,5 +1,5 @@
 extern char D_005F38F0[];
-extern void cIDBase(void *);
+extern void *cIDBase(void *);
 
 static inline void initIDBase(char *obj)
 {

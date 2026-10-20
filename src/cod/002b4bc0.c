@@ -1,5 +1,5 @@
 extern char D_005FEE00[];
-extern void Forward325F20_3466A8(void *);
+extern int Forward325F20_3466A8(void *);
 
 __attribute__((section(".text.func_002B4BC0")))
 void func_002B4BC0(unsigned char *object)

@@ -26,7 +26,7 @@ extern int func_0034C2A0(SfdWork *w, int ch, SfdRbSpan *span);
 extern int func_0034C378(SfdWork *w, int ch, int len, int tag);
 extern int func_003596F0(SfdWork *w, int ch);
 extern int func_003593F0(SfdWork *w, int ch, SfdPtsReq *req, void *out);
-extern void func_00366960(void *dst, const void *src, int n);
+extern int func_00366960(void *dst, const void *src, int n);
 extern int (*D_003EE2FC)(void *obj, SfdUsrPts *pts);
 
 __attribute__((section(".text.func_0034F200")))

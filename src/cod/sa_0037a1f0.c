@@ -13,9 +13,9 @@ typedef struct {
     char obj1[0x12C - 0xCC]; /* 0xCC */
     char obj2[4]; /* 0x12C */
 } ModeSel;
-extern void func_00374CB8(int x, int y, void *obj);
+extern int func_00374CB8(int x, int y, void *obj);
 extern void func_00386DE0(int x, int y, void *obj);
-extern void func_00375AB0(int x, int y, void *obj);
+extern int func_00375AB0(int x, int y, void *obj);
 
 __attribute__((section(".text.func_0037A1F0")))
 void func_0037A1F0(ModeSel *m)

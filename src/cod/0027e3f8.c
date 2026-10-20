@@ -1,5 +1,5 @@
 extern char D_005FEE00[];
-extern void moveMotion(void *);
+extern int moveMotion(void *);
 
 __attribute__((section(".text.func_0027E3F8")))
 void func_0027E3F8(unsigned char *self)

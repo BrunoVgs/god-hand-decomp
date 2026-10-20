@@ -7,7 +7,7 @@ extern void func_00325FA8(void);
 extern void func_0033BFB8(void);
 extern void func_0033BFE8(void);
 extern void SetFlagAndForward_325EF8(void);
-extern void func_00348210(int *a, int *b, int *c);
+extern int func_00348210(int *a, int *b, int *c);
 extern int func_0033B810(int type, int arg0, int arg1, int arg2);
 extern void func_0035FF98(int);
 extern int D_003EE800;
@@ -25,7 +25,7 @@ extern int D_003D90E8;
 extern void func_00333E88(int);
 extern char D_003E9D60[];
 extern void Obj33F8_Init_D003EB858_F888(void);
-extern void func_0033C520(void);
+extern int func_0033C520(void);
 extern void func_0033C708(int);
 
 __attribute__((section(".text.func_0033C728")))

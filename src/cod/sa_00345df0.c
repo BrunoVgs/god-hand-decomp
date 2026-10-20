@@ -1,12 +1,12 @@
 #include "godhand/mwsfd.h"
 
 extern char D_00458068[];
-extern void mwlSfdSleepDecSvr(void);
+extern int mwlSfdSleepDecSvr(void *h);
 extern int func_00358968(int);
-extern void func_00345750(int);
+extern int func_00345750(int);
 extern void func_00348498(void *);
 extern void func_00349B60(int);
-extern void func_00335950(int);
+extern int func_00335950(int);
 
 __attribute__((section(".text.func_00345DF0")))
 void func_00345DF0(MwsfdHn *o)
@@ -16,7 +16,7 @@ void func_00345DF0(MwsfdHn *o)
     if (sfd == 0) {
         return;
     }
-    mwlSfdSleepDecSvr();
+    mwlSfdSleepDecSvr(o);
     o->stat = 0;
     o->sfd = 0;
     if (func_00358968(sfd) != 0) {

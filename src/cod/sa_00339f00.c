@@ -4,7 +4,7 @@ extern int D_00455B88;
 extern int D_00455A80;
 extern int D_00455B98;
 extern int D_00455AB0;
-extern void func_00339458(void *a0, void *a1);
+extern int func_00339458(void *a0, void *a1);
 
 typedef struct SjRbf {
     int field_0;

@@ -19,7 +19,7 @@ typedef struct {
 } SfxReq;
 extern int mwsfsfx_CnvFrmFmtTypeToSfx(int fmt);
 extern void func_00346ED0(MwsfdFrm *frm, SfxReq *req);
-extern void func_00346FA0(MwsfdFrm *frm, SfxReq *req);
+extern int func_00346FA0(MwsfdFrm *frm, SfxReq *req);
 extern void func_00346FC0(char *h, MwsfdFrm *frm, SfxReq *req);
 extern void func_00347008(char *h, SfxReq *req);
 extern int func_00346D80(char *h, MwsfdFrm *frm);

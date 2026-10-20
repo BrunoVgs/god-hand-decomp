@@ -1,5 +1,5 @@
 extern char D_005FEE00[];
-extern void StoreSoundEntry_3749D8(int, void *);
+extern int StoreSoundEntry_3749D8(int, void *);
 
 __attribute__((section(".text.func_0037B720")))
 void func_0037B720(signed char *self)

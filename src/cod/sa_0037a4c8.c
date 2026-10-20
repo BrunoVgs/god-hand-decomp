@@ -9,7 +9,7 @@ typedef struct MenuSndItem {
     char nodeDesc[4];
 } MenuSndItem;
 
-extern void func_00375050(int a, int b);
+extern int func_00375050(int a, int b);
 extern void func_00375D98(int a, int b, int c);
 extern void func_00387270(int a, int b, int c, int d);
 extern void func_0037A5F0(MenuSndItem *self);

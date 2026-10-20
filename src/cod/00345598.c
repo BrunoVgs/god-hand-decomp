@@ -21,7 +21,9 @@ int MWSFD_GetReqSvrBdrLib(int a0) {
 }
 
 __attribute__((section(".text.Forward328098_349B88")))
-void Forward328098_349B88(void) { func_00328098(); }
+int Forward328098_349B88(int a0) {
+    return func_00328098(a0);
+}
 
 __attribute__((section(".text.func_0034D068")))
 void func_0034D068(void) { SFH_Finish(); }

@@ -1,4 +1,4 @@
-extern void StoreSoundEntry_3749D8(int index, void *slot);
+extern int StoreSoundEntry_3749D8(int index, void *slot);
 
 __attribute__((section(".text.func_0037B768")))
 void func_0037B768(char *self)

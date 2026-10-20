@@ -8,8 +8,8 @@ extern void func_00339520(void);
 extern void func_003571D0(void);
 extern void Forward35D538_34D048(void);
 extern void func_0034D068(void);
-extern void Forward33B568_33B658(void);
-extern void Forward33B5C8_33B670(void);
+extern void Forward33B568_33B658(int);
+extern void Forward33B5C8_33B670(int);
 extern int  func_0034CA00(char *a0, int a1, int a2);
 
 /* Internal forward decl (func_0034DD58 is defined later in this TU
@@ -180,11 +180,15 @@ void NoOp_DF60(void) {}
 
 /* ── Thunk_func_0033B658: j-thunk → Forward33B568_33B658 ─────────────────────────────── */
 __attribute__((section(".text.Thunk_func_0033B658")))
-void Thunk_func_0033B658(void) { Forward33B568_33B658(); }
+void Thunk_func_0033B658(int a0) {
+    Forward33B568_33B658(a0);
+}
 
 /* ── Thunk_func_0033B670: j-thunk → Forward33B5C8_33B670 ─────────────────────────────── */
 __attribute__((section(".text.Thunk_func_0033B670")))
-void Thunk_func_0033B670(void) { Forward33B5C8_33B670(); }
+void Thunk_func_0033B670(int a0) {
+    Forward33B5C8_33B670(a0);
+}
 
 /* ── Return-0 accessors ─────────────────────────────────────────────────── */
 __attribute__((section(".text.ReturnZero_DF98")))

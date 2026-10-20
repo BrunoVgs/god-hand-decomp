@@ -9,7 +9,7 @@ typedef struct {
 } PhaseAScenario;
 
 extern char D_005FEE00[];
-extern void func_003A52F0(void *, int, int);
+extern void *func_003A52F0(void *, int, int);
 
 __attribute__((section(".text.cScenario_clearTaskData")))
 void cScenario_clearTaskData(PhaseAScenario *scenario, int index)

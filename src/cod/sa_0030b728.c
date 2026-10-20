@@ -11,8 +11,8 @@ extern char D_005E8658[];
 extern char D_00585038[];
 extern void *D_003C2558;
 
-extern int func_003A6A20(char *fmt, ...);
-extern void func_003A52F0(void *p, int c, int n);
+extern int func_003A6A20(const char *fmt, ...);
+extern void *func_003A52F0(void *p, int c, int n);
 extern void func_00299348(void *p);
 extern void func_0031A338(void *p);
 extern void func_00306D10(void);
@@ -25,7 +25,7 @@ extern void func_0031C348(void);
 extern void ClearWordPair_201AD0(void *p);
 extern void func_0030D358(void);
 extern void func_002A5998(void);
-extern void func_0030D5C8(void);
+extern void func_0030D5C8(int a0, int a1);
 extern void Obj0000_Clear_Bytes_D_003C2554_D_003C2555_2B6598(void *p);
 
 __attribute__((section(".text.func_0030B728")))

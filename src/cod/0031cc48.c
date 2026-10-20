@@ -1,6 +1,6 @@
 #include "godhand/gameWork.h"
 
-extern void func_003A6C58(void *dst, void *src, unsigned char a2, unsigned char a3, unsigned char t0);
+extern int func_003A6C58(char *buf, const char *fmt, ...);
 extern int cDvd_ReadAllocSized(void *dvd, void *path, void *out, void *heap, int t0, void *t1, int t2, int t3);
 extern void cDvd_CheckWaitFrame(void *dvd, int frame);
 extern char D_00450EC0[];

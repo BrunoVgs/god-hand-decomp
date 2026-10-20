@@ -2,16 +2,16 @@
 
 extern unsigned char D_003C3CFC;
 extern void func_0030ECF8(int a0);
-extern void cHeap_allocFirstFit(int a0, int a1, int a2);
+extern void *cHeap_allocFirstFit(int a0, int a1, int a2);
 extern void Slots_runHandlerForAll(int a0, int a1);
 extern void ForEachSlotRunHandler(int a0, int a1);
 
 __attribute__((section(".text.EnsureInitThenForward_2A9538_30EE08")))
-void EnsureInitThenForward_2A9538_30EE08(int a0, int a1, int a2) {
+void *EnsureInitThenForward_2A9538_30EE08(int a0, int a1, int a2) {
     if (D_003C3CFC == 0) {
         func_0030ECF8(0);
     }
-    cHeap_allocFirstFit(a2, a0, a1);
+    return cHeap_allocFirstFit(a2, a0, a1);
 }
 
 __attribute__((section(".text.KillEffect")))

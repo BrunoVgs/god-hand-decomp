@@ -1,12 +1,12 @@
-extern void Forward349308_349238(void);
+extern int Forward349308_349238(void);
 extern int D_00457B90;
 extern void func_00348A08(int, void *, int, void *);
-extern void func_00349250(void);
+extern int func_00349250(int a0);
 extern int D_00457BA8;
-extern void func_00348AC8(void *, int, void *);
-extern void func_003492A0(void);
+extern int func_00348AC8(void *, int, void *);
+extern int func_003492A0(int a0);
 extern int D_00457BC0;
-extern void func_00348A70(void *, int, void *);
+extern int func_00348A70(void *, int, void *);
 extern void func_00348B20(void);
 
 __attribute__((section(".text.func_00345490")))

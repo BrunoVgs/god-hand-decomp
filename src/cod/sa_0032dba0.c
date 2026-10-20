@@ -5,7 +5,7 @@
 extern char D_00452B20[];
 extern void Obj33F8_Tramp_0033F130_FCB0(char *msg);
 extern void func_0032EF00(MwPly *ply);
-extern void func_003282D0(void *sfd);
+extern int func_003282D0(void *sfd);
 extern void Obj33F8_Tramp_0033B658_FC70(void);
 extern void func_0032F4A8(void *adx);
 extern void Obj33F8_Tramp_0033B670_FC88(void);

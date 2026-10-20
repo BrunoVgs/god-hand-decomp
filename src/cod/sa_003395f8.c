@@ -18,7 +18,7 @@ typedef struct SJ3 {
 extern SJ3 D_003E3FB8[SJ3_POOL_NUM];
 extern int D_003E3F80[];
 extern int D_00455A50[];
-extern void Forward340AE8_339438(void);
+extern int Forward340AE8_339438(void);
 extern void func_003397C8(SJ3 *e);
 
 __attribute__((section(".text.func_003395F8")))

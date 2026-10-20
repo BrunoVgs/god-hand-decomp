@@ -20,7 +20,7 @@ typedef struct {
 extern char D_00455308[];
 extern char D_00455330[];
 extern void func_0033F130(char *msg);
-extern void func_00340920(void *dec);
+extern void func_00340920(void *dec, int fn, int obj);
 
 __attribute__((section(".text.func_00336D08")))
 void func_00336D08(DecOutHn *hn, int fn, int obj)
@@ -38,7 +38,7 @@ void func_00336D08(DecOutHn *hn, int fn, int obj)
         func_0033F130(D_00455330);
         return;
     }
-    func_00340920(dec);
+    func_00340920(dec, fn, obj);
     c->cbfn = fn;
     c->cbobj = obj;
 }

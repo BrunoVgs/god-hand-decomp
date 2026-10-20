@@ -557,6 +557,4 @@ void SetField198AndForward_12E640(int *a0, int a1) {
 }
 
 __attribute__((section(".text.irand")))
-void irand(void) {
-    func_0030F348();
-}
+int irand(void) { return func_0030F348(); }

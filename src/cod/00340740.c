@@ -1,6 +1,6 @@
-extern void Forward33B658_3403C8(void);
+extern int Forward33B658_3403C8(void);
 extern void func_003407A0(void *, int, void *, void *);
-extern void Forward33B670_3403E0(void);
+extern int Forward33B670_3403E0(void);
 
 __attribute__((section(".text.func_00340740")))
 void func_00340740(void *object, short index, void *third, void *fourth)

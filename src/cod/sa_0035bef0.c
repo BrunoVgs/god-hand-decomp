@@ -1,7 +1,7 @@
 /* cygnus-2.96: Sofdec transfer build, video/audio/user streams (0x35BEF0). */
 extern void func_0035C200(char *a0, int a1, int a2);
 extern void Obj35C0_Set_a1_0_a2_C160(char *a0, int a1, int a2);
-extern void sftrn_BuildVideo(char *h, char *s);
+extern int sftrn_BuildVideo(char *h, char *s);
 extern void func_0035A000(char *a0, int a1, int a2);
 extern void sftrn_ConnTrnBufA(char *a0, int a1, int a2);
 extern void sftrn_BuildAudio(char *h, char *s);

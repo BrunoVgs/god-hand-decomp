@@ -8,7 +8,7 @@ extern int GetField0OrZero_346828(MwsfdHn *mw);
 extern void MWSFSVM_Error(const char *msg, ...);
 extern int MWSFD_GetPauseBdr(void);
 extern int SFD_GetCond(void *sfd, int id, int *out);
-extern void mwlSfdSleepDecSvr(MwsfdHn *mw);
+extern int mwlSfdSleepDecSvr(MwsfdHn *mw);
 extern int func_00356F48(void *sfd, int sw);
 extern int func_00345750(int err);
 extern void func_00348550(char *sub, int sw);

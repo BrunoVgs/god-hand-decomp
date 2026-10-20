@@ -9,7 +9,7 @@ typedef struct CdStream {
 } CdStream;
 
 extern void func_00334008(CdStream *s, char *msg);
-extern void func_00331570(void *req);
+extern int func_00331570(void *req);
 extern void func_00331AD8(void);
 extern void func_003341B8(void);
 extern int func_00334A90(CdStream *s);

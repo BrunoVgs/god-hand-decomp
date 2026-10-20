@@ -1,7 +1,7 @@
 /* cygnus-2.96. */
 
-extern int Obj34D8_SetGlobalEE0B8_IfField48(void);
-extern void func_0034DD70(int a, int b);
+extern int Obj34D8_SetGlobalEE0B8_IfField48(void *a0);
+extern int func_0034DD70(int a, int b);
 extern int SetFieldIfUnset_359218(void *self, int flag);
 extern int func_0035C2D0(void *self, int a, int b, int *c, int *d);
 extern void (*D_003EE304)(void *self, int v);
@@ -13,7 +13,7 @@ int func_00359080(char *self, int *slot, int *count)
   void (*fn)(void *, int);
   *count = 0;
   *slot = -1;
-  if (Obj34D8_SetGlobalEE0B8_IfField48() != 0)
+  if (Obj34D8_SetGlobalEE0B8_IfField48(self) != 0)
   {
     func_0034DD70(0, 0xFF00013A);
     return 0;

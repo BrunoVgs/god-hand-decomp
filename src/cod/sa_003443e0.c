@@ -5,15 +5,15 @@ extern char D_004576A0[];
 extern void func_003497F8(int on);
 extern void func_00345DF0(MwsfdHn *self);
 extern void func_00347370(MwsfdHn *self);
-extern void Forward35FB88_346C30(void *p);
+extern int Forward35FB88_346C30(void *p);
 extern void func_00335500(void *p);
-extern void Forward327D90_349AB8(void *p);
+extern int Forward327D90_349AB8(void *p);
 extern void func_00342B98(void *p);
 extern void MWSFCRE_DestroySfd(void *sfd);
 extern void func_00348870(void *p);
 extern void func_00344710(MwsfdHn *self);
 extern int func_00344790(MwsfdHn *self);
-extern void func_003A52F0(void *p, int c, int n);
+extern void *func_003A52F0(void *p, int c, int n);
 
 __attribute__((section(".text.func_003443E0")))
 void func_003443E0(MwsfdHn *self)

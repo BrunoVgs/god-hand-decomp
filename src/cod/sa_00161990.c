@@ -3,7 +3,7 @@
 extern int D_00747A28;
 extern char D_005FEE00[];
 extern int cSnd_SeCall_2CB8A0(void *a0, int a1, short a2, short a3, short a4, int a5, int a6);
-extern void func_00161B30(char *self);
+extern int func_00161B30(char *self);
 
 __attribute__((section(".text.func_00161990")))
 void func_00161990(char *self)

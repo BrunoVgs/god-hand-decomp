@@ -4,8 +4,8 @@
 #include "godhand/cBgmData.h"
 
 extern void cBgmData_Reset(cBgmData *);
-extern void cBgmData_AddLoadBits(cBgmData *, int);
-extern int func_003A6C58(char *buf, char *fmt, int n);
+extern int cBgmData_AddLoadBits(cBgmData *, int);
+extern int func_003A6C58(char *buf, const char *fmt, ...);
 extern int cDvd_FileExist(char *, char *);
 extern int cDvd_ReadAlloc(char *, char *, void *, void *, int, int, int, int);
 extern char D_00754210[];

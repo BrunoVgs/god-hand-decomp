@@ -1,6 +1,6 @@
 /* cygnus-2.96: func_00339108, releases a non-empty chunk back to the stream and notifies its callback with -3. */
 #include "godhand/criSj.h"
-extern void func_00338A48(void *a0, void *a1);
+extern int func_00338A48(void *a0, void *a1);
 extern int D_004559F0;
 extern int D_00455920;
 extern int D_00455A00;

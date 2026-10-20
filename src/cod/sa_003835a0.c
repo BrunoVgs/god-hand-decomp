@@ -10,7 +10,7 @@ extern float func_0032AE10(int handle);
 extern int func_0032D0C0(int handle);
 extern void *func_0031C8B8(int size, int align);
 extern int func_003A6A20();
-extern int func_00323E80();
+extern int func_00323E80(int a0, int a1, int a2);
 extern int func_003244C8(int req);
 extern char D_0045CA58[];
 

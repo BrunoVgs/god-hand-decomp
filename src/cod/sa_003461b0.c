@@ -10,7 +10,7 @@ extern char D_00458147[];
 extern unsigned int strlen(const char *s);
 extern void MWSFSVM_Error(const char *msg);
 extern void func_003A5DA0(char *dst, const char *src, int n);
-extern void func_003A57C4(char *dst, const char *src);
+extern char *func_003A57C4(char *dst, const char *src);
 
 __attribute__((section(".text.func_003461B0")))
 void func_003461B0(MwsfNameHn *h, const char *fname)

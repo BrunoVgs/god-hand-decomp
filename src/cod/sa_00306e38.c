@@ -1,7 +1,7 @@
 /* SN ProDG ee-gcc 2.95.3: func_00306E38, ages the 32 pool entries; an entry that reaches 900 frames
  * is released and freed. */
-extern void func_00306ED8(char *pool, unsigned int i);
-extern void func_00306F10(char *pool, unsigned int i);
+extern int func_00306ED8(char *pool, unsigned int i);
+extern int func_00306F10(char *pool, unsigned int i);
 
 __attribute__((section(".text.func_00306E38")))
 void func_00306E38(char *pool)

@@ -4,7 +4,7 @@ extern char D_004559D0[];
 extern char D_00455920[];
 extern char D_004559E0[];
 extern char D_00455950[];
-extern void func_00338A48(char *, char *);
+extern int func_00338A48(char *, char *);
 
 __attribute__((section(".text.func_00338FD8")))
 void func_00338FD8(SjMem *s, int mode, int size, SjChunk *res)

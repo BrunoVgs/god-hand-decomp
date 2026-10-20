@@ -24,10 +24,10 @@ __attribute__((section(".text.func_00335CE0")))
 void func_00335CE0(void) {}
 
 __attribute__((section(".text.func_00329EA8")))
-int func_00329EA8(int a0) {
+void func_00329EA8(int a0) {
     NoOp_33E6A8(a0);
     func_00329ED8(a0);
-    return NoOp_33E6B0();
+    NoOp_33E6B0();
 }
 
 __attribute__((section(".text.func_00345750")))

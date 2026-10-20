@@ -29,9 +29,9 @@ typedef struct EmDmgVol {
 
 /* Takes only the enemy. */
 extern int func_001C28A0(EmDmgVol *em);
-extern void func_001B6FB8(EmDmgVol *em);
+extern int func_001B6FB8(EmDmgVol *em);
 extern void *cDamageManage_CreateDamageTake(void *mgr, void *owner, int kind);
-extern void func_001FD9D8(void *slot, void *mtx, Vec4f *ofs, Vec4f *rot, Vec4f *size);
+extern int func_001FD9D8(void *slot, void *mtx, Vec4f *ofs, Vec4f *rot, Vec4f *size);
 extern char D_00574380[];
 
 static inline void EmDmgVol_setVec4(Vec4f *v, float x, float y, float z, float w)

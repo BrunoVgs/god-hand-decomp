@@ -1,7 +1,7 @@
 /* cygnus-2.96: func_003391F8, puts a data chunk back into the memory stream (lane 1 only); a chunk
  * that is not the one just taken, or any other lane, notifies the callback with -3. */
 #include "godhand/criSj.h"
-extern void func_00338A48(void *a0, void *a1);
+extern int func_00338A48(void *a0, void *a1);
 extern int D_00455A10;
 extern int D_00455920;
 extern int D_00455A20;

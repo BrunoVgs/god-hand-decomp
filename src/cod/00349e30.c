@@ -15,13 +15,13 @@ extern void func_0035FEA8(void);
 extern void func_00360298(void);
 extern void func_00368E80(void);
 extern void func_0036CCF0(void);
-extern void func_0036CD18(void);
+extern int func_0036CD18(int);
 extern void func_0036CA68(void);
 extern void func_003BA088(void);
 extern void Forward33B568_33B658(void);
 extern void Forward33B5C8_33B670(void);
-extern void func_0034C2D0(int a0, int a1, int a2, int a3);
-extern void func_0034C3A8(int a0, int a1, int a2, int a3);
+extern int func_0034C2D0(int a0, int a1, int a2, int a3);
+extern int func_0034C3A8(int a0, int a1, int a2, int a3);
 extern void func_0036CD48(void *a0);
 extern void func_0034B648(int a0, int a1);
 extern void func_0033F130(void *a0);
@@ -72,7 +72,9 @@ __attribute__((section(".text.func_0036C658")))
 void func_0036C658(void) { func_0036CCF0(); }
 
 __attribute__((section(".text.func_0036C670")))
-void func_0036C670(void) { func_0036CD18(); }
+int func_0036C670(int a0) {
+    return func_0036CD18(a0);
+}
 
 __attribute__((section(".text.func_0036CA50")))
 void func_0036CA50(void) { func_0036CA68(); }
@@ -93,10 +95,10 @@ __attribute__((section(".text.func_0034AAE0")))
 int func_0034AAE0(int *a0) { return func_0034CA98(a0, *(int *)((char *)a0 + 0x2010)); }
 
 __attribute__((section(".text.func_0034C2A0")))
-void func_0034C2A0(int a0, int a1, int a2) { func_0034C2D0(a0, a1, a2, 0); }
+int func_0034C2A0(int a0, int a1, int a2) { return func_0034C2D0(a0, a1, a2, 0); }
 
 __attribute__((section(".text.func_0034C378")))
-void func_0034C378(int a0, int a1, int a2) { func_0034C3A8(a0, a1, a2, 0); }
+int func_0034C378(int a0, int a1, int a2) { return func_0034C3A8(a0, a1, a2, 0); }
 
 __attribute__((section(".text.func_0034C390")))
 void func_0034C390(int a0, int a1, int a2) { func_0034C3A8(a0, a1, a2, 1); }

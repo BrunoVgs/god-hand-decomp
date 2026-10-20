@@ -4,7 +4,7 @@
 
 extern void func_0033AF28(void *p);
 extern void SJX_Destroy(void *sjx);
-extern void Tramp_sceSifFreeSysMemory_3B5A50(void *p);
+extern int Tramp_sceSifFreeSysMemory_3B5A50(void *p);
 extern int D_003E0730;
 extern int D_003E0734;
 extern char D_00455398[];

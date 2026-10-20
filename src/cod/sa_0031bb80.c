@@ -18,7 +18,7 @@ typedef struct PadVibWork {
 extern void classPAD_WORK_Pad_act_all_stop(PadVibWork *w);
 extern void func_0031BC98(PadVibWork *w, int i);
 extern void func_0031BD78(PadVibWork *w, int i);
-extern void func_00398128(int a, int b, unsigned char *act);
+extern int func_00398128(int a, int b, unsigned char *act);
 
 __attribute__((section(".text.func_0031BB80")))
 void func_0031BB80(PadVibWork *w)

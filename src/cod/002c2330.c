@@ -1,7 +1,7 @@
 extern char D_005FEE00[];
 extern void *D_003C2F84;
-extern int ForwardEntityAndExit_2C2368(void);
-extern void cScenario_taskExec(void *, void *, void *, int);
+extern void ForwardEntityAndExit_2C2368(char *a0);
+extern int cScenario_taskExec(void *, void *, void *, int);
 
 __attribute__((section(".text.func_002C2330")))
 int func_002C2330(void *p)

@@ -1,5 +1,5 @@
 extern int setMotionInfo(void *a0, int a1, int a2, int a3, float f12, float f13, int t0);
-extern void moveMotion(char *a0);
+extern int moveMotion(char *a0);
 
 __attribute__((section(".text.func_001582A0")))
 void func_001582A0(char *self, int a1, int a2, int a3, float f12, float f13, unsigned short t0)

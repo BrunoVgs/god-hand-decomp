@@ -13,25 +13,25 @@ typedef struct {
     int pendingA;
 } MenuStep;
 
-extern void func_00383EB0(MenuStep *self);
-extern void func_00383F50(MenuStep *self);
+extern void func_00383EB0(MenuStep *self, char *ctrl);
+extern void func_00383F50(MenuStep *self, char *ctrl);
 
 __attribute__((section(".text.func_00383E40")))
-void func_00383E40(MenuStep *self)
+void func_00383E40(MenuStep *self, char *ctrl)
 {
     MenuStepState *st = &self->st;
 
     if (st->mode & 1) {
         if (self->pendingA != 0) {
-            func_00383F50(self);
+            func_00383F50(self, ctrl);
             return;
         }
     } else if (self->pendingB != 0) {
-        func_00383EB0(self);
+        func_00383EB0(self, ctrl);
         return;
     }
     if (st->mode & 2)
-        func_00383F50(self);
+        func_00383F50(self, ctrl);
     else
-        func_00383EB0(self);
+        func_00383EB0(self, ctrl);
 }
