@@ -17656,11 +17656,17 @@
   ],
   "carved_funcs": [
     {
+      "_comment": "VU0 macromode byte-match (1 pick; src/cod/0027b7.c)."
+    },
+    {
       "name": "InitObjVtable_27B768",
       "unit": "asm/cod/000000",
       "vaddr": "0x0027B768",
       "size": 88,
       "tu": "src/cod/0027b7.c"
+    },
+    {
+      "_comment": "SQ-family migration (10 picks; src/cod/001b0b70.c)."
     },
     {
       "name": "InitPilotVtable_1B0B70",
@@ -17873,6 +17879,9 @@
       "tu": "src/cod/000000.c"
     },
     {
+      "_comment": "first-TU group — accessor family @ 0x002930A8 – 0x00293C40. 17 carve-eligible funcs (2 Ghidra mis-boundary fragments at 0x002930C8 / 0x00293748 stay in the monolithic)."
+    },
+    {
       "name": "cEmManage_getNextNo",
       "unit": "asm/cod/000000",
       "vaddr": "0x002930A8",
@@ -17936,6 +17945,9 @@
       "tu": "src/cod/000293.c"
     },
     {
+      "_comment": "func_00293138 (fp+bnel, 1500 B) stays in monolithic asm/cod/000000 — PERMANENT; no carve needed."
+    },
+    {
       "name": "Obj293_OrByte_5A3",
       "unit": "asm/cod/000000",
       "vaddr": "0x00293718",
@@ -17962,6 +17974,15 @@
       "vaddr": "0x00293750",
       "size": 16,
       "tu": "src/cod/000293.c"
+    },
+    {
+      "_comment": "func_00293760 (jump-table, 96 B) stays in monolithic — carving would leak local .L00293794/.L00293A14/.L002941C0/.L00294308 labels referenced by rodata jump table at 0x44A7B0. PERMANENT under new jump-table class."
+    },
+    {
+      "_comment": "func_002937C0 (fp+bnel, 1152 B) stays in monolithic — PERMANENT; no carve needed."
+    },
+    {
+      "_comment": "func_00293C40 (fp+bnel, 2116 B) stays in monolithic — PERMANENT; no carve needed."
     },
     {
       "name": "EESyscall_0x00",
@@ -23885,6 +23906,9 @@
       "tu": "src/cod/0028e0.c"
     },
     {
+      "_comment": "merged-orphan boundary-fix batch A (src/cod/merged_orphans_a.c)."
+    },
+    {
       "name": "GetOrInit_460D00_1337A0",
       "unit": "asm/cod/000000",
       "vaddr": "0x001337A0",
@@ -23911,6 +23935,9 @@
       "vaddr": "0x00276790",
       "size": 80,
       "tu": "src/cod/merged_orphans_a.c"
+    },
+    {
+      "_comment": "merged-orphan boundary-fix batch B (src/cod/merged_orphans_b.c)."
     },
     {
       "name": "GetSingleton785978_17C450",
@@ -24018,6 +24045,9 @@
       "tu": "src/cod/merged_orphans_b.c"
     },
     {
+      "_comment": "merged-orphan boundary-fix batch C (src/cod/merged_orphans_c.c)."
+    },
+    {
       "name": "InitVtblF0_2EBC28",
       "unit": "asm/cod/000000",
       "vaddr": "0x002EBC28",
@@ -24116,6 +24146,9 @@
       "tu": "src/cod/merged_orphans_c.c"
     },
     {
+      "_comment": "merged-orphan boundary-fix batch D (src/cod/merged_orphans_d.c)."
+    },
+    {
       "name": "Forward107DE0_107E20",
       "unit": "asm/cod/000000",
       "vaddr": "0x00107E20",
@@ -24200,6 +24233,9 @@
       "tu": "src/cod/merged_orphans_d.c"
     },
     {
+      "_comment": "merged-orphan boundary-fix batch E (src/cod/merged_orphans_e.c)."
+    },
+    {
       "name": "cSnd_SetBgmTblNo",
       "unit": "asm/cod/000000",
       "vaddr": "0x002D0630",
@@ -24233,6 +24269,9 @@
       "vaddr": "0x002E76F8",
       "size": 88,
       "tu": "src/cod/merged_orphans_e.c"
+    },
+    {
+      "_comment": "merged-orphan boundary-fix batch F (src/cod/merged_orphans_f.c)."
     },
     {
       "name": "InitObjVtableField35C_139878",

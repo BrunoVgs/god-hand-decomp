@@ -238,7 +238,6 @@ extern char D_00459EE0[];
 extern int func_0035F830(void *a, void *b);
 extern void func_0035F1D0(void *a, void *b, int c, int d);
 extern void func_0035F3C8(void *a, void *b, int c);
-extern int func_0036CC78(int a);
 extern void func_003603D8(int a, int b, void *c);
 extern void func_0036CBC0(int a, int b, void *c);
 extern void func_0036CC08(int a, int b, void *c);
@@ -313,29 +312,7 @@ void func_0035EEF8(Obj35E8 *a)
     if (fn) fn(arg);
 }
 
-#ifdef NON_MATCHING
-/* Retail lowers this switch to a compare tree; every compiler here emits a jump table. */
-__attribute__((section(".text.func_0035ED08")))
-int func_0035ED08(Obj35E8 *a, int mode)
-{
-    int ret = 1;
-    if (a->unk34 == 100) return 0;
-    if (a->unk34 != mode) return ret;
-    switch (mode) {
-    case 0:
-        break;
-    case 1: case 4: case 5: case 0x15:
-        ret = 0;
-        break;
-    case 2:
-        if (func_0036CC78(a->unk30) != 1) ret = 0;
-        break;
-    }
-    return ret;
-}
-#else
 INCLUDE_ASM("permanent", func_0035ED08);
-#endif
 
 __attribute__((section(".text.func_0035EDE0")))
 void func_0035EDE0(unsigned char *t)
