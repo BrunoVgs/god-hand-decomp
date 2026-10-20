@@ -12836,10 +12836,6 @@
       "compiler": "sn-2.95.3-136"
     },
     {
-      "path": "src/cod/phase_a_sn_120.c",
-      "compiler": "sn-2.95.3-136"
-    },
-    {
       "path": "src/cod/phase_a_pilot_sn.c",
       "compiler": "sn-2.95.3-136"
     },
@@ -12889,10 +12885,6 @@
     },
     {
       "path": "src/cod/phase_a_sn_batch49.c",
-      "compiler": "sn-2.95.3-136"
-    },
-    {
-      "path": "src/cod/001b8030.c",
       "compiler": "sn-2.95.3-136"
     },
     {
@@ -14906,10 +14898,6 @@
       "as": "sn"
     },
     {
-      "path": "src/cod/sa_setmeshalphafromlayer.c",
-      "compiler": "sn-2.95.3-136"
-    },
-    {
       "path": "src/cod/sa_001582a0.c",
       "compiler": "sn-2.95.3-136"
     },
@@ -16062,25 +16050,6 @@
       "compiler": "sn-2.95.3-136"
     },
     {
-      "path": "src/cod/sa_002ba300.c",
-      "compiler": "sn-2.95.3-136",
-      "as": "sn"
-    },
-    {
-      "path": "src/cod/sa_0012ec58.c",
-      "compiler": "sn-2.95.3-136",
-      "as": "sn"
-    },
-    {
-      "path": "src/cod/sa_001346c8.c",
-      "compiler": "sn-2.95.3-136"
-    },
-    {
-      "path": "src/cod/sa_002bebc8.c",
-      "compiler": "sn-2.95.3-136",
-      "as": "sn"
-    },
-    {
       "path": "src/cod/sa_002d4248.c",
       "compiler": "sn-2.95.3-136"
     },
@@ -16117,20 +16086,12 @@
       ]
     },
     {
-      "path": "src/cod/sa_00376438.c",
-      "compiler": "sn-2.95.3-136"
-    },
-    {
       "path": "src/cod/sa_00376a90.c",
       "compiler": "sn-2.95.3-136",
       "call_loop_pad": true
     },
     {
       "path": "src/cod/sa_00377530.c",
-      "compiler": "sn-2.95.3-136"
-    },
-    {
-      "path": "src/cod/sa_003a9498.c",
       "compiler": "sn-2.95.3-136"
     },
     {
@@ -77717,13 +77678,6 @@
       "tu": "src/cod/sa_0033f3f0.c"
     },
     {
-      "name": "func_00376438",
-      "unit": "asm/cod/000000",
-      "vaddr": "0x00376438",
-      "size": 208,
-      "tu": "src/cod/sa_00376438.c"
-    },
-    {
       "name": "func_00376A90",
       "unit": "asm/cod/000000",
       "vaddr": "0x00376A90",
@@ -77736,13 +77690,6 @@
       "vaddr": "0x00377530",
       "size": 104,
       "tu": "src/cod/sa_00377530.c"
-    },
-    {
-      "name": "func_003A9498",
-      "unit": "asm/cod/000000",
-      "vaddr": "0x003A9498",
-      "size": 156,
-      "tu": "src/cod/sa_003a9498.c"
     },
     {
       "name": "func_003B9BF0",
@@ -78697,27 +78644,6 @@
       "tu": "src/cod/sa_001f5c48.c"
     },
     {
-      "name": "create",
-      "unit": "asm/cod/000000",
-      "vaddr": "0x002BA300",
-      "size": 236,
-      "tu": "src/cod/sa_002ba300.c"
-    },
-    {
-      "name": "func_0012EC58",
-      "unit": "asm/cod/000000",
-      "vaddr": "0x0012EC58",
-      "size": 152,
-      "tu": "src/cod/sa_0012ec58.c"
-    },
-    {
-      "name": "func_001346C8",
-      "unit": "asm/cod/000000",
-      "vaddr": "0x001346C8",
-      "size": 48,
-      "tu": "src/cod/sa_001346c8.c"
-    },
-    {
       "name": "cMc_startLoadRunReleaseB",
       "unit": "asm/cod/000000",
       "vaddr": "0x002AE7F0",
@@ -78905,20 +78831,6 @@
       "vaddr": "0x00381DC0",
       "size": 112,
       "tu": "src/cod/phase_a_sn_112c.c"
-    },
-    {
-      "name": "func_00376EA0",
-      "unit": "asm/cod/000000",
-      "vaddr": "0x00376EA0",
-      "size": 120,
-      "tu": "src/cod/phase_a_sn_120.c"
-    },
-    {
-      "name": "func_0037BE98",
-      "unit": "asm/cod/000000",
-      "vaddr": "0x0037BE98",
-      "size": 120,
-      "tu": "src/cod/phase_a_sn_120.c"
     },
     {
       "name": "cOmEffectHolderB_syncEffectPos",
@@ -80440,13 +80352,6 @@
       "tu": "src/cod/phase_a_sn_batch50.c"
     },
     {
-      "name": "func_001B8030",
-      "unit": "asm/cod/000000",
-      "vaddr": "0x001B8030",
-      "size": 32,
-      "tu": "src/cod/001b8030.c"
-    },
-    {
       "name": "func_001A5100",
       "unit": "asm/cod/000000",
       "vaddr": "0x001A5100",
@@ -80636,13 +80541,6 @@
       "tu": "src/cod/00170050.c"
     },
     {
-      "name": "cOmBase_setMeshAlphaFromLayer",
-      "unit": "asm/cod/000000",
-      "vaddr": "0x001B7220",
-      "size": 92,
-      "tu": "src/cod/sa_setmeshalphafromlayer.c"
-    },
-    {
       "name": "cOmHitVolume_setupLongBox",
       "unit": "asm/cod/000000",
       "vaddr": "0x0019BCA0",
@@ -80662,13 +80560,6 @@
       "vaddr": "0x002BEB00",
       "size": 112,
       "tu": "src/cod/00193050.c"
-    },
-    {
-      "name": "func_002BEBC8",
-      "unit": "asm/cod/000000",
-      "vaddr": "0x002BEBC8",
-      "size": 232,
-      "tu": "src/cod/sa_002bebc8.c"
     },
     {
       "name": "func_002D4248",

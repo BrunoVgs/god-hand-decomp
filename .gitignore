@@ -3320,7 +3320,6 @@
 !include/godhand/stageSet.h
 !include/godhand/stlAlloc.h
 !include/godhand/unkObj.h
-!src/cod/001b8030.c
 !src/cod/00359080.c
 !src/cod/00374cb8.c
 !src/cod/phase_a_cygnus.c
@@ -3336,7 +3335,6 @@
 !src/cod/phase_a_pilot_sn.c
 !src/cod/phase_a_sn.c
 !src/cod/phase_a_sn_112c.c
-!src/cod/phase_a_sn_120.c
 !src/cod/phase_a_sn_192.c
 !src/cod/phase_a_sn_56.c
 !src/cod/phase_a_sn_60.c
@@ -3365,8 +3363,6 @@
 !src/cod/phase_a_sn_batch50.c
 !src/cod/phase_a_sn_batch52.c
 !src/cod/sa_0012cae0.c
-!src/cod/sa_0012ec58.c
-!src/cod/sa_001346c8.c
 !src/cod/sa_00138ca8.c
 !src/cod/sa_0013d400.c
 !src/cod/sa_00140718.c
@@ -3437,12 +3433,10 @@
 !src/cod/sa_002b4f38.c
 !src/cod/sa_002b6688.c
 !src/cod/sa_002b8d88.c
-!src/cod/sa_002ba300.c
 !src/cod/sa_002bb2d8.c
 !src/cod/sa_002bdc00.c
 !src/cod/sa_002bdf30.c
 !src/cod/sa_002be708.c
-!src/cod/sa_002bebc8.c
 !src/cod/sa_002c1540.c
 !src/cod/sa_002c2078.c
 !src/cod/sa_002c32f0.c
@@ -3690,7 +3684,6 @@
 !src/cod/sa_00375500.c
 !src/cod/sa_003757a0.c
 !src/cod/sa_00375988.c
-!src/cod/sa_00376438.c
 !src/cod/sa_00376a90.c
 !src/cod/sa_003772d8.c
 !src/cod/sa_003774a8.c
@@ -3753,7 +3746,6 @@
 !src/cod/sa_0039eaa8.c
 !src/cod/sa_003a7b48.c
 !src/cod/sa_003a92e0.c
-!src/cod/sa_003a9498.c
 !src/cod/sa_003b9b20.c
 !src/cod/sa_003b9bf0.c
 !src/cod/sa_003b9eb0.c
@@ -3765,5 +3757,4 @@
 !src/cod/sa_emitterallkill.c
 !src/cod/sa_func_00328F30.c
 !src/cod/sa_searchom.c
-!src/cod/sa_setmeshalphafromlayer.c
 !src/cod/sa_updatenewround.c

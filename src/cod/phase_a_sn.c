@@ -1,4 +1,5 @@
 /* sn-2.95.3-136 matched Phase A functions. */
+#include "include_asm.h"
 
 typedef struct {
     char pad[0x75];
@@ -446,7 +447,6 @@ void func_0037CA98(void)
     unsigned int sentinel = 0xFFFFFFFFU;
     int count;
     unsigned int value;
-    __asm__ __volatile__("" : "+r"(sentinel));
     count = 0x32;
     do {
         if (*entry != 0) {
@@ -716,17 +716,7 @@ void func_001EE730(char *self, int enabled)
         CustomIDWork_ResetMoveOffsetPos(self + 0xDF0);
 }
 
-__attribute__((section(".text.func_002998A0")))
-void func_002998A0(char *self, long value, float x, float y)
-{
-    PhaseARec16 *record = *(PhaseARec16 **)(self + 0x10000);
-    record->y = y;
-    __asm__ __volatile__("" ::: "memory");
-    record->x = x;
-    *(long *)(*(int *)(self + 0x10000) + 8) = value;
-    *(int *)(self + 0x10000) += 16;
-    *(int *)(self + 0x10010) += 1;
-}
+INCLUDE_ASM("nonmatching", func_002998A0);
 
 __attribute__((section(".text.func_002B3158")))
 void func_002B3158(char *self)
@@ -1002,23 +992,7 @@ void func_002BE4E8(char *object)
         cHeap_free(*(int *)((char *)block - 0x20), block);
 }
 
-__attribute__((section(".text.func_002D4DA0")))
-void func_002D4DA0(void)
-{
-    __asm__ __volatile__(
-        ".set push\n"
-        ".set noreorder\n"
-        "sync\n"
-        "1:\n"
-        "nop\n"
-        "nop\n"
-        "nop\n"
-        "nop\n"
-        "bc0f 1b\n"
-        "nop\n"
-        "nop\n"
-        ".set pop\n");
-}
+INCLUDE_ASM("nonmatching", func_002D4DA0);
 
 __attribute__((section(".text.func_00306140")))
 void func_00306140(void)

@@ -1,4 +1,6 @@
 /* cygnus-2.96 matched TU. */
+#include "godhand/sync.h"
+#include "include_asm.h"
 
 extern void func_003A52F0(void *p, int v, int n);
 extern void func_00325DF0(void);
@@ -36,12 +38,7 @@ void func_0033C728(void)
     func_0033C708(0);
 }
 
-__attribute__((section(".text.func_00320270")))
-void func_00320270(void)
-{
-    func_003A7B48();
-    __asm__ volatile("");
-}
+INCLUDE_ASM("nonmatching", func_00320270);
 
 __attribute__((section(".text.func_0034B8D8")))
 int func_0034B8D8(int value)
@@ -78,29 +75,13 @@ __attribute__((section(".text.func_003B06C8")))
 unsigned int func_003B06C8(void)
 {
     unsigned int status;
-    __asm__("mfc0 %0, $12" : "=r"(status));
+    GH_MFC0_STATUS(status);
     return !(status & 1);
 }
 
-__attribute__((section(".text.func_003312B8")))
-void func_003312B8(void)
-{
-    int i = 0x3FFF;
-    while (i >= 0) {
-        i -= 0x20;
-        __asm__ volatile("nop");
-    }
-}
+INCLUDE_ASM("nonmatching", func_003312B8);
 
-__attribute__((section(".text.func_00333FD8")))
-void func_00333FD8(void)
-{
-    int i = 0x1FFF;
-    while (i >= 0) {
-        i -= 0x20;
-        __asm__ volatile("nop");
-    }
-}
+INCLUDE_ASM("nonmatching", func_00333FD8);
 
 __attribute__((section(".text.func_00325F20")))
 void func_00325F20(void)
