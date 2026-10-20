@@ -14903,6 +14903,10 @@
     {
       "path": "src/cod/001552f0.c",
       "compiler": "sn-2.95.3-136"
+    },
+    {
+      "path": "src/cod/001dbeb0.c",
+      "compiler": "sn-2.95.3-136"
     }
   ],
   "_carved_funcs_doc": [
@@ -74713,6 +74717,13 @@
       "vaddr": "0x001552F0",
       "size": 100,
       "tu": "src/cod/001552f0.c"
+    },
+    {
+      "name": "func_001DBEB0",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x001DBEB0",
+      "size": 104,
+      "tu": "src/cod/001dbeb0.c"
     }
   ],
   "build_dir": "build",
