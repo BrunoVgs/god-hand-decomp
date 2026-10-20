@@ -30,27 +30,46 @@ typedef struct COMMAND_LIST {
 
 typedef struct cActionButtonEnt {
     unsigned int flags;                 /* 0x00 */
-    char unk04[0xC];
-    int unk10;                          /* 0x10 */
-    int unk14;                          /* 0x14 */
+    struct cActionButtonEnt *next;      /* 0x04 */
+    char unk08[4];
+    int unk0C;                          /* 0x0C */
+    int unk10;                          /* 0x10 callback */
+    int unk14;                          /* 0x14 callback argument */
     int priority;                       /* 0x18 */
     int life;                           /* 0x1C */
     int unk20;                          /* 0x20 */
     int kind;                           /* 0x24 */
     void *matrix;                       /* 0x28 the matrix the prompt is drawn with */
-    char unk2C[4];
+    int unk2C;                          /* 0x2C */
     unsigned short unk30;               /* 0x30 */
-    char unk32[2];
+    short unk32;                        /* 0x32 */
     unsigned char cmdNum;               /* 0x34 commands in the tables */
     unsigned char unk35;                /* 0x35 */
-    char unk36[2];
+    unsigned char unk36;                /* 0x36 */
+    char unk37[1];
     int *cmdTbl;                        /* 0x38 */
     unsigned short *idTbl;              /* 0x3C */
     unsigned char *argTbl;              /* 0x40 */
-} cActionButtonEnt;
+} cActionButtonEnt;                     /* 0x44 */
 
 typedef struct cActionButton {
-    char unk00[4];
+    char unk000[0xF4];
+    char head[0x10];                    /* 0xF4 entry list heads */
+    cActionButtonEnt ent[8];            /* 0x104 */
 } cActionButton;
+
+/* The game object (D_003BD6E8) as the prompts see it. */
+typedef struct ActBtnGame {
+    char unk0000[0xEA0];
+    char anim[0x90];                    /* 0xEA0 */
+    unsigned int flags;                 /* 0xF30 */
+    char unkF34[0x12C2 - 0xF34];
+    unsigned short frame;               /* 0x12C2 */
+} ActBtnGame;
+
+extern int ReturnOne_1F6FA0(cActionButtonEnt *ent);
+extern int GetNextAnimIndex_1451E0(void *anim);
+extern void BlendSetup_load(void *anim, int *cmdTbl, unsigned short *idTbl,
+                          unsigned char *argTbl, int cmdNum, int start);
 
 #endif

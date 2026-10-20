@@ -1,0 +1,22 @@
+/* cygnus-2.96 singletons (batch 40, part 2). */
+
+#include "godhand/mwsfViews.h"
+
+extern void func_0033E3B8(AdxPlay *p);
+extern void func_0033E220(AdxPlay *p);
+extern void func_0033E0A8(AdxPlay *p);
+extern int func_00356358(SfdWkT *w);
+extern int GetField0OrZero_346828(MwsfHn48 *mw);
+extern void MWSFSVM_Error(const char *msg);
+extern void func_00335C68(void *p, int v);
+extern char D_00458F48[];
+
+__attribute__((section(".text.func_00347908")))
+void func_00347908(MwsfHn48 *mw, int v)
+{
+    if (GetField0OrZero_346828(mw) != 1) {
+        MWSFSVM_Error(D_00458F48);
+        return;
+    }
+    func_00335C68(mw->f48, v);
+}

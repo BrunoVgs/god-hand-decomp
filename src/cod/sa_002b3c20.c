@@ -1,0 +1,35 @@
+typedef struct {
+    unsigned short unk0;
+    unsigned short lo;
+    unsigned short hi;
+    unsigned short no;
+    char data[1];
+} Cmd2B3C20;
+
+typedef struct {
+    char pad[0x8C];
+    Cmd2B3C20 *cmd;
+} Obj2B3C20;
+
+extern void *func_002B4690(Obj2B3C20 *o, void *p);
+extern int SetEffect(int a0, int a1, void *a2, int a3, int t0, unsigned t1);
+
+__attribute__((section(".text.func_002B3C20")))
+int func_002B3C20(Obj2B3C20 *o)
+{
+    void *p = func_002B4690(o, o->cmd->data);
+    int no = o->cmd->no + 1;
+    unsigned int tag = (o->cmd->hi << 16) | o->cmd->lo;
+
+    switch (tag) {
+    case 0x45524F43:
+    case 0x65726F63:
+        SetEffect(0, no, p, 0, -1, 0xFFFFFFFF);
+        break;
+    case 0x4D4F4F52:
+    case 0x6D6F6F72:
+        SetEffect(1, no, p, 0, -1, 0xFFFFFFFF);
+        break;
+    }
+    return 0;
+}

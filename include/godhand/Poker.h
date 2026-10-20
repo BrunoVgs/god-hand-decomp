@@ -40,4 +40,18 @@ typedef struct Poker {
     short cardId[POKER_HAND_NUM];       /* 0x3052 card ids, POKER_CARD_NONE = empty slot */
 } Poker;                                /* 0x305C */
 
+/* Sorted rank patterns of the nine non-royal straights (A-5 .. 9-K). */
+typedef struct PokerStraightTbl {
+    int rank[9][POKER_HAND_NUM];
+} PokerStraightTbl;                     /* 0xB4 */
+
+extern PokerStraightTbl D_0042B418;
+
+/* Sorted rank patterns of all ten straights (A-5 .. 10-A). */
+typedef struct PokerStraightTbl10 {
+    int rank[10][POKER_HAND_NUM];
+} PokerStraightTbl10;                   /* 0xC8 */
+
+extern PokerStraightTbl10 D_0042B4D0;
+
 #endif

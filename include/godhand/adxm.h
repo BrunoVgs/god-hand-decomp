@@ -1,0 +1,22 @@
+/* include/godhand/adxm.h - the ADX manager threads (cygnus code at 0x324C90..).
+ *
+ * The prototypes keep the return types the callers were compiled against:
+ * adxm_ResumeThread is called as returning char, and func_00325360 as
+ * returning int; both shapes change the callers' register allocation.
+ */
+#ifndef GODHAND_ADXM_H
+#define GODHAND_ADXM_H
+
+extern char adxm_ResumeThread(int thid);
+extern int func_00325360(int thid);     /* server suspend */
+extern void func_00325290(int thid);
+extern void func_0033B790(const char *msg);
+
+extern int D_003C80B0;                  /* ADX thread priority */
+extern int D_003C80E0;                  /* lock nesting count */
+extern volatile int D_003C80E4;         /* server busy */
+extern volatile int D_003C814C, D_003C8140, D_003C8138;    /* server thread ids */
+extern int D_003CF9D0;                  /* caller's priority before the lock */
+extern int D_003CF9D4;                  /* caller's thread id */
+
+#endif

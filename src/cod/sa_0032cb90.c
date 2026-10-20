@@ -1,0 +1,52 @@
+/* cygnus-2.96: func_0032CB90, ADX stream server step: stop the input at the end offset, and once
+ * the input has finished move to the flush state when every channel buffer has room. */
+extern int Obj3270_GetField_30(void *sj);
+extern void Obj3270_SetField_3C(void *sj, int v);
+extern int Obj3260_GetByte_1_D778(void *sj);
+extern int Obj3270_GetVia4_0033CE98_77A0(void *sj);
+extern int D_003D1460;
+extern int D_003D1464;
+
+typedef struct SjIf32CB90 {
+    char unk0[0x24];
+    int (*getNumData)(void *sj, int lane);   /* 0x24 */
+} SjIf32CB90;
+
+typedef struct Sj32CB90 {
+    SjIf32CB90 *vt;
+} Sj32CB90;
+
+typedef struct Adx32CB90 {
+    char unk0;
+    char stat;                  /* 0x01 */
+    char unk02[2];
+    void *sji;                  /* 0x04 */
+    char unk08[0x10];
+    Sj32CB90 *sjo[4];           /* 0x18 */
+    char unk28[0x44];
+    signed char eos;            /* 0x6C */
+    char unk6D[0x57];
+    int endOfs;                 /* 0xC4 */
+} Adx32CB90;
+
+__attribute__((section(".text.func_0032CB90")))
+void func_0032CB90(Adx32CB90 *adx)
+{
+    int i;
+    int nch;
+
+    if (adx->eos == 0 && adx->endOfs != 0 && Obj3270_GetField_30(adx->sji) >= adx->endOfs)
+        Obj3270_SetField_3C(adx->sji, -1);
+    if (Obj3260_GetByte_1_D778(adx->sji) != 3)
+        return;
+    nch = Obj3270_GetVia4_0033CE98_77A0(adx->sji);
+    D_003D1460 = nch;
+    for (i = 0; i < nch; i++) {
+        Sj32CB90 *o = adx->sjo[i];
+        D_003D1464 = o->vt->getNumData(o, 1);
+        if (D_003D1464 >= 0x40)
+            break;
+    }
+    if (i == nch)
+        adx->stat = 4;
+}

@@ -1,10 +1,175 @@
 /* cygnus-2.96 matched TU. */
 
 extern void func_003A52F0(void *p, int v, int n);
+extern void func_00325DF0(void);
+extern void func_00325FA8(void);
+extern void func_0033BFB8(void);
+extern void func_0033BFE8(void);
+extern void SetFlagAndForward_325EF8(void);
+extern void func_00348210(int *a, int *b, int *c);
+extern int func_0033B810(int type, int arg0, int arg1, int arg2);
 extern void func_0035FF98(int);
 extern int D_003EE800;
 extern void func_0036CB58(int);
 extern int D_003F1EC8;
+extern int D_00760D88;
+extern int D_00760D8C;
+extern void func_003A7B48(void) __attribute__((noreturn));
+extern int GetArrayElemA0C_35A1C8(int, int);
+extern int func_0035E080(int, int *);
+extern volatile int D_003DECF8;
+extern int D_003DED08;
+extern volatile int D_003D90D0;
+extern int D_003D90E8;
+extern void func_00333E88(int);
+extern char D_003E9D60[];
+extern void Obj33F8_Init_D003EB858_F888(void);
+extern void func_0033C520(void);
+extern void func_0033C708(int);
+
+__attribute__((section(".text.func_0033C728")))
+void func_0033C728(void)
+{
+    Obj33F8_Init_D003EB858_F888();
+    func_0033C520();
+    func_003A52F0(D_003E9D60, 0, 0x1040);
+    func_0033C708(0);
+}
+
+__attribute__((section(".text.func_00320270")))
+void func_00320270(void)
+{
+    func_003A7B48();
+    __asm__ volatile("");
+}
+
+__attribute__((section(".text.func_0034B8D8")))
+int func_0034B8D8(int value)
+{
+    GetArrayElemA0C_35A1C8(value, 6);
+    return 0;
+}
+
+__attribute__((section(".text.func_00344F30")))
+int func_00344F30(int value)
+{
+    int slot;
+    if (func_0035E080(value, &slot) == 1)
+        return slot;
+    return -1;
+}
+
+__attribute__((section(".text.func_00336318")))
+int *func_00336318(void)
+{
+    (void)D_003DECF8;
+    return &D_003DED08;
+}
+
+__attribute__((section(".text.func_003327D8")))
+int *func_003327D8(void)
+{
+    (void)D_003D90D0;
+    func_00333E88(0);
+    return &D_003D90E8;
+}
+
+__attribute__((section(".text.func_003B06C8")))
+unsigned int func_003B06C8(void)
+{
+    unsigned int status;
+    __asm__("mfc0 %0, $12" : "=r"(status));
+    return !(status & 1);
+}
+
+__attribute__((section(".text.func_003312B8")))
+void func_003312B8(void)
+{
+    int i = 0x3FFF;
+    while (i >= 0) {
+        i -= 0x20;
+        __asm__ volatile("nop");
+    }
+}
+
+__attribute__((section(".text.func_00333FD8")))
+void func_00333FD8(void)
+{
+    int i = 0x1FFF;
+    while (i >= 0) {
+        i -= 0x20;
+        __asm__ volatile("nop");
+    }
+}
+
+__attribute__((section(".text.func_00325F20")))
+void func_00325F20(void)
+{
+    func_0033BFB8();
+    func_00325DF0();
+    func_00325FA8();
+    SetFlagAndForward_325EF8();
+    func_0033BFE8();
+}
+
+__attribute__((section(".text.func_0033C7C0")))
+void func_0033C7C0(char *self)
+{
+    *(volatile short *)(self + 0xE4) = -128;
+    *(volatile int *)(self + 0xCC) = 0;
+    *(volatile short *)(self + 0xE0) = 0;
+    *(volatile short *)(self + 0xE2) = -128;
+    func_003A52F0(self + 0xD0, 0, 0x10);
+}
+
+__attribute__((section(".text.func_00348A70")))
+int func_00348A70(int arg0, int arg1, int arg2)
+{
+    int result = func_0033B810(6, arg0, arg1, arg2);
+    D_00760D88 = result;
+    return result;
+}
+
+__attribute__((section(".text.func_00348AC8")))
+int func_00348AC8(int arg0, int arg1, int arg2)
+{
+    int result = func_0033B810(5, arg0, arg1, arg2);
+    D_00760D8C = result;
+    return result;
+}
+
+__attribute__((section(".text.func_003481D8")))
+void func_003481D8(void)
+{
+    int a;
+    int b;
+    int c;
+    func_00348210(&a, &b, &c);
+}
+
+__attribute__((section(".text.func_0034B618")))
+void *func_0034B618(char *self)
+{
+    char *node = *(char **)(self + 0x36B0);
+    char *inner = *(char **)(self + 0x2004);
+    if (node == 0)
+        return 0;
+    if (*(int *)(inner + 0x40) <= 0)
+        return node + 0xD0C;
+    return 0;
+}
+
+__attribute__((section(".text.func_003553C8")))
+void *func_003553C8(char *self)
+{
+    char *node = *(char **)(self + 0x36B0);
+    char *inner = *(char **)(self + 0x1FC0);
+    if (node == 0)
+        return 0;
+    if (*(int *)(inner + 0x88) <= 0)
+        return node + 0xAD0;
+    return 0;
+}
 
 __attribute__((section(".text.func_0032F938")))
 void func_0032F938(unsigned char *a0) {

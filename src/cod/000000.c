@@ -2337,17 +2337,14 @@ __attribute__((section(".text.Forward348BE0_346BE0")))
 int Forward348BE0_346BE0(int a0, int a1) {
     return MWSFSVM_Error(a1);
 }
-INCLUDE_ASM("nonmatching", MotionGetParam);
 INCLUDE_ASM("nonmatching", SetEv61HumanAlive);
 INCLUDE_ASM("nonmatching", Dest_ck);
 INCLUDE_ASM("nonmatching", displayOmLayer);
-INCLUDE_ASM("nonmatching", setPlayerPos);
 
 INCLUDE_ASM("nonmatching", pl00_CkSubScreen);
 
 INCLUDE_ASM("nonmatching", cObj_setId);
 
-INCLUDE_ASM("nonmatching", MotionIsHaveParam);
 
 INCLUDE_ASM("nonmatching", cOmSub_setVibration);
 

@@ -5,6 +5,7 @@
 extern void func_001B6FB8(void *a0);
 extern void *cDamageManage_CreateDamageTake(void *a0, void *a1, int a2);
 extern void cDamageUnit_AddDamageCollCylinder(void *a0, void *a1, float *a2, float *a3, float f0, float f1);
+extern void cDamageUnit_AddDamageCollSphere(void *a0, void *a1, float *a2, float r);
 extern void cOmBase_setMeshDispFromLayer(void *a0, int a1, int a2);
 extern int D_00574380;
 

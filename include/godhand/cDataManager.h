@@ -35,12 +35,17 @@ typedef struct cDataManager {
 
 extern int func_001FF0D8(cDataSlot *slot);               /* 1 when the slot holds data */
 extern void func_001FF090(cDataSlot *slot);              /* count one more use */
-extern int func_001FF180(cDataSlot *slot, int kind, void *buf);  /* start the load */
+extern int FileLoadRec_start(cDataSlot *slot, int kind, void *buf);  /* start the load */
 extern int UpdateStateReady_1FF238(cDataSlot *slot);     /* 0 while loading */
 extern int ResetSlotState_1FF2E0(cDataSlot *slot, int arg);
-extern void func_002D5250(int frames);                   /* wait */
+extern void cScenario_sleepFrames(int frames);                   /* wait */
 
 extern int func_001FEE00(cDataManager *self, int kind);  /* slot index of kind, or -1 */
 extern int func_001FEEA0(cDataManager *self);            /* index of a free slot, or -1 */
+extern int cDataManager_isLoaded(cDataManager *self, int kind);
+extern void cDataManager_resetKind(cDataManager *self, int kind, int arg);
+
+extern cDataManager D_005864E0;
+extern cDataManager D_00580D20;
 
 #endif

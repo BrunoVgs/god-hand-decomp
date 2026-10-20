@@ -1,0 +1,54 @@
+/* cygnus-2.96 (drop-reorder): MWSF handle playback server tick / start time (0x347F20, 0x348098). */
+
+#include "godhand/mwsfHn.h"
+
+extern char D_004591A0[];
+extern char D_004591D0[];
+extern char D_00459210[];
+
+void func_00347FE0(MwsfHn *mw);
+int func_00348098(MwsfHn *mw);
+
+__attribute__((section(".text.func_00347F20")))
+void func_00347F20(MwsfHn *mw)
+{
+    int st;
+
+    if (mw->f2D8 == 0 || mw->f2DC == 0) {
+        return;
+    }
+    if (mw->f2E8 == 1) {
+        st = func_00346848(mw);
+        if (st == 2) {
+            if (func_00348098(mw) < 0) {
+                return;
+            }
+            mw->f2E8 = st;
+        }
+    }
+    if (mw->f2E8 != 2 && mw->f2E8 != 3) {
+        return;
+    }
+    if (func_003468B8(mw) == 3) {
+        func_00347FE0(mw);
+    }
+    func_00348158(mw);
+}
+
+__attribute__((section(".text.func_00348098")))
+int func_00348098(MwsfHn *mw)
+{
+    int base, rate;
+    int q, t;
+
+    Obj0000_Call_0035A128_Field_3C(mw, 0x36, &base);
+    func_0035B5F8(mw->sfd, &rate);
+    if (rate <= 0) {
+        MWSFSVM_Error(D_00459210);
+        mw->f2FC = base;
+        return -1;
+    }
+    q = Forward345250_344F18(mw) * 1000 / rate;
+    t = q * 1000;
+    return mw->f2FC = base - ((t * 3) >> 1);
+}

@@ -92,7 +92,11 @@ typedef struct ColiseumBattle {
     char unkBB0[0x20];
     unsigned char vec[9][16];   /* 0xBD0 cleared by the constructor */
     int unkC60;
-    int unkC64[30];             /* 0xC64 cleared by Initialize */
+    int unkC64[30];             /* 0xC64 cleared by Initialize; [0..2] wave enemy entries */
 } ColiseumBattle;
+
+extern ColiseumEmNode *D_005869F0;      /* live enemy list head */
+extern int cEmBase_checkDeadFlag(void *em);
+extern int IsEntryActive_1C2490(int entry);
 
 #endif

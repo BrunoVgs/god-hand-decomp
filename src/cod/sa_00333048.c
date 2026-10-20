@@ -1,0 +1,50 @@
+typedef struct {
+    char pad0[2];
+    char state;
+    char pad3[0x14 - 3];
+    int unk14;
+    char pad18[4];
+    void *unk1C;
+} Obj333048;
+
+extern char D_00454458[];
+extern char D_004544B8[];
+extern void func_00332808(Obj333048 *, char *);
+extern void func_00331570(void *);
+extern void func_00331AD8(void);
+extern void func_00332958(void);
+extern int func_00333130(Obj333048 *);
+extern void func_003260C8(char *);
+
+__attribute__((section(".text.func_00333048")))
+void func_00333048(Obj333048 *o)
+{
+    int n;
+
+    n = 0;
+    if (o == 0) {
+        func_00332808(o, D_00454458);
+        return;
+    }
+    if ((unsigned char)o->state < 2) {
+        return;
+    }
+    if (o->unk1C != 0) {
+        func_00331570(o->unk1C);
+    }
+    for (;;) {
+        func_00331AD8();
+        func_00332958();
+        func_00333130(o);
+        if (o->state != 2) {
+            break;
+        }
+        n++;
+        if (n > 0x9FFFF) {
+            func_003260C8(D_004544B8);
+            break;
+        }
+    }
+    o->state = 0;
+    o->unk14 = 0;
+}
