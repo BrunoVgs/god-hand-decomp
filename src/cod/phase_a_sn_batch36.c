@@ -1,4 +1,5 @@
 /* Batch 36: unique SN ~104–140 (scratch-only). */
+#include "include_asm.h"
 extern void func_0037D820(void *self);
 extern void func_00378070(void *p);
 
@@ -17,34 +18,4 @@ void func_0037CC78(unsigned short *self)
     self[3] = self[3] | 0x9;
 }
 
-__attribute__((section(".text.func_003A9538")))
-int func_003A9538(signed char *s, int len)
-{
-    signed char *p;
-    signed char zero;
-    signed char nine;
-    if (len <= 0)
-        goto done;
-    len -= 1;
-    p = s + len;
-    if (*p < 0x35)
-        goto done;
-    zero = 0x30;
-    nine = 0x39;
-    *p = zero;
-    for (;;) {
-        len -= 1;
-        p -= 1;
-        if (len <= 0)
-            break;
-        if (*p != nine)
-            break;
-        *p = zero;
-    }
-    s += len;
-    if (*s == 0x39)
-        return 0;
-    *s = *s + 1;
-done:
-    return 1;
-}
+INCLUDE_ASM("nonmatching", func_003A9538);
