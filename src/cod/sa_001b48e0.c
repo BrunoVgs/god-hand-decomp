@@ -1,16 +1,12 @@
-typedef struct Pad1B48E0 {
-    char pad[0x574];
-    float frameRate;
-} Pad1B48E0;
-
-typedef struct Mdl1B48E0 {
+#include "godhand/gameWork.h"
+typedef struct SpinModel {
     char pad0[0x104];
     float rot;
-} Mdl1B48E0;
+} SpinModel;
 
-typedef struct Em1B48E0 {
+typedef struct SpinEnemy {
     char pad0[0x278];
-    Mdl1B48E0 **mdl;
+    SpinModel **mdl;
     char pad27C[0x38];
     unsigned char hasMdl;
     char pad2B5[0x41];
@@ -20,17 +16,16 @@ typedef struct Em1B48E0 {
     float spin;
     float spinUp;
     float spinDown;
-} Em1B48E0;
+} SpinEnemy;
 
-extern Pad1B48E0 D_007474A0;
 extern char D_005864F0[];
 extern float cEmManage_GetSpeedRate(void *mgr);
 
 __attribute__((section(".text.func_001B48E0")))
-void func_001B48E0(Em1B48E0 *em)
+void func_001B48E0(SpinEnemy *em)
 {
     int hold[4];
-    Mdl1B48E0 *m;
+    SpinModel *m;
     float v, lim;
 
     switch (em->spinStep) {
@@ -41,14 +36,14 @@ void func_001B48E0(Em1B48E0 *em)
     case 1:
         break;
     case 2:
-        v = em->spin + em->spinUp * cEmManage_GetSpeedRate(D_005864F0) * D_007474A0.frameRate;
+        v = em->spin + em->spinUp * cEmManage_GetSpeedRate(D_005864F0) * D_007474A0.timeScale;
         lim = em->spinMax;
         em->spin = v;
         if (lim <= v)
             em->spin = lim;
         break;
     case 3:
-        v = em->spin - em->spinDown * cEmManage_GetSpeedRate(D_005864F0) * D_007474A0.frameRate;
+        v = em->spin - em->spinDown * cEmManage_GetSpeedRate(D_005864F0) * D_007474A0.timeScale;
         em->spin = v;
         if (v <= 0.0f)
             em->spin = 0.0f;
@@ -59,5 +54,5 @@ void func_001B48E0(Em1B48E0 *em)
         m = *em->mdl;
     else
         m = 0;
-    m->rot = m->rot + em->spin * cEmManage_GetSpeedRate(D_005864F0) * D_007474A0.frameRate;
+    m->rot = m->rot + em->spin * cEmManage_GetSpeedRate(D_005864F0) * D_007474A0.timeScale;
 }

@@ -52,4 +52,8 @@ typedef struct Pkt0B0 {
 
 extern GifTagEnt D_004A5D80[];
 
+/* A 64-bit packet tag built from a two-word table entry: w0 is the upper word (low 28 bits),
+ * w1 the lower word with 0x30000000 set. */
+#define TAG64(e) ((unsigned int)((e).w1 | 0x30000000) | ((unsigned long)((e).w0 & 0x0FFFFFFF) << 32))
+
 #endif

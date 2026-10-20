@@ -3311,12 +3311,11 @@
 !include/godhand/mwsfViews.h
 !include/godhand/mwsfd.h
 !include/godhand/pack.h
-!include/godhand/padState.h
 !include/godhand/player.h
 !include/godhand/seqNode.h
 !include/godhand/sftim.h
 !include/godhand/sfxlib.h
-!include/godhand/sndSys76A790.h
+!include/godhand/sndTiming.h
 !include/godhand/stageSet.h
 !include/godhand/stlAlloc.h
 !include/godhand/unkObj.h
@@ -3740,3 +3739,9 @@
 !src/cod/sa_func_00328F30.c
 !src/cod/sa_searchom.c
 !src/cod/sa_updatenewround.c
+!include/godhand/sndBank.h
+!include/godhand/regTbl.h
+!include/godhand/iopReq.h
+!include/godhand/devObj.h
+!include/godhand/vec.h
+!include/godhand/mwPly.h

@@ -1,4 +1,4 @@
-typedef struct { char pad0[8]; char *ents; char pad0C[4]; int state; } Sub35CE60;
+typedef struct { char pad0[8]; char *ents; char pad0C[4]; int state; } SfdEntSet;
 
 extern int Obj34D8_SetGlobalEE0B8_IfField48(char *a0);
 extern int func_0034DD70(int a0, int a1);
@@ -8,7 +8,7 @@ extern void func_0034C208(char *a0, int a1, int a2, char *a3);
 __attribute__((section(".text.func_0035CE60")))
 int func_0035CE60(char *a0, int idx, int a2, int a3)
 {
-    Sub35CE60 *s = (Sub35CE60 *)(a0 + 0x2150);
+    SfdEntSet *s = (SfdEntSet *)(a0 + 0x2150);
     int state;
     char *p;
     char *e;

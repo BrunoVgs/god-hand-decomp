@@ -1,4 +1,5 @@
 /* sn-2.95.3-136: func_002D0658, sets the volume of BGM table entry `id` (0 = default), fading all others. */
+#include "godhand/gameWork.h"
 typedef struct {
     unsigned short id;
     short vol;
@@ -12,12 +13,6 @@ typedef struct {
     int curVol;
 } SndCtx;
 
-typedef struct {
-    char unk0[0x5B0];
-    unsigned short bgmId;
-} GameWork;
-
-extern GameWork D_007474A0;
 extern BgmEnt *func_002D05D8(SndCtx *snd, int group, int *count);
 extern void cSnd_SetBgmFadeOutTimeAll(SndCtx *snd, float t);
 
@@ -39,7 +34,7 @@ void func_002D0658(SndCtx *snd, int vol, int id, float t)
     for (i = 0; i < count; i++, e++) {
         if (e->id == id) {
             e->vol = vol;
-            if (id == D_007474A0.bgmId)
+            if (id == D_007474A0.room)
                 snd->curVol = vol;
             return;
         }

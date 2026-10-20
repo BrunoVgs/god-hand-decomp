@@ -16,7 +16,7 @@ typedef struct {
     unsigned short h1A;
     unsigned short h1C;
     char pad1E[2];
-} Dst37CE20;
+} SndVoiceOut;
 
 typedef struct {
     unsigned short flags;
@@ -36,10 +36,10 @@ typedef struct {
     unsigned short h4A;
     unsigned short h4C;
     unsigned short h4E;
-} Src37CE20;
+} SndVoiceIn;
 
-extern Dst37CE20 D_0076A9C0[];
-extern Src37CE20 D_0076CF20[];
+extern SndVoiceOut D_0076A9C0[];
+extern SndVoiceIn D_0076CF20[];
 
 __attribute__((section(".text.func_0037CE20")))
 void func_0037CE20(void)
@@ -47,8 +47,8 @@ void func_0037CE20(void)
     int i;
 
     for (i = 0; i < 48; i++) {
-        Src37CE20 *s = &D_0076CF20[i];
-        Dst37CE20 *d = &D_0076A9C0[i];
+        SndVoiceIn *s = &D_0076CF20[i];
+        SndVoiceOut *d = &D_0076A9C0[i];
         if (s->flags == 0) {
             d->flags = 0;
             d->w4 = 0;

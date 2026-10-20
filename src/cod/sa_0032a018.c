@@ -1,4 +1,4 @@
-typedef struct Adxt32A018 {
+typedef struct AdxDecHn {
     unsigned char unk0;
     unsigned char stat;
     char pad2[2];
@@ -10,17 +10,17 @@ typedef struct Adxt32A018 {
     char pad8C[0x18];
     int base;
     int sub;
-} Adxt32A018;
+} AdxDecHn;
 
 extern int Obj3270_GetVia4_Obj33C8_14_7788(void *);
 extern int Obj3270_GetVia4_Obj33C8_18_77E8(void *);
 extern int Obj3270_GetVia4_0033CEF0_77B8(void *);
 extern int Obj3270_GetField_2C(void *);
 extern int Obj3260_Tramp_003383B0_D358(int);
-extern int ADXT_GetNumSmplObuf(Adxt32A018 *, int);
+extern int ADXT_GetNumSmplObuf(AdxDecHn *, int);
 
 __attribute__((section(".text.func_0032A018")))
-void func_0032A018(Adxt32A018 *adxt, int *pos, int *rate)
+void func_0032A018(AdxDecHn *adxt, int *pos, int *rate)
 {
     unsigned char stat = adxt->stat;
     int t, n, v;

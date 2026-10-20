@@ -29,7 +29,9 @@ typedef struct SeqNode {
     int owner;                  /* 0x10 */
     char unk14[0x30 - 0x14];
     SeqTimer timer;             /* 0x30 */
-    char unk38[0x50 - 0x38];
+    char unk38[0x3E - 0x38];
+    unsigned short weight;      /* 0x3E high byte is the update weight */
+    char unk40[0x50 - 0x40];
 } SeqNode;
 
 typedef struct SeqLink {

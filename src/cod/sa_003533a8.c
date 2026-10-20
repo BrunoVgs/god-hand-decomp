@@ -1,30 +1,30 @@
-typedef struct Sub3533A8 {
+typedef struct SfdPlySub {
     void *dec;          /* 0x00 */
     char unk4[0x70];
     int stat;           /* 0x74 */
     char unk78[0x98];
     int active;         /* 0x110 */
-} Sub3533A8;
+} SfdPlySub;
 
-typedef struct Frm3533A8 {
+typedef struct SfdPlyFrm {
     char unk0[0x18];
     int kind;           /* 0x18 */
-} Frm3533A8;
+} SfdPlyFrm;
 
-typedef struct Ply3533A8 {
+typedef struct SfdPly {
     char unk0[0xE48];
     int noloop;         /* 0xE48 */
     char unkE4C[0x1174];
-    Sub3533A8 *sub;     /* 0x1FC0 */
-} Ply3533A8;
+    SfdPlySub *sub;     /* 0x1FC0 */
+} SfdPly;
 
 extern int func_0036A300(void *dec, int *eos, int *term);
-extern int GetArrayElemA0C_35A1C8(Ply3533A8 *ply, int idx);
+extern int GetArrayElemA0C_35A1C8(SfdPly *ply, int idx);
 
 __attribute__((section(".text.func_003533A8")))
-void func_003533A8(Ply3533A8 *ply, Frm3533A8 *frm, int mode)
+void func_003533A8(SfdPly *ply, SfdPlyFrm *frm, int mode)
 {
-    Sub3533A8 *s = ply->sub;
+    SfdPlySub *s = ply->sub;
     void *dec = s->dec;
     int stat = s->stat;
     int eos, term;

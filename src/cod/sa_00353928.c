@@ -2,11 +2,6 @@
 
 #include "godhand/sftim.h"
 
-
-
-
-extern unsigned char *MPV_SearchDelim(unsigned char *p, int n, unsigned int mask);
-extern unsigned int MPV_CheckDelim(unsigned char *p);
 extern int func_00356358(SftimHn *hn);
 extern int func_00356C58(SftimHn *hn);
 extern int func_0036C920(int a, int b, int c);
@@ -16,18 +11,6 @@ extern void func_003556A0(SfdFrm *frm);
 extern void func_00354430(SfdUsrBuf *dst, SfdUsrBuf *src);
 extern void *func_003A5148(void *d, const void *s, unsigned int n);    /* memcpy */
 void func_003542B8(SjObj *sj, int *type, unsigned char **ext, int *extLen);
-extern int func_0033A010(void *sj, int id, int n);
-extern long long func_0035BA58(void);
-extern void func_0035BB60(SfdPrf *prf, long long t);
-extern void func_00356B10(void *dec, SjObj *sj, SfdOut *out, SftimHn *hn);
-extern int func_00351C18(SftimHn *hn, int a1, int n, int code);
-extern void func_00351B70(SftimHn *hn, int n);
-extern void func_00355630(SfdFrm *frm);
-extern void func_003554F8(SftimHn *hn, int a1);
-extern void func_00355658(SfdFrm *frm);
-extern void func_00355640(SfdFrm *frm);
-extern void func_0036C3B8(void *dec, int *a, int *b);
-extern void func_00358700(SftimHn *hn, int a1, unsigned int picType);
 int func_00353BD8(SftimHn *hn, SfdPicInf *pic, SfdOut *out, SfdFrm **pfrm);
 void func_00353EE0(SftimHn *hn, SfdWork *work, int *x, int *y);
 void func_00353F68(SftimHn *hn);

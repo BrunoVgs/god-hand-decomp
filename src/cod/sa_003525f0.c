@@ -2,8 +2,6 @@
 
 #include "godhand/sftim.h"
 
-
-
 int func_003526D0(SftimHn *hn, SftimInfo *info);
 void func_00352790(SftimHn *hn, SftimInfo *info, int time, int update);
 

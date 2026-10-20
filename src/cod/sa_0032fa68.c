@@ -4,8 +4,6 @@
 
 extern void Obj33F8_Tramp_0033F130_FCB0(const char *msg);
 extern char D_00453078[];
-extern char D_004530A0[];
-extern char D_004530C8[];
 extern void *func_003A5148(void *dst, const void *src, int n);
 
 extern inline int aix_be32(const unsigned char *p)
@@ -38,7 +36,7 @@ void func_0032FAD8(AixDmx *d)
     int r;
 
     sj->vt->getChunk(sj, 1, 0x1800, &ck);
-    r = func_0032F580(ck.ptr, ck.len, &d->info);
+    r = func_0032F580((unsigned char *)ck.data, ck.len, &d->info);
     if (r == -1) {
         sj->vt->ungetChunk(sj, 1, &ck);
         return;
@@ -72,7 +70,7 @@ void func_00330080(AixDmx *d)
 
     sj->vt->getChunk(sj, 1, 0x7FFFFFFF, &ck);
     (*out)->vt->getChunk(*out, 0, ck.len, &dst);
-    func_003A5148(dst.ptr, ck.ptr, dst.len);
+    func_003A5148(dst.data, ck.data, dst.len);
     (*out)->vt->putChunk(*out, 1, &dst);
     func_0033ACA0(&ck, dst.len, &ck, &tail);
     sj->vt->putChunk(sj, 0, &ck);

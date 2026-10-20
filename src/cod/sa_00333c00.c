@@ -1,24 +1,24 @@
 typedef struct {
     int unk0;
     int unk4;
-} Res333C00;
+} FileLoc;
 
 typedef struct {
     int unk0;
     int unk4;
-} Tbl333C00;
+} FileLocTbl;
 
 extern char D_004545B0[];
 extern char D_004545B8[];
-extern Tbl333C00 D_003D9DC0;
+extern FileLocTbl D_003D9DC0;
 extern int func_003A5678(char *, char *);
 extern void func_003260C8(char *, int);
 extern int func_00333B00(char *);
 extern void func_00333B40(char *, int *, int *);
-extern void func_00333A10(Res333C00 *, char *, void *, int);
+extern void func_00333A10(FileLoc *, char *, void *, int);
 
 __attribute__((section(".text.func_00333C00")))
-int func_00333C00(char *name, Res333C00 *res)
+int func_00333C00(char *name, FileLoc *res)
 {
     int buf[2];
 

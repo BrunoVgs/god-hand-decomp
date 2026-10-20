@@ -1,13 +1,6 @@
 /* cygnus-2.96: func_003487C0, releases slot n of the handle's 0x20-byte slot table: when the slot was
  * active it is cleared, its stream is told to stop and the buffer goes back to the pool. */
-typedef struct SjObj SjObj;
-typedef struct {
-    void *f0[5];
-    void (*stop)(SjObj *sj); /* 0x14 */
-} SjVtbl;
-struct SjObj {
-    SjVtbl *vtbl;
-};
+#include "godhand/criSj.h"
 typedef struct {
     char pad0[0x14];
     SjObj *sj; /* 0x14 */
@@ -34,7 +27,7 @@ void func_003487C0(SlotHn *hn, int n)
 
     if (func_00348968(s) == 1) {
         func_00348498(s);
-        sj->vtbl->stop(sj);
+        sj->vt->reset(sj);
         func_0034E090(pool, buf + 0xC0, sj, 0, 0);
     }
 }

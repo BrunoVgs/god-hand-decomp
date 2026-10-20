@@ -1,44 +1,44 @@
 #include "godhand/menuCtl.h"
 
-typedef struct Name381BC8 {
+typedef struct FileName {
     long a;
     unsigned short b;
     unsigned char c;
-} Name381BC8;
+} FileName;
 
-typedef struct Sel381BC8 {
+typedef struct FileNameSel {
     char pad0[0x3C];
     char *name;
-} Sel381BC8;
+} FileNameSel;
 
-typedef struct Work381BC8 {
+typedef struct FileLoadWork {
     unsigned char state;
     unsigned char err;
     char pad2[0x30 - 2];
     SlotInfoA info;
-} Work381BC8;
+} FileLoadWork;
 
-extern int func_00381B38(Sel381BC8 *sel, SlotInfoA *info, Work381BC8 *work);
+extern int func_00381B38(FileNameSel *sel, SlotInfoA *info, FileLoadWork *work);
 extern void func_0032DE88(int handle, int a1);
 extern void func_0032DEF8(int handle, int a1);
 extern void func_0032DF70(int handle, int a1, int a2);
-extern void func_003821D8(Sel381BC8 *sel, Work381BC8 *work);
-extern void func_003825A8(Sel381BC8 *sel, Work381BC8 *work);
+extern void func_003821D8(FileNameSel *sel, FileLoadWork *work);
+extern void func_003825A8(FileNameSel *sel, FileLoadWork *work);
 extern char *func_003A53A8(char *dst, const char *src);
 extern void func_0032D9B8(int handle, char *name, int a2);
 extern void func_0032E040(int handle, int a1);
-extern Name381BC8 D_0045C7F0;
-extern Name381BC8 D_0077BF80;
+extern FileName D_0045C7F0;
+extern FileName D_0077BF80;
 extern char D_0045C800[];
 
 __attribute__((section(".text.func_00381BC8")))
-int func_00381BC8(Sel381BC8 *sel, Work381BC8 *work)
+int func_00381BC8(FileNameSel *sel, FileLoadWork *work)
 {
     SlotInfoA *info = &work->info;
     int r;
     int len;
     char *src;
-    Name381BC8 *d;
+    FileName *d;
 
     r = func_00381B38(sel, info, work);
     if (r != 0) {

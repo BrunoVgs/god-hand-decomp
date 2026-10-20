@@ -2,8 +2,6 @@
 
 #include "godhand/mwsfHn.h"
 
-extern char D_004591A0[];
-extern char D_004591D0[];
 extern char D_00459210[];
 
 void func_00347FE0(MwsfHn *mw);

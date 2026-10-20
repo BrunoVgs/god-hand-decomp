@@ -1,21 +1,5 @@
 /* sn-2.95.3-136 matched 92-byte Phase A functions. */
 
-extern void func_001B6FB8(void *);
-extern void cOm53_setRiseWaitTime(void *, int);
-extern void cOm53_setDownPos(void *, float);
-extern void func_001E7470(void *, int, int);
-extern void func_001E7538(void *, int, int);
-extern void CustomIDWork_SetMoveOffsetPosYSin(void *, int, unsigned short);
-extern void CustomIDWork_ResetMoveOffsetPos(void *);
-extern void *cIDBase_getIDWork(void *, int);
-extern int func_003078E0(void *);
-extern void func_002A4ED8(void *);
-extern void Moji_size_set(int, int);
-extern char D_0044ACF0[];
-extern void DebugPrintfWrapper(int, int, int, int, char *, ...);
-extern void func_002B1C80(void *);
-extern void func_002B1890(void *);
-extern float Adjust_theta(float);
 extern void func_003128B0(void *);
 extern void func_002A9528(void *);
 extern int D_00754C30;

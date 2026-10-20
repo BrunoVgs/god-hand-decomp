@@ -11,7 +11,7 @@ typedef struct {
     unsigned short hE;
     int w10[6];
     char pad28[0x18];
-} Dst3778D8;
+} SndChOut;
 
 typedef struct {
     unsigned short flags;
@@ -27,10 +27,10 @@ typedef struct {
     char pad14[0x64];
     int w78[6];
     char pad90[0x10];
-} Src3778D8;
+} SndChIn;
 
-extern Dst3778D8 D_0076AFC0[];
-extern Src3778D8 D_0076E910[];
+extern SndChOut D_0076AFC0[];
+extern SndChIn D_0076E910[];
 
 __attribute__((section(".text.func_003778D8")))
 void func_003778D8(void)
@@ -38,8 +38,8 @@ void func_003778D8(void)
     int i;
 
     for (i = 0; i < 2; i++) {
-        Src3778D8 *s = &D_0076E910[i];
-        Dst3778D8 *d = &D_0076AFC0[i];
+        SndChIn *s = &D_0076E910[i];
+        SndChOut *d = &D_0076AFC0[i];
         if (s->flags == 0) {
             d->flags = 0;
             d->w4 = 0;

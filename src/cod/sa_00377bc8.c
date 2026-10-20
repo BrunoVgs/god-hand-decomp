@@ -1,5 +1,5 @@
 /* sn-2.95.3-136: reset a state block and its buffers (0x377BC8). */
-#include "godhand/sndSys76A790.h"
+#include "godhand/sndTiming.h"
 
 extern int D_0045A600[];
 extern char D_0076A880[];
@@ -16,7 +16,7 @@ extern void func_00378540(void);
 __attribute__((section(".text.func_00377BC8")))
 void func_00377BC8(void)
 {
-    func_003A52F0(&D_0076A790, 0, sizeof(SndSys76A790));
+    func_003A52F0(&D_0076A790, 0, sizeof(SndTiming));
     __builtin_memcpy(&D_0076A790, D_0045A600, 14);
     D_0076A790.unkA8 = 0xFFFFFFFF;
     D_0076A790.unk1C = 1;

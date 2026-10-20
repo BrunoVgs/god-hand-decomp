@@ -6,7 +6,6 @@
  *   state/flags copies after GetActiveState and the vector copies are
  *   scheduled differently. */
 
-
 #include "godhand/stageSet.h"
 
 extern char *CreateObj(int id, int a1);

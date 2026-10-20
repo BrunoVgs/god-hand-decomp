@@ -1,26 +1,5 @@
 /* cygnus-2.96: func_00329E08, stops a stream player: halts the SJ, releases the reader and clears the state. */
-typedef struct RdObj RdObj;
-typedef struct {
-    void *f0, *f4, *f8;
-    void (*destroy)(RdObj *o); /* 0x0C */
-} RdVtbl;
-struct RdObj { RdVtbl *vt; };
-
-typedef struct {
-    char pad0;
-    signed char stat;   /* 0x01 */
-    signed char kind;   /* 0x02 */
-    char pad3;
-    void *dec;          /* 0x04 */
-    char pad8[4];
-    void *sj;           /* 0x0C */
-    char pad10[4];
-    RdObj *rd;          /* 0x14 */
-    char pad18[0x74 - 0x18];
-    void *buf;          /* 0x74 */
-    char pad78[0xAC - 0x78];
-    char eos;           /* 0xAC */
-} StmPly;
+#include "godhand/criStm.h"
 
 extern void Forward33B658_33E678(void);
 extern void Forward33B670_33E690(void);
@@ -33,7 +12,7 @@ extern void func_0033C228(void *buf);
 __attribute__((section(".text.func_00329E08")))
 void func_00329E08(StmPly *p)
 {
-    RdObj *rd;
+    StmRd *rd;
 
     Forward33B658_33E678();
     Obj3260_Tramp_003382A0_D320(p->sj, 0);

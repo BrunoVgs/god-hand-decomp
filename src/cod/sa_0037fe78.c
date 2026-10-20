@@ -1,6 +1,6 @@
 #include "godhand/menuCtl.h"
 
-typedef struct Slot37FE78 {
+typedef struct FileSlot {
     int f00;
     int f04;
     int f08;
@@ -8,7 +8,7 @@ typedef struct Slot37FE78 {
     int f10;
     char unk14[0x20 - 0x14];
     int handle;                 /* 0x20 */
-} Slot37FE78;
+} FileSlot;
 
 extern int func_0032DCD0(int handle, int a1);
 extern int func_0032E118(int handle);
@@ -19,13 +19,13 @@ extern int func_0032E310(int handle);
 extern int func_0032A4A8(int handle);
 extern int func_0032A5B8(int handle);
 extern int func_0032A648(int handle);
-extern void func_00381D60(FileSel *sel, Slot37FE78 *slot, FileSelWork *work);
+extern void func_00381D60(FileSel *sel, FileSlot *slot, FileSelWork *work);
 
 __attribute__((section(".text.func_0037FE78")))
 int func_0037FE78(FileSel *sel, FileSelWork *work)
 {
     if (work->unk02[1] & 2) {
-        Slot37FE78 *a = (Slot37FE78 *)((char *)work + 0xCC);
+        FileSlot *a = (FileSlot *)((char *)work + 0xCC);
         int h = func_0032DCD0(a->handle, 0);
         if (GuardedCall_00329FD0_329F98(h) != 2)
             return 0;

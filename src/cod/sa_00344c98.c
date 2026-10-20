@@ -1,10 +1,5 @@
 /* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
-typedef struct {
-    char pad0[0x58];
-    unsigned int picstr; /* 0x58 */
-    char pad5C[0x6C - 0x5C];
-    signed char progressive; /* 0x6C */
-} SfdPicInf;
+#include "godhand/sftim.h"
 extern char D_004578B8[];
 extern void MWSFSVM_Error(char *msg);
 extern int MWSFD_GetUsePicUsr(void);
@@ -17,7 +12,7 @@ int func_00344C98(void *sfd, SfdPicInf *inf, void *usr, int size)
     int use;
     unsigned int picstr;
 
-    picstr = inf->picstr;
+    picstr = inf->picStruct;
     if (picstr < 3) {
         if (picstr == 0)
             goto error;

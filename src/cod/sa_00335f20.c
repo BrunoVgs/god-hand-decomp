@@ -1,5 +1,5 @@
 /* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
-typedef struct Ent335F20 {
+typedef struct FsCacheEnt {
     int unk00;
     char *name;
     int sum;
@@ -8,9 +8,9 @@ typedef struct Ent335F20 {
     int unk14;
     int loaded;
     int unk1C;
-} Ent335F20;
+} FsCacheEnt;
 
-typedef struct Ctl335F20 {
+typedef struct FsCacheCtl {
     char pad00[2];
     unsigned char active;
     char pad03[0x14 - 3];
@@ -22,8 +22,8 @@ typedef struct Ctl335F20 {
     void *handle;
     int unk2C;
     char pad30[8];
-    Ent335F20 ent[1];
-} Ctl335F20;
+    FsCacheEnt ent[1];
+} FsCacheCtl;
 
 extern char D_00455000[];
 extern unsigned int strlen(const char *s);
@@ -37,9 +37,9 @@ extern void func_003280D8(void *h, int a);
 extern int func_003281C8(void *h);
 
 __attribute__((section(".text.func_00335F20")))
-void func_00335F20(Ctl335F20 *self)
+void func_00335F20(FsCacheCtl *self)
 {
-    Ent335F20 *e = &self->ent[self->cur];
+    FsCacheEnt *e = &self->ent[self->cur];
     char *name;
     unsigned int len;
     unsigned int i;

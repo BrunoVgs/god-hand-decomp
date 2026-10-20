@@ -1,11 +1,6 @@
 /* cygnus-2.96, --f=-freorder-blocks: NM closer handoff. */
 /* cygnus-2.96 (drop-reorder): func_0032BE10, split from src/cod/sa_nm_0032be10.c by the NM closer. */
 
-extern int func_00327830(void *sj);
-extern int Obj3270_GetField_30(void *sj);
-extern void Obj3270_SetField_3C(void *sj, int v);
-extern void func_00328448(void *sj, int len);
-extern void func_003280D8(void *sj, int sectors);
 extern void func_0033F130(const char *msg);
 extern void func_00329EA8(void *self);
 extern void Forward33B658_33E678(void);

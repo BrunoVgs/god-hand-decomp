@@ -1,12 +1,5 @@
 /* cygnus-2.96: func_00331310, polls an IOP request until it completes, with an error state and a spin timeout. */
-typedef struct {
-    char unk0[2];
-    char state;
-    char unk3[0x2D];
-    int handle;
-    int err;
-} IopReq;
-
+#include "godhand/iopReq.h"
 extern char D_00453E90[];
 extern void PushGlobalD8478History_331C78(int tag);
 extern int func_00331E70(int handle, int mode, int *busy);

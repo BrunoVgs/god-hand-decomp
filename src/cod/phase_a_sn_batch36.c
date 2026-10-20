@@ -1,10 +1,6 @@
 /* Batch 36: unique SN ~104–140 (scratch-only). */
-extern void func_002B41F0(void *self);
-extern int func_002B4228(void *self);
-extern void func_002B42F0(void *self);
 extern void func_0037D820(void *self);
 extern void func_00378070(void *p);
-extern void displayScrollLayer(void *a0, int a1);
 
 __attribute__((section(".text.func_0037CC78")))
 void func_0037CC78(unsigned short *self)

@@ -1,13 +1,13 @@
 /* sn-2.95.3-136: func_00387328, queues a voice-parameter command: with val 0 or -1 every channel is
  * reset (mask 0xF), otherwise the channels in mask get (prm, val); returns 0, or -1 if the queue is full. */
-typedef struct Ch387328 {
+typedef struct SndCmdCh {
     short unk0;
     short prm;      /* +2 */
     short unk4;
     short val;      /* +6 */
-} Ch387328;
+} SndCmdCh;
 
-typedef struct Cmd387328 {
+typedef struct SndCmd {
     short used;             /* 0x00 */
     short unk2;
     int unk4;               /* 0x04 */
@@ -16,16 +16,16 @@ typedef struct Cmd387328 {
     short unkA;             /* 0x0A */
     short id;               /* 0x0C */
     char unkE[0x12];
-    Ch387328 ch[4];         /* 0x20 */
+    SndCmdCh ch[4];         /* 0x20 */
     int mask;               /* 0x40 */
-} Cmd387328;
+} SndCmd;
 
-extern Cmd387328 *func_00377998(void);
+extern SndCmd *func_00377998(void);
 
 __attribute__((section(".text.func_00387328")))
 int func_00387328(short id, short prm, short val, int mask)
 {
-    Cmd387328 *c = func_00377998();
+    SndCmd *c = func_00377998();
     unsigned int i;
     int bit;
 

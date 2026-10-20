@@ -1,19 +1,4 @@
 /* Batch 25: SN exact clone pairs (264–268). Matched only. */
-extern int ClearField5B4IfFlagUnset_1B76B0(int a0);
-extern void func_001B76D8(void *a0);
-
-struct Entry_b25_264 {
-    short f0;
-    unsigned short type;
-    unsigned short f4;
-    short f6;
-};
-struct Table_b25_264 {
-    struct Entry_b25_264 e[4];
-};
-
-extern struct Table_b25_264 D_004235D0;
-extern struct Table_b25_264 D_004297B8;
 
 extern void func_003823E0(void *a0, char *p, unsigned char flag);
 extern void func_00383C70(void *a0, char *p, unsigned char flag);

@@ -1,23 +1,23 @@
-typedef struct Blk366EC0 {
+typedef struct MpvUnit {
     int w[8];
-} Blk366EC0;
+} MpvUnit;
 
-typedef struct Dec366EC0 {
+typedef struct MpvUnitDec {
     char pad0[0x28];
-    Blk366EC0 cur;
-    Blk366EC0 slot[3];
-} Dec366EC0;
+    MpvUnit cur;
+    MpvUnit slot[3];
+} MpvUnitDec;
 
-extern int func_00366FE0(Dec366EC0 *d, char *p, int len, int *used, int *flags);
+extern int func_00366FE0(MpvUnitDec *d, char *p, int len, int *used, int *flags);
 
 __attribute__((section(".text.func_00366EC0")))
-int func_00366EC0(Dec366EC0 *d, char *p, int len, int *total, int *flags)
+int func_00366EC0(MpvUnitDec *d, char *p, int len, int *total, int *flags)
 {
     int used;
     int fl;
     int r;
     int idx;
-    Blk366EC0 *cur;
+    MpvUnit *cur;
 
     while (len >= 4) {
         r = func_00366FE0(d, p, len, &used, &fl);

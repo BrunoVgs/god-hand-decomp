@@ -5,9 +5,7 @@
 #ifndef GODHAND_UNKOBJ_H
 #define GODHAND_UNKOBJ_H
 
-typedef struct Vec3f {
-    float x, y, z;
-} Vec3f;
+#include "godhand/vec.h"
 
 /* Object behind cOmBase_rollChance; flags bit 29 blocks the random roll. */
 typedef struct ActObj {

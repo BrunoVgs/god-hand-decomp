@@ -1,46 +1,46 @@
-typedef struct Blk352F40 {
+typedef struct MpvBlk {
     int w[11];
-} Blk352F40;
+} MpvBlk;
 
-typedef struct Work352F40 {
+typedef struct MpvWork {
     char buf[0x200];
     int size;
-} Work352F40;
+} MpvWork;
 
-typedef struct Mpv352F40 {
+typedef struct MpvDec {
     int busy;
     int rate;
     int on;
-    Blk352F40 blk;
-    Work352F40 work;
-} Mpv352F40;
+    MpvBlk blk;
+    MpvWork work;
+} MpvDec;
 
-typedef struct Sub352F40 {
+typedef struct MpvSub {
     char pad0[0x3C];
-    Blk352F40 blk;
-} Sub352F40;
+    MpvBlk blk;
+} MpvSub;
 
-typedef struct Hn352F40 {
+typedef struct MpvHn {
     char pad0[0xD30];
-    Sub352F40 sub;
-} Hn352F40;
+    MpvSub sub;
+} MpvHn;
 
-typedef struct Para352F40 {
+typedef struct MpvPara {
     void *src;
     int len;
-    Work352F40 *w;
-} Para352F40;
+    MpvWork *w;
+} MpvPara;
 
-extern Mpv352F40 *func_003553C8(Hn352F40 *hn);
-extern int func_00366960(Work352F40 *w, void *src, int len);
+extern MpvDec *func_003553C8(MpvHn *hn);
+extern int func_00366960(MpvWork *w, void *src, int len);
 
 __attribute__((section(".text.func_00352F40")))
-void func_00352F40(Hn352F40 *hn, int rate, Para352F40 *para)
+void func_00352F40(MpvHn *hn, int rate, MpvPara *para)
 {
-    Mpv352F40 *m;
-    Sub352F40 *sub;
+    MpvDec *m;
+    MpvSub *sub;
     int len;
-    Work352F40 *w;
+    MpvWork *w;
 
     m = func_003553C8(hn);
     if (m == 0 || m->busy != 0)

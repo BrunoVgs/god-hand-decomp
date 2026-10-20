@@ -8,7 +8,7 @@ typedef struct {
     short pan[(0xAC - 0x42) / 2];
     char padAC;
     signed char mode;
-} Adx32A720;
+} AdxPanHn;
 
 extern int D_003C7410;
 extern char D_004521C8[];
@@ -19,7 +19,7 @@ extern int Obj3270_GetVia4_0033CE98_77A0(int sj);
 extern void Obj3260_Tramp_003387C8_D3F8(int rna, int ch, int pan);
 
 __attribute__((section(".text.func_0032A720")))
-void func_0032A720(Adx32A720 *a, int ch, int pan)
+void func_0032A720(AdxPanHn *a, int ch, int pan)
 {
     int base;
     int out;

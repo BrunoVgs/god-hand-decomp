@@ -1,27 +1,27 @@
-typedef struct Sfd35BDD0 {
+typedef struct SfdSync {
     char pad0[0xBB0];
     int audioPos;
     int videoPos;
-} Sfd35BDD0;
+} SfdSync;
 
-typedef struct Cond35BDD0 {
+typedef struct SfdSyncCond {
     int pad0;
     int sys;
     int video;
     int audio;
     char pad10[0x10];
     int usr;
-} Cond35BDD0;
+} SfdSyncCond;
 
-extern void Obj35C0_Set_a1_0_a2_C140(Sfd35BDD0 *sfd, int a, int b);
-extern void func_0035BEF0(Sfd35BDD0 *sfd, Cond35BDD0 *c);
-extern void sftrn_BuildVideo(Sfd35BDD0 *sfd, Cond35BDD0 *c);
-extern void sftrn_BuildAudio(Sfd35BDD0 *sfd, Cond35BDD0 *c);
-extern void sftrn_BuildUsr(Sfd35BDD0 *sfd, Cond35BDD0 *c);
-extern void func_0035A000(Sfd35BDD0 *sfd, int tr, int v);
+extern void Obj35C0_Set_a1_0_a2_C140(SfdSync *sfd, int a, int b);
+extern void func_0035BEF0(SfdSync *sfd, SfdSyncCond *c);
+extern void sftrn_BuildVideo(SfdSync *sfd, SfdSyncCond *c);
+extern void sftrn_BuildAudio(SfdSync *sfd, SfdSyncCond *c);
+extern void sftrn_BuildUsr(SfdSync *sfd, SfdSyncCond *c);
+extern void func_0035A000(SfdSync *sfd, int tr, int v);
 
 __attribute__((section(".text.func_0035BDD0")))
-int func_0035BDD0(Sfd35BDD0 *sfd, Cond35BDD0 *c)
+int func_0035BDD0(SfdSync *sfd, SfdSyncCond *c)
 {
     if (c->sys != 0) {
         Obj35C0_Set_a1_0_a2_C140(sfd, 0, 0);

@@ -1,6 +1,6 @@
 /* sn-2.95.3-136: NM closer handoff. */
 /* sn-2.95.3-136: func_00383DD0, split from src/cod/batch36_nm.c by the NM closer. */
-typedef struct Obj383DD0 {
+typedef struct KeyRow {
     char pad00[4];
     unsigned char key;      /* 0x04 */
     char pad05[0x17];
@@ -8,10 +8,10 @@ typedef struct Obj383DD0 {
     short b[5];             /* 0x26 */
     char pad30[0x7C];
     int count;              /* 0xAC */
-} Obj383DD0;
+} KeyRow;
 
 __attribute__((section(".text.func_00383DD0")))
-int func_00383DD0(int unused, Obj383DD0 *o, unsigned char which)
+int func_00383DD0(int unused, KeyRow *o, unsigned char which)
 {
     short *p = o->a;
     int i;

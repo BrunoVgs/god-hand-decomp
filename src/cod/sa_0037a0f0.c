@@ -5,12 +5,12 @@ typedef struct {
     signed char col;
     char unk8[8];
     short count[3]; /* 0x10 */
-} Sel37A0F0;
+} MenuColSel;
 
 typedef struct {
     int on;
     char unk4[0x1C];
-} SelEnt37A0F0;
+} MenuColEnt;
 
 typedef struct {
     char unk0[0x14];
@@ -18,12 +18,12 @@ typedef struct {
     char unk18[8];
 } SelEnt37A0F0b;
 
-extern SelEnt37A0F0 D_0076DF10[];
-extern SelEnt37A0F0 D_0076E510[];
+extern MenuColEnt D_0076DF10[];
+extern MenuColEnt D_0076E510[];
 extern SelEnt37A0F0b D_0076EA50[];
 
 __attribute__((section(".text.func_0037A0F0")))
-short func_0037A0F0(Sel37A0F0 *o, short idx, short dir)
+short func_0037A0F0(MenuColSel *o, short idx, short dir)
 {
     short n = o->count[o->col];
     short i;

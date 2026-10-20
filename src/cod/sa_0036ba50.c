@@ -1,11 +1,11 @@
-typedef struct Mpv36BA50 {
+typedef struct MpvSeqHn {
     char pad0[0x360];
     int w360;
     int w364;
     int w368;
     char pad36C[0x398 - 0x36C];
     int w398;
-} Mpv36BA50;
+} MpvSeqHn;
 
 extern char D_0045A3C0[];
 extern char D_0045A3C8[];
@@ -14,7 +14,7 @@ extern int func_003A7C48(char *s);
 extern int MPV_CheckDelim(char *p);
 
 __attribute__((section(".text.func_0036BA50")))
-int func_0036BA50(Mpv36BA50 *m, char *buf, int size)
+int func_0036BA50(MpvSeqHn *m, char *buf, int size)
 {
     int n;
     int i;

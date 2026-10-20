@@ -1,9 +1,6 @@
 /* Batch 45: unique SN ~144–160 (scratch-only). */
 
-extern int cModel_setTextureExchange(void *self, void *tex, void *tbl, int n);
-extern void *cModel_getMeshPtr_14B730(void *self, void *name);
 extern int func_00374AE0(int a0);
-extern char D_0042CAC8[];
 extern char D_0076A7D4[];
 
 __attribute__((section(".text.func_00377CB8")))

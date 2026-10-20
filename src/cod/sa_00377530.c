@@ -1,17 +1,17 @@
 /* sn-2.95.3-136: NM closer handoff. */
 extern void func_00377A28(void *self);
 
-typedef struct Obj377530 {
+typedef struct SndSeqCtl {
     unsigned short flags;   /* 0x00 */
     char pad02[0x12];
     unsigned short mode;    /* 0x14 */
     unsigned short count;   /* 0x16 */
     char pad18[0x22];
     short wait;             /* 0x3A */
-} Obj377530;
+} SndSeqCtl;
 
 __attribute__((section(".text.func_00377530")))
-void func_00377530(Obj377530 *o)
+void func_00377530(SndSeqCtl *o)
 {
     unsigned short flags = o->flags;
 

@@ -2,10 +2,10 @@ typedef struct {
     unsigned int lo;
     unsigned int hi;
     int val;
-} Range320728;
+} AddrRange;
 
 __attribute__((section(".text.func_00320728")))
-int func_00320728(unsigned int addr, Range320728 *tbl)
+int func_00320728(unsigned int addr, AddrRange *tbl)
 {
     int best = -1;
     int i;

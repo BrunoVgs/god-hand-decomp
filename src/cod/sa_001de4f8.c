@@ -1,7 +1,6 @@
 /* sn-2.95.3-136: CustomID panel helpers (offset slides, scale/colour pulses on 0x7C-byte works at +0x60). */
 #include "godhand/CustomIDPanel.h"
 
-extern CustomIDSlotTbl D_0042B5D0;
 extern CustomIDSlotTbl8 D_0042B678;
 extern CustomIDSlotTbl8 D_0042B698;
 

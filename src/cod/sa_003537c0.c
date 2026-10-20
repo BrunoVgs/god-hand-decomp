@@ -12,7 +12,7 @@ int func_003537C0(char *h, char *tm)
     char *w;
     char *obj;
     char *sub;
-    int t0;
+    int start;
     int r;
     int dt;
     int ret;
@@ -20,10 +20,10 @@ int func_003537C0(char *h, char *tm)
     w = *(char **)(h + 0x1FC0);
     obj = *(char **)w;
     func_003538B0(h);
-    t0 = func_0033A010(tm, 0, 1);
+    start = func_0033A010(tm, 0, 1);
     sub = w + 0x8C;
     r = func_00369FB8(obj, tm);
-    dt = func_0033A010(tm, 0, 1) - t0;
+    dt = func_0033A010(tm, 0, 1) - start;
     ret = func_00351C18(h, r, dt, 0xFF000F07);
     func_00351B70(h, dt);
     if (ret == 0) {

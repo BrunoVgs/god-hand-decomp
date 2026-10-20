@@ -5,24 +5,24 @@ typedef struct {
     short unk4;
     short y;
     char pad8[0xC];
-} Ent379838;
+} MenuRowEnt;
 
 typedef struct {
     char pad0[7];
     signed char mode;
     char pad8[0x25 - 0x8];
     signed char idx;
-} Obj379838;
+} MenuRowObj;
 
-extern Ent379838 D_003F21E8[];
-extern Ent379838 D_003F2368[];
-extern Ent379838 D_003F24D0[];
+extern MenuRowEnt D_003F21E8[];
+extern MenuRowEnt D_003F2368[];
+extern MenuRowEnt D_003F24D0[];
 extern char D_0045B758[];
 extern char D_0045B760[];
 extern void func_002E0DE8(int, int, int, char *);
 
 __attribute__((section(".text.func_00379838")))
-void func_00379838(Obj379838 *o)
+void func_00379838(MenuRowObj *o)
 {
     int y = 3;
 

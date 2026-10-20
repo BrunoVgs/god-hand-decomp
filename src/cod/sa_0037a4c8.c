@@ -1,4 +1,4 @@
-typedef struct Snd37A4C8 {
+typedef struct MenuSndItem {
     char pad00[7];
     signed char kind;
     char pad08[4];
@@ -7,17 +7,17 @@ typedef struct Snd37A4C8 {
     int flags;
     char pad38[0x9C - 0x38];
     char nodeDesc[4];
-} Snd37A4C8;
+} MenuSndItem;
 
 extern void func_00375050(int a, int b);
 extern void func_00375D98(int a, int b, int c);
 extern void func_00387270(int a, int b, int c, int d);
-extern void func_0037A5F0(Snd37A4C8 *self);
-extern void func_0037A668(Snd37A4C8 *self);
+extern void func_0037A5F0(MenuSndItem *self);
+extern void func_0037A668(MenuSndItem *self);
 extern int BuildSoundNode_374DF8(void *desc, int arg);
 
 __attribute__((section(".text.func_0037A4C8")))
-int func_0037A4C8(Snd37A4C8 *self)
+int func_0037A4C8(MenuSndItem *self)
 {
     if (self->flags & 0x40) {
         switch (self->kind) {

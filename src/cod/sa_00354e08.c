@@ -1,27 +1,8 @@
 /* cygnus-2.96: func_00354E08, takes a free stream entry, opens it into *out and records its
  * buffer range; in mode 2 also assigns it an owner id. */
-typedef struct {
-    char pad0[0x14];
-    int start; /* 0x14 */
-    int size; /* 0x18 */
-} StmBuf;
-typedef struct {
-    char pad0[0x58];
-    int owner; /* 0x58 */
-} StmEnt;
-typedef struct {
-    char pad0[0x27C];
-    int start; /* 0x27C */
-    int size; /* 0x280 */
-} StmRange;
-typedef struct {
-    char pad0[0x58];
-    int mode; /* 0x58 */
-    char pad5C[0xD30 - 0x5C];
-    StmRange range; /* 0xD30 */
-} StmSys;
+#include "godhand/criStm.h"
 extern void *func_003556C8(StmSys *sys);
-extern void func_00354EC8(StmSys *sys, StmEnt *ent, StmBuf **out);
+extern void func_00354EC8(StmSys *sys, StmSlot *ent, StmBuf **out);
 extern void *func_0035B678(StmSys *sys, StmBuf *buf);
 extern int func_003557B0(StmSys *sys);
 
@@ -29,7 +10,7 @@ __attribute__((section(".text.func_00354E08")))
 int func_00354E08(StmSys *sys, StmBuf **out, int *owner)
 {
     StmRange *range = &sys->range;
-    StmEnt *ent;
+    StmSlot *ent;
     StmBuf *buf;
     void *p;
 

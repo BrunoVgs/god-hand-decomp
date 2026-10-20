@@ -1,18 +1,18 @@
-typedef struct { int unk[4]; } Arena30ECF8;
+typedef struct { int unk[4]; } Arena;
 
 extern int D_003C3CF8;
 extern int D_003C3D00;
 extern int D_003C3CF4;
-extern Arena30ECF8 *D_003C3CF0;
+extern Arena *D_003C3CF0;
 extern char D_003C3CFC;
-extern Arena30ECF8 D_00754200;
-extern Arena30ECF8 D_00754210;
-extern Arena30ECF8 D_00754220;
-extern Arena30ECF8 D_00754230;
-extern Arena30ECF8 D_00754240;
-extern Arena30ECF8 D_00754C10;
-extern Arena30ECF8 D_00754C20;
-extern void Arena_init(Arena30ECF8 *a, int base, int size, int a3);
+extern Arena D_00754200;
+extern Arena D_00754210;
+extern Arena D_00754220;
+extern Arena D_00754230;
+extern Arena D_00754240;
+extern Arena D_00754C10;
+extern Arena D_00754C20;
+extern void Arena_init(Arena *a, int base, int size, int a3);
 
 __attribute__((section(".text.func_0030ECF8")))
 void func_0030ECF8(int a0)

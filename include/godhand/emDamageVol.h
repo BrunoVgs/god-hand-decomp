@@ -1,23 +1,45 @@
+/* include/godhand/emDamageVol.h - the enemies built by the damage-volume setup family
+ * (sn code at 0x188DE0..0x1A3B80): a cOmBase with a damage-take volume and a sub-record.
+ *
+ * Field names are ours where cOmBase.h has none; offsets are exact.
+ */
 #ifndef GODHAND_EMDAMAGEVOL_H
 #define GODHAND_EMDAMAGEVOL_H
 
-/* Enemy work offsets used by the damage-volume setup family (sa_001932d8.c and its clones). */
-#define EM_COL_A        0x548   /* short */
-#define EM_COL_B        0x54A   /* short */
-#define EM_WORK_5E4     0x5E4
-#define EM_WORK_5E8     0x5E8
-#define EM_WORK_5EC     0x5EC
-#define EM_WORK_5F0     0x5F0
-#define EM_TARGET       0x5F4   /* short, -1 = none */
-#define EM_WORK_5F6     0x5F6   /* short */
-#define EM_DMG_TAKE     0x600
-#define EM_DMG_GIVE     0x604
-#define EM_SUB_PTR      0x608
-#define EM_SUB_KIND     0x60C   /* unsigned char */
-#define EM_SUB_BUF      0x620
+#include "godhand/cOmBase.h"
+#include "godhand/vec.h"
 
-/* Takes only the enemy work: it clobbers a1/a2 at entry. phase_a_sn_288.c and phase_a_sn_300.c
- * still declare a 4-argument form, so this stays out of the shared enemy headers. */
-extern int func_001C28A0(char *p);
+typedef struct EmDmgVol {
+    cOmBase base;               /* 0x000 hpMax 0x548, hp 0x54A */
+    char unk5E0[4];
+    int unk5E4;                 /* 0x5E4 */
+    int unk5E8;                 /* 0x5E8 */
+    int unk5EC;                 /* 0x5EC */
+    int unk5F0;                 /* 0x5F0 */
+    short target;               /* 0x5F4 -1 = none */
+    short unk5F6;               /* 0x5F6 */
+    char unk5F8[0x600 - 0x5F8];
+    void *dmgTake;              /* 0x600 damage-take volume */
+    void *dmgGive;              /* 0x604 damage-give volume */
+    char *sub;                  /* 0x608 points at subBuf */
+    unsigned char subKind;      /* 0x60C */
+    char unk60D[0x620 - 0x60D];
+    char subBuf[1];             /* 0x620 */
+} EmDmgVol;
+
+/* Takes only the enemy. */
+extern int func_001C28A0(EmDmgVol *em);
+extern void func_001B6FB8(EmDmgVol *em);
+extern void *cDamageManage_CreateDamageTake(void *mgr, void *owner, int kind);
+extern void func_001FD9D8(void *slot, void *mtx, Vec4f *ofs, Vec4f *rot, Vec4f *size);
+extern char D_00574380[];
+
+static inline void EmDmgVol_setVec4(Vec4f *v, float x, float y, float z, float w)
+{
+    v->x = x;
+    v->y = y;
+    v->z = z;
+    v->w = w;
+}
 
 #endif /* GODHAND_EMDAMAGEVOL_H */

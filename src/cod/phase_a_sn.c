@@ -98,12 +98,6 @@ typedef struct {
 } PhaseAObj98;
 
 typedef struct {
-    float x;
-    float y;
-    long value;
-} PhaseARec16;
-
-typedef struct {
     char pad[0x20];
     short delta;
     short index;
@@ -175,8 +169,6 @@ extern int EnsureInitThenForward_2A9538_30EE08(void *, int, void *);
 extern int cIDBase_trans(void *);
 extern int cIDBase_release(void *);
 extern void cDamageUnit_SetDamageCollActive(void *, int);
-extern int func_001D4720(void);
-extern int func_001D47E8(void);
 extern PhaseAObj98 **D_003C2384;
 extern int func_003B4220(void *, int);
 extern char D_0042C0E0[];
@@ -261,22 +253,14 @@ extern void func_001851C0(void *, int);
 extern void moveMotion(void *);
 extern int Obj0000_Get_Field_1560_Bit0_27DD00(int);
 extern void displayScrollLayer(int, int);
-extern char D_00586AF0;
-extern void func_00297B20(void *, void *);
-extern void func_00297B40(void *, void *);
-extern void ScrollLayer_hideAtEnd(void);
-extern void func_00298460(void);
 extern float func_0031CF78(void);
 extern void ForwardSoundEventAll_375DE0(short, short);
 extern void BuildSoundEventEntry_375E78(int, short, short);
 extern void StoreSoundEntry_3749D8(int, void *);
 extern int func_00380F80(void *, void *, void *);
-extern void InitFields_1B6E90(void *);
-extern int D_004282F0;
 extern unsigned short D_0076C8C0;
 extern int BuildSoundEvent_375BF0(void *);
 extern char D_0045C3E0;
-extern void func_002E0C80(int, int, int, int, int, int, char *);
 
 __attribute__((section(".text.func_00183510")))
 void func_00183510(void *self)

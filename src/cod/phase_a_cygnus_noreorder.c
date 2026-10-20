@@ -15,7 +15,6 @@ extern void MWSPR_RestoreSprMem(void);
 extern void func_003465B8(void);
 extern void func_00348E18(void *);
 extern void func_00348F68(void *);
-extern char D_00460B20[];
 extern int D_003D04B0;
 extern char D_003D04D0[];
 extern void func_003A52F0(void *, int, int);

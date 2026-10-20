@@ -1,5 +1,5 @@
 /* sn-2.95.3-136: NM closer handoff. */
-typedef struct Node2BB2D8 {
+typedef struct XformNode {
     char unk00[4];
     unsigned char flags;        /* 0x04 bit 0: has a local transform, bit 1: use the world matrix */
     char unk05[3];
@@ -12,14 +12,14 @@ typedef struct Node2BB2D8 {
     char unk74[0xC];
     float world_mtx[4][4];      /* 0x80 */
     float *pos;                 /* 0xC0 */
-} Node2BB2D8;
+} XformNode;
 
 extern float capVu0LengthSq(float *v);
 extern void MtxInitRotVec(void *m, float *v, unsigned int a2);
 extern void CopyVec3ToField30_147C40(void *m, float *v);
 
 __attribute__((section(".text.func_002BB2D8")))
-void func_002BB2D8(Node2BB2D8 *n)
+void func_002BB2D8(XformNode *n)
 {
     long t;
 

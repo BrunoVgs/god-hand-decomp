@@ -1,31 +1,31 @@
-typedef struct Rng34BA88 {
+typedef struct SfdRange {
     int pos;
     int len;
-} Rng34BA88;
+} SfdRange;
 
-typedef struct Hdr34BA88 {
+typedef struct SfdRangeHdr {
     int unk0;
     int size;
-    Rng34BA88 rng;
+    SfdRange rng;
     char pad10[0x18];
     int unit;
-} Hdr34BA88;
+} SfdRangeHdr;
 
-typedef struct BufPtr34BA88 {
+typedef struct SfdBufPtr {
     int w[8];
-} BufPtr34BA88;
+} SfdBufPtr;
 
-extern void sfbuf_MakeBufPtr(BufPtr34BA88 *bp, Rng34BA88 *rng, int size);
-extern int func_0034BC00(void *sfb, BufPtr34BA88 *bp, Rng34BA88 *rng, int idx, int n);
-extern void func_0034BE00(void *sfd, void *sfb, BufPtr34BA88 *bp, Rng34BA88 *rng, int idx);
-extern void func_0034BEB8(void *sfb, BufPtr34BA88 *bp, Rng34BA88 *rng, int idx);
-extern void func_0034BF58(void *sfb, BufPtr34BA88 *bp, Rng34BA88 *rng, int idx);
+extern void sfbuf_MakeBufPtr(SfdBufPtr *bp, SfdRange *rng, int size);
+extern int func_0034BC00(void *sfb, SfdBufPtr *bp, SfdRange *rng, int idx, int n);
+extern void func_0034BE00(void *sfd, void *sfb, SfdBufPtr *bp, SfdRange *rng, int idx);
+extern void func_0034BEB8(void *sfb, SfdBufPtr *bp, SfdRange *rng, int idx);
+extern void func_0034BF58(void *sfb, SfdBufPtr *bp, SfdRange *rng, int idx);
 
 __attribute__((section(".text.func_0034BA88")))
-int func_0034BA88(void *sfd, void *sfb, Hdr34BA88 *h)
+int func_0034BA88(void *sfd, void *sfb, SfdRangeHdr *h)
 {
-    BufPtr34BA88 bp;
-    Rng34BA88 *rng = &h->rng;
+    SfdBufPtr bp;
+    SfdRange *rng = &h->rng;
     int r;
 
     sfbuf_MakeBufPtr(&bp, rng, h->size);

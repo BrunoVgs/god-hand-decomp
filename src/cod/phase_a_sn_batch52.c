@@ -10,13 +10,6 @@ extern void func_00323A70(void *p);
 extern void func_00323E80(void *p, int a1, void *a2);
 extern char D_0045C270[];
 
-extern int D_00747A34;
-extern char D_00754C10[];
-extern int D_0041B730;
-extern void *EnsureInitThenForward_2A9538_30EE08(int size, int align, void *region);
-extern void func_003A52F0(void *dst, int val, int len);
-extern void cPlBase(void *a0);
-
 __attribute__((section(".text.func_0037FC28")))
 void func_0037FC28(char *self)
 {

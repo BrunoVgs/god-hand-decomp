@@ -33,18 +33,10 @@ typedef struct srd_obj {
     int err_code;
 } SRD_OBJ, *SRD;
 
-extern void *memcpy(void *dst, const void *src, unsigned int n);
 extern int Forward33B568_33B688(void);
 extern int Forward33B5C8_33B6B8(void);
-extern int func_003B1F28(const char *fmt, ...);
-extern void func_00330FB8(void);
 extern void PushGlobalD8478History_331C78(int code);
 extern int func_00398DA0(int mode);
-
-extern SRD_OBJ D_003D8410;              /* srd_obj */
-extern Sint32 D_003D8474;      /* destroy count */
-extern char D_00453E30[];               /* "SRD: SRD_Destroy, invalidate srd handle..." */
-extern char D_00453E70[];
 
 __attribute__((section(".text.func_00331110")))
 Bool func_00331110(SRD srd, Uint32 lsn, Uint32 nsct, void *buf, sceCdRMode *mode)

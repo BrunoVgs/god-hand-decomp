@@ -12,7 +12,6 @@ extern void *func_0031C8B8(int size, int align);
 extern int func_003A6A20();
 extern int func_00323E80();
 extern int func_003244C8(int req);
-extern void func_00383848(FileSel *sel);
 extern char D_0045CA58[];
 
 void func_00383708(FileSel *sel, MenuPad *pad);

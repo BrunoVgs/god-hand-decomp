@@ -8,13 +8,13 @@ typedef struct {
 typedef struct {
     int unk0;
     char *hdr;
-} StmHn;
+} StmHdrHn;
 
-extern int func_0035DAA0(StmHn *hn, char *out);
+extern int func_0035DAA0(StmHdrHn *hn, char *out);
 extern int getToolVer(char *str, int *maj, int *min);
 
 __attribute__((section(".text.func_0035DB38")))
-int func_0035DB38(StmHn *hn, int *maj, int *min)
+int func_0035DB38(StmHdrHn *hn, int *maj, int *min)
 {
     char buf[0x30];
     int tmaj;

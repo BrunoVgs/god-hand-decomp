@@ -4,7 +4,7 @@
 
 typedef struct Sfx Sfx;
 
-typedef struct Src35F288 {
+typedef struct SfdPicSrc {
     unsigned int type;                  /* 0x00 */
     void *y_ptr;                        /* 0x04 */
     int y_height;                       /* 0x08 */
@@ -19,9 +19,9 @@ typedef struct Src35F288 {
     int v_pitch;                        /* 0x2C */
     char pad30[0x14];
     int width;                          /* 0x44 */
-} Src35F288;
+} SfdPicSrc;
 
-typedef struct Inf35F288 {
+typedef struct SfdFrmInf {
     unsigned int type;                  /* 0x00 */
     void *y_ptr;                        /* 0x04 */
     int y_width;                        /* 0x08 */
@@ -35,12 +35,12 @@ typedef struct Inf35F288 {
     int v_width;                        /* 0x28 */
     int v_pitch;                        /* 0x2C */
     int v_height;                       /* 0x30 */
-} Inf35F288;
+} SfdFrmInf;
 
 extern char D_00459F20[];
 
 __attribute__((section(".text.func_0035F288")))
-void func_0035F288(Sfx *sfx, Src35F288 *src, Inf35F288 *inf)
+void func_0035F288(Sfx *sfx, SfdPicSrc *src, SfdFrmInf *inf)
 {
     switch (src->type) {
     case 1:

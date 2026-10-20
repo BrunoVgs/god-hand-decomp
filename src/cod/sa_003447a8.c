@@ -1,40 +1,33 @@
 /* cygnus-2.96: func_003447A8, Sofdec header analysis: clears the header info, then (in the standby
  * state) reads the stream header and fills the info block; returns 1 on success, 0 otherwise. */
-typedef struct HdrInf3447A8 {
+#include "godhand/mwsfd.h"
+typedef struct SfdHdrInf {
     int stat;           /* 0x00 */
     int size;           /* 0x04 */
     char unk8[0x28];
     int ftype;          /* 0x30 */
     char unk34[0x5C];
-} HdrInf3447A8;         /* 0x90 */
-
-typedef struct Mwsf3447A8 {
-    char unk0[0x78];
-    int hdrsize;        /* 0x78 */
-    char unk7C[0x3C];
-    int ftype;          /* 0xB8 */
-} Mwsf3447A8;
+} SfdHdrInf;         /* 0x90 */
 
 extern char D_004577D0[];
 extern void func_003A52F0(void *p, int c, int n);
-extern int GetField0OrZero_346828(Mwsf3447A8 *m);
-extern void MWSFSVM_Error(const char *msg);
-extern void func_003448B0(Mwsf3447A8 *m, int stat);
-extern void *func_003466F8(Mwsf3447A8 *m);
+extern int GetField0OrZero_346828(MwsfdHn *m);
+extern void func_003448B0(MwsfdHn *m, int stat);
+extern void *func_003466F8(MwsfdHn *m);
 extern int func_00359080(void *buf, int *size, int *hdrsize);
-extern void func_00344D50(Mwsf3447A8 *m, int hdrsize);
-extern void func_00344948(Mwsf3447A8 *m, int hdrsize, HdrInf3447A8 *inf);
-extern void func_003448F8(Mwsf3447A8 *m, HdrInf3447A8 *inf);
+extern void func_00344D50(MwsfdHn *m, int hdrsize);
+extern void func_00344948(MwsfdHn *m, int hdrsize, SfdHdrInf *inf);
+extern void func_003448F8(MwsfdHn *m, SfdHdrInf *inf);
 
 __attribute__((section(".text.func_003447A8")))
-int func_003447A8(Mwsf3447A8 *m, int *size, HdrInf3447A8 *inf)
+int func_003447A8(MwsfdHn *m, int *size, SfdHdrInf *inf)
 {
     int hdrsize;
     int stat;
     void *buf;
     int ret;
 
-    func_003A52F0(inf, 0, sizeof(HdrInf3447A8));
+    func_003A52F0(inf, 0, sizeof(SfdHdrInf));
     inf->stat = 0;
     inf->size = -1;
     *size = -1;
@@ -50,11 +43,11 @@ int func_003447A8(Mwsf3447A8 *m, int *size, HdrInf3447A8 *inf)
     ret = func_00359080(buf, size, &hdrsize);
     if (ret != stat)
         return ret;
-    m->hdrsize = hdrsize;
+    m->hdrSize = hdrsize;
     func_00344D50(m, hdrsize);
     func_00344948(m, hdrsize, inf);
     inf->size = *size;
-    m->ftype = inf->ftype;
+    m->fileType = inf->ftype;
     func_003448F8(m, inf);
     return 1;
 }

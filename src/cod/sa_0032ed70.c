@@ -1,17 +1,17 @@
-typedef struct Dec32ED70 {
+typedef struct AdxBufDec {
     char pad0[2];
     signed char nch;
     signed char nbuf;
     char pad4[0xC - 4];
     int buf[(0x26C - 0xC) / 4];
     int mode;
-} Dec32ED70;
+} AdxBufDec;
 
 extern int func_003297A8(int addr, int size);
 extern int func_00329438(int nch, int addr, int size);
 
 __attribute__((section(".text.func_0032ED70")))
-int func_0032ED70(Dec32ED70 *d, int addr, int size)
+int func_0032ED70(AdxBufDec *d, int addr, int size)
 {
     int cur, rest, unit, i;
 

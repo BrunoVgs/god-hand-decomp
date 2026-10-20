@@ -1,8 +1,6 @@
 /* sn-2.95.3-136: CustomID panel helpers at 0x1ECE30 (works are 0x7C bytes from +0x60). */
 #include "godhand/CustomIDPanel.h"
 
-extern CustomIDSlotTbl D_0042BD40;
-extern CustomIDSlotTbl D_0042BD58;
 extern CustomIDDigitTbl D_0042BD70;
 
 __attribute__((section(".text.func_001ED050")))

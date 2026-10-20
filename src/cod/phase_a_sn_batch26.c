@@ -2,14 +2,6 @@
 #include "include_asm.h"
 #include "godhand/vu0.h"
 
-extern int D_00747A34;
-extern char D_00754C10[];
-extern char D_00754220[];
-extern int D_0044B528;
-extern void *EnsureInitThenForward_2A9538_30EE08(int size, int align, void *region);
-extern void func_003A52F0(void *dst, int val, int len);
-extern void cObjBase(void *a0);
-
 /* 300-byte locked allocator + nested VU zero + flag clears.
  * Pair differs only in mask + heap. */
 

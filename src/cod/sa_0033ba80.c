@@ -4,9 +4,9 @@ typedef struct {
     void *func;
     void *obj;
     void *name;
-} Cb33BA80;
+} CallbackEnt;
 
-extern Cb33BA80 D_00758620[8][6];
+extern CallbackEnt D_00758620[8][6];
 extern char D_00455F70[];
 extern char D_00455F98[];
 extern char D_00455FC0[];
@@ -16,7 +16,7 @@ extern void func_0033B790(const char *msg);
 __attribute__((section(".text.func_0033BA80")))
 void func_0033BA80(unsigned int grp, unsigned int no, void *func, void *obj, void *name)
 {
-    Cb33BA80 *cb;
+    CallbackEnt *cb;
 
     if (no >= 6) {
         func_0033B790(D_00455F70);

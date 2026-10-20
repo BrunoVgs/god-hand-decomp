@@ -1,5 +1,4 @@
 /* sn-2.95.3-136, as=sn: NM closer handoff. */
-#define ABS(x) ((x) > 0.0f ? (x) : -(x))
 
 static inline float Absf(float x)
 {
@@ -21,7 +20,7 @@ float Turn_dest_dir(float now, float dest, float spd)
         d += 6.2831855f;
     }
     s = d > 0.0f ? 1.0f : -1.0f;
-    if (!(spd < ABS(d))) {
+    if (!(spd < (d > 0.0f ? d : -d))) {
         spd = Absf(d);
     }
     d = spd * s;

@@ -6,32 +6,32 @@ typedef struct {
     char pad1C[0x4];
     int res;              /* 0x20 */
     int hasRes;           /* 0x24 */
-} Mod394DD8;
+} IopModule;
 
 typedef struct {
     int name;
     int text;
     int size;
-} Ent394DD8;
+} ModTblEnt;
 
 typedef struct {
     char pad0[0x8];
-    Ent394DD8 ent[1];
-} Tbl394DD8;
+    ModTblEnt ent[1];
+} ModTbl;
 
 extern int D_003F8528;
-extern Tbl394DD8 D_003F5520;
+extern ModTbl D_003F5520;
 extern char D_0045DBD8[];
-extern int func_00393F80(Mod394DD8 *m);
+extern int func_00393F80(IopModule *m);
 extern void func_003951C0(void);
-extern int func_00394828(Mod394DD8 *m, Mod394DD8 *m2);
+extern int func_00394828(IopModule *m, IopModule *m2);
 extern void func_003951D0(void);
-extern int func_00394C18(int arg, Mod394DD8 *m);
+extern int func_00394C18(int arg, IopModule *m);
 extern void func_003951B0(void);
 extern void func_003A6A20(char *fmt, ...);
 
 __attribute__((section(".text.func_00394DD8")))
-int func_00394DD8(Mod394DD8 *m, int *res)
+int func_00394DD8(IopModule *m, int *res)
 {
     int r;
     int id;

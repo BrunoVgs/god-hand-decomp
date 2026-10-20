@@ -1,30 +1,30 @@
 /* sn-2.95.3-136: func_00304830, damps and accelerates an object's angular velocity by its parameter
  * block, wraps each axis, and adds it to the object's rotation. */
-typedef struct RotPrm304830 {
+typedef struct AngVelPrm {
     char unk0[0x1C0];
     float damp;     /* 0x1C0 */
     float acc[3];   /* 0x1C4 */
-} RotPrm304830;
+} AngVelPrm;
 
-typedef struct Obj304830 {
+typedef struct AngVelObj {
     char unk0[0x100];
-    RotPrm304830 *prm;  /* 0x100 */
+    AngVelPrm *prm;  /* 0x100 */
     char unk104[0x24];
     float rv[3];        /* 0x128 */
-} Obj304830;
+} AngVelObj;
 
-extern void func_002B62F8(float *rot, Obj304830 *o);
-extern void func_002B6230(Obj304830 *o, float *rot);
+extern void func_002B62F8(float *rot, AngVelObj *o);
+extern void func_002B6230(AngVelObj *o, float *rot);
 extern float Adjust_theta(float a);
 extern void Adjust_theta_vec(float *v);
 extern void capVu0AddVectorXYZ(float *d, float *a, float *b);
 
 __attribute__((section(".text.func_00304830")))
-void func_00304830(Obj304830 *o)
+void func_00304830(AngVelObj *o)
 {
     float rot[4];
     float v[4];
-    RotPrm304830 *prm;
+    AngVelPrm *prm;
     float t;
     float *pv;
 

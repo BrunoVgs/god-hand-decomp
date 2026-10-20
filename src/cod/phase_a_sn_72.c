@@ -2,27 +2,7 @@
 
 extern float fRand1_1(void);
 extern float func_0031D108(unsigned int *);
-extern int cOmWeapon_SetDamage(void *);
-extern void cOmWeapon_SetBreak(void *);
-extern void SetActionJumpUp(void);
-extern void SetActionJumpDown(void);
-extern void func_00137F38(void *, void *);
-extern void cCamera_move(void *);
-extern void *D_005CAFF0;
-extern void cIDBase_move(void *);
-extern int cOmBase_checkDamage(void *, void *);
-extern void cActionButtonEnt_reset(void *);
-extern void cCollisionSolidManage_ReleaseUnit(void *, void *);
-extern char D_00462FC0[];
-extern void cOmBase_dieCommon(void *);
-extern void func_002B1C80(void *);
-extern void cScenarioCursor_reinit(void *);
-extern void func_002BF420(void *);
-extern int func_00345B88(void *);
-extern void func_00345F48(void *, int);
 extern int func_00306A08(void *, void *, void *);
-extern void func_00385078(void *);
-extern void func_00385138(void *);
 extern char *func_003A93A8(void *, int);
 extern int func_003A5678(void *, void *);
 

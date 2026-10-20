@@ -7,16 +7,16 @@ typedef struct {
     char pad3[0x2C - 3];
     unsigned int dma_id; /* 0x2C */
     char pad30[0x40 - 0x30];
-} StmSlot;
-extern StmSlot D_003EBC20[0x20];
+} SifDmaSlot;
+extern SifDmaSlot D_003EBC20[0x20];
 extern int SifDmaStat(unsigned int id);
-extern void func_0033FDC0(StmSlot *slot);
+extern void func_0033FDC0(SifDmaSlot *slot);
 extern void func_00332778(void);
 
 __attribute__((section(".text.func_00340130")))
 void func_00340130(void)
 {
-    StmSlot *slot;
+    SifDmaSlot *slot;
     int i;
 
     slot = D_003EBC20;

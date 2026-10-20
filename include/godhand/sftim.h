@@ -103,7 +103,11 @@ typedef struct SfdPicInf {
     unsigned int picType;       /* 0x18 1 I, 2 P, 3 B */
     char unk1C[0x38 - 0x1C];
     int f38;                    /* 0x38 */
-    char unk3C[0x80 - 0x3C];
+    char unk3C[0x58 - 0x3C];
+    unsigned int picStruct;     /* 0x58 0 none, 1-2 field, 3 frame */
+    char unk5C[0x6C - 0x5C];
+    signed char progressive;    /* 0x6C */
+    char unk6D[0x80 - 0x6D];
 } SfdPicInf;
 
 typedef struct SfdFrm {

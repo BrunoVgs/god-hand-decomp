@@ -1,7 +1,6 @@
 /* sn-2.95.3-136: GIF tag pair into two out-params (0x155C68). */
 #include "godhand/mdlPkt.h"
 
-#define TAG64(e) ((unsigned int)((e).w1 | 0x30000000) | ((unsigned long)((e).w0 & 0x0FFFFFFF) << 32))
 
 __attribute__((section(".text.func_00155C68")))
 void func_00155C68(unsigned long *a0, unsigned long *a1, int id)

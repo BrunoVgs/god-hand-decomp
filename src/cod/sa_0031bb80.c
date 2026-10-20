@@ -1,44 +1,37 @@
-typedef struct PadVib31BB80 {
+#include "godhand/gameWork.h"
+typedef struct PadVibSlot {
     unsigned char flags;
     char pad1[3];
     unsigned short wait;
     unsigned short count;
     char pad8[8];
-} PadVib31BB80;
+} PadVibSlot;
 
-typedef struct PadWork31BB80 {
+typedef struct PadVibWork {
     char pad0[0x160];
-    PadVib31BB80 vib[32];
+    PadVibSlot vib[32];
     unsigned char act[2];
     char pad362[0x4B8 - 0x362];
     unsigned char enable;
-} PadWork31BB80;
+} PadVibWork;
 
-typedef struct PadSys31BB80 {
-    unsigned int flags0;
-    char pad4[0x4C - 4];
-    unsigned int flags4C;
-} PadSys31BB80;
-
-extern PadSys31BB80 D_00747A2C;
-extern unsigned int D_00747A24;
-extern void classPAD_WORK_Pad_act_all_stop(PadWork31BB80 *w);
-extern void func_0031BC98(PadWork31BB80 *w, int i);
-extern void func_0031BD78(PadWork31BB80 *w, int i);
+extern void classPAD_WORK_Pad_act_all_stop(PadVibWork *w);
+extern void func_0031BC98(PadVibWork *w, int i);
+extern void func_0031BD78(PadVibWork *w, int i);
 extern void func_00398128(int a, int b, unsigned char *act);
 
 __attribute__((section(".text.func_0031BB80")))
-void func_0031BB80(PadWork31BB80 *w)
+void func_0031BB80(PadVibWork *w)
 {
-    PadVib31BB80 *v = w->vib;
+    PadVibSlot *v = w->vib;
     unsigned int i;
 
     w->act[0] = 0;
     w->act[1] = 0;
     i = 0;
-    if ((D_00747A2C.flags0 & 0x08000000) || w->enable == 0) {
+    if ((D_00747A2C.unk00 & 0x08000000) || w->enable == 0) {
         classPAD_WORK_Pad_act_all_stop(w);
-    } else if (!(D_00747A2C.flags4C & 0x04000000)) {
+    } else if (!(D_00747A2C.unk4C & 0x04000000)) {
         do {
             if (v->flags & 3) {
                 if (v->wait != 0) {

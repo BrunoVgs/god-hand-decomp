@@ -1,5 +1,5 @@
 /* sn-2.95.3-136, as=sn: NM closer handoff. */
-#include "godhand/padState.h"
+#include "godhand/gameWork.h"
 extern char D_005FEE00[];
 extern int cSnd_SeCall_2CB8A0(void *a0, int a1, short a2, short a3, short a4, int a5, int a6);
 extern void func_001645E0(char *self);

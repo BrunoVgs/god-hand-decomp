@@ -1,6 +1,6 @@
 /* cygnus-2.96: func_00366FE0, dispatches one decoded MPEG start-code unit by kind (sequence, picture or
  * user data); returns 1 for the two header kinds, 0 otherwise. */
-typedef struct Dec366FE0 {
+typedef struct MpvHdrDec {
     char unk0[0x10];
     int arg10;                          /* 0x10 */
     char unk14[0x94];
@@ -10,15 +10,15 @@ typedef struct Dec366FE0 {
     char unkB9[0x3B];
     void (*ucb)(int obj, int kind, long data);  /* 0xF4 */
     int uobj;                           /* 0xF8 */
-} Dec366FE0;
+} MpvHdrDec;
 
 extern int func_00368A28(unsigned char *p);
-extern void func_003670E8(Dec366FE0 *d, unsigned char *p, int *len);
-extern void func_00367550(Dec366FE0 *d, unsigned char *p, int *len);
-extern void func_00367DC0(Dec366FE0 *d, unsigned char *p, int *len, int arg);
+extern void func_003670E8(MpvHdrDec *d, unsigned char *p, int *len);
+extern void func_00367550(MpvHdrDec *d, unsigned char *p, int *len);
+extern void func_00367DC0(MpvHdrDec *d, unsigned char *p, int *len, int arg);
 
 __attribute__((section(".text.func_00366FE0")))
-int func_00366FE0(Dec366FE0 *d, unsigned char *p, int unused, int *len, int *kind)
+int func_00366FE0(MpvHdrDec *d, unsigned char *p, int unused, int *len, int *kind)
 {
     int ret;
     int k;

@@ -2,23 +2,7 @@
 
 #include "godhand/vu0.h"
 
-extern void func_001B6FB8(void *);
-extern void moveMotion(void *);
-extern void displayScrollLayer(int, int);
 extern void func_001E8DF0(void *, void *, void *, unsigned short);
-extern int D_0042C320;
-extern void NoOp_1F7D18(void *, int);
-extern int func_003999A8(void);
-extern void *func_00323618(void *, int);
-extern void func_00323A70(void *);
-extern char D_0042C780[];
-extern int cMessCommon_isPageEndCode(unsigned short);
-extern void MtxInitCoord(void *, void *, void *, void *, int);
-extern void ScenarioCursor_reinitStep2(void *);
-extern void func_002BF518(void *);
-extern void *D_003C2F84;
-extern int D_00752C04;
-extern void cTaskWork_sleep(int, int);
 extern int func_003069E8(void *, int, void *, void *);
 extern int func_0030FB70(void *, void *);
 extern int func_0030FE68(void *, void *);

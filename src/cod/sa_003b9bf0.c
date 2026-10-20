@@ -1,6 +1,6 @@
 /* cygnus-2.96: func_003B9BF0, per-frame stream decoder step: start it in state 1, then track the
  * decoded sample count in state 2 until the decoder reports done (3). */
-typedef struct Stream3B9BF0 {
+typedef struct SndStream {
     char unk00[4];
     int state;                  /* 0x04 */
     char unk08[0x10];
@@ -12,7 +12,7 @@ typedef struct Stream3B9BF0 {
     int pos;                    /* 0x94 */
     char unk98[0x28];
     int dec;                    /* 0xC0 */
-} Stream3B9BF0;
+} SndStream;
 
 extern int func_003BA800(int dec);
 extern void func_003BA058(int dec);
@@ -21,7 +21,7 @@ extern void func_003BA0C8(int dec);
 extern void func_003BA830(int dec, int *pos, int *bytes);
 
 __attribute__((section(".text.func_003B9BF0")))
-void func_003B9BF0(Stream3B9BF0 *s)
+void func_003B9BF0(SndStream *s)
 {
     int dec = s->dec;
     int pos, bytes;

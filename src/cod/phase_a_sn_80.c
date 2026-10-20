@@ -1,24 +1,5 @@
 /* sn-2.95.3-136 matched 80-byte Phase A functions. */
 
-extern void ClearField90_13E400(void *);
-extern void ResetBlendFields_13C930(void *);
-extern void ResetAnimSlotArray_13F510(void *);
-extern void IdHolder_releaseAnim(void *);
-extern void ClearActiveSlot_147188(void *);
-extern void cCockPlBar_initData(void *);
-extern char D_00420CA0[];
-extern char D_00421BB8[];
-extern char D_00422A80[];
-extern char D_00427A58[];
-extern void func_002AD288(void *, int);
-extern void SetField214PtrThenInit_1B6F38(void *, void *);
-extern void func_002B2400(void *);
-extern void func_002BF708(void *);
-extern void SysFlags_saveAndFreeze(void *);
-extern int D_003C264C;
-extern void func_002C0A08(int);
-extern void func_002C09E8(int);
-extern void func_003A52F0(void *, int, int);
 extern void func_00378C48(void *);
 extern void func_0037B0E0(void *);
 extern void func_00379190(void *);

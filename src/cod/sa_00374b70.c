@@ -1,58 +1,24 @@
 /* sn-2.95.3-136: func_00374B70, registers a sound bank in slot `bank`: resolves the header's relative
  * table offsets, attaches and relocates the optional extra block once, then posts command 3. */
-typedef struct BankHdr374B70 {
-    int id;                             /* 0x00 */
-    int dataOfs;                        /* 0x04 */
-    int unk08;
-    int unk0C;
-    int tblOfs;                         /* 0x10 */
-    int num;                            /* 0x14 */
-    int tbl2Ofs;                        /* 0x18 */
-    int tbl3Ofs;                        /* 0x1C */
-} BankHdr374B70;
-
-typedef struct Bank374B70 {
-    int id;                             /* 0x00 */
-    char *data;                         /* 0x04 */
-    int sysMem;                         /* 0x08 */
-    int size;                           /* 0x0C */
-    char *tbl;                          /* 0x10 */
-    int num;                            /* 0x14 */
-    char *tbl2;                         /* 0x18 */
-    char *tbl3;                         /* 0x1C */
-} Bank374B70;
-
-typedef struct Ext374B70 {
+#include "godhand/sndBank.h"
+typedef struct SndBankExt {
     int unk00;
     char *data;                         /* 0x04 */
     char *data2;                        /* 0x08 */
     unsigned char fixed;                /* 0x0C */
-} Ext374B70;
+} SndBankExt;
 
-typedef struct Cmd374B70 {
-    int unk00;
-    int bank;                           /* 0x04 */
-    int id;                             /* 0x08 */
-    char *data;                         /* 0x0C */
-    int sysMem;                         /* 0x10 */
-    int size;                           /* 0x14 */
-    char *tbl;                          /* 0x18 */
-    int num;                            /* 0x1C */
-    char *tbl2;                         /* 0x20 */
-    char *tbl3;                         /* 0x24 */
-} Cmd374B70;
-
-extern Bank374B70 D_0076DF10[];
-extern Ext374B70 *D_00773250[];
-extern Cmd374B70 D_0076A880;
+extern SndBank D_0076DF10[];
+extern SndBankExt *D_00773250[];
+extern SndBankCmd D_0076A880;
 extern int func_003758E8(int cmd);
 
 __attribute__((section(".text.func_00374B70")))
-void func_00374B70(short bank, BankHdr374B70 *hdr, int sysMem, int size, Ext374B70 *ext)
+void func_00374B70(short bank, SndBankHdr *hdr, int sysMem, int size, SndBankExt *ext)
 {
-    Bank374B70 *b;
-    Cmd374B70 *c;
-    Ext374B70 **e;
+    SndBank *b;
+    SndBankCmd *c;
+    SndBankExt **e;
 
     c = &D_0076A880;
     b = &D_0076DF10[bank];

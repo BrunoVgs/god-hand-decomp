@@ -1,13 +1,7 @@
 #include "godhand/cCoreSave.h"
+#include "godhand/gameWork.h"
 #include "godhand/player.h"
 
-typedef struct Sys1F9C98 {
-    char pad0[0x5B4];
-    unsigned short stageA;
-    unsigned short stageB;
-} Sys1F9C98;
-
-extern Sys1F9C98 D_007474A0;
 extern char D_0061A990[];
 extern void cWorldTime_setGlobalTime(void *wt, unsigned int t);
 extern void func_002D9D48(void *wt, int t);
@@ -27,8 +21,8 @@ void cCoreSave_loadStageState(cCoreSave *self, int flag)
 
     if (flag == 0)
         return;
-    D_007474A0.stageA = self->data->saveStageA;
-    D_007474A0.stageB = self->data->saveStageB;
+    D_007474A0.nextRoom = self->data->saveStageA;
+    D_007474A0.unk5B6 = self->data->saveStageB;
     cCoreSave_loadSpawn(self);
     cWorldTime_setGlobalTime(D_0061A990, self->data->worldTime);
     func_002D9D48(D_0061A990, self->data->worldTimeB);

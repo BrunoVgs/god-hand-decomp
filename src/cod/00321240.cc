@@ -4,13 +4,10 @@
    __cp_exception_info, retail 0x00321240, 36 B; __cplus_type_matcher,
    __cp_push_exception and __cp_pop_exception follow at 0x00321308.  NOT A FUNCTION HEAD in the
    atlas today: splat merges it into the tail of `unexpected`. */
+#include "godhand/eh.h"
+
 typedef unsigned short __u16;
 
-struct __eh_info {
-    void *match_function;
-    short language;
-    short version;
-};
 
 struct cp_eh_info
 {
@@ -91,7 +88,7 @@ __cp_push_exception (void *value, void *type, void (*cleanup) (void *, int))
   p->caught = false;
   p->original_value = value;
 
-  p->eh_info.match_function = (void *) __cplus_type_matcher;
+  p->eh_info.match_function = (__eh_matcher) __cplus_type_matcher;
   p->eh_info.language = EH_LANG_C_PLUS_PLUS;
   p->eh_info.version = 1;
 

@@ -3,8 +3,6 @@
 #include "godhand/mdlPkt.h"
 
 
-#define TAG64(e) ((unsigned int)((e).w1 | 0x30000000) | ((unsigned long)((e).w0 & 0x0FFFFFFF) << 32))
-
 __attribute__((section(".text.func_00155AE8")))
 void func_00155AE8(Pkt0B0 *pkt, int id, int buf)
 {

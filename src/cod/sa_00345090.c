@@ -5,15 +5,15 @@ typedef struct {
     int a;     /* 0x8 */
     int b;     /* 0xC */
     int c;     /* 0x10 */
-} Ent345090;
+} SfdHdrEnt;
 
 typedef struct {
     char pad0[0xB4];
     int count;            /* 0xB4 */
     char padB8[0x4];
     int idx;              /* 0xBC */
-    Ent345090 ent[8];     /* 0xC0 */
-} Obj345090;
+    SfdHdrEnt ent[8];     /* 0xC0 */
+} SfdHdrRing;
 
 extern void *SFH_Create(char *buf, int len);
 extern int SFH_IsSfdHeader(void *sfh, int *ver);
@@ -23,7 +23,7 @@ extern int func_00344F30(void *sfh);
 extern int func_00344F68(void *sfh);
 
 __attribute__((section(".text.func_00345090")))
-void func_00345090(Obj345090 *o, char *buf, int len)
+void func_00345090(SfdHdrRing *o, char *buf, int len)
 {
     void *sfh;
     int tmp;

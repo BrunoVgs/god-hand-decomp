@@ -2,13 +2,6 @@
 
 #include "godhand/vu0.h"
 
-extern void ClearBytesAt74And79To7C_13C618(void *);
-extern unsigned short D_00747A50;
-extern void cHeap_free(int, void *);
-extern void MtxInitCoord(void *, void *, void *, void *, int);
-extern void sceVu0ApplyMatrix(void *, void *, void *);
-extern char D_0044F448[];
-extern void BlockOwner_dtor(void *, void *);
 extern void cModel_calcParts(void *);
 extern void IK_InverseKinematics(void *, void *);
 extern void cModel_calcWorldParts(void *);

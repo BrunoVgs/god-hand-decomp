@@ -15,7 +15,7 @@ typedef struct {
     char pad0[3];
     signed char stat; /* 0x03 */
     StmLink *link;    /* 0x04 */
-} StmHn;
+} DecOutHn;
 
 extern char D_00455308[];
 extern char D_00455330[];
@@ -23,7 +23,7 @@ extern void func_0033F130(char *msg);
 extern void func_00340920(void *dec);
 
 __attribute__((section(".text.func_00336D08")))
-void func_00336D08(StmHn *hn, int fn, int obj)
+void func_00336D08(DecOutHn *hn, int fn, int obj)
 {
     StmCore *c;
     void *dec;

@@ -1,6 +1,5 @@
 /* Batch 49: unique SN ~160–172 (scratch-only). */
 
-extern void SetCustomIDDispOneOrAll_1F4778(void *self, int id, int a2);
 extern int GuardedCall_00329FD0_329F98(void *p);
 extern int func_0032A4A8(void *p);
 extern int func_0032A530(void *p);

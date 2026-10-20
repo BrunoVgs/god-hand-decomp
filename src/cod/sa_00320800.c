@@ -1,11 +1,5 @@
 /* ee-2.9-991111: func_00320800, libgcc2 find_exception_handler: scans the inner-to-outer region table for a handler covering pc. */
-typedef void *(*__eh_matcher)(void *, void *, void *);
-
-typedef struct {
-    __eh_matcher match_function;
-    short language;
-    short version;
-} __eh_info;
+#include "godhand/eh.h"
 
 typedef struct exception_table {
     void *start_region;

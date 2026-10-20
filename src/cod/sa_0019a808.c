@@ -2,59 +2,55 @@
  * volume build as SpawnDamageTakeVolumeE. func_001C28A0 takes only self (it clobbers a1/a2 at once). */
 #include "godhand/emDamageVol.h"
 
-extern void func_001B6FB8(char *p);
-extern void *cDamageManage_CreateDamageTake(void *mgr, void *owner, int kind);
-extern void func_001FD9D8(void *slot, void *mtx, float *ofs, float *rot, float *size);
-extern char D_00574380[];
 
 __attribute__((section(".text.func_0019A808")))
-int func_0019A808(char *p)
+int func_0019A808(EmDmgVol *em)
 {
-    float f[16];
-    float *m;
-    float *nv;
-    float *t;
+    Vec4f v[4];             /* size twice, offset, rotation */
+    Vec4f *ofs;
+    Vec4f *rot;
+    Vec4f *size;
     void *slot;
     float one, c0, c1;
 
-    func_001B6FB8(p);
+    func_001B6FB8(em);
     one = 1.0f;
     c0 = 2.4f;
     c1 = 2.0f;
-    t = &f[4];
-    m = &f[8];
-    f[0] = c0;
-    f[1] = one;
-    f[2] = c1;
-    f[4] = c0;
-    f[6] = c1;
-    f[3] = one;
-    f[5] = one;
-    t[3] = one;
-    f[8] = 0.0f;
-    f[9] = 0.0f;
-    f[10] = 0.0f;
-    m[3] = one;
-    slot = cDamageManage_CreateDamageTake(D_00574380, p, 2);
-    *(void **)(p + EM_DMG_TAKE) = slot;
+    size = &v[1];
+    ofs = &v[2];
+    v[0].x = c0;
+    v[0].y = one;
+    v[0].z = c1;
+    v[1].x = c0;
+    v[1].z = c1;
+    v[0].w = one;
+    v[1].y = one;
+    size->w = one;
+    v[2].x = 0.0f;
+    v[2].y = 0.0f;
+    v[2].z = 0.0f;
+    ofs->w = one;
+    slot = cDamageManage_CreateDamageTake(D_00574380, em, 2);
+    em->dmgTake = slot;
     if (slot != 0) {
-        nv = &f[12];
-        f[12] = 0.0f;
-        f[13] = 0.0f;
-        f[14] = 0.0f;
-        nv[3] = one;
-        func_001FD9D8(slot, p + 0x80, m, nv, t);
+        rot = &v[3];
+        v[3].x = 0.0f;
+        v[3].y = 0.0f;
+        v[3].z = 0.0f;
+        rot->w = one;
+        func_001FD9D8(slot, (char *)em + 0x80, ofs, rot, size);
     }
-    *(short *)(p + EM_COL_A) = 1;
-    *(short *)(p + EM_COL_B) = 1;
-    *(char **)(p + EM_SUB_PTR) = p + EM_SUB_BUF;
-    *(unsigned char *)(p + EM_SUB_KIND) = 5;
-    *(int *)(p + EM_WORK_5EC) = 7;
-    *(int *)(p + EM_WORK_5E8) = 0;
-    *(int *)(p + EM_WORK_5E4) = 0;
-    *(int *)(p + EM_WORK_5F0) = 0;
-    *(short *)(p + EM_WORK_5F6) = 0;
-    *(short *)(p + EM_TARGET) = -1;
-    func_001C28A0(p);
+    em->base.hpMax = 1;
+    em->base.hp = 1;
+    em->sub = em->subBuf;
+    em->subKind = 5;
+    em->unk5EC = 7;
+    em->unk5E8 = 0;
+    em->unk5E4 = 0;
+    em->unk5F0 = 0;
+    em->unk5F6 = 0;
+    em->target = -1;
+    func_001C28A0(em);
     return 1;
 }

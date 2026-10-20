@@ -2,30 +2,30 @@
  * into a single array and records the covered pc range. */
 typedef struct Fde321E08 Fde321E08;
 
-typedef struct Object321E08 {
+typedef struct FrameObject {
     void *pc_begin;                     /* 0x00 */
     void *pc_end;                       /* 0x04 */
     Fde321E08 *fde_begin;               /* 0x08 */
     Fde321E08 **fde_array;              /* 0x0C */
     unsigned int count;                 /* 0x10 */
-} Object321E08;
+} FrameObject;
 
-typedef struct FdeVector321E08 {
+typedef struct FdeVector {
     Fde321E08 **array;
     unsigned int count;
-} FdeVector321E08;
+} FdeVector;
 
-typedef struct FdeAccu321E08 {
-    FdeVector321E08 linear;
-    FdeVector321E08 erratic;
-} FdeAccu321E08;
+typedef struct FdeAccumulator {
+    FdeVector linear;
+    FdeVector erratic;
+} FdeAccumulator;
 
 extern void *func_003A7C70(unsigned int n);
 extern unsigned int func_00321D38(Fde321E08 *f);
-extern void func_00321D80(Fde321E08 *f, FdeAccu321E08 *accu, void **beg_ptr, void **end_ptr);
-extern Fde321E08 **func_00321AD0(FdeAccu321E08 *accu, unsigned int count);
+extern void func_00321D80(Fde321E08 *f, FdeAccumulator *accu, void **beg_ptr, void **end_ptr);
+extern Fde321E08 **func_00321AD0(FdeAccumulator *accu, unsigned int count);
 
-static inline void start_fde_sort(FdeAccu321E08 *accu, unsigned int count)
+static inline void start_fde_sort(FdeAccumulator *accu, unsigned int count)
 {
     accu->linear.array = (Fde321E08 **)func_003A7C70(sizeof(Fde321E08 *) * count);
     accu->erratic.array = (Fde321E08 **)func_003A7C70(sizeof(Fde321E08 *) * count);
@@ -34,10 +34,10 @@ static inline void start_fde_sort(FdeAccu321E08 *accu, unsigned int count)
 }
 
 __attribute__((section(".text.func_00321E08")))
-void func_00321E08(Object321E08 *ob)
+void func_00321E08(FrameObject *ob)
 {
     unsigned int count;
-    FdeAccu321E08 accu;
+    FdeAccumulator accu;
     void *pc_begin, *pc_end;
 
     if (ob->fde_array) {

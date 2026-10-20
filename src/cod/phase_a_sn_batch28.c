@@ -4,8 +4,6 @@
 extern char *InitFields_1B6E90(char *a0);
 extern int D_004296F0;
 extern int func_003069A8(int a0, unsigned int a1, int *a2);
-extern int D_007479F4;
-extern void cPadVib_stopSeq(char *a0);
 
 __attribute__((section(".text.func_001BF478")))
 void *func_001BF478(void *object)

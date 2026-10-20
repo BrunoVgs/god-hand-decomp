@@ -4,18 +4,18 @@ typedef struct {
     unsigned short hi;
     unsigned short no;
     char data[1];
-} Cmd2B3C20;
+} EffCmd;
 
 typedef struct {
     char pad[0x8C];
-    Cmd2B3C20 *cmd;
-} Obj2B3C20;
+    EffCmd *cmd;
+} EffCmdObj;
 
-extern void *func_002B4690(Obj2B3C20 *o, void *p);
+extern void *func_002B4690(EffCmdObj *o, void *p);
 extern int SetEffect(int a0, int a1, void *a2, int a3, int t0, unsigned t1);
 
 __attribute__((section(".text.func_002B3C20")))
-int func_002B3C20(Obj2B3C20 *o)
+int func_002B3C20(EffCmdObj *o)
 {
     void *p = func_002B4690(o, o->cmd->data);
     int no = o->cmd->no + 1;

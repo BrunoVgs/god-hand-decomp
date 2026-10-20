@@ -1,21 +1,5 @@
 #include "godhand/menuCtl.h"
 
-typedef struct MenuList384EC8 {
-    unsigned char unk00;
-    unsigned char result;       /* 0x01 */
-    char unk02[2];
-    short unk04;                /* 0x04 */
-    char unk06[2];
-    short unk08;                /* 0x08 */
-    short unk0A;                /* 0x0A */
-    char unk0C[0x14 - 0x0C];
-    MenuInfo work;              /* 0x14 */
-    char unk48[0x4C - 0x48];
-    MenuInfo info;              /* 0x4C */
-    char unk80[0x84 - 0x80];
-    int f84;                    /* 0x84 */
-} MenuList384EC8;
-
 extern void func_0032B188(int handle, int a1);
 extern void func_0032A9F0(int handle, int a1);
 extern void func_0032A6D0(int handle, int a1, int a2);
@@ -23,7 +7,7 @@ extern void func_0032B300(int handle, void *a1);
 extern void func_0032BDC0(int handle, int a1, int idx);
 
 __attribute__((section(".text.func_00384EC8")))
-int func_00384EC8(MenuCtl *ctl, MenuList384EC8 *list)
+int func_00384EC8(MenuCtl *ctl, MenuList *list)
 {
     MenuInfo *work = &list->work;
     MenuInfo *info = &list->info;

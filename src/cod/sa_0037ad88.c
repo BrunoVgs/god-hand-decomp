@@ -1,4 +1,4 @@
-typedef struct Slider37AD88 {
+typedef struct MenuSlider {
     short *val;
     char pad4[6];
     short min;
@@ -6,9 +6,9 @@ typedef struct Slider37AD88 {
     short step;
     short bigStep;
     char pad12[2];
-} Slider37AD88;
+} MenuSlider;
 
-typedef struct Menu37AD88 {
+typedef struct MenuSliderCtl {
     char pad0[0x26];
     signed char cur;
     char pad27[5];
@@ -18,17 +18,17 @@ typedef struct Menu37AD88 {
     int rep;
     char pad3C[0x120];
     char snd[4];
-} Menu37AD88;
+} MenuSliderCtl;
 
-extern Slider37AD88 D_003F2638[];
+extern MenuSlider D_003F2638[];
 extern void func_00375600(char *snd);
 extern void func_00375630(char *snd);
 extern void func_00375748(int se);
 
 __attribute__((section(".text.func_0037AD88")))
-int func_0037AD88(Menu37AD88 *m)
+int func_0037AD88(MenuSliderCtl *m)
 {
-    Slider37AD88 *s = &D_003F2638[m->cur];
+    MenuSlider *s = &D_003F2638[m->cur];
     short v, old, step;
     int pad;
 

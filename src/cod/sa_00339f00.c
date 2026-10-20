@@ -6,7 +6,7 @@ extern int D_00455B98;
 extern int D_00455AB0;
 extern void func_00339458(void *a0, void *a1);
 
-typedef struct Ring339F00 {
+typedef struct SjRbf {
     int field_0;
     int open;                   /* 0x04 */
     int field_8;
@@ -20,10 +20,10 @@ typedef struct Ring339F00 {
     char unk28[0x10];
     void (*err)(int, int);      /* 0x38 */
     int errArg;                 /* 0x3C */
-} Ring339F00;
+} SjRbf;
 
 __attribute__((section(".text.func_00339F00")))
-int func_00339F00(Ring339F00 *r, int lane, int want, int *got)
+int func_00339F00(SjRbf *r, int lane, int want, int *got)
 {
     int n, len;
 

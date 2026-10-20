@@ -2,25 +2,9 @@
 #include "include_asm.h"
 #include "godhand/vu0.h"
 
-extern void EntList_destroy(void *self);
-extern void List_destroyChildren(void *self);
-extern int func_002A96C0(int stride, int count, int align);
-extern void *EnsureInitThenForward_2A9538_30EE08(int size, int align, void *region);
-extern void func_002A96D8(void *self, void *buf, int stride, int count, int align);
-extern void *D_003C3CF0;
-
 INCLUDE_ASM("nonmatching", func_00149400);
 
 INCLUDE_ASM("nonmatching", func_001504B0);
-
-extern void func_001C7D98(void *self);
-extern void InitFields_1B6E90(void *self);
-extern void Obj0000_Set_Byte_54(void *slot, int v);
-extern int D_00423E48;
-extern int D_004272F8;
-
-extern char D_003BDD08[];
-extern char D_003BDE98[];
 
 extern void *func_002B6310(void *dst, void *node);
 extern void cNode_setLocalTranslation(void *node, void *vec);
@@ -128,10 +112,4 @@ void func_00385410(char *self, char *ctrl)
     }
 }
 
-extern void displayScrollLayer(int layer, int on);
-
-extern void cHeap_free(void *heap, void *block);
-extern void func_002FBE28(void *self, void *arg);
-extern char D_0044E300[];
-extern char D_0044E960[];
 void BlockOwner_dtor(char *self, void *arg);

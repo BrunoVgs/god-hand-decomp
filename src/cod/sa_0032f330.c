@@ -1,6 +1,6 @@
 /* cygnus-2.96: func_0032F330, take a free one of the four 0x1964-byte decoder slots, clear it and
  * copy in n stream handles; returns the slot, or 0 when all four are in use. */
-typedef struct Slot32F330 {
+typedef struct AdxDecSlot {
     signed char used;           /* 0x00 */
     signed char unk01;          /* 0x01 */
     signed char n;              /* 0x02 */
@@ -9,15 +9,15 @@ typedef struct Slot32F330 {
     char unk05[0x17];
     int arg;                    /* 0x1C */
     int h[(0x1964 - 0x20) / 4]; /* 0x20 */
-} Slot32F330;
+} AdxDecSlot;
 
 extern void func_003A52F0(void *dst, int c, int n);
-extern Slot32F330 D_003D1E70[4];
+extern AdxDecSlot D_003D1E70[4];
 
 __attribute__((section(".text.func_0032F330")))
-Slot32F330 *func_0032F330(int n, int arg, int *h)
+AdxDecSlot *func_0032F330(int n, int arg, int *h)
 {
-    Slot32F330 *s;
+    AdxDecSlot *s;
     int i;
 
     for (i = 0; i < 4; i++) {
@@ -27,7 +27,7 @@ Slot32F330 *func_0032F330(int n, int arg, int *h)
     if (i == 4)
         return 0;
     s = &D_003D1E70[i];
-    func_003A52F0(s, 0, sizeof(Slot32F330));
+    func_003A52F0(s, 0, sizeof(AdxDecSlot));
     s->unk01 = 0;
     s->arg = arg;
     for (i = 0; i < n; i++)

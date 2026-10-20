@@ -33,7 +33,7 @@ static inline int pktIsMode1(void)
     return D_007474A0.mode == 1;
 }
 
-#define PKT(n) set->pkt[n][odd].data
+#define PKT(set, n, odd) ((set)->pkt[n][odd].data)
 #define LINK(a, b) SetPackedFields10And18_14FF60((int)(a), (int *)(b))
 
 __attribute__((section(".text.func_0031A338")))
@@ -42,15 +42,15 @@ void func_0031A338(PktSet31A3 *set)
     int odd = D_007474A0.frame & 1;
     char *p0, *p1, *p2, *p3, *p5, *p6, *p7, *p8, *p9;
 
-    func_0014FE78(p0 = PKT(0));
-    func_0014FE78(p1 = PKT(1));
-    func_0014FE78(p2 = PKT(2));
-    func_0014FE78(p3 = PKT(3));
-    func_0014FE78(p5 = PKT(5));
-    func_0014FE78(p6 = PKT(6));
-    func_0014FE78(p7 = PKT(7));
-    func_0014FE78(p8 = PKT(8));
-    func_0014FE78(p9 = PKT(9));
+    func_0014FE78(p0 = PKT(set, 0, odd));
+    func_0014FE78(p1 = PKT(set, 1, odd));
+    func_0014FE78(p2 = PKT(set, 2, odd));
+    func_0014FE78(p3 = PKT(set, 3, odd));
+    func_0014FE78(p5 = PKT(set, 5, odd));
+    func_0014FE78(p6 = PKT(set, 6, odd));
+    func_0014FE78(p7 = PKT(set, 7, odd));
+    func_0014FE78(p8 = PKT(set, 8, odd));
+    func_0014FE78(p9 = PKT(set, 9, odd));
     if (!(D_007474A0.flags & GAMEWORK_SKIP_PKT_1_3)) {
         LINK(p0, p1);
         LINK(p1, p3);
@@ -68,8 +68,8 @@ void func_0031A338(PktSet31A3 *set)
         LINK(p8, p9);
     }
     if (pktIsMode1()) {
-        func_0014FE78(PKT(10));
-        LINK(PKT(9), PKT(10));
+        func_0014FE78(PKT(set, 10, odd));
+        LINK(PKT(set, 9, odd), PKT(set, 10, odd));
     }
 }
 

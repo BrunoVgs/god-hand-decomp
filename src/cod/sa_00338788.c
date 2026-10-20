@@ -1,32 +1,21 @@
 /* cygnus-2.96 (drop-reorder): stream/SFD/sound singletons (batch 40). */
+#include "godhand/criStm.h"
 
-typedef struct StmHn {
+typedef struct StmVolHn {
     char unk00;
     char stat;                  /* 0x01 */
     char unk02[0x38 - 0x02];
     int vol;                    /* 0x38 */
     char unk3C[0x56 - 0x3C];
     char mode;                  /* 0x56 */
-} StmHn;
+} StmVolHn;
 
-typedef struct SfdTbl1FC0 {
-    char unk000[0x178];
-    int n;                      /* 0x178 */
-    char unk17C[4];
-    char ent[1][0xF0];          /* 0x180 */
-} SfdTbl1FC0;
-
-typedef struct SfdWk16B0 {
-    char unk0000[0x16B0];
-    char ent[1][0x88];          /* 0x16B0 */
-} SfdWk16B0;
-
-typedef struct AdxHn {
+typedef struct AdxStatHn {
     char unk00[0x0E];
     char stat;                  /* 0x0E */
     char unk0F[0xE8 - 0x0F];
     int fE8;                    /* 0xE8 */
-} AdxHn;
+} AdxStatHn;
 
 typedef struct SndObj {
     char unk000[0x38];
@@ -47,7 +36,7 @@ extern void func_0033F130(const char *msg);
 extern char D_004568D0[];
 
 __attribute__((section(".text.func_00338788")))
-void func_00338788(StmHn *h, int vol)
+void func_00338788(StmVolHn *h, int vol)
 {
     if (D_003E0710 == 1 && D_003E0708 <= 0) {
         return;
@@ -74,7 +63,7 @@ void func_00327D48(void *p, int n)
 }
 
 __attribute__((section(".text.func_00337B80")))
-void func_00337B80(StmHn *h, unsigned int mode)
+void func_00337B80(StmVolHn *h, unsigned int mode)
 {
     if (D_003E0710 == 1 && D_003E0708 <= 0) {
         return;
@@ -86,13 +75,13 @@ void func_00337B80(StmHn *h, unsigned int mode)
 }
 
 __attribute__((section(".text.func_00355490")))
-void *func_00355490(SfdWk16B0 *w, void *key)
+void *func_00355490(StmSys *w, void *key)
 {
-    SfdTbl1FC0 *t = *(SfdTbl1FC0 **)((char *)w + 0x1FC0);
+    StmMgr *t = w->mgr;
     char *e;
     int i;
 
-    for (i = 0, e = t->ent[0]; i < t->n; i++, e += 0xF0) {
+    for (i = 0, e = (char *)t->slot; i < t->num; i++, e += sizeof(StmSlot)) {
         if (e == key) {
             return w->ent[i];
         }
@@ -101,7 +90,7 @@ void *func_00355490(SfdWk16B0 *w, void *key)
 }
 
 __attribute__((section(".text.func_0033CE98")))
-int func_0033CE98(AdxHn *h)
+int func_0033CE98(AdxStatHn *h)
 {
     if (h->stat == 1 && h->fE8 != 0) {
         return 2;

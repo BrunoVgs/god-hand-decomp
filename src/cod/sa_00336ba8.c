@@ -1,20 +1,20 @@
-typedef struct Ps2Work336BA8 {
+typedef struct AdxPs2Work {
     char pad0[0xE8];
     int dma;
     int unkEC;
     int unkF0;
-} Ps2Work336BA8;
+} AdxPs2Work;
 
-typedef struct Ps2Obj336BA8 {
+typedef struct AdxPs2Obj {
     char pad0[4];
-    Ps2Work336BA8 *work;
-} Ps2Obj336BA8;
+    AdxPs2Work *work;
+} AdxPs2Obj;
 
-typedef struct Adxt336BA8 {
+typedef struct AdxtPs2Hn {
     char pad0[3];
     signed char maxnch;
-    Ps2Obj336BA8 *obj;
-} Adxt336BA8;
+    AdxPs2Obj *obj;
+} AdxtPs2Hn;
 
 extern char D_00455290[];
 extern char D_004552D0[];
@@ -23,9 +23,8 @@ extern void *D_003E9D4C;
 extern void *D_003E9D50;
 extern void *D_003CF9EC;
 extern void func_0033F130(char *msg);
-extern void func_00329EA8(Adxt336BA8 *adxt);
-extern void func_00336CE0(Adxt336BA8 *adxt);
-extern void func_003403F8(void (*fn)(void), int arg);
+extern void func_00329EA8(AdxtPs2Hn *adxt);
+extern void func_00336CE0(AdxtPs2Hn *adxt);
 extern void func_00340480(int);
 extern void Forward33B658_325C60(void);
 extern void Forward33B670_325C78(void);
@@ -38,9 +37,9 @@ extern void Forward3406D0_336E20(void);
 extern void Forward340A20_336E58(void);
 
 __attribute__((section(".text.func_00336BA8")))
-void func_00336BA8(Adxt336BA8 *adxt, int a1, int a2)
+void func_00336BA8(AdxtPs2Hn *adxt, int a1, int a2)
 {
-    Ps2Work336BA8 *w;
+    AdxPs2Work *w;
     int dma;
 
     if (adxt->maxnch < 2) {

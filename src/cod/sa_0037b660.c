@@ -7,18 +7,18 @@ typedef struct {
     char pad29[0x34 - 0x29];
     int state; /* 0x34 */
     int flags; /* 0x38 */
-} Actor;
-extern void func_0037B720(Actor *a);
-extern void func_0037B768(Actor *a);
-extern int IsActorActiveOrReady_379EC0(Actor *a);
-extern void func_0037A1F0(Actor *a);
-extern int func_0037A4C8(Actor *a);
-extern int func_0037B798(Actor *a);
-extern void func_0037B808(Actor *a);
-extern void func_0037A298(Actor *a);
+} BlinkActor;
+extern void func_0037B720(BlinkActor *a);
+extern void func_0037B768(BlinkActor *a);
+extern int IsActorActiveOrReady_379EC0(BlinkActor *a);
+extern void func_0037A1F0(BlinkActor *a);
+extern int func_0037A4C8(BlinkActor *a);
+extern int func_0037B798(BlinkActor *a);
+extern void func_0037B808(BlinkActor *a);
+extern void func_0037A298(BlinkActor *a);
 
 __attribute__((section(".text.func_0037B660")))
-void func_0037B660(Actor *a)
+void func_0037B660(BlinkActor *a)
 {
     int state;
 

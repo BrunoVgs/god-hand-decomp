@@ -1,28 +1,24 @@
-typedef struct Mgr331458 {
+#include "godhand/iopReq.h"
+typedef struct IopReqMgr {
     char unk0;
     signed char mode;
-} Mgr331458;
+} IopReqMgr;
 
-typedef struct Req331458 {
-    char unk0[2];
-    signed char state;
-} Req331458;
-
-extern Mgr331458 D_003D8410;
+extern IopReqMgr D_003D8410;
 extern int D_003D844C;
 extern int D_003D846C;
 extern void Forward33B568_33B658(void);
 extern void Forward33B5C8_33B670(void);
 extern void func_003312B8(void);
-extern void func_003312E8(Req331458 *r);
-extern void func_00331310(Req331458 *r);
+extern void func_003312E8(IopReq *r);
+extern void func_00331310(IopReq *r);
 
 __attribute__((section(".text.func_00331458")))
-void func_00331458(Req331458 *r)
+void func_00331458(IopReq *r)
 {
     short i;
     signed char state;
-    Mgr331458 *m;
+    IopReqMgr *m;
 
     for (i = 0; i < 1000; i++) {
         Forward33B568_33B658();

@@ -1,31 +1,20 @@
-typedef struct Mwsf345F48 {
-    int unk00;
-    int stat;
-    int unk08;
-    char pad0C[0x30];
-    void *sfd;
-    char pad40[0x32];
-    signed char pause;
-    char pad73[0x211];
-    char sub284[0x20];
-    char sub2A4[0x34];
-} Mwsf345F48;
+#include "godhand/mwsfd.h"
 
 extern char D_004580B0[];
 extern char D_004580D8[];
 extern char D_00458100[];
 extern char D_00458108[];
-extern int GetField0OrZero_346828(Mwsf345F48 *mw);
+extern int GetField0OrZero_346828(MwsfdHn *mw);
 extern void MWSFSVM_Error(const char *msg, ...);
 extern int MWSFD_GetPauseBdr(void);
 extern int SFD_GetCond(void *sfd, int id, int *out);
-extern void mwlSfdSleepDecSvr(Mwsf345F48 *mw);
+extern void mwlSfdSleepDecSvr(MwsfdHn *mw);
 extern int func_00356F48(void *sfd, int sw);
 extern int func_00345750(int err);
 extern void func_00348550(char *sub, int sw);
 
 __attribute__((section(".text.func_00345F48")))
-void func_00345F48(Mwsf345F48 *mw, int sw)
+void func_00345F48(MwsfdHn *mw, int sw)
 {
     int ok;
     void *sfd;
@@ -56,7 +45,7 @@ void func_00345F48(Mwsf345F48 *mw, int sw)
         func_00345750(-0x136);
         MWSFSVM_Error(D_004580D8, sw == 1 ? D_00458100 : D_00458108);
     }
-    func_00348550(mw->sub284, sw);
-    func_00348550(mw->sub2A4, sw);
+    func_00348550(mw->q0, sw);
+    func_00348550(mw->q1, sw);
     mw->pause = sw;
 }

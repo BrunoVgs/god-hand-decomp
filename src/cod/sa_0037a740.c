@@ -12,15 +12,15 @@ typedef struct {
     signed char idx;
     char unk26[0x12];
     unsigned int flags;
-} ActObj;
+} MenuActObj;
 
 extern ActEnt D_003F21E8[];
 extern ActEnt D_003F2368[];
 extern ActEnt D_003F24D0[];
-extern void (*D_003F2628[])(ActObj *obj, ActEnt *e);
+extern void (*D_003F2628[])(MenuActObj *obj, ActEnt *e);
 
 __attribute__((section(".text.func_0037A740")))
-int func_0037A740(ActObj *obj)
+int func_0037A740(MenuActObj *obj)
 {
     ActEnt *e = 0;
 

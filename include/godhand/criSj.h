@@ -5,15 +5,27 @@
 #ifndef GODHAND_CRISJ_H
 #define GODHAND_CRISJ_H
 
+/* CRI scalar types. */
+typedef signed char Sint8;
+typedef unsigned char Uint8;
+typedef int Sint32;
+typedef unsigned int Uint32;
+
+/* A chunk of stream data (CRI's SJCK). */
 typedef struct SjChunk {
-    unsigned char *ptr;         /* 0x00 */
-    int len;                    /* 0x04 */
+    Sint8 *data;                /* 0x00 */
+    Sint32 len;                 /* 0x04 */
 } SjChunk;
 
 typedef struct SjObj SjObj;
 
+/* The stream joint interface (CRI's SJ_IF). */
 typedef struct SjIf {
-    void *unk00[5];
+    void *obj;                                                  /* 0x00 */
+    void (*addRef)(SjObj *sj);                                  /* 0x04 */
+    void (*release)(SjObj *sj);                                 /* 0x08 */
+    void (*destroy)(SjObj *sj);                                 /* 0x0C */
+    void *(*getUuid)(SjObj *sj);                                /* 0x10 */
     void (*reset)(SjObj *sj);                                   /* 0x14 */
     void (*getChunk)(SjObj *sj, int id, int len, SjChunk *ck);  /* 0x18 */
     void (*ungetChunk)(SjObj *sj, int id, SjChunk *ck);         /* 0x1C */
@@ -24,6 +36,27 @@ typedef struct SjIf {
 struct SjObj {
     SjIf *vt;
 };
+
+/* The memory stream joint (SJMEM). */
+typedef struct SjMem {
+    int unk00;
+    int used;                   /* 0x04 */
+    int unk08;
+    int dataLen;                /* 0x0C bytes of data available */
+    int readPos;                /* 0x10 offset of the next read from base */
+    Sint8 *base;                /* 0x14 */
+    int size;                   /* 0x18 */
+    void (*cb)(void *obj, int ev);  /* 0x1C error callback */
+    void *cbobj;                /* 0x20 */
+} SjMem;
+
+/* A recorded tag chunk; set is 1 once ck holds the chunk. */
+typedef struct SjTagRec {
+    int set;                    /* 0x00 */
+    SjChunk ck;                 /* 0x04 */
+} SjTagRec;
+
+extern Sint8 *SJ_SearchTag(SjChunk *ck, Sint8 *tag, Sint8 *endtag, SjChunk *tagck);
 
 /* Sofdec stream-joint position feed (0x327818..). */
 extern int GetVia4_Obj33C8_GetField_28_7818_327818(void *sj);

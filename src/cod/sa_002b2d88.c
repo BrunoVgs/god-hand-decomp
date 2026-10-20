@@ -2,11 +2,8 @@
 
 #include "godhand/cutCmd.h"
 
-extern unsigned int D_00747A84;
-extern char D_00586AF0[];
 extern char D_005FEE00[];
 extern char D_0044B1E0[];
-extern unsigned int cEvent_getCutNo();
 extern void *SearchData(void *name, void *table, int which);
 extern void cSndSeVoice_CheckEnd(void *snd, int handle);
 extern int cSnd_ReserveSeSlot(void *snd, int id);

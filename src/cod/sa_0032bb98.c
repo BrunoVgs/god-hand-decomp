@@ -1,6 +1,6 @@
 /* cygnus-2.96: func_0032BB98, ADX stream start by file id: look the file up in the AFS partition and
  * begin playback, or report the missing id and enter the error state. */
-typedef struct Adxt32BB98 {
+typedef struct AdxFileHn {
     char unk00;
     char stat;                  /* 0x01 */
     char unk02;                 /* 0x02 */
@@ -16,19 +16,19 @@ typedef struct Adxt32BB98 {
     int ofst;                   /* 0xB8 */
     int nsct;                   /* 0xBC */
     int unkC0;                  /* 0xC0 */
-} Adxt32BB98;
+} AdxFileHn;
 
 extern void func_0033F130(char *msg);
-extern void func_00329EA8(Adxt32BB98 *adxt);
+extern void func_00329EA8(AdxFileHn *adxt);
 extern int func_003245B0(int patid, int fid, int dir, int *ofst, int *nsct, int *c0);
 extern void ADXERR_ItoA2(int a, int b, char *buf, int n);
 extern void func_0033F1A8(char *msg, char *arg);
-extern void func_0032B660(Adxt32BB98 *adxt, int a1);
+extern void func_0032B660(AdxFileHn *adxt, int a1);
 extern char D_00452748[];
 extern char D_00452778[];
 
 __attribute__((section(".text.func_0032BB98")))
-void func_0032BB98(Adxt32BB98 *adxt, int patid, int fid)
+void func_0032BB98(AdxFileHn *adxt, int patid, int fid)
 {
     char buf[0x10];
     int ofst, nsct, c0;

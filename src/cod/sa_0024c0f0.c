@@ -1,20 +1,6 @@
 /* sn-2.95.3-136: NM closer handoff. */
+#include "godhand/cModel.h"
 typedef void (*Pfn)(void *self);
-
-typedef struct {
-    short delta;
-    short index;
-    union {
-        Pfn pfn;
-        short delta2;
-    } u;
-} Pmf;
-
-typedef struct {
-    short delta;
-    short pad;
-    Pfn pfn;
-} __attribute__((aligned(8))) VtEnt;
 
 extern void EmThrower_throwHeld(void *a0, int a1, int a2);
 extern void ReleaseField6ECByTag564_26B1E8(void *a0);
@@ -28,14 +14,14 @@ extern void KillEffect(void *a0, int a1, int a2);
 extern int cEm00_stepFadeIn(void *a0);
 extern void func_00276478(void *a0);
 extern void func_002A87E8(void *a0, int a1);
-extern Pmf D_003BF738[];
+extern cPmf D_003BF738[];
 
 __attribute__((section(".text.func_0024C0F0")))
 void func_0024C0F0(char *self)
 {
     short idx;
     Pfn fn;
-    VtEnt e;
+    cVtEnt8 e;
 
     *(unsigned char *)(self + 0x1864) = 0;
     if (*(unsigned char *)(self + 0x2F6) == 0) {
@@ -106,7 +92,7 @@ void func_0024C0F0(char *self)
     }
     idx = D_003BF738[*(unsigned char *)(self + 0x2F5)].index;
     if (idx >= 0) {
-        e = (*(VtEnt **)(self + D_003BF738[*(unsigned char *)(self + 0x2F5)].u.delta2))[idx - 1];
+        e = (*(cVtEnt8 **)(self + D_003BF738[*(unsigned char *)(self + 0x2F5)].u.delta2))[idx - 1];
         fn = e.pfn;
     } else {
         fn = D_003BF738[*(unsigned char *)(self + 0x2F5)].u.pfn;

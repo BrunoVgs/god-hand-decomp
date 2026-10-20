@@ -1,4 +1,4 @@
-typedef struct { char pad[0x10]; unsigned char type; } Ent2BE708;
+typedef struct { char pad[0x10]; unsigned char type; } LookupEnt;
 
 extern int D_003C2F84;
 extern int D_00747A30;
@@ -6,7 +6,7 @@ extern char D_0044C0E0[];
 extern char D_0044C118[];
 extern char D_0044C150[];
 extern char D_0044C170[];
-extern Ent2BE708 *func_002C5028(int a0, unsigned short id);
+extern LookupEnt *func_002C5028(int a0, unsigned short id);
 extern int func_003A6C58(char *buf, const char *fmt, ...);
 extern void func_002BE838(void *a0, char *name, int a2);
 
@@ -15,7 +15,7 @@ void func_002BE708(void *self, int arg)
 {
     char buf[64];
     unsigned short id = arg;
-    Ent2BE708 *e = func_002C5028(D_003C2F84, id);
+    LookupEnt *e = func_002C5028(D_003C2F84, id);
     unsigned int hi;
     int lo;
 

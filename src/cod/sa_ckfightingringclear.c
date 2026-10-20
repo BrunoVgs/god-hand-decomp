@@ -2,12 +2,6 @@
 /* sn-2.95.3-136: cCoreSave_ckFightingRingClear, split from src/cod/batch28_nm.c by the NM closer. */
 #include "godhand/cCoreSave.h"
 
-extern int D_0076A7AC;
-extern void (*D_003F2810[])(int);
-extern unsigned char D_007474A0[];
-typedef struct { int a; int b; } Pair28;
-extern Pair28 D_007558A8[];
-
 __attribute__((section(".text.cCoreSave_ckFightingRingClear")))
 int cCoreSave_ckFightingRingClear(cCoreSave *self, unsigned int bit)
 {

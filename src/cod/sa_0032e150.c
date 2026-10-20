@@ -1,13 +1,5 @@
 /* cygnus-2.96: func_0032E150, returns the active decoder's buffer state for a running stream player. */
-typedef struct {
-    char pad0;
-    unsigned char stat; /* 0x01 */
-    char pad2[2];
-    void *dec;          /* 0x04 */
-    char pad8[4];
-    void *sj;           /* 0x0C */
-} StmPly;
-
+#include "godhand/criStm.h"
 extern char D_00452D78[];
 extern void Obj33F8_Tramp_0033F130_FCB0(char *msg);
 extern int func_0032F570(void *dec);

@@ -1,9 +1,9 @@
-typedef struct SjChunk {
-    struct SjChunk *next;
+typedef struct SjUniChunk {
+    struct SjUniChunk *next;
     int unk4;
     void *unk8;
     int unkC;
-} SjChunk;
+} SjUniChunk;
 
 typedef struct {
     void *f0;
@@ -11,11 +11,11 @@ typedef struct {
     signed char f5;
     char pad6[2];
     void *f8;
-    SjChunk *buf;
+    SjUniChunk *buf;
     int nchunk;
-    SjChunk *free;
-    SjChunk *list[4];
-} SjUni33A4F8;
+    SjUniChunk *free;
+    SjUniChunk *list[4];
+} SjUni;
 
 extern char D_00455C68[];
 extern char D_00455BD8[];
@@ -24,10 +24,10 @@ extern char D_00455C08[];
 extern void func_0033A048(char *a, char *b);
 
 __attribute__((section(".text.func_0033A4F8")))
-void func_0033A4F8(SjUni33A4F8 *e)
+void func_0033A4F8(SjUni *e)
 {
-    SjChunk *buf;
-    SjChunk *c;
+    SjUniChunk *buf;
+    SjUniChunk *c;
     int i;
 
     if (e == 0) {

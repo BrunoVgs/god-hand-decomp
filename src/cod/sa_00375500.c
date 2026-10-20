@@ -1,6 +1,6 @@
 /* sn-2.95.3-136: func_00375500, flush the two transfer buffers and run the sync, measuring the time
  * in hblanks (T0 counter) and microseconds and keeping the peaks. */
-#include "godhand/sndSys76A790.h"
+#include "godhand/sndTiming.h"
 
 extern unsigned long GetTimerSystemTime(void);
 extern void TimerBusClock2USec(unsigned long clock, unsigned int *sec, unsigned int *usec);
@@ -12,7 +12,7 @@ extern char D_0076B1C0[];
 __attribute__((section(".text.func_00375500")))
 void func_00375500(void)
 {
-    SndSys76A790 *p = &D_0076A790;
+    SndTiming *p = &D_0076A790;
     volatile unsigned int *t0 = (volatile unsigned int *)0x10000800;
     unsigned int sec, usec;
     int start, end;

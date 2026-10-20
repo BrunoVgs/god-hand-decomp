@@ -12,7 +12,7 @@ void func_0031C4E0(void)
     cGameObj *obj;
     cObjInitVt *vt;
 
-    if (D_007474A0.stage != GAMEWORK_STAGE_NOPLAYER) {
+    if (D_007474A0.room != GAMEWORK_ROOM_NOPLAYER) {
         if (!(D_007474A0.flags & GAMEWORK_PLAYER_READY)) {
             do {
                 cTaskWork_sleep(D_00752C00.task, 1);

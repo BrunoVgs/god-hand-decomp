@@ -2,13 +2,7 @@
 /* sn-2.95.3-136: func_002B4F38, split from src/cod/batch28_nm.c by the NM closer. */
 #include "godhand/cCoreSave.h"
 
-extern int D_0076A7AC;
-extern void (*D_003F2810[])(int);
-extern unsigned char D_007474A0[];
-typedef struct { int a; int b; } Pair28;
-extern Pair28 D_007558A8[];
-
-static inline unsigned char SlotUsed_2B4F38(char *p)
+static inline unsigned char slotUsed(char *p)
 {
     if (*(int *)p != 0)
         return 1;
@@ -22,7 +16,7 @@ int func_002B4F38(int **a0)
     int count = 0;
 
     for (;;) {
-        if (!SlotUsed_2B4F38(p))
+        if (!slotUsed(p))
             return count;
         count++;
         if (count >= 3)

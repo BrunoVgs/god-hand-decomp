@@ -2,7 +2,7 @@ typedef struct {
     char pad0[0x284];
     int unk284;
     int unk288;
-} Tm357C20;
+} SfdTimer;
 
 extern int sfply_IsAnyoneTerm(char *);
 extern int GetArrayElemA0C_35A1C8(char *, int);
@@ -16,7 +16,7 @@ __attribute__((section(".text.func_00357C20")))
 int func_00357C20(char *o)
 {
     int t[2];
-    Tm357C20 *tm;
+    SfdTimer *tm;
     int rate;
     int now;
 
@@ -30,7 +30,7 @@ int func_00357C20(char *o)
         return 1;
     }
     func_0035AB98(o, &t[0], &t[1]);
-    tm = (Tm357C20 *)(o + 0xD30);
+    tm = (SfdTimer *)(o + 0xD30);
     rate = tm->unk288;
     now = tm->unk284;
     return func_0035AEC8(t[0], t[1], now - func_0036C920(GetArrayElemA0C_35A1C8(o, 0x45), rate, 1000000), rate) != 0;

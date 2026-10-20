@@ -1,35 +1,27 @@
-typedef struct SjIf32B1C8 {
-    char pad0[0x24];
-    int (*getNum)(void *, int);
-} SjIf32B1C8;
+#include "godhand/criSj.h"
 
-typedef struct Sj32B1C8 {
-    SjIf32B1C8 *vt;
-} Sj32B1C8;
-
-typedef struct Adxt32B1C8 {
+typedef struct AdxLoopHn {
     char pad0[2];
     signed char stat;
     char pad3;
     void *stm;
     char pad8[0xC];
-    Sj32B1C8 *sj;
+    SjObj *sj;
     char pad18[0x54];
     signed char lpflg;
     char pad6D[0x57];
     int lpPos;
-} Adxt32B1C8;
+} AdxLoopHn;
 
 extern char D_00452560[];
-extern void func_0033F130(char *);
 extern int Obj3270_GetField_30(void *);
 extern int func_00327830(void *);
 extern int GetVia4_Obj33C8_GetField_34_7878_327878(void *);
 
 __attribute__((section(".text.func_0032B1C8")))
-void func_0032B1C8(Adxt32B1C8 *adxt, int flg)
+void func_0032B1C8(AdxLoopHn *adxt, int flg)
 {
-    Sj32B1C8 *sj;
+    SjObj *sj;
     int n, pos, len;
 
     if (adxt == 0) {
@@ -38,7 +30,7 @@ void func_0032B1C8(Adxt32B1C8 *adxt, int flg)
     }
     sj = adxt->sj;
     if (sj != 0)
-        n = sj->vt->getNum(sj, 1);
+        n = sj->vt->getNumData(sj, 1);
     else
         n = 0;
     if (adxt->stat != 4 && adxt->lpflg == 1 && flg == 0) {

@@ -7,7 +7,7 @@ typedef struct {
     short step;
     short step2;
     char pad12[2];
-} Ent37B808;
+} MenuValEnt;
 
 typedef struct {
     char pad0[0x27];
@@ -20,16 +20,16 @@ typedef struct {
     int pad;
     char pad3C[0x16C - 0x3C];
     struct { short id; char pad[0x0E]; int handle; char pad2[0x0C]; } slot[1];
-} Act37B808;
+} MenuValAct;
 
-extern Ent37B808 D_003F26E8[][6];
+extern MenuValEnt D_003F26E8[][6];
 extern int func_00374AE0(int id);
 
 __attribute__((section(".text.func_0037B808")))
-int func_0037B808(Act37B808 *a)
+int func_0037B808(MenuValAct *a)
 {
     int row = a->row;
-    Ent37B808 *e = &D_003F26E8[row][a->col];
+    MenuValEnt *e = &D_003F26E8[row][a->col];
     short v, old, step;
 
     if (e->enabled == 0) return 0;

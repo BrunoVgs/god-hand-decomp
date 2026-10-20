@@ -22,9 +22,15 @@ typedef struct MenuInfo {
 typedef struct MenuList {
     unsigned char unk00;
     unsigned char result;       /* 0x01 */
-    char unk02[0x10 - 0x02];
+    char unk02[2];
+    short unk04;                /* 0x04 */
+    char unk06[2];
+    short unk08;                /* 0x08 */
+    short unk0A;                /* 0x0A */
+    char unk0C[0x10 - 0x0C];
     unsigned int count;         /* 0x10 */
-    char unk14[0x4C - 0x14];
+    MenuInfo work;              /* 0x14 */
+    char unk48[0x4C - 0x48];
     MenuInfo info;              /* 0x4C */
     char unk80[0x84 - 0x80];
     int f84;                    /* 0x84 */
@@ -45,6 +51,7 @@ typedef struct SlotInfoA {
     int info;                   /* 0x14 */
     char unk18[0x20 - 0x18];
     int handle;                 /* 0x20 */
+    int buf;                    /* 0x24 freed once the handle stops */
 } SlotInfoA;
 
 typedef struct SlotInfoB {
@@ -55,6 +62,7 @@ typedef struct SlotInfoB {
     int stamp;                  /* 0x1C */
     char unk20[0x30 - 0x20];
     int handle;                 /* 0x30 */
+    int buf;                    /* 0x34 freed once the handle stops */
 } SlotInfoB;
 
 typedef struct SlotView {
@@ -63,7 +71,7 @@ typedef struct SlotView {
     char unk04[0x30 - 0x04];
     int stat;                   /* 0x30 */
     SlotInfoB b;                /* 0x34 */
-    char unk68[0xA4 - 0x34 - sizeof(SlotInfoB)];
+    char unk6C[0xA4 - 0x34 - sizeof(SlotInfoB)];
     SlotInfoA a;                /* 0xA4 */
 } SlotView;
 

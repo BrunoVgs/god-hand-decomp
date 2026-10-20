@@ -6,20 +6,19 @@ extern int func_00344E88(int a0, int a1);
 __attribute__((section(".text.func_002D4248")))
 int func_002D4248(char *self)
 {
-    char *s0 = self;
-    int v0;
-    int a1;
-    if (func_003447A8(*(void **)s0, s0 + 0x58, *(void **)(s0 + 8)) != 1)
+    int cur;
+    int last;
+    if (func_003447A8(*(void **)self, self + 0x58, *(void **)(self + 8)) != 1)
         return 0;
-    v0 = *(int *)(s0 + 0x58);
-    a1 = *(int *)(s0 + 0x5C);
-    if (v0 == a1)
+    cur = *(int *)(self + 0x58);
+    last = *(int *)(self + 0x5C);
+    if (cur == last)
         return 1;
-    if (a1 < 0)
+    if (last < 0)
         goto neg;
-    func_00344E88(*(int *)s0, a1);
-    v0 = *(int *)(s0 + 0x58);
+    func_00344E88(*(int *)self, last);
+    cur = *(int *)(self + 0x58);
 neg:
-    *(int *)(s0 + 0x5C) = v0;
+    *(int *)(self + 0x5C) = cur;
     return 1;
 }

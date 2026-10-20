@@ -7,12 +7,12 @@ typedef struct {
     char pad8[0x16 - 8];
     short motion[15];    /* 0x16 */
     int flags;           /* 0x34 */
-} Actor;
+} SeqActor;
 
-extern int func_0037A0F0(Actor *a, int motion, int mode);
+extern int func_0037A0F0(SeqActor *a, int motion, int mode);
 
 __attribute__((section(".text.func_00378B58")))
-int func_00378B58(Actor *a)
+int func_00378B58(SeqActor *a)
 {
     signed char dir;
     signed char side;
