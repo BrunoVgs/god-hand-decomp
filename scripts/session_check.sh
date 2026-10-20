@@ -82,7 +82,7 @@ DEFAULT_CHECKS=(splat rel-splat metadata build rel expected expected_stale dual_
 # optional check is skipped, not failed. A missing NON-optional check is still a
 # hard error — that catches a typo in DEFAULT_CHECKS or an accidentally-deleted
 # tracked check.
-OPTIONAL_CHECKS=(naming_debt naming_sync atlas expected_stale monolith_sync jtbl_words)
+OPTIONAL_CHECKS=(naming_debt naming_sync atlas expected_stale monolith_sync jtbl_words inline_asm_tree)
 
 usage() {
     cat <<EOF

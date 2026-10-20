@@ -17,4 +17,6 @@ git checkout -- include/labels.inc include/include_asm.h include/macro.inc
 # Strip the function symbol from false splits: stray inter-function words
 # that splat started a function at (see the script's docstring).
 .venv/bin/python scripts/mark_split_fragments.py
+# Apply the data-section nonmatching policy (the data_decls check expects it).
+.venv/bin/python tools/strip_data_nonmatching.py
 echo "resplat: done (include/ macros are now generation-disabled; checkout was a no-op)"
