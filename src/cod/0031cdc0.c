@@ -1,26 +1,29 @@
 /* sn-2.95.3-136 matched TU. */
+#include "godhand/ResPack.h"
 
+/* Return entry nth among the pack entries named *nameA or *nameB, counting
+   from 0, or 0 when there are not that many. */
 __attribute__((section(".text.func_0031CDC0")))
-int func_0031CDC0(unsigned int *p, unsigned int *a, unsigned int *b, int idx) {
-    int cnt;
+int func_0031CDC0(ResPack *pack, unsigned int *nameA, unsigned int *nameB, int nth) {
+    int found;
     unsigned int i;
     unsigned int n;
-    unsigned int *q;
+    unsigned int *name;
     unsigned int v;
 
-    if (p == 0) {
+    if (pack == 0) {
         return 0;
     }
-    n = p[0];
-    cnt = 0;
-    q = p + n;
+    n = pack->count;
+    found = 0;
+    name = &pack->count + n;
     for (i = 1; i <= n; i++) {
-        v = *++q;
-        if (v == *a || v == *b) {
-            if (cnt == idx) {
-                return p[i] + (int)p;
+        v = *++name;
+        if (v == *nameA || v == *nameB) {
+            if (found == nth) {
+                return (&pack->count)[i] + (int)pack;
             }
-            cnt++;
+            found++;
         }
     }
     return 0;

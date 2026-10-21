@@ -1,17 +1,14 @@
 /* cygnus-2.96 matched TU. */
+#include "godhand/EntryPool.h"
 
-typedef struct {
-    signed char used;
-    signed char pad[23];
-} Entry;
+extern int D_003E0708;          /* pool size */
+extern PoolEntry D_003E0768[];  /* pool entries */
 
-extern int D_003E0708;
-extern Entry D_003E0768[];
-
+/* Claim the first free pool entry and return it, or 0 when the pool is full. */
 __attribute__((section(".text.func_00337320")))
-Entry *func_00337320(void) {
+PoolEntry *func_00337320(void) {
     int i;
-    Entry *e;
+    PoolEntry *e;
 
     e = 0;
     for (i = 0; i < D_003E0708; i++) {

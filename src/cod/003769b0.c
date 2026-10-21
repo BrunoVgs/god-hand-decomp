@@ -1,27 +1,22 @@
 /* sn-2.95.3-136 matched TU. */
+#include "godhand/SndEntry.h"
 
-typedef struct {
-    unsigned short active;
-    short pad2;
-    int id;
-    unsigned char flags;
-    char pad9[0x37];
-} Entry003769B0;
+extern SndVoice D_0076F050[];   /* voice table, SND_VOICE_NUM entries */
 
-extern Entry003769B0 D_0076F050[];
-
+/* Return the first active voice with the given id (0 = any id), skipping
+   voices flagged SND_VOICE_FLAG_SKIP, or 0 when there is none. */
 __attribute__((section(".text.func_003769B0")))
-Entry003769B0 *func_003769B0(int id) {
-    Entry003769B0 *p = D_0076F050;
+SndVoice *func_003769B0(int id) {
+    SndVoice *v = D_0076F050;
     int i;
 
-    for (i = 0; i < 0x60; i++, p++) {
-        if (p->active != 0 && !(p->flags & 0x10)) {
+    for (i = 0; i < SND_VOICE_NUM; i++, v++) {
+        if (v->active != 0 && !(v->flags & SND_VOICE_FLAG_SKIP)) {
             if (id == 0) {
-                return p;
+                return v;
             }
-            if (p->id == id) {
-                return p;
+            if (v->id == id) {
+                return v;
             }
         }
     }

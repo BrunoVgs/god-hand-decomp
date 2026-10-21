@@ -17,7 +17,8 @@
 #define SCEAT_UNIT_TYPE_MARK  1          /* type of the placed units that carry a spawn record */
 
 typedef struct cSceAtUnit {
-    char unk00[5];
+    unsigned int link;                  /* 0x00 tagged link to the next unit, see SCEAT_LINK_* */
+    char unk04;
     unsigned char state;                /* 0x05 1 = active */
     char unk06[0xA];
     float extent;                       /* 0x10 read by FindEntityAtPosition */
@@ -54,5 +55,12 @@ typedef struct cSceAtManager {
 } cSceAtManager;
 
 #define SCEAT_FLAG_ENABLED  0x1         /* cSceAtUnit.flags */
+
+/* A unit-list word is a tagged link: SCEAT_LIST_END ends the list, the low
+ * 31 bits give the address of the next unit, and SCEAT_LINK_UNIT is set on a
+ * link that points at a unit. */
+#define SCEAT_LIST_END   0xFFFFFFFF
+#define SCEAT_LINK_UNIT  0x80000000
+#define SCEAT_LINK_ADDR  0x7FFFFFFF
 
 #endif

@@ -3049,6 +3049,16 @@
 !include/godhand/cGameObj.h
 !include/godhand/cEma2.h
 !include/godhand/cEm00.h cEma2.h cGameObj.h cObjBase.h cObj.h
+!include/godhand/DataPack.h
+!include/godhand/Sfd.h
+!include/godhand/SmoData.h
+!include/godhand/ResPack.h
+!include/godhand/CriTrackSet.h
+!include/godhand/CriServer.h
+!include/godhand/EntryPool.h
+!include/godhand/SndEntry.h
+!include/godhand/MixChannel.h
+!include/godhand/StdString.h
 !src/cod/001d2ee0.c
 !src/cod/001eed00.c
 !scripts/mark_split_fragments.py

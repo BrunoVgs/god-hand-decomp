@@ -1,16 +1,18 @@
 /* cygnus-2.96 matched TU. */
+#include "godhand/Sfd.h"
 
-/* The output is a 32-bit pointer, as used by the callers. */
-extern int func_0034DD70(char *a0, int error);
+extern int func_0034DD70(SfdHandle *self, int error);
 
+/* Write the object of track trno to *out. A track that is not set up raises
+   SFD_ERR_TRACK_NOT_READY and leaves *out at 0. */
 __attribute__((section(".text.func_0034C890")))
-int func_0034C890(char *a0, int a1, void **a2) {
-    char *base = a0 + 0x1310;
-    int *p = (int *)(base + a1 * 0x74);
+int func_0034C890(SfdHandle *self, int trno, void **out) {
+    SfdTrack *table = self->track;
+    SfdTrack *tr = table + trno;
 
-    *a2 = 0;
-    if (__builtin_expect(p[1], 0) == 0)
-        return func_0034DD70(a0, 0xFF000401);
-    *a2 = *(void **)(p + 5);
+    *out = 0;
+    if (__builtin_expect(tr->ready, 0) == 0)
+        return func_0034DD70(self, SFD_ERR_TRACK_NOT_READY);
+    *out = tr->obj;
     return 0;
 }

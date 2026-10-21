@@ -1,20 +1,23 @@
 /* sn-2.95.3-136 matched TU. */
+#include "godhand/SmoData.h"
 
+/* Bind an SMO data block to the reader. Returns 1 when the block is valid,
+   else clears the reader and returns 0. */
 __attribute__((section(".text.func_001C3C58")))
-int func_001C3C58(int *state, unsigned int *data) {
-    if (data == 0) return 0;
-    state[0] = (int)data;
-    if (data[0] != 0x534D4F) {
-        state[0] = 0;
+int func_001C3C58(SmoReader *rd, SmoHeader *hdr) {
+    if (hdr == 0) return 0;
+    rd->hdr = hdr;
+    if (hdr->magic != SMO_MAGIC) {
+        rd->hdr = 0;
         return 0;
     }
-    if (data[1] == 0) {
-        state[0] = 0;
+    if (hdr->count == 0) {
+        rd->hdr = 0;
         return 0;
     }
-    if (data[2] < 2U)
-        state[1] = (int)(data + 3);
+    if (hdr->version < SMO_VERSION_LONG)
+        rd->body = &hdr->body[0];
     else
-        state[1] = (int)(data + 4);
+        rd->body = &hdr->body[1];
     return 1;
 }

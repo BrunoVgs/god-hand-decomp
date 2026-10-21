@@ -40,7 +40,9 @@ typedef struct BlackJackVtEnt {
 typedef struct BlackJackCardObj {
     char unk000[0xF0];
     float *pos;                         /* 0x0F0 -> x of the card position */
-    char unk0F4[0x1C];
+    char unk0F4[0x10];
+    int unk104;                         /* 0x104 cleared by Poker_resetDeck */
+    char unk108[8];
     float scale[3];                     /* 0x110 */
     char unk11C[0xF8];
     BlackJackVtEnt *vtbl;               /* 0x214 g++ 2.x vtable pointer */

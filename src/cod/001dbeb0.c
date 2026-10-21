@@ -1,41 +1,30 @@
 /* sn-2.95.3-136 matched TU. */
+#include "godhand/Poker.h"
 
-typedef struct {
-    char pad0[0x104];
-    int unk104;
-    char pad108[0x250 - 0x108];
-    int unk250;
-} Obj;
+#define BLACKJACKCARD_OFFSET(field)  ((int)&((BlackJackCard *)0)->field)
+/* Kept raw: retail walks a pointer to each card's flags word and reaches the
+   card through it (obj at -4); walking a BlackJackCard pointer moves every
+   offset by 4 and no longer matches. */
+#define CARD_OF_FLAGS(f)  ((BlackJackCard *)((char *)(f) - BLACKJACKCARD_OFFSET(flags)))
 
-typedef struct {
-    Obj *obj;
-    int state;
-} Slot;
-
-typedef struct {
-    char pad0[0x2E64];
-    Slot slots[52];
-    char pad3004[0x3004 - 0x2E64 - 52 * 8];
-    int vals[5];
-} Mgr;
-
+/* Put all 52 cards back in the deck face down and empty the hand. */
 __attribute__((section(".text.func_001DBEB0")))
-void func_001DBEB0(Mgr *m) {
+void func_001DBEB0(Poker *self) {
+    unsigned int *flags = &self->deck[0].flags;
     int i;
     int j;
-    int *p = &m->slots[0].state;
-    i = 51;
+    i = POKER_DECK_NUM - 1;
     /* Preserve loop-entry alignment without hoisting the state constant. */
     do {
 loop:
         ;
     } while (0);
-    (*(Obj **)((char *)p - 4))->unk250 |= 2;
-    *p = 9;
-    (*(Obj **)((char *)p - 4))->unk104 = 0;
-    p += 2;
+    CARD_OF_FLAGS(flags)->obj->flags |= BLACKJACK_CARD_FACE_DOWN;
+    *flags = POKER_CARD_RESET;
+    CARD_OF_FLAGS(flags)->obj->unk104 = 0;
+    flags += sizeof(BlackJackCard) / sizeof(*flags);
     if (--i >= 0) goto loop;
-    for (j = 4; j >= 0; j--) {
-        m->vals[j] = 0;
+    for (j = POKER_HAND_NUM - 1; j >= 0; j--) {
+        self->hand[j] = 0;
     }
 }

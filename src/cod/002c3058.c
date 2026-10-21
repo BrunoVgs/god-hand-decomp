@@ -1,12 +1,15 @@
 /* sn-2.95.3-136 matched TU. */
+#include "godhand/cSceAtManager.h"
 
+/* Take unit out of the tagged unit list that starts at link: find the link
+   that points at it and make it skip to the unit's own next link. */
 __attribute__((section(".text.func_002C3058")))
-void func_002C3058(int arg0, unsigned int *slot, unsigned int *node) {
-    while (*slot != 0xFFFFFFFF) {
-        if ((*slot & 0x80000000) && (unsigned int *)(*slot & 0x7FFFFFFF) == node) {
-            *slot = *node;
+void func_002C3058(cSceAtManager *self, unsigned int *link, cSceAtUnit *unit) {
+    while (*link != SCEAT_LIST_END) {
+        if ((*link & SCEAT_LINK_UNIT) && (cSceAtUnit *)(*link & SCEAT_LINK_ADDR) == unit) {
+            *link = unit->link;
             return;
         }
-        slot = (unsigned int *)(*slot & 0x7FFFFFFF);
+        link = (unsigned int *)(*link & SCEAT_LINK_ADDR);
     }
 }

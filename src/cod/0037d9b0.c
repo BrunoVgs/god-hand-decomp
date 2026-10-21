@@ -1,29 +1,23 @@
 /* sn-2.95.3-136 matched TU. */
+#include "godhand/SndEntry.h"
 
-typedef struct {
-    unsigned short unk0;
-    char pad2[3];
-    unsigned char unk5;
-    unsigned short unk6;
-    char pad8[0x48];
-} Ent0037D9B0;
+extern SndEvent D_0076CF20[SND_EVENT_NUM];   /* event table */
 
-extern Ent0037D9B0 D_0076CF20[51];
-
+/* Apply request req to every active event whose group bits meet mask. */
 __attribute__((section(".text.func_0037D9B0")))
-void func_0037D9B0(unsigned char mask, unsigned short mode) {
-    Ent0037D9B0 *p;
+void func_0037D9B0(unsigned char mask, unsigned short req) {
+    SndEvent *e;
     int i;
 
-    for (i = 0; i < 51; i++) {
-        p = &D_0076CF20[i];
-        if (p->unk0 != 0 && (p->unk5 & mask)) {
-            switch (mode) {
-            case 1:
-                p->unk6 |= 9;
+    for (i = 0; i < SND_EVENT_NUM; i++) {
+        e = &D_0076CF20[i];
+        if (e->active != 0 && (e->group & mask)) {
+            switch (req) {
+            case SND_EVENT_REQ_1:
+                e->flags |= SND_EVENT_BITS_1;
                 break;
-            case 2:
-                p->unk6 |= 10;
+            case SND_EVENT_REQ_2:
+                e->flags |= SND_EVENT_BITS_2;
                 break;
             }
         }

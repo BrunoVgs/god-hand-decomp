@@ -1,5 +1,7 @@
 /* sn-2.95.3-136 matched TU. */
 
+/* strstr: return the first place s2 occurs in s1, s1 itself for an empty s2,
+   or 0. */
 __attribute__((section(".text.func_003A93F8")))
 char *func_003A93F8(char *s1, char *s2) {
     int i;

@@ -1,37 +1,21 @@
 /* cygnus-2.96 matched TU. */
+#include "godhand/Sfd.h"
 
-typedef struct {
-    char pad[0x40];
-    int x;
-    int y;
-} Pos;
-
-typedef struct {
-    char pad[0xA4];
-    unsigned int mode;
-    char pad2[0x160 - 0xA8];
-    Pos *a;
-    Pos *b;
-} Obj;
-
-typedef struct {
-    char pad[0x38];
-    int state;
-} Ctx;
-
+/* Write the movie's draw offset to *x, *y: the base position, or base plus
+   relative position, while playing; 0, 0 otherwise. */
 __attribute__((section(".text.func_00353EE0")))
-void func_00353EE0(Ctx *ctx, Obj *obj, int *x, int *y) {
-    if (ctx->state == 3) {
+void func_00353EE0(SfdPlayCtx *ctx, SfdDrawObj *obj, int *x, int *y) {
+    if (ctx->state == SFD_PLAY_STATE_PLAYING) {
         switch (obj->mode) {
-        case 2:
-            *x = obj->a->x;
-            *y = obj->a->y;
+        case SFD_DRAW_MODE_BASE:
+            *x = obj->base->x;
+            *y = obj->base->y;
             return;
-        case 3:
-            *x = obj->a->x + obj->b->x;
-            *y = obj->a->y + obj->b->y;
+        case SFD_DRAW_MODE_BASE_REL:
+            *x = obj->base->x + obj->rel->x;
+            *y = obj->base->y + obj->rel->y;
             return;
-        case 1:
+        case SFD_DRAW_MODE_NONE:
             break;
         }
     }

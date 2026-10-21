@@ -1,34 +1,24 @@
 /* sn-2.95.3-136 matched TU. */
+#include "godhand/DataPack.h"
 
-typedef struct {
-    char pad[0x14];
-    unsigned short count;
-} Hdr;
+#define BLOCK_BYTES  0x90   /* buffer bytes per block of DATAPACK_ITEMS_PER_BLOCK items */
 
-typedef struct {
-    char pad[0x20];
-    int offs[1];
-} Base;
-
-typedef struct {
-    Base *base;
-    Hdr *hdr;
-} Ctx;
-
+/* Size of the buffer section idx needs: one BLOCK_BYTES block per 24 items,
+   rounded up, plus the buffer header. */
 __attribute__((section(".text.func_001551E0")))
-int func_001551E0(char *obj, int idx) {
-    Ctx ctx;
-    int c;
-    int n;
+int func_001551E0(DataPackOwner *self, int idx) {
+    DataPackRef ref;
+    int count;
+    int size;
 
-    ctx.base = *(Base **)(obj + 0x388);
-    ctx.hdr = (Hdr *)(ctx.base->offs[idx] + (int)ctx.base);
-    c = ctx.hdr->count;
-    if (c % 24) {
-        n = c / 24 + 1;
+    ref.pack = self->pack;
+    ref.sect = (DataPackSection *)(ref.pack->offs[idx] + (int)ref.pack);
+    count = ref.sect->count;
+    if (count % DATAPACK_ITEMS_PER_BLOCK) {
+        size = count / DATAPACK_ITEMS_PER_BLOCK + 1;
     } else {
-        n = c / 24;
+        size = count / DATAPACK_ITEMS_PER_BLOCK;
     }
-    n *= 0x90;
-    return n + 0x10;
+    size *= BLOCK_BYTES;
+    return size + DATAPACK_BUF_HEADER;
 }
