@@ -53,6 +53,9 @@ if [[ $REGEN -eq 1 ]]; then
     # Derive the "fully linked" (objdiff complete) axis into the report.
     python3 "$ROOT/scripts/mark_complete.py" >/dev/null \
         || { echo "mark_complete failed" >&2; exit 1; }
+    # Score the progress categories per function (library vs engine).
+    python3 "$ROOT/scripts/report_categories.py" >/dev/null \
+        || { echo "report_categories failed" >&2; exit 1; }
 fi
 
 if [[ ! -f "$REPORT" ]]; then

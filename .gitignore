@@ -169,6 +169,7 @@
 !scripts/recon/rel_inventory.py
 !scripts/recon/rel_overlay_inventory.py
 !scripts/recon/uncarved_leaves_worklist.md
+!scripts/report_categories.py
 !scripts/apply_jtbl_extern_words.py
 !scripts/resplat.sh
 !scripts/score_nm.sh
@@ -1205,6 +1206,7 @@
 !tests/test_gen_unit_names.py
 !tests/test_link_symbols.py
 !tests/test_mark_complete.py
+!tests/test_report_categories.py
 !tests/test_report_lint.py
 !tests/test_session_finalize.py
 !tests/test_verify_rel_splat_roundtrip.py
