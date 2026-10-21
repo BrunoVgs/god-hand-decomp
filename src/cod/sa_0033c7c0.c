@@ -1,16 +1,13 @@
 /* cygnus-2.96 matched TU. */
 #include "godhand/criStm.h"
 
-extern void *func_003A52F0(void *dst, int val, int len);
-
-/* Resets the pending-async slot of an AsyncCall: clears the 16-byte work area
-   and seeds the two fader shorts to -0x80. */
+/* Forget the ADX AINF chunk: clear its data and restore the default volume and pan offsets. */
 __attribute__((section(".text.func_0033C7C0")))
-void func_0033C7C0(AsyncCall *e)
+void func_0033C7C0(AsyncCall *self)
 {
-    *(int *)((char *)e + 0xCC) = 0;
-    *(short *)((char *)e + 0xE0) = 0;
-    *(short *)((char *)e + 0xE2) = -0x80;
-    *(short *)((char *)e + 0xE4) = -0x80;
-    func_003A52F0((char *)e + 0xD0, 0, 0x10);
+    self->ainfSize = 0;
+    self->volumeOffset = 0;
+    self->panOffset[0] = AINF_PAN_DEFAULT;
+    self->panOffset[1] = AINF_PAN_DEFAULT;
+    func_003A52F0(self->ainfData, 0, sizeof(self->ainfData));
 }

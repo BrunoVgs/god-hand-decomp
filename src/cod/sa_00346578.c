@@ -1,18 +1,18 @@
 /* cygnus-2.96 matched TU. */
-extern int D_003EE084;
-extern int MWSPR_RestoreSprMem(void);
-extern int func_003465B8(void);
+extern int D_003EE084; /* Scratchpad transfer mode: zero uses DMA, nonzero uses CPU copying. */
+extern int MWSPR_RestoreSprMem(void *source, int byteCount, void *scratchpadOffset);
+extern int func_003465B8(void *source, int byteCount, int scratchpadOffset);
 
-/* Restore scratchpad memory using the selected DMA mode. */
+/* Restore a saved memory buffer to scratchpad using the selected transfer mode. */
 __attribute__((section(".text.func_00346578")))
-int func_00346578(void)
+int func_00346578(void *source, int byteCount, int scratchpadOffset)
 {
-    int r;
+    int result;
 
     if (D_003EE084 == 0) {
-        r = MWSPR_RestoreSprMem();
+        result = MWSPR_RestoreSprMem(source, byteCount, (void *)scratchpadOffset);
     } else {
-        r = func_003465B8();
+        result = func_003465B8(source, byteCount, scratchpadOffset);
     }
-    return r;
+    return result;
 }
