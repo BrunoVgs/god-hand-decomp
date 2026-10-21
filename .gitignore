@@ -3932,6 +3932,7 @@
 !src/cod/0036cf30.c
 !src/cod/0036dff0.c
 !src/cod/0036ee90.c
+!include/godhand/adxf.h
 !include/godhand/sndBank.h
 !include/godhand/regTbl.h
 !include/godhand/iopReq.h

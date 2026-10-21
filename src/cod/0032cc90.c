@@ -22,7 +22,7 @@ extern int Obj3270_GetVia4_0033CE98_77A0(void *sjd);
 extern void Forward33B658_33E678(void);
 extern void Forward33B670_33E690(void);
 extern void func_0033ACA0(SjChunk *ck, int len, SjChunk *head, SjChunk *tail);
-extern void func_003A52F0(void *dst, int c, int n);
+extern void *func_003A52F0(void *dst, int c, int n);
 extern void Obj3260_Tramp_003382A0_D320(void *rna, int a);
 extern void Obj3260_Tramp_00338338_D338(void *rna, int a);
 extern void func_00338378(void *rna, int a);

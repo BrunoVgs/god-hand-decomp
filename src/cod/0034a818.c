@@ -1,5 +1,7 @@
 /* cygnus-2.96: decoder handle update: poll the stream state and error, latch and map errors to
  * 0xFF000C07..09, reset the sub-object at the end states and stop on error or completion. */
+#include "godhand/sftim.h"
+
 typedef struct DecStm {
     int sj;                             /* 0x00 */
     char pad04[0x48 - 0x04];
@@ -9,8 +11,6 @@ typedef struct DecStm {
 extern int D_00760DAC;
 extern int GuardedCall_00329FD0_329F98(int a);
 extern int func_0032B0B0(int sj);
-extern int GetArrayElemA0C_35A1C8(int, int);
-extern int func_0034DD70(int a0, unsigned int a1);
 extern void Obj35C0_SetField_C_C540(void *obj, int v);
 extern void func_0034AAF8(char *hn, int stop);
 extern int func_0034AAC8(char *hn);
@@ -31,19 +31,19 @@ void func_0034A818(char *hn, int keep)
     err = func_0032B0B0(sj);
     if (err != 0)
         D_00760DAC = err;
-    if (GetArrayElemA0C_35A1C8((int)hn, 0x1A) == 0)
+    if (GetArrayElemA0C_35A1C8(hn, 0x1A) == 0)
         err = 0;
     switch (err) {
     case 0:
         break;
     case -1:
-        func_0034DD70((int)hn, 0xFF000C08);
+        func_0034DD70((SftimHn *)hn, 0xFF000C08);
         break;
     case -2:
-        func_0034DD70((int)hn, 0xFF000C09);
+        func_0034DD70((SftimHn *)hn, 0xFF000C09);
         break;
     default:
-        func_0034DD70((int)hn, 0xFF000C07);
+        func_0034DD70((SftimHn *)hn, 0xFF000C07);
         break;
     }
     if (stat == 4 || stat == 5)

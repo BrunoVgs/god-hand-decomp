@@ -19,7 +19,7 @@ extern char D_00451798[];
 extern int D_003EB708;
 
 extern void func_003228C0(int id, int phase, CdReadReq *h, int nsct, void *buf);
-extern SjObj *func_003395A0(void *buf, int size, int mode);
+extern int func_003395A0(int buf, int size, int mode);
 extern void Forward33B658_33E678(void);
 extern void Forward33B670_33E690(void);
 extern void Forward3B0640_33F3D0(void *buf, int size);
@@ -43,7 +43,7 @@ int func_00323CF0(CdReadReq *h, int nsct, void *buf)
         return -1;
     }
     size = nsct << 11;
-    sj = func_003395A0(buf, size, 0);
+    sj = (SjObj *)func_003395A0((int)buf, size, 0);
     if (sj == 0)
         return -2;
     Forward33B658_33E678();

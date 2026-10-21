@@ -12,7 +12,7 @@ extern char D_00455DF8[];
 extern void *func_003A52F0(void *dst, int c, int n);
 extern void func_00332508(void);
 extern int sceSifAllocIopHeap(int size);
-extern void func_003260C8(const char *msg);
+extern void func_003260C8(const char *fmt, ...);
 extern void *func_00332178(int id, int buf, int arg2, int bufsize);
 extern void func_00332378(void *rmt, void (*fn)(void *obj, void *data), int arg);
 extern void func_00332388(void *rmt, void (*fn)(void *obj, void *data), int arg);

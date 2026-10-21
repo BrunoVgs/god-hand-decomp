@@ -34,7 +34,7 @@ extern void func_00332808(void *dev, char *msg);
 extern CdFileHn *func_00332BA8(void);
 extern int func_00333C00(void *dev, CdFileInfo *info);
 extern void func_00333390(void *dev, char *name);
-extern void func_003260C8(char *msg, char *name);
+extern void func_003260C8(const char *fmt, ...);
 extern void PushGlobalD8478History_331C78(int tag);
 extern int func_00398DA0(int mode);
 extern int func_00332838(CdFileInfo *info, char *name);

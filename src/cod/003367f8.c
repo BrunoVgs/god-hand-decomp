@@ -23,8 +23,8 @@ extern void func_00336330(MemFileReader *h, char *msg);
 extern void Forward33B658_3362E8(void);
 extern void Forward33B670_336300(void);
 extern char *func_003363F8(char *map, int *avail);
-extern void func_003A5148(void *d, void *s, int n);
-extern void func_003A52F0(void *p, int c, int n);
+extern void *func_003A5148(void *d, const void *s, unsigned int n);
+extern void *func_003A52F0(void *dst, int c, int n);
 
 __attribute__((section(".text.func_003367F8")))
 int func_003367F8(MemFileReader *h, int nsct, char *buf)

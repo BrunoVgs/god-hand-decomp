@@ -16,7 +16,7 @@ extern char D_00454610[];
 extern char D_00454640[];
 extern char D_00454668[];
 
-extern void *func_003A52F0(void *dst, int c, unsigned int n);
+extern void *func_003A52F0(void *dst, int c, int n);
 extern void Tramp_003A52F0_00333AD8(void);
 extern void LogPrintf(char *fmt, ...);
 extern int func_003336F8(char *name, char *work);

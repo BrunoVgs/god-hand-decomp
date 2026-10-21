@@ -1,5 +1,6 @@
 /* cygnus-2.96: fill a stream request from the global info block and push the handle's frame-rate and
  * time conditions into its timer object. */
+#include "godhand/sftim.h"
 typedef struct {
     int v[7];
 } StmReqInfo;
@@ -22,8 +23,6 @@ typedef struct {
 } StmReq;
 
 extern StmReqInfo D_00760D90;
-extern int func_0034DD70(int a0, unsigned int a1);
-extern int GetArrayElemA0C_35A1C8(void *hn, int idx);
 extern void func_0035C3A0(void *tm);
 extern void Obj35C0_SetField_0_C4C0(void *tm, int v);
 extern void Obj35C0_CopyPair_138_C4C8(void *tm, long long *p);

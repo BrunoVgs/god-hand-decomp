@@ -1,5 +1,6 @@
 /* cygnus-2.96: once audio and video analysis finish, take the stream rate and channel count from the
  * MPS header, the video info or the ADX info, store them and continue. */
+#include "godhand/sftim.h"
 
 typedef struct MpsInfo {
     int set;                    /* 0x00 */
@@ -39,7 +40,6 @@ extern int sfsee_IsAudioAnalyzing(int a0, int a1, int a2);
 extern int sfsee_IsVideoAnalyzing(void *a0, int *a1, int *a2);
 extern int sfsee_IsMpsStream(void *h);
 extern int func_0036C920(int a, int b, int c);
-extern int Obj34D8_GetTri78_Times100(char *a0);
 extern void func_00359DF0(int a0);
 
 __attribute__((section(".text.func_00359848")))
@@ -74,7 +74,7 @@ void func_00359848(MpsHn *sfd)
                 rate = func_0036C920(w->num, 1000, scale);
             else
                 rate = aud->rate;
-        } else if (Obj34D8_GetTri78_Times100((char *)sfd) < 108) {
+        } else if (Obj34D8_GetTri78_Times100(sfd) < 108) {
             rate = (mps->rate << 11) / 2018;
         } else {
             rate = mps->rate;

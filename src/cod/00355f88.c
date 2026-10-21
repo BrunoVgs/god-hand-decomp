@@ -1,4 +1,13 @@
 /* cygnus-2.96: IPU FIFO DMA restart. */
+
+/* EE registers: IPU command and control, DMA channel 3 (from IPU), channel 4 (to IPU). */
+#define IPU_CMD     (*(volatile unsigned int *)0x10002000)
+#define IPU_CTRL    (*(volatile int *)0x10002010)
+#define D3_MADR     (*(volatile unsigned int *)0x1000B010)
+#define D3_QWC      (*(volatile unsigned int *)0x1000B020)
+#define D4_MADR     (*(volatile unsigned int *)0x1000B410)
+#define D4_QWC      (*(volatile unsigned int *)0x1000B420)
+#define D4_TADR     (*(volatile unsigned int *)0x1000B430)
 typedef struct {
     unsigned int base;
     unsigned int phys;
@@ -94,21 +103,21 @@ int func_00355F88(IpuFifo *f)
         }
     }
     if (f->f2C != 0 && f->f30 != 0) {
-        *(volatile unsigned int *)0x1000B010 = f->f2C;
-        *(volatile unsigned int *)0x1000B020 = f->f30;
+        D3_MADR = f->f2C;
+        D3_QWC = f->f30;
         setD3_CHCR(f->f34 | 0x100);
     }
-    while (*(volatile int *)0x10002010 < 0)
+    while (IPU_CTRL < 0)
         ;
-    *(volatile unsigned int *)0x10002000 = bp;
-    while (*(volatile int *)0x10002010 < 0)
+    IPU_CMD = bp;
+    while (IPU_CTRL < 0)
         ;
-    *(volatile unsigned int *)0x1000B410 = madr;
-    *(volatile unsigned int *)0x1000B430 = addr;
-    *(volatile unsigned int *)0x1000B420 = qwc;
+    D4_MADR = madr;
+    D4_TADR = addr;
+    D4_QWC = qwc;
     if (f->count != 0)
         func_00355880(tag);
-    *(volatile unsigned int *)0x10002010 = f->f3C;
+    IPU_CTRL = f->f3C;
     f->f44 = 1;
     SignalSema(f->sema);
     return 1;

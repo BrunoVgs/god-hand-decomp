@@ -24,7 +24,7 @@ extern char D_003D9EE8[];
 
 extern int func_003A9260(const char *a, const char *b);
 extern int func_00334F90(char *path, void *buf);
-extern void func_003A52F0(void *p, int c, int n);
+extern void *func_003A52F0(void *dst, int c, int n);
 extern void func_00333390(char *path, char *out);
 extern void PushGlobalD8478History_331C78(int code);
 extern int func_00398DA0(int mode);

@@ -34,10 +34,14 @@ struct MwsfSubObj {
 
 /* One of the handle's two stream slots (0x20 bytes). */
 typedef struct MwsfdSlot {
-    char unk00[0x14];
+    int flag;                   /* 0x00 1 = open */
+    int id;                     /* 0x04 */
+    int opened;                 /* 0x08 */
+    int base;                   /* 0x0C */
+    int limit;                  /* 0x10 */
     SjObj *sj;                  /* 0x14 */
     char *buf;                  /* 0x18 */
-    char unk1C[4];
+    int made;                   /* 0x1C */
 } MwsfdSlot;
 
 typedef struct MwsfdHn {
@@ -56,7 +60,8 @@ typedef struct MwsfdHn {
     char unk73;
     int nreq;                   /* 0x074 read requests queued */
     int hdrSize;                /* 0x078 */
-    char unk7C[0x88 - 0x7C];
+    char unk7C[0x84 - 0x7C];
+    int unk84;                  /* 0x084 */
     MwsfdFrmInf frm;            /* 0x088 */
     char unkA4[0xA8 - 0xA4];
     void *unkA8;                /* 0x0A8 */
@@ -71,7 +76,8 @@ typedef struct MwsfdHn {
     char unk2C4[0x2CC - 0x2C4];
     int unk2CC;                 /* 0x2CC */
     void *unk2D0;               /* 0x2D0 */
-    char unk2D4[0x2DC - 0x2D4];
+    int latch;                  /* 0x2D4 status, set once */
+    char unk2D8[4];
     int unk2DC;                 /* 0x2DC */
     int unk2E0;                 /* 0x2E0 */
     int unk2E4;                 /* 0x2E4 */

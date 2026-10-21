@@ -20,7 +20,7 @@ extern char D_00456A30[];
 extern char D_00456A58[];
 extern char D_00456A88[];
 extern char D_00456AB0[];
-extern void func_003260C8(char *fmt, ...);
+extern void func_003260C8(const char *fmt, ...);
 extern void func_0033ACA0(SjChunk *in, int n, SjChunk *out, SjChunk *rest);
 extern void SyncDCache(void *start, void *end);
 extern int func_003B2148(int *dma, int ch);
@@ -43,6 +43,7 @@ void func_0033FDC0(SjDmaXfer *x)
         x->dst->vt->putChunk(x->dst, 1, &x->cur1);
         x->cur1.data = 0;
         x->cur1.len = 0;
+        /* Retail reads len after clearing it: total gains 0 and the check below never fires. */
         x->total += x->cur0.len;
         x->busy = 0;
         if (x->cur0.len != 0) {

@@ -10,7 +10,7 @@ typedef struct AdxSjDec {
     int pending;                        /* 0xA0 */
 } AdxSjDec;
 
-extern void func_003A52F0(void *p, int c, int n);
+extern void *func_003A52F0(void *dst, int c, int n);
 
 __attribute__((section(".text.func_00327418")))
 void func_00327418(AdxSjDec *dec)

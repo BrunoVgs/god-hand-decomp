@@ -1,5 +1,6 @@
 /* cygnus-2.96: SFD video time marks: record the first and last time stamps and the mark, then hand the
  * data on. */
+#include "godhand/sftim.h"
 
 typedef struct {
     char pad0[0x10];
@@ -25,7 +26,6 @@ typedef struct {
     SfdVideoCh ch;
 } SfdVideoView;
 
-extern int GetArrayElemA0C_35A1C8(void *hn, int id);
 extern int func_0034F200(void *w, int ch, char *src, int len, long pts);
 
 __attribute__((section(".text.func_0034EB98")))

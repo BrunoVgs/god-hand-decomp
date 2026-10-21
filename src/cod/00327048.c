@@ -1,7 +1,7 @@
 /* cygnus-2.96: ADX SJ decoder: consume one block from the input SJ and hand the decoded data to each
  * output SJ. */
 #include "godhand/criSj.h"
-struct SJD {
+struct AdxSjDecHn {
     int f0;
     void *f4;
     SjObj *f8;
@@ -18,13 +18,13 @@ extern int Obj33C8_GetField_18(void *sj);
 extern int func_0033D2B8(void *sj);
 extern int func_0033D2C0(void *sj);
 extern int Obj33C8_GetShort_98(void *sj);
-extern int func_003279A0(struct SJD *hn);
+extern int func_003279A0(struct AdxSjDecHn *hn);
 extern int func_0033CE98(void *sj);
 extern void func_0033D278(void *sj);
 extern void func_0033ACA0(SjChunk *ck, int len, SjChunk *head, SjChunk *tail);
 
 __attribute__((section(".text.func_00327048")))
-void func_00327048(struct SJD *hn)
+void func_00327048(struct AdxSjDecHn *hn)
 {
     SjChunk ck, tail;
     void *sj = hn->f4;

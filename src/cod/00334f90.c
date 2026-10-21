@@ -1,6 +1,6 @@
 /* cygnus-2.96: read up to 0x1000 bytes of a file into buf with history markers around each step (open,
  * size, rewind, read, close); 1 on success. */
-extern void func_003A52F0(void *dst, int val, int len);
+extern void *func_003A52F0(void *dst, int c, int n);
 extern void func_00334D68(char *name, char *path);
 extern void PushGlobalD8478History_331C78(int tag);
 extern int func_00331EE8(char *path, int mode);

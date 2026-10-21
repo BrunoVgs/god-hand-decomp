@@ -1,16 +1,6 @@
 /* cygnus-2.96: ADXF file range lookup: sum the sector counts of the files before flid in the partition
  * table and return the partition, directory, sector offset and the file's size. */
-typedef struct AdxfPtInfo {
-    char unk00[0xF];
-    signed char type;                   /* 0x0F 1 = packed 32-bit entries */
-    char fname[0x100];                  /* 0x10 */
-    void *dir;                          /* 0x110 */
-    int ofst;                           /* 0x114 */
-    int top;                            /* 0x118 also the 16-bit table base */
-    int tbl[1];                         /* 0x11C */
-} AdxfPtInfo;
-
-extern AdxfPtInfo *D_003EB308[];
+#include "godhand/adxf.h"
 
 extern int adxf_ChkPrmGfr(int ptid, int flid);
 extern int func_00324858(int ent);
@@ -44,7 +34,7 @@ int func_00324640(int ptid, int flid, char *fname, void **dir, int *ofst, int *f
         *fsize = tbl32[flid];
     } else {
         ofs = *(unsigned short *)&pt->top;
-        tbl16 = (unsigned short *)((char *)pt + 0x11A);
+        tbl16 = (unsigned short *)&pt->top + 1;
         for (i = 0; i < flid; i++)
             ofs += tbl16[i];
         *fnsct = tbl16[flid];
