@@ -14,7 +14,7 @@ extern void Forward33BC48_33BD78(void);
 extern void Forward33BC48_33BD90(void);
 extern void Forward33BC48_33BDA8(void);
 extern void Forward33BC48_33BDC0(void);
-extern void func_0034C890(int, int, int *);
+extern void SfdTrack_getObj(int, int, int *);
 extern void func_0034CAF8(int, int *, int *);
 extern long long func_0034CCB0(long long, int);
 extern void func_00344680(int *a0, int a1);
@@ -216,7 +216,7 @@ __attribute__((section(".text.func_003545F8")))
 void func_003545F8(int *a0) {
     int buf[3];
     int v0;
-    func_0034C890((int)a0, *(int *)((char *)a0 + 0x1FC8), buf);
+    SfdTrack_getObj((int)a0, *(int *)((char *)a0 + 0x1FC8), buf);
     v0 = buf[0];
     if (v0 != 0) {
         func_0034CAF8(v0, &buf[1], &buf[2]);

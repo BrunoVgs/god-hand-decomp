@@ -29,7 +29,7 @@ extern void func_00369118(void *a);
 extern void func_00369130(void *a);
 extern void func_00369158(void *a);
 extern void func_00366EC0(void);
-extern void func_0034C890(char *a0, int a1, int *a2);
+extern void SfdTrack_getObj(char *a0, int a1, int *a2);
 extern void func_0034CAF8(int a0, int *a1, int *a2);
 extern long long func_0034CCB0(long long a0, int a1);
 extern void func_00368B18(char *a0, char *a1, int a2);
@@ -374,7 +374,7 @@ void func_0034AA20(char *a0) {
 
     base = (int *)((int)a0 + 0x1FFC);
     s1 = base[2];
-    func_0034C890(a0, base[4], &local);
+    SfdTrack_getObj(a0, base[4], &local);
 
     if (!local) return;
 

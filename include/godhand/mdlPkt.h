@@ -15,6 +15,9 @@ typedef union PktQw {
     } s;
 } PktQw;
 
+#define MDL_PKT_VTX_PER_BLOCK  24     /* vertices that share one packet block */
+#define MDL_PKT_HEADER         0x10   /* bytes in front of the first packet block */
+
 typedef struct MdlPack {
     char pad00[0x20];
     int ofs[1];                 /* 0x20 record offsets from the pack start */

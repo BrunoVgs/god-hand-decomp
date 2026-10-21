@@ -12,7 +12,7 @@ extern void func_00354430(SfdUsrBuf *dst, SfdUsrBuf *src);
 extern void *func_003A5148(void *d, const void *s, unsigned int n);    /* memcpy */
 void func_003542B8(SjObj *sj, int *type, unsigned char **ext, int *extLen);
 int func_00353BD8(SftimHn *hn, SfdPicInf *pic, SfdOut *out, SfdFrm **pfrm);
-void func_00353EE0(SftimHn *hn, SfdWork *work, int *x, int *y);
+void SfdWork_getPicOffset(SftimHn *hn, SfdWork *work, int *x, int *y);
 void func_00353F68(SftimHn *hn);
 void func_00354080(SftimHn *hn, SfdFrm *ft);
 void func_00354210(SftimHn *hn, SfdFrm *ft, SjObj *sj);
@@ -95,8 +95,10 @@ int func_00353BD8(SftimHn *hn, SfdPicInf *pic, SfdOut *out, SfdFrm **pfrm)
     return 0;
 }
 
-__attribute__((section(".text.func_00353EE0")))
-void func_00353EE0(SftimHn *hn, SfdWork *work, int *x, int *y)
+/* Write the picture offset to *x, *y for picture types 2 and 3 while the
+   handle is in mode 3; 0, 0 otherwise. */
+__attribute__((section(".text.SfdWork_getPicOffset")))
+void SfdWork_getPicOffset(SftimHn *hn, SfdWork *work, int *x, int *y)
 {
     if (hn->mode == 3) {
         switch (work->pic.picType) {

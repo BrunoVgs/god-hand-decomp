@@ -1,26 +1,29 @@
-/* sn-2.95.3-136: func_00386640, depth of a path string (number of '/' minus one, clamped at 0);
- * the string keeps its length at -0x10. */
-extern char D_0045D008[];
+/* sn-2.95.3-136 matched TU. */
+#include "godhand/StdString.h"
 
-__attribute__((section(".text.func_00386640")))
-int func_00386640(char **str)
-{
+extern char D_0045D008[];   /* "" */
+
+/* Directory depth of a path: the number of '/' in it minus one, never below
+   0. Terminates the string in place first. */
+__attribute__((section(".text.StdString_pathDepth")))
+int StdString_pathDepth(StdString *path) {
     char *p;
+    signed char depth = -1;
     char c;
-    signed char n = -1;
-    int len = ((int *)*str)[-4];
 
-    if (len == 0) {
+    if (STDSTRING_REP(path)->len == 0) {
         p = D_0045D008;
     } else {
-        (*str)[len] = 0;
-        p = *str;
+        path->dat[STDSTRING_REP(path)->len] = 0;
+        p = path->dat;
     }
     while ((c = *p++) != 0) {
-        if (c == '/')
-            n++;
+        if (c == '/') {
+            depth++;
+        }
     }
-    if (n < 0)
-        n = 0;
-    return n;
+    if (depth < 0) {
+        depth = 0;
+    }
+    return depth;
 }

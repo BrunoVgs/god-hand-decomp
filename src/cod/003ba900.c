@@ -1,15 +1,20 @@
-/* cygnus-2.96: sets the block count from the rate (144000 / (n * 0x600) + 1), error trap on NULL or n <= 0. */
-extern void func_003B9DE0(int msg);
-extern char D_00460B48[];
-extern char D_00460B70[];
+/* cygnus-2.96 matched TU. */
+#include "godhand/CriServer.h"
 
-__attribute__((section(".text.func_003BA900")))
-void func_003BA900(char *a0, int n) {
-    if (a0 == 0) {
-        func_003B9DE0((int)D_00460B48);
-    } else if (n <= 0) {
-        func_003B9DE0((int)D_00460B70);
-    } else {
-        *(int *)(a0 + 0x18) = 144000 / (n * 0x600) + 1;
+extern void func_003B9DE0(char *msg);
+extern char D_00460B48[];   /* "E03032410 : NULL pointer is passed." */
+extern char D_00460B70[];   /* "E03032411 : Illegal server frequency is passed." */
+
+/* Set the server frequency in Hz and derive the server calls per block. */
+__attribute__((section(".text.CriServer_setFreq")))
+void CriServer_setFreq(CriServer *self, int freq) {
+    if (self == 0) {
+        func_003B9DE0(D_00460B48);
+        return;
     }
+    if (freq <= 0) {
+        func_003B9DE0(D_00460B70);
+        return;
+    }
+    self->callsPerBlock = CRISVR_SAMPLE_RATE / (freq * CRISVR_BLOCK_SIZE) + 1;
 }

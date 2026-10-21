@@ -6,7 +6,7 @@ extern int moveMotion(int *);
 extern void cOm71_SetMotionRun(int *);
 extern void cObjBase_addNullSpeed_Rotation(int *, float);
 extern void cObjBase_addNullSpeed(int *, float);
-extern void func_001DBEB0(void);
+extern void Poker_resetDeck(void);
 extern void func_001DD340(char *a0);
 extern void CustomIDWork_SetNumber_1DD218(char *a0, int a1);
 extern void func_001DD238(char *a0, int a1);
@@ -128,7 +128,7 @@ void func_001D7450(char *a0)
 
     *(int *)(a0 + 0x3034) = 0;
     *(int *)(a0 + 0x3038) = 0;
-    func_001DBEB0();
+    Poker_resetDeck();
     func_001DD340(a0);
     CustomIDWork_SetNumber_1DD218(a0, *(int *)(a0 + 0x3034));
     func_001DD238(a0, cCoreSave_getGold(&D_00569B70));

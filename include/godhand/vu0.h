@@ -123,6 +123,15 @@
         : "r"((void *)(base)), "i"((int)(off))                         \
         : "memory")
 
+/* VU0_SQC2_VF0_AT(var): zero-init a 16-byte global or static.
+ *
+ * The same store as VU0_SQC2_VF0, but addressed through a memory operand,
+ * so the assembler emits `lui` + `sqc2 $vf0, %lo(var)(reg)` instead of
+ * building the full address in a register first.
+ */
+#define VU0_SQC2_VF0_AT(var)                                           \
+    __asm__ __volatile__ ("sqc2  $vf0, %0" : : "m"(var) : "memory")
+
 /* VU0_SQC2(reg, base, off): store $vf<reg> quadword.
  *
  * `reg` is a register-number literal in [1, 31] (use VU0_SQC2_VF0

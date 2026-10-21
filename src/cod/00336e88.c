@@ -133,8 +133,9 @@ void func_00337240(void)
     }
 }
 
-__attribute__((section(".text.func_00337320")))
-StmEnt *func_00337320(void)
+/* Claim the first free stream pool entry and return it, or 0 when the pool is full. */
+__attribute__((section(".text.CriStm_allocEntry")))
+StmEnt *CriStm_allocEntry(void)
 {
     StmEnt *e = 0;
     int i;

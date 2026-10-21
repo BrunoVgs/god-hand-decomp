@@ -3049,6 +3049,14 @@
 !include/godhand/cGameObj.h
 !include/godhand/cEma2.h
 !include/godhand/cEm00.h cEma2.h cGameObj.h cObjBase.h cObj.h
+!include/godhand/Sfd.h
+!include/godhand/SmoData.h
+!include/godhand/ResPack.h
+!include/godhand/CriTrackSet.h
+!include/godhand/CriServer.h
+!include/godhand/SndEntry.h
+!include/godhand/MixChannel.h
+!include/godhand/StdString.h
 !src/cod/001d2ee0.c
 !src/cod/001eed00.c
 !scripts/mark_split_fragments.py
@@ -3289,6 +3297,16 @@
 !src/cod/001ddf08.c
 !src/cod/001f50a0.c
 !src/cod/001a4528.c
+!src/cod/001551e0.c
+!src/cod/002c3058.c
+!src/cod/003a9538.c
+!src/cod/0031cdc0.c
+!src/cod/003a93f8.c
+!src/cod/001c3c58.c
+!src/cod/003769b0.c
+!src/cod/001552f0.c
+!src/cod/001dbeb0.c
+!src/cod/0034c890.c
 !include/godhand/CustomIDPanel.h
 !include/godhand/adxm.h
 !include/godhand/adxmThread.h

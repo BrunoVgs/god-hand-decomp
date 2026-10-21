@@ -16,6 +16,7 @@
 #define POKER_SUIT_NUM   4
 #define POKER_RANK_NUM   13
 #define POKER_CARD_NONE  0x34
+#define POKER_CARD_RESET 0x9    /* BlackJackCard.flags of every card after a deck reset */
 
 typedef struct Poker {
     char unk0000[0x2E60];

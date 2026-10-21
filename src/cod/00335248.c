@@ -19,8 +19,9 @@ void func_00335248(const char *path)
     func_003A57C4(D_003DA398, path);
 }
 
-__attribute__((section(".text.func_003352D0")))
-void func_003352D0(const char *dev)
+/* Set the device name prefix; a null name restores the default "host:". */
+__attribute__((section(".text.setDevName")))
+void setDevName(const char *dev)
 {
     if (dev == 0) {
         memcpy(D_003DA4A0, D_00454BB0, 6);

@@ -1,23 +1,15 @@
-/* cygnus-2.96: forwards entry idx (116-byte records at 0x1310) to func_0035C2D0 when it is idle. */
-typedef struct {
-    int f00;
-    int busy;
-    int f08[17];
-    int handle;
-    int pad[9];
-} SfdEntRec;
+/* cygnus-2.96 matched TU. */
+#include "godhand/Sfd.h"
 
-extern int func_0035C2D0(char *self, int handle, int kind, int a, int b);
+extern int func_0035C2D0(SfdHandle *self, int type, int call, int a3, int t0);
 
-__attribute__((section(".text.func_0034C930")))
-int func_0034C930(char *self, int idx, int a, int b)
-{
-    SfdEntRec *e = (SfdEntRec *)(self + 0x1310);
-
-    e += idx;
-
-    if (e->busy == 0) {
-        return func_0035C2D0(self, e->handle, 11, a, b);
-    }
+/* On a track that is not set up yet, make track-interface call
+   SFD_TRIF_IDLE_CALL with arg1 and arg2; on a ready track do nothing. */
+__attribute__((section(".text.SfdTrack_callIfIdle")))
+int SfdTrack_callIfIdle(SfdHandle *self, int trno, int arg1, int arg2) {
+    SfdTrack *table = self->track;
+    SfdTrack *tr = table + trno;
+    if (!__builtin_expect(tr->ready, 0))
+        return func_0035C2D0(self, tr->type, SFD_TRIF_IDLE_CALL, arg1, arg2);
     return 0;
 }

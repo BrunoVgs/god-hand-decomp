@@ -1,24 +1,23 @@
-typedef struct KeyRow {
-    char pad00[4];
-    unsigned char key;      /* 0x04 */
-    char pad05[0x17];
-    short a[5];             /* 0x1C */
-    short b[5];             /* 0x26 */
-    char pad30[0x7C];
-    int count;              /* 0xAC */
-} KeyRow;
+/* sn-2.95.3-136 matched TU. */
+#include "godhand/MixChannel.h"
 
-__attribute__((section(".text.func_00383DD0")))
-int func_00383DD0(int unused, KeyRow *o, unsigned char which)
-{
-    short *p = o->a;
+/* Return 1 when every channel level in the chosen array (levelB if useB)
+   equals the level of the selected channel, else 0. */
+__attribute__((section(".text.MixChannel_isUniform")))
+int MixChannel_isUniform(void *owner, MixChannel *mix, unsigned char useB) {
+    short *level;
     int i;
 
-    if (which)
-        p = o->b;
-    for (i = 0; i < o->count; i++) {
-        if (i != o->key - 1 && p[i + 1] != p[o->key])
-            return 0;
+    level = mix->levelA;
+    if (useB) {
+        level = mix->levelB;
+    }
+    for (i = 0; i < mix->chCount; i++) {
+        if (i != mix->sel - 1) {
+            if (level[i + 1] != level[mix->sel]) {
+                return 0;
+            }
+        }
     }
     return 1;
 }

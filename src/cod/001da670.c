@@ -1,6 +1,6 @@
 /* sn-2.95.3-136 matched TU. */
 
-extern void func_001DBEB0(void *a0);
+extern void Poker_resetDeck(void *a0);
 extern void func_001DBE18(void *a0, void *a1);
 extern void func_001D6EC8(void *a0, int a1);
 extern void func_001D6DD0(void *a0, int a1);
@@ -37,7 +37,7 @@ void func_001DA670(char *s0) {
     switch (*(unsigned char *)(s0 + 0x3025)) {
     case 0:
         *(int *)(s0 + 0x3038) = *(int *)(s0 + 0x3038) * 2;
-        func_001DBEB0(s0);
+        Poker_resetDeck(s0);
         *(int *)(s0 + 0x3028) = 30;
         *(unsigned char *)(s0 + 0x3025) = *(unsigned char *)(s0 + 0x3025) + 1;
         break;
