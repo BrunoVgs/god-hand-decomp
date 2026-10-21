@@ -175,4 +175,11 @@ extern void func_0034CA00(SfdHn *hn, int ch, int arg);
 extern SfdBufInf *func_0034E988(SfdHn *hn);
 extern int func_0034C7F0(SfdHn *hn, int arg);
 
+/* One stream-joint output channel of the SFD writers (0x36B888, 0x36EE90). */
+typedef struct SfdSjCh {
+    SjObj *sj;                          /* 0x00 */
+    void (*cb)(int arg, int ch);        /* 0x04 */
+    int arg;                            /* 0x08 */
+} SfdSjCh;
+
 #endif

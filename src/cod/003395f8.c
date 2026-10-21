@@ -20,7 +20,7 @@ SjRbf *func_003395F8(int a, int b, int c)
         e = &D_003E3FB8[i];
         e->used = 1;
         e->vtbl = D_003E3F80;
-        e->buf = a;
+        e->buf = (Sint8 *)a;
         e->size = b;
         e->extra = c;
         e->uuid = D_00455A50;
