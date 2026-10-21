@@ -212,6 +212,15 @@ guard.
    names figured out is valuable — it can be ratcheted to matching later, and
    it feeds the port. Honest beats fake.
 
+6. **`goto` is allowed only when nothing else matches.** Try the clean forms
+   first (if/else, loops, early return, a single exit). Keep a `goto` only if
+   they change the bytes. Use forward jumps to a shared exit or cleanup label
+   only: no backward jumps, and no jumping into a block. Put a one-line
+   comment on the label saying the clean form was tried and does not match. If
+   a `goto` version reaches only 90-99%, write the clean form behind
+   `#ifdef NON_MATCHING`, with `INCLUDE_ASM("nonmatching", name)` in the
+   `#else`.
+
 ---
 
 ## 6. Submitting work

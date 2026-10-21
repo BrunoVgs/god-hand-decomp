@@ -65,10 +65,13 @@ typedef struct SjRbf {
     int free;                   /* 0x10 bytes free */
     int freePos;                /* 0x14 */
     int dataPos;                /* 0x18 */
-    int buf;                    /* 0x1C */
+    Sint8 *buf;                 /* 0x1C */
     int size;                   /* 0x20 */
     int extra;                  /* 0x24 */
-    char unk28[0x10];
+    int freeTaken;              /* 0x28 bytes taken from the free lane */
+    int unk2C;
+    int dataTaken;              /* 0x30 bytes taken from the data lane */
+    int unk34;
     void (*err)(void *obj, int code);   /* 0x38 */
     void *errObj;               /* 0x3C */
 } SjRbf;

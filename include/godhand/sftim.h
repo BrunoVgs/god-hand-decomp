@@ -234,6 +234,8 @@ extern long long func_0036C990(long long a, long long b, long long c);    /* a *
 
 extern void SFTIM_Tc2Time(SftimTc *tc, int *time, int *unit);
 extern int GetArrayElemA0C_35A1C8(void *hn, int idx);      /* SFSET_GetCond */
+extern int func_0034DD70(SftimHn *hn, int code);
+extern int Obj34D8_GetTri78_Times100(void *hn);
 extern void func_0035A000(void *hn, int idx, int val);      /* SFSET_SetCond */
 
 #endif

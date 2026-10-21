@@ -208,7 +208,10 @@ class CarveEntry:
                               # no C wrapper yet).
     lib: bool = False         # True => library/middleware/CRT carve; the
                               # standalone asm/nonmatching/<name> unit is
-                              # tagged progress_categories=["library"].
+                              # tagged with the function's category from
+                              # progress/function_categories.json. The
+                              # report categories are scored per function
+                              # by scripts/report_categories.py.
 
 
 @dataclasses.dataclass(frozen=True)

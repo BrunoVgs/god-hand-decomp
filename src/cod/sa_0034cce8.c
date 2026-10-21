@@ -1,7 +1,6 @@
 /* cygnus-2.96 matched TU. */
 #include "godhand/mwsfd.h"
 extern int Obj34D8_SetGlobalEE0B8_IfField48(SfdHn *sfd);
-extern int func_0034DD70(int object, int error);
 
 /* Enable concatenated playback on a valid Sofdec handle. */
 __attribute__((section(".text.SFD_SetConcatPlay")))
