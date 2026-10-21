@@ -8,8 +8,8 @@ extern void func_00339520(void);
 extern void func_003571D0(void);
 extern void Forward35D538_34D048(void);
 extern void func_0034D068(void);
-extern void Forward33B568_33B658(int);
-extern void Forward33B5C8_33B670(int);
+extern int Forward33B568_33B658(void);
+extern int Forward33B5C8_33B670(void);
 extern int  func_0034CA00(char *a0, int a1, int a2);
 
 /* Internal forward decl (func_0034DD58 is defined later in this TU
@@ -179,15 +179,17 @@ __attribute__((section(".text.NoOp_DF60")))
 void NoOp_DF60(void) {}
 
 /* ── Thunk_func_0033B658: j-thunk → Forward33B568_33B658 ─────────────────────────────── */
+/* Callers pass a guard; the lock is global and does not read it. */
 __attribute__((section(".text.Thunk_func_0033B658")))
-void Thunk_func_0033B658(int a0) {
-    Forward33B568_33B658(a0);
+void Thunk_func_0033B658(void *guard) {
+    Forward33B568_33B658();
 }
 
 /* ── Thunk_func_0033B670: j-thunk → Forward33B5C8_33B670 ─────────────────────────────── */
+/* Callers pass a guard; the lock is global and does not read it. */
 __attribute__((section(".text.Thunk_func_0033B670")))
-void Thunk_func_0033B670(int a0) {
-    Forward33B5C8_33B670(a0);
+void Thunk_func_0033B670(void *guard) {
+    Forward33B5C8_33B670();
 }
 
 /* ── Return-0 accessors ─────────────────────────────────────────────────── */

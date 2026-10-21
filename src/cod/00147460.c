@@ -1,6 +1,7 @@
 /* SN ProDG ee-gcc 2.95.3 matched TU. */
 
 extern void cIDBase_trans(void *);
+extern void func_00155AE8(int pkt, int id, int buf);
 extern char D_0041DCC8[];
 extern void __builtin_delete(void);
 extern int D_007476B0;

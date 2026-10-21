@@ -31,7 +31,7 @@ int func_002E63C0(char *self)
         return 0;
     }
     vt = (char *)obj->vt;
-    if ((*(int (**)())(vt + 0x44))((char *)obj + *(short *)(vt + 0x40)) == 0) {
+    if ((*(int (**)(void *))(vt + 0x44))((char *)obj + *(short *)(vt + 0x40)) == 0) {
         func_002D9F68(self, D_0044E3F8);
         ReleaseObj(*(void **)(self + 0x2B0));
         return 0;

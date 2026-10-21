@@ -1,6 +1,7 @@
 /* cygnus-2.96 matched TU. */
 
 extern void *GetD003EC7E0_3452B0();
+extern int func_00328098(int handle);
 
 __attribute__((section(".text.MWSFD_GetUsePicUsr")))
 int MWSFD_GetUsePicUsr(int a0) {

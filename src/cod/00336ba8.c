@@ -26,6 +26,7 @@ extern void func_0033F130(char *msg);
 extern void func_00329EA8(AdxtPs2Hn *adxt);
 extern void func_00336CE0(AdxtPs2Hn *adxt);
 extern void func_00340480(int);
+extern void func_003403F8(void (*fn)(int, int), int arg);
 extern void Forward33B658_325C60(void);
 extern void Forward33B670_325C78(void);
 extern int func_00340538(int a, int b);

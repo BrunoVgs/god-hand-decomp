@@ -111,11 +111,14 @@ int Forward324D88_324E70(void) { return func_00324D88(D_003C814C, D_003C80C8); }
 __attribute__((section(".text.SleepThread_3252E0")))
 void SleepThread_3252E0(void) { SleepThread(); }
 
+extern int Forward33B568_33B658(void);
+extern int Forward33B5C8_33B670(void);
+
 __attribute__((section(".text.Forward33B658_325C60")))
-void Forward33B658_325C60(int a0) { Forward33B568_33B658(a0); }
+void Forward33B658_325C60(void) { Forward33B568_33B658(); }
 
 __attribute__((section(".text.Forward33B670_325C78")))
-void Forward33B670_325C78(int a0) { Forward33B5C8_33B670(a0); }
+void Forward33B670_325C78(void) { Forward33B5C8_33B670(); }
 
 __attribute__((section(".text.Forward325C98_325DC0")))
 int Forward325C98_325DC0(int a0) { return func_00325C98(a0); }
@@ -146,6 +149,8 @@ int GetVia4_Obj33C8_GetByte_D_327950(char *a0) { return Obj33C8_GetByte_D(*(int*
 
 __attribute__((section(".text.Forward33CFB8_327970")))
 int Forward33CFB8_327970(int *a0) { return func_0033CFB8(a0[1]); }
+
+extern void func_0033CFF8(int a0);
 
 __attribute__((section(".text.Forward33CFF8_327988")))
 void Forward33CFF8_327988(int *a0) { func_0033CFF8(a0[1]); }

@@ -1,7 +1,7 @@
 /* sn-2.95.3-136 matched TU. */
 #include "godhand/Slot2.h"
 
-extern void cIDBase_trans();
+extern void cIDBase_trans(void *self);
 extern int CustomIDWork_SetNumber();
 extern int CustomIDWork_ResetColorAnim();
 extern int CustomIDWork_SetColorAnimSin();

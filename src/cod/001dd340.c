@@ -1,5 +1,6 @@
-__attribute__((section(".text.func_001DD340")))
+extern void SetCustomIDDispOneOrAll_1DD258(int self, int entry, int on);
 
+__attribute__((section(".text.func_001DD340")))
 void func_001DD340(int arg0) {
     SetCustomIDDispOneOrAll_1DD258(arg0, 0x4D, 0);
     SetCustomIDDispOneOrAll_1DD258(arg0, 1, 1);

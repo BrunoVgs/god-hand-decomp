@@ -6,6 +6,7 @@ typedef unsigned int u_int;
 #define T0_COMP  (*(volatile u_int *)0x10000020)
 #define INTC_TIM0 9
 
+extern int AddIntcHandler(int cause, int (*handler)(int), int next);
 extern int func_0030D190(int cause);
 extern int func_003B0740(int cause);
 

@@ -2254,10 +2254,10 @@ int Forward32B300_342AF0(int a0, int a1, int a2, int a3) {
     return func_0032B300(a0, a1, a2, a3);
 }
 
-extern void func_0032A9F0(int a0, int a1, int a2, int a3);
+extern void func_0032A9F0(int a0, int a1);
 __attribute__((section(".text.Forward32A9F0_342B08")))
-void Forward32A9F0_342B08(int a0, int a1, int a2, int a3) {
-    func_0032A9F0(a0, a1, a2, a3);
+void Forward32A9F0_342B08(int a0, int a1) {
+    func_0032A9F0(a0, a1);
 }
 
 extern int func_0032AAA0(int a0, int a1, int a2, int a3);
@@ -2266,10 +2266,10 @@ int Forward32AAA0_342B20(int a0, int a1, int a2, int a3) {
     return func_0032AAA0(a0, a1, a2, a3);
 }
 
-extern void func_0032B660(int a0, int a1, int a2, int a3);
+extern void func_0032B660(int a0, int a1);
 __attribute__((section(".text.Forward32B660_342B38")))
-void Forward32B660_342B38(int a0, int a1, int a2, int a3) {
-    func_0032B660(a0, a1, a2, a3);
+void Forward32B660_342B38(int a0, int a1) {
+    func_0032B660(a0, a1);
 }
 
 extern int func_003443E0(int a0, int a1, int a2, int a3);

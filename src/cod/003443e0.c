@@ -5,7 +5,7 @@ extern char D_004576A0[];
 extern void func_003497F8(int on);
 extern void func_00345DF0(MwsfdHn *self);
 extern void func_00347370(MwsfdHn *self);
-extern int Forward35FB88_346C30(void *p);
+extern void Forward35FB88_346C30(void *p);
 extern void func_00335500(void *p);
 extern int Forward327D90_349AB8(void *p);
 extern void func_00342B98(void *p);

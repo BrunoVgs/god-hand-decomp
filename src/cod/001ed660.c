@@ -2,7 +2,7 @@
 #include "godhand/cCoreSave.h"
 
 extern int cIDBase_release();
-extern void cIDBase_trans();
+extern void cIDBase_trans(void *self);
 extern int CustomIDWork_SetDisp();
 extern int CustomIDWork_SetNumber();
 
