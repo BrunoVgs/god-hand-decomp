@@ -5,8 +5,8 @@ extern char D_0045D008[];   /* "" */
 
 /* Directory depth of a path: the number of '/' in it minus one, never below
    0. Terminates the string in place first. */
-__attribute__((section(".text.StdString_pathDepth")))
-int StdString_pathDepth(StdString *path) {
+__attribute__((section(".text.func_00386640")))
+int func_00386640(StdString *path) {
     char *p;
     signed char depth = -1;
     char c;

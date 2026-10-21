@@ -30,19 +30,19 @@ extern void (*D_003F2000)(void);
 extern void (*D_003F2008)(void);
 extern void (*D_003F2010)(void);
 extern void (*D_003F200C)(void);
-extern void (*D_003F2024)(void);
-extern void (*D_003F2028)(void);
-extern void (*D_003F202C)(void);
-extern void (*D_003F2034)(void);
-extern void (*D_003F2038)(void);
-extern void (*D_003F203C)(void);
-extern void (*D_003F2040)(void);
+extern void (*D_003F2024)(int, int, int, int, int);
+extern void (*D_003F2028)(int, int, int);
+extern void (*D_003F202C)(int, int, int);
+extern void (*D_003F2034)(int, int);
+extern void (*D_003F2038)(int, int);
+extern void (*D_003F203C)(int, int, int, int);
+extern void (*D_003F2040)(int, int, int);
 extern void (*D_003F2044)(void);
 extern void func_0033D230(int);
 extern void (*D_003E9D20)(void);
 extern void func_00335B88(int);
 extern int (*D_003F2004)(void);
-extern int (*D_003F2030)(void);
+extern int (*D_003F2030)(int, int);
 extern struct cb_0031f4e0 D_00755C20;
 extern struct cb2 D_00755C28;
 
@@ -263,51 +263,51 @@ void func_0036CD98(void) {
 }
 
 __attribute__((section(".text.func_0036CDC0")))
-void func_0036CDC0(void) {
+void func_0036CDC0(int a0, int a1, int a2, int a3, int a4) {
     if (D_003F2024) {
-        D_003F2024();
+        D_003F2024(a0, a1, a2, a3, a4);
     }
 }
 
 __attribute__((section(".text.func_0036CDE8")))
-void func_0036CDE8(void) {
+void func_0036CDE8(int a0, int a1, int a2) {
     if (D_003F2028) {
-        D_003F2028();
+        D_003F2028(a0, a1, a2);
     }
 }
 
 __attribute__((section(".text.func_0036CE10")))
-void func_0036CE10(void) {
+void func_0036CE10(int a0, int a1, int a2) {
     if (D_003F202C) {
-        D_003F202C();
+        D_003F202C(a0, a1, a2);
     }
 }
 
 __attribute__((section(".text.func_0036CE68")))
-void func_0036CE68(void) {
+void func_0036CE68(int a0, int a1) {
     if (D_003F2034) {
-        D_003F2034();
+        D_003F2034(a0, a1);
     }
 }
 
 __attribute__((section(".text.func_0036CE90")))
-void func_0036CE90(void) {
+void func_0036CE90(int a0, int a1) {
     if (D_003F2038) {
-        D_003F2038();
+        D_003F2038(a0, a1);
     }
 }
 
 __attribute__((section(".text.func_0036CEB8")))
-void func_0036CEB8(void) {
+void func_0036CEB8(int a0, int a1, int a2, int a3) {
     if (D_003F203C) {
-        D_003F203C();
+        D_003F203C(a0, a1, a2, a3);
     }
 }
 
 __attribute__((section(".text.func_0036CEE0")))
-void func_0036CEE0(void) {
+void func_0036CEE0(int a0, int a1, int a2) {
     if (D_003F2040) {
-        D_003F2040();
+        D_003F2040(a0, a1, a2);
     }
 }
 
@@ -361,9 +361,9 @@ int func_0036CD18(void) {
 }
 
 __attribute__((section(".text.func_0036CE38")))
-int func_0036CE38(void) {
+int func_0036CE38(int a0, int a1) {
     if (D_003F2030) {
-        return D_003F2030();
+        return D_003F2030(a0, a1);
     }
     return 0;
 }

@@ -11,17 +11,17 @@ extern void func_00337BC8(int a0);
 extern void func_00337728(void);
 extern void func_00337D20(void);
 extern void func_00337DE0(void);
-extern void func_003382A0();  /* K&R: accepts any args */
+extern void func_003382A0(int, int);  /* K&R: accepts any args */
 extern void func_003381B0();  /* K&R: accepts any args */
-extern void func_00338338();  /* K&R: accepts any args */
-extern void func_003383B0(void);
+extern void func_00338338(int, int);  /* K&R: accepts any args */
+extern int func_003383B0(int);
 extern void func_00338418(void);
 extern void func_00338638(void);
 extern void func_003386E0(void);
 extern void func_00338710(void);
 extern void func_00338788(void);
-extern void func_003387C8(void);
-extern void func_00338818(void);
+extern void func_003387C8(int, int, int);
+extern void func_00338818(int, int);
 extern void func_00338848(void);
 extern void func_003388B0(void);
 extern void func_003A52F0(void *a0, int a1, int a2);
@@ -230,15 +230,21 @@ void Obj3260_Tramp_00337DE0_D2C0(void) { func_00337DE0(); }
 
 /* Obj3260_Tramp_003382A0_D320 → j func_003382A0 */
 __attribute__((section(".text.Obj3260_Tramp_003382A0_D320")))
-void Obj3260_Tramp_003382A0_D320(void) { func_003382A0(); }
+void Obj3260_Tramp_003382A0_D320(int a0, int a1) {
+    func_003382A0(a0, a1);
+}
 
 /* Obj3260_Tramp_00338338_D338 → j func_00338338 */
 __attribute__((section(".text.Obj3260_Tramp_00338338_D338")))
-void Obj3260_Tramp_00338338_D338(void) { func_00338338(); }
+void Obj3260_Tramp_00338338_D338(int a0, int a1) {
+    func_00338338(a0, a1);
+}
 
 /* Obj3260_Tramp_003383B0_D358 → j func_003383B0 */
 __attribute__((section(".text.Obj3260_Tramp_003383B0_D358")))
-void Obj3260_Tramp_003383B0_D358(void) { func_003383B0(); }
+int Obj3260_Tramp_003383B0_D358(int a0) {
+    return func_003383B0(a0);
+}
 
 /* func_00326370 → j func_00338418 */
 /* NOTE: 3 trailing nops after endlabel (0xC extra bytes); ALIGN(8) only       */
@@ -263,11 +269,15 @@ void Obj3260_Tramp_00338788_D3E0(void) { func_00338788(); }
 
 /* Obj3260_Tramp_003387C8_D3F8 → j func_003387C8 */
 __attribute__((section(".text.Obj3260_Tramp_003387C8_D3F8")))
-void Obj3260_Tramp_003387C8_D3F8(void) { func_003387C8(); }
+void Obj3260_Tramp_003387C8_D3F8(int a0, int a1, int a2) {
+    func_003387C8(a0, a1, a2);
+}
 
 /* Obj3260_Tramp_00338818_D410 → j func_00338818 */
 __attribute__((section(".text.Obj3260_Tramp_00338818_D410")))
-void Obj3260_Tramp_00338818_D410(void) { func_00338818(); }
+void Obj3260_Tramp_00338818_D410(int a0, int a1) {
+    func_00338818(a0, a1);
+}
 
 /* Obj3260_Tramp_00338848_D428 → j func_00338848 */
 __attribute__((section(".text.Obj3260_Tramp_00338848_D428")))

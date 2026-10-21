@@ -42,7 +42,7 @@ void func_00383C70(void *a0, char *p, unsigned char flag)
             r++;
         }
     } else {
-        if (MixChannel_isUniform(a0, p) != 0) {
+        if (func_00383DD0(a0, p) != 0) {
             *q = q[*(unsigned char *)(p + 4)];
         }
     }

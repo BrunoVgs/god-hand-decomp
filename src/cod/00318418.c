@@ -61,11 +61,11 @@ void func_00386D70(void) {
     v = *p;
     if (v & 0x1) {
         *(unsigned short *)(base + 0x22) = v & 0xFFFE;
-        SndEvent_requestByGroup(1, 1);
+        func_0037D9B0(1, 1);
         v = *(unsigned short *)(base + 0x22);
     }
     if (v & 0x2) {
         *(unsigned short *)(base + 0x22) = v & 0xFFFD;
-        SndEvent_requestByGroup(1, 2);
+        func_0037D9B0(1, 2);
     }
 }

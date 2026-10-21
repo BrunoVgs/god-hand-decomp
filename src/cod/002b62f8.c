@@ -18,10 +18,10 @@ extern void Obj33F8_Tramp_0033B658_FC70(void);
 extern void Obj33F8_Tramp_0033B670_FC88(void);
 
 __attribute__((section(".text.func_0032B660")))
-int func_0032B660(int a0, int a1) {
+void func_0032B660(int a0, int a1) {
     NoOp_33E6A8();
     func_0032B6A0(a0, a1);
-    return NoOp_33E6B0();
+    NoOp_33E6B0();
 }
 
 __attribute__((section(".text.func_00335950")))
@@ -128,12 +128,12 @@ int func_0032E040(int a0, int a1) {
 }
 
 __attribute__((section(".text.func_0032EC78")))
-int func_0032EC78(int a0, int a1, int a2) {
+void func_0032EC78(int a0, int a1, int a2) {
     Obj33F8_NoOp_FCA0();
     Obj33F8_Tramp_0033B658_FC70();
-    CriTrackSet_setTrackLevel(a0, a1, a2);
+    func_0032ECD8(a0, a1, a2);
     Obj33F8_Tramp_0033B670_FC88();
-    return Obj33F8_NoOp_FCA8();
+    Obj33F8_NoOp_FCA8();
 }
 
 #include "godhand/vu0.h"

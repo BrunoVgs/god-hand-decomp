@@ -126,8 +126,8 @@ void cActionButtonEnt_reset(cActionButtonEnt *self)
     self->unk30 = 0;
     self->cmdNum = 0;
     self->unk35 = 0;
-    *(short *)(self->unk32) = 0;
-    self->unk36[0] = 0;
+    self->unk32 = 0;
+    self->unk36 = 0;
     self->cmdTbl = 0;
     self->idTbl = 0;
     self->argTbl = 0;

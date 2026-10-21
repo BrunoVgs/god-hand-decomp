@@ -1,8 +1,8 @@
 /* cygnus-2.96 matched TU. */
 #include "godhand/cSnd.h"
 
-extern void func_003A5148(void);
-extern void func_0034C2D0(void *, void *, void *, int);
+extern void *func_003A5148(void *dst, const void *src, int n);
+extern int func_0034C2D0(void *, void *, void *, int);
 
 __attribute__((section(".text.func_00356358")))
 int func_00356358(void *a0) {
@@ -22,14 +22,12 @@ int cSndSeVoice_IsActive(cSndSeVoice *v) {
 }
 
 __attribute__((section(".text.func_00366960")))
-void func_00366960(void) {
-    func_003A5148();
+void *func_00366960(void *dst, const void *src, int n) {
+    return func_003A5148(dst, src, n);
 }
 
 __attribute__((section(".text.func_0034C2B8")))
-void func_0034C2B8(void *a0, void *a1, void *a2) {
-    func_0034C2D0(a0, a1, a2, 1);
-}
+int func_0034C2B8(void *a0, void *a1, void *a2) { return func_0034C2D0(a0, a1, a2, 1); }
 
 __attribute__((section(".text.func_0035AB98")))
 int func_0035AB98(void *a0, void *a1, void *a2) {

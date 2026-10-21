@@ -58,6 +58,18 @@ int func_00355790(char *a, char *b)
     return *(int *)(a + 0x38) > *(int *)(b + 0x38);
 }
 
+__attribute__((section(".text.func_003557B0")))
+int func_003557B0(char *self)
+{
+    int old = *(int *)(self + 0x5C);
+    int next = old + 1;
+    if (next < 0) {
+        next = 0;
+    }
+    *(int *)(self + 0x5C) = next;
+    return old;
+}
+
 __attribute__((section(".text.func_003574A8")))
 int func_003574A8(char *p) {
     int v = *(int *)(p + 0x4C);

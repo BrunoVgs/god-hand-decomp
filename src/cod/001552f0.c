@@ -1,24 +1,24 @@
 /* sn-2.95.3-136 matched TU. */
-#include "godhand/DataPack.h"
+#include "godhand/mdlPkt.h"
 
-#define BLOCK_BYTES  0x70   /* buffer bytes per block of DATAPACK_ITEMS_PER_BLOCK items */
+#define BLOCK_BYTES  0x70   /* packet bytes per block of MDL_PKT_VTX_PER_BLOCK vertices */
 
-/* Size of the buffer section idx needs: one BLOCK_BYTES block per 24 items,
-   rounded up, plus the buffer header. */
+/* Packet size for record idx of the model pack: one BLOCK_BYTES block per
+   24 vertices, rounded up, plus the packet header. */
 __attribute__((section(".text.DataPack_calcBufSize70")))
-int DataPack_calcBufSize70(DataPackOwner *self, int idx) {
-    DataPackRef ref;
-    int count;
+int DataPack_calcBufSize70(MdlObj *self, int idx) {
+    PackRef ref;
+    int nVtx;
     int size;
 
-    ref.pack = self->pack;
-    ref.sect = (DataPackSection *)(ref.pack->offs[idx] + (int)ref.pack);
-    count = ref.sect->count;
-    if (count % DATAPACK_ITEMS_PER_BLOCK) {
-        size = count / DATAPACK_ITEMS_PER_BLOCK + 1;
+    ref.base = self->pack;
+    ref.rec = (MdlRec *)(ref.base->ofs[idx] + (int)ref.base);
+    nVtx = ref.rec->nVtx;
+    if (nVtx % MDL_PKT_VTX_PER_BLOCK) {
+        size = nVtx / MDL_PKT_VTX_PER_BLOCK + 1;
     } else {
-        size = count / DATAPACK_ITEMS_PER_BLOCK;
+        size = nVtx / MDL_PKT_VTX_PER_BLOCK;
     }
     size *= BLOCK_BYTES;
-    return size + DATAPACK_BUF_HEADER;
+    return size + MDL_PKT_HEADER;
 }

@@ -92,15 +92,19 @@ typedef struct cModelNode {
     char packet[2][0xB0];               /* 0x000 draw packet, index = frame parity */
     char unk160[0x220];
     unsigned int dispFlags;             /* 0x380 CMODEL_NODE_* */
-    char unk384[0x4];
+    unsigned char unk384;               /* 0x384 */
+    char unk385;
+    unsigned char meshNum;              /* 0x386 data->num at setup */
+    char unk387;
     struct cMeshData *data;             /* 0x388 */
     float uvScroll[2];                  /* 0x38C */
     char unk394[0xC];
     float color[3];                     /* 0x3A0 r, g, b */
     float alpha;                        /* 0x3AC */
-    char unk3B0[0x54];
+    char unk3B0[0x50];
+    int unk400;                         /* 0x400 */
     struct cModelNode *next;            /* 0x404 */
-    char unk408[0x4];
+    int pktBuf;                         /* 0x408 packet data, filled at setup */
     unsigned char layer;                /* 0x40C */
     char unk40D[0x3];
     unsigned int tag;                   /* 0x410 */
@@ -159,6 +163,24 @@ typedef struct cVtEnt {
     short index;                        /* 0x2 */
     void *pfn;                          /* 0x4 */
 } cVtEnt;
+
+/* The same entry as code that copies whole entries sees it (8-byte aligned). */
+typedef struct cVtEnt8 {
+    short delta;                        /* 0x0 */
+    short index;                        /* 0x2 */
+    void (*pfn)(void *self);            /* 0x4 */
+} __attribute__((aligned(8))) cVtEnt8;
+
+/* A g++ 2.x pointer to member function: the this-adjust, then the function
+ * itself or, for a virtual function, its vtable offset. */
+typedef struct cPmf {
+    short delta;                        /* 0x0 */
+    short index;                        /* 0x2 */
+    union {
+        void (*pfn)(void *self);        /* 0x4 */
+        short delta2;                   /* 0x4 */
+    } u;
+} cPmf;
 
 /* Call virtual method number n of obj, whose record has a vtable pointer. */
 #define CVCALL_THIS(obj, n)  ((char *)(obj) + (obj)->vtable[n].delta)

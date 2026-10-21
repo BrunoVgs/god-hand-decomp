@@ -25,12 +25,12 @@ void ClearEventFlagsPending_375FA0(void) {
     v = *p;
     if (v & 0x10) {
         *(unsigned short *)(base + 0x22) = v & 0xFFEF;
-        SndEvent_requestByGroup(4, 1);
+        func_0037D9B0(4, 1);
         v = *(unsigned short *)(base + 0x22);
     }
     if (v & 0x20) {
         *(unsigned short *)(base + 0x22) = v & 0xFFDF;
-        SndEvent_requestByGroup(4, 2);
+        func_0037D9B0(4, 2);
     }
 }
 

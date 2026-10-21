@@ -50,4 +50,6 @@ typedef struct cObj cObj;
 
 typedef char cObj_size_check[(sizeof(struct cObj) == 0x310) ? 1 : -1];
 
+extern void cObj_setId(struct cObj *self, int id);
+
 #endif

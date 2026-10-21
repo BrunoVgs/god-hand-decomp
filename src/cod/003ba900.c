@@ -6,8 +6,8 @@ extern char D_00460B48[];   /* "E03032410 : NULL pointer is passed." */
 extern char D_00460B70[];   /* "E03032411 : Illegal server frequency is passed." */
 
 /* Set the server frequency in Hz and derive the server calls per block. */
-__attribute__((section(".text.CriServer_setFreq")))
-void CriServer_setFreq(CriServer *self, int freq) {
+__attribute__((section(".text.func_003BA900")))
+void func_003BA900(CriServer *self, int freq) {
     if (self == 0) {
         func_003B9DE0(D_00460B48);
         return;

@@ -3,8 +3,6 @@
 #include "godhand/ColiseumBattle.h"
 
 extern char D_005864F0[];
-extern int cEmBase_checkDeadFlag(void *e);
-extern ColiseumEmNode *D_005869F0;
 extern char D_00747470[];
 extern unsigned char D_0074748C;
 extern int D_00747A24[];

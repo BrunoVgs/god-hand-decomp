@@ -109,13 +109,16 @@ __attribute__((section(".text.Forward324D88_324E70")))
 int Forward324D88_324E70(void) { return func_00324D88(D_003C814C, D_003C80C8); }
 
 __attribute__((section(".text.SleepThread_3252E0")))
-int SleepThread_3252E0(void) { return SleepThread(); }
+void SleepThread_3252E0(void) { SleepThread(); }
+
+extern int Forward33B568_33B658(void);
+extern int Forward33B5C8_33B670(void);
 
 __attribute__((section(".text.Forward33B658_325C60")))
-int Forward33B658_325C60(int a0) { return Forward33B568_33B658(a0); }
+void Forward33B658_325C60(void) { Forward33B568_33B658(); }
 
 __attribute__((section(".text.Forward33B670_325C78")))
-int Forward33B670_325C78(int a0) { return Forward33B5C8_33B670(a0); }
+void Forward33B670_325C78(void) { Forward33B5C8_33B670(); }
 
 __attribute__((section(".text.Forward325C98_325DC0")))
 int Forward325C98_325DC0(int a0) { return func_00325C98(a0); }
@@ -124,9 +127,9 @@ __attribute__((section(".text.Forward33F690_325DD8")))
 int Forward33F690_325DD8(int a0) { return func_0033F690(a0); }
 
 __attribute__((section(".text.SetFlagAndForward_325EF8")))
-int SetFlagAndForward_325EF8(void) {
+void SetFlagAndForward_325EF8(void) {
   D_003C80FC = 1;
-  return SleepThread_3252E0();
+  SleepThread_3252E0();
 }
 
 __attribute__((section(".text.GetVia4_Obj33C8_GetShort_24_327800")))
@@ -147,8 +150,10 @@ int GetVia4_Obj33C8_GetByte_D_327950(char *a0) { return Obj33C8_GetByte_D(*(int*
 __attribute__((section(".text.Forward33CFB8_327970")))
 int Forward33CFB8_327970(int *a0) { return func_0033CFB8(a0[1]); }
 
+extern void func_0033CFF8(int a0);
+
 __attribute__((section(".text.Forward33CFF8_327988")))
-int Forward33CFF8_327988(int *a0) { return func_0033CFF8(a0[1]); }
+void Forward33CFF8_327988(int *a0) { func_0033CFF8(a0[1]); }
 
 __attribute__((section(".text.Forward330C88_328C58")))
 int Forward330C88_328C58(void) { return func_00330C88(); }

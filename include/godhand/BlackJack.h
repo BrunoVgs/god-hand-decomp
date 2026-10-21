@@ -48,6 +48,9 @@ typedef struct BlackJackCardObj {
     BlackJackVtEnt *vtbl;               /* 0x214 g++ 2.x vtable pointer */
     char unk218[0x38];
     unsigned int flags;                 /* 0x250 bit 1 = card is face down */
+    char unk254[0x600 - 0x254];
+    int suit;                           /* 0x600 0..3 */
+    int rank;                           /* 0x604 0 = ace .. 12 = king */
 } BlackJackCardObj;
 
 typedef struct BlackJackCard {

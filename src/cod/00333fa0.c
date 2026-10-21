@@ -3,7 +3,7 @@
 extern volatile int D_003D9F68;
 extern int D_003D9F78;
 extern void func_00335248(int a0);
-extern void setDevName(int a0);
+extern void func_003352D0(int a0);
 
 /* func_00333FA0 -- DEAD-HEAD BOUNDARY DEFECT.
  * The declared span starts 8 B too early; the TRUE entry is 0x00333FA0.
@@ -26,6 +26,6 @@ __attribute__((section(".text.func_00333FA0")))
 int func_00333FA0(void) {
     D_003D9F68;
     func_00335248(0);
-    setDevName(0);
+    func_003352D0(0);
     return (int)&D_003D9F78;
 }

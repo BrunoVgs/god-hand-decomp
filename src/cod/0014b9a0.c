@@ -110,6 +110,7 @@ void func_0014B9A0(cModel *self, cModelNode *node, short id)
     }
 }
 
+
 #include "godhand/vu0.h"
 
 static __inline__ void CV3(float *d, float *s)

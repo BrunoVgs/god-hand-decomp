@@ -9,12 +9,12 @@ void ClearPendingFlagEvents_376E38(void) {
     v = *(unsigned short*)((char*)p + 0x22);
     if (v & 0x4) {
         *(unsigned short*)((char*)p + 0x22) = v & 0xFFFB;
-        SndEvent_requestByGroup(2, 1);
+        func_0037D9B0(2, 1);
     }
     v = *(unsigned short*)((char*)p + 0x22);
     if (v & 0x8) {
         *(unsigned short*)((char*)p + 0x22) = v & 0xFFF7;
-        SndEvent_requestByGroup(2, 2);
+        func_0037D9B0(2, 2);
     }
 }
 

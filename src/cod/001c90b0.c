@@ -4,7 +4,7 @@ extern int ClearField5B4IfFlagUnset_1B76B0();
 extern int CustomIDWork_SetNumber();
 extern int SetFlagOnEntries7C_1D51B8();
 extern int cIDBase_release();
-extern int cIDBase_trans();
+extern void cIDBase_trans(void *self);
 
 /* clone */
 
