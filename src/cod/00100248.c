@@ -1,6 +1,6 @@
 /* ee-2.9-991111 matched TU. */
 
-extern void func_003B6820(void);
+extern void func_003B6820(int);
 extern void func_00320280(void);
 extern void func_003B1F28(char *fmt, ...);
 extern char D_0045E630[];
@@ -18,7 +18,9 @@ extern void *D_003FC9B4;
 extern char D_007854B0[];
 
 __attribute__((section(".text.func_00100248")))
-void func_00100248(void) { func_003B6820(); }
+void func_00100248(int a0) {
+    func_003B6820(a0);
+}
 
 __attribute__((section(".text.func_0031DE70")))
 void func_0031DE70(void) { func_00320280(); }

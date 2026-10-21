@@ -10,6 +10,7 @@ extern char D_0071B7C0[];
 extern char D_0071B840[];
 extern char D_0071B8C0[];
 extern void func_00307060(char *a0);
+extern void cOmBase_dieCommon(void *self);
 
 __attribute__((section(".text.setAlphaScrollLayer")))
 void setAlphaScrollLayer(int a0, float f12) {
@@ -117,6 +118,20 @@ void func_001B15C8(void *a0, int a1, int a2, float *a3, float *t0) {
         d2[1] = t0[1];
         d2[2] = t0[2];
     }
+}
+
+__attribute__((section(".text.func_001B15A8")))
+void func_001B15A8(char *self)
+{
+    self[0x531] = -1;
+    cOmBase_dieCommon(self);
+}
+
+__attribute__((section(".text.func_001CF140")))
+void func_001CF140(char *self)
+{
+    self[0x531] = -1;
+    cOmBase_dieCommon(self);
 }
 
 /* Gives a chunk back to a heap: merges its block into the next one and marks the block unused. */

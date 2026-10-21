@@ -20,9 +20,9 @@ __attribute__((section(".text.cSnd_GetSeData")))
 cSndSeEntry *cSnd_GetSeData(cSnd *self, int idx) { return &self->seEntry[idx]; }
 
 __attribute__((section(".text.func_0032A6D0")))
-int func_0032A6D0(int a0, int a1, int a2)
+void func_0032A6D0(int a0, int a1, int a2)
 {
     NoOp_33E6A8();
     func_0032A720(a0, a1, a2);
-    return NoOp_33E6B0();
+    NoOp_33E6B0();
 }

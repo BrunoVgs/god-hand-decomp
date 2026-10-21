@@ -2161,17 +2161,17 @@ extern int func_00340A20(int a0);
 __attribute__((section(".text.Forward340A20_336E58")))
 int Forward340A20_336E58(int a0) { return func_00340A20(*(int*)((char*)a0 + 0xE8)); }
 
-extern int func_0033F130(int a0);
+extern void func_0033F130(int a0);
 __attribute__((section(".text.Forward33F130_336E70")))
-int Forward33F130_336E70(int a0, int a1) { return func_0033F130(a1); }
+void Forward33F130_336E70(int a0, int a1) { func_0033F130(a1); }
 
 extern int Forward33B568_33B658(void);
 __attribute__((section(".text.Forward33B658_3389F8")))
-int Forward33B658_3389F8(void) { return Forward33B568_33B658(); }
+void Forward33B658_3389F8(void) { Forward33B568_33B658(); }
 
 extern int Forward33B5C8_33B670(void);
 __attribute__((section(".text.Forward33B670_338A10")))
-int Forward33B670_338A10(void) { return Forward33B5C8_33B670(); }
+void Forward33B670_338A10(void) { Forward33B5C8_33B670(); }
 
 extern int Forward33B790_340AE8(void *a0);
 extern char D_00455900[];
@@ -2226,7 +2226,7 @@ int Forward33BC48_33BD30(void) { return func_0033BC48(1); }
 
 extern int func_0033BC48(int);
 __attribute__((section(".text.Forward33BC48_33BD48")))
-int Forward33BC48_33BD48(void) { return func_0033BC48(2); }
+void Forward33BC48_33BD48(void) { func_0033BC48(2); }
 
 extern int func_0033BC48(int);
 __attribute__((section(".text.Forward33BC48_33BD60")))
@@ -2254,10 +2254,10 @@ int Forward32B300_342AF0(int a0, int a1, int a2, int a3) {
     return func_0032B300(a0, a1, a2, a3);
 }
 
-extern int func_0032A9F0(int a0, int a1, int a2, int a3);
+extern void func_0032A9F0(int a0, int a1);
 __attribute__((section(".text.Forward32A9F0_342B08")))
-int Forward32A9F0_342B08(int a0, int a1, int a2, int a3) {
-    return func_0032A9F0(a0, a1, a2, a3);
+void Forward32A9F0_342B08(int a0, int a1) {
+    func_0032A9F0(a0, a1);
 }
 
 extern int func_0032AAA0(int a0, int a1, int a2, int a3);
@@ -2266,10 +2266,10 @@ int Forward32AAA0_342B20(int a0, int a1, int a2, int a3) {
     return func_0032AAA0(a0, a1, a2, a3);
 }
 
-extern int func_0032B660(int a0, int a1, int a2, int a3);
+extern void func_0032B660(int a0, int a1);
 __attribute__((section(".text.Forward32B660_342B38")))
-int Forward32B660_342B38(int a0, int a1, int a2, int a3) {
-    return func_0032B660(a0, a1, a2, a3);
+void Forward32B660_342B38(int a0, int a1) {
+    func_0032B660(a0, a1);
 }
 
 extern int func_003443E0(int a0, int a1, int a2, int a3);
@@ -2337,17 +2337,14 @@ __attribute__((section(".text.Forward348BE0_346BE0")))
 int Forward348BE0_346BE0(int a0, int a1) {
     return MWSFSVM_Error(a1);
 }
-INCLUDE_ASM("nonmatching", MotionGetParam);
 INCLUDE_ASM("nonmatching", SetEv61HumanAlive);
 INCLUDE_ASM("nonmatching", Dest_ck);
 INCLUDE_ASM("nonmatching", displayOmLayer);
-INCLUDE_ASM("nonmatching", setPlayerPos);
 
 INCLUDE_ASM("nonmatching", pl00_CkSubScreen);
 
 INCLUDE_ASM("nonmatching", cObj_setId);
 
-INCLUDE_ASM("nonmatching", MotionIsHaveParam);
 
 INCLUDE_ASM("nonmatching", cOmSub_setVibration);
 

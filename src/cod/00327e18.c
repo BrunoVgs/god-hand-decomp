@@ -43,17 +43,17 @@ int func_003283E8(int a0, int a1, int a2) {
 }
 
 __attribute__((section(".text.func_003298C0")))
-int func_003298C0(int a0) {
+void func_003298C0(int a0) {
     NoOp_33E6A8();
     func_003298F0(a0);
-    return NoOp_33E6B0();
+    NoOp_33E6B0();
 }
 
 __attribute__((section(".text.func_0032B188")))
-int func_0032B188(int a0, int a1) {
+void func_0032B188(int a0, int a1) {
     NoOp_33E6A8();
     func_0032B1C8(a0, a1);
-    return NoOp_33E6B0();
+    NoOp_33E6B0();
 }
 
 __attribute__((section(".text.func_0034CA30")))

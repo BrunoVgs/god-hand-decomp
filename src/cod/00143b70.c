@@ -48,7 +48,7 @@ typedef struct FadeStep {
 __attribute__((section(".text.FadeStep_fadeOutAndAdvance")))
 void FadeStep_fadeOutAndAdvance(FadeStep *self)
 {
-    classFADE_start(&D_00747470, 0, FADE_FRAMES, 0, 0, 0xFF000000, FADE_FRAMES);
+    classFADE_start(&D_00747470, 0, 0xA, 0, 0, 0xFF000000, FADE_FRAMES);
     cTaskWork_sleep(D_003C2F84->task.cur, FADE_FRAMES);
     self->stage = 1;
 }

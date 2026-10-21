@@ -3,6 +3,61 @@
 extern float capVu0LengthSq(void *a0);
 extern float sqrtf(float x);
 extern void func_002BCF28(void *a0, float f12, float f13, void *a1, float f14, float f15);
+extern void cNode_clearActiveRecursive(void *self);
+extern void cHeap_free(void *heap, void *p);
+
+typedef void (*UpdateFn)(void *self);
+
+__attribute__((section(".text.func_002BA540")))
+void func_002BA540(char *self, float value)
+{
+    char *table;
+    *(float *)(self + 0x110) = value;
+    table = *(char **)(self + 0x100);
+    (*(UpdateFn *)(table + 0x54))(self + *(short *)(table + 0x50));
+}
+
+__attribute__((section(".text.func_002BA788")))
+void func_002BA788(char *self, float value)
+{
+    char *table;
+    *(float *)(self + 0x110) = value;
+    table = *(char **)(self + 0x100);
+    (*(UpdateFn *)(table + 0x54))(self + *(short *)(table + 0x50));
+}
+
+__attribute__((section(".text.func_002BA750")))
+void func_002BA750(char *self, float value)
+{
+    char *table;
+    *(float *)(self + 0x114) = value;
+    table = *(char **)(self + 0x100);
+    (*(UpdateFn *)(table + 0x54))(self + *(short *)(table + 0x50));
+}
+
+__attribute__((section(".text.func_002BAB00")))
+void func_002BAB00(char *self, float value)
+{
+    char *table;
+    *(float *)(self + 0x114) = value;
+    table = *(char **)(self + 0x100);
+    (*(UpdateFn *)(table + 0x54))(self + *(short *)(table + 0x50));
+}
+
+__attribute__((section(".text.func_002B6400")))
+void func_002B6400(char *self)
+{
+    self[0x16] = 0;
+    cNode_clearActiveRecursive(self);
+}
+
+__attribute__((section(".text.func_002BAE20")))
+void func_002BAE20(int unused, char *allocation)
+{
+    if (allocation != 0) {
+        cHeap_free(*(void **)(allocation - 0x20), allocation);
+    }
+}
 
 /* sn-2.95.3-136 matched TU. */
 

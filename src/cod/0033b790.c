@@ -4,6 +4,7 @@ extern struct cb_0033b790 D_007588B0;
 extern char D_003E9990[];
 extern char D_003EADC0[];
 extern char D_00456930[];
+extern void PrintfErrorReport(char *fmt, ...);
 extern void (*D_003EADB8)(void *arg, char *p);
 extern void *D_003EADBC;
 extern int strncat(char *dst, int src, int n);
@@ -27,14 +28,16 @@ void func_0033B790(int a0) {
 }
 
 __attribute__((section(".text.func_0033F1A8")))
-int func_0033F1A8(int a0, int a1) {
-    if (a0 == 0 || a1 == 0)
-        return PrintfErrorReport(D_00456930);
+void func_0033F1A8(int a0, int a1) {
+    if (a0 == 0 || a1 == 0) {
+        PrintfErrorReport(D_00456930);
+        return;
+    }
     func_003A5DA0(D_003EADC0, a0, 0xFF);
     strncat(D_003EADC0, a1, 0xFF);
     if (D_003EADB8 != 0)
         D_003EADB8(D_003EADBC, D_003EADC0);
-    return PrintfErrorReport(D_003EADC0);
+    PrintfErrorReport(D_003EADC0);
 }
 
 __attribute__((section(".text.func_003BA058")))

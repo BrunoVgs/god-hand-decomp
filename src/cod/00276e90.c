@@ -1,5 +1,25 @@
 /* sn-2.95.3-136 matched TU. */
 
+extern void func_00104010(void *self, void *work, void *model);
+
+__attribute__((section(".text.func_0027A748")))
+void func_0027A748(char *self)
+{
+    func_00104010(self, self + 0x2130, self + 0x5B0);
+}
+
+__attribute__((section(".text.func_0027B240")))
+void func_0027B240(char *self)
+{
+    func_00104010(self, self + 0x2130, self + 0x5B0);
+}
+
+__attribute__((section(".text.func_002844A0")))
+void func_002844A0(char *self)
+{
+    func_00104010(self, self + 0x2130, self + 0x5B0);
+}
+
 __attribute__((section(".text.cEm12_SetParent")))
 void cEm12_SetParent(char *p, char *q, int idx)
 {

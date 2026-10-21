@@ -3,8 +3,25 @@
 
 /* ── call-chain (3) — save $ra, call sub-function, return 0 ─────────── */
 
-INCLUDE_ASM("nonmatching", func_002B2A30);
-INCLUDE_ASM("nonmatching", func_002B2A58);
+extern void func_002B2A88(char *p);
+
+__attribute__((section(".text.func_002B2A30")))
+int func_002B2A30(char *p)
+{
+    *(unsigned char *)(p + 0x70) = 0;
+    *(unsigned char *)(p + 0xA4) = 0;
+    func_002B2A88(p);
+    return 0;
+}
+
+__attribute__((section(".text.func_002B2A58")))
+int func_002B2A58(char *p)
+{
+    *(unsigned char *)(p + 0x70) = 1;
+    *(unsigned char *)(p + 0xA4) = 0;
+    func_002B2A88(p);
+    return 0;
+}
 
 /* ── accessor leaves (14) ────────────────────────────────────────────── */
 

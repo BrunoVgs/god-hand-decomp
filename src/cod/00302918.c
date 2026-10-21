@@ -4,10 +4,10 @@ extern int NoOp_33E6A8(int a0, int a1);
 extern int NoOp_33E6B0(void);
 
 __attribute__((section(".text.func_0032A9F0")))
-int func_0032A9F0(int a0, int a1) {
+void func_0032A9F0(int a0, int a1) {
     NoOp_33E6A8(a0, a1);
     func_0032AA30(a0, a1);
-    return NoOp_33E6B0();
+    NoOp_33E6B0();
 }
 
 __attribute__((section(".text.func_00302918")))

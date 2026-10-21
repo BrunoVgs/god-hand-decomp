@@ -13,13 +13,21 @@
 
 typedef struct cMessageWin {
     unsigned short workId;      /* 0x00 handle returned by create */
-    char unk02[6];
+    short prio;                 /* 0x02 open list is kept by descending prio */
+    struct cMessageWin *prev;   /* 0x04 */
     struct cMessageWin *next;   /* 0x08 */
 } cMessageWin;
 
 typedef struct cMessage {
-    char unk00[0x10];
-    cMessageWin *head;          /* 0x10 open windows */
+    char unk000[0x10];
+    cMessageWin *head;          /* 0x010 open windows */
+    cMessageWin *free;          /* 0x014 free windows */
+    char unk018[0xBD8 - 0x18];
+    unsigned short serial;      /* 0xBD8 */
 } cMessage;
+
+extern cMessageWin *func_002B2318(cMessageWin *win);
+extern void func_002B2080(cMessageWin *win);
+extern void func_002B22E8(cMessageWin *win, cMessageWin *prev, cMessageWin *next, short prio, int serial);
 
 #endif

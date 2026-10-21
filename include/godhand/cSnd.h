@@ -75,7 +75,7 @@ typedef struct cSndBgmReq {
 typedef struct cSndBgmNode {
     char unk00[0x5E];
     unsigned char started;      /* 0x5E */
-    char unk5F;
+    unsigned char unk5F;        /* 0x5F */
     unsigned char started60;    /* 0x60 */
     unsigned char unk61;        /* 0x61 */
     char unk62[0x22];
@@ -140,7 +140,9 @@ typedef struct cSnd {
     float f6C;                  /* 0x6C weight BGM nodes are blended with */
     char unk70[0x2C];
     float f9C;                  /* 0x9C fade ratio, 0..1 */
-    char unkA0[0xC];
+    char unkA0[4];
+    int fA4;                    /* 0xA4 cleared on resume */
+    char unkA8[4];
     unsigned int flagsAC;       /* 0xAC */
     unsigned int flagsB0;       /* 0xB0 */
     char unkB4[0xC];
@@ -168,10 +170,19 @@ typedef struct cSnd {
     cSndBgmNode node[CSND_BGM_NODE_NUM];    /* 0x2380 BGM node pool, bgmPool points here */
 } cSnd;
 
+/* One entry of the sound-kind table (D_003C3138, 44 entries; D_003C3120 is
+   the fallback entry filled in for ids the table does not list). */
+typedef struct cSndKindEnt {
+    unsigned short id;          /* 0x00 */
+    char unk02[2];
+    int param[5];               /* 0x04 */
+} cSndKindEnt;                  /* 0x18 */
+
 /* Size checks: a negative array size stops the build if a layout drifts. */
 typedef char cSndSeEntry_size_check[sizeof(cSndSeEntry) == 0x40 ? 1 : -1];
 typedef char cSndSeVoice_size_check[sizeof(cSndSeVoice) == 0x50 ? 1 : -1];
 typedef char cSndBgmNode_size_check[sizeof(cSndBgmNode) == 0xDC ? 1 : -1];
+typedef char cSndKindEnt_size_check[sizeof(cSndKindEnt) == 0x18 ? 1 : -1];
 typedef char cSndMemHeap_size_check[sizeof(cSndMemHeap) == 0x390 ? 1 : -1];
 
 #endif /* GODHAND_CSND_H */

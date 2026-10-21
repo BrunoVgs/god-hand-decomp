@@ -99,8 +99,6 @@ int AllocZeroedBlock_313E50(void) {
     return func_0018B290(p);
 }
 
-/* func_001DE5F8: 116 insns, 464 B — sq-prologue, no VU0, no jumptable. */
-INCLUDE_ASM("nonmatching", func_001DE5F8);
 
 /* BuildObjEntry_387160: jal func_00377998 ; conditional ldl/ldr/sdl/sdr 0x20-byte
  *                memcpy loop; multiple sb/sh writes to allocated struct

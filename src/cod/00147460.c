@@ -1,6 +1,7 @@
 /* SN ProDG ee-gcc 2.95.3 matched TU. */
 
 extern void cIDBase_trans(void *);
+extern void func_00155AE8(int pkt, int id, int buf);
 extern char D_0041DCC8[];
 extern void __builtin_delete(void);
 extern int D_007476B0;
@@ -26,8 +27,8 @@ void InitPtrField80AndForward_1474A0(void *a0, int a1) {
 }
 
 __attribute__((section(".text.Forward155AE8_148F00")))
-int Forward155AE8_148F00(int a0, int a1) {
-    return func_00155AE8(a0, a1, D_007476B0 & 1);
+void Forward155AE8_148F00(int a0, int a1) {
+    func_00155AE8(a0, a1, D_007476B0 & 1);
 }
 
 __attribute__((section(".text.Forward149378_1492C8")))

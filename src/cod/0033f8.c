@@ -6,7 +6,7 @@ extern void func_003A52F0(void *a0, int a1, int a2);
 extern void func_0033E6B8();          /* K&R: fp args, complex signature    */
 extern void Forward33B568_33B658(void);
 extern void Forward33B5C8_33B670(void);
-extern void func_0033F130(void);
+extern void func_0033F130(int);
 
 /* ── Extern globals ─────────────────────────────────────────────────────── */
 extern char D_003EB858[];   /* struct array, size >= 0x3C0, Obj33F8_Init_D003EB858_F888   */
@@ -139,7 +139,9 @@ void Obj33F8_NoOp_FCA8(void) {}
 
 /* Obj33F8_Tramp_0033F130_FCB0 → j func_0033F130 */
 __attribute__((section(".text.Obj33F8_Tramp_0033F130_FCB0")))
-void Obj33F8_Tramp_0033F130_FCB0(void) { func_0033F130(); }
+void Obj33F8_Tramp_0033F130_FCB0(int a0) {
+    func_0033F130(a0);
+}
 
 /* ── Call-chain functions deferred ───────────────────── */
 INCLUDE_ASM("nonmatching", func_0033FCD0);
