@@ -17597,6 +17597,289 @@
     {
       "path": "src/cod/0034c890.c",
       "compiler": "cygnus-2.96"
+    },
+    {
+      "path": "src/cod/0032e488.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/0032cc90.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00355f88.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/0036cf30.c",
+      "compiler": "cygnus-2.96"
+    },
+    {
+      "path": "src/cod/0036dff0.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/003336f8.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00327048.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00334f90.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/003367f8.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00332c00.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/0034adb8.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00323cf0.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00326cb8.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/003448b0.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00327418.c",
+      "compiler": "cygnus-2.96"
+    },
+    {
+      "path": "src/cod/00332398.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00324640.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/0034a5e0.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/0033c548.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/003398f8.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00334520.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/0036ee90.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00354478.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00348670.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/0034f4c0.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00338478.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00354650.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/0033d720.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/0036b888.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/0033fdc0.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00333560.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00354bd8.c",
+      "compiler": "cygnus-2.96"
+    },
+    {
+      "path": "src/cod/00333ce0.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/0033b218.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/0034eb98.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00322c68.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00332ea0.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00348e18.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00345be0.c",
+      "compiler": "cygnus-2.96",
+      "as": "sn"
+    },
+    {
+      "path": "src/cod/0034a818.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/00359848.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
+    },
+    {
+      "path": "src/cod/0033d3d0.c",
+      "compiler": "cygnus-2.96",
+      "c_flags_drop": [
+        "-f=-freorder-blocks"
+      ]
     }
   ],
   "_carved_funcs_doc": [
@@ -82055,6 +82338,300 @@
       "vaddr": "0x0034C890",
       "size": 96,
       "tu": "src/cod/0034c890.c"
+    },
+    {
+      "name": "func_0032E488",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0032E488",
+      "size": 404,
+      "tu": "src/cod/0032e488.c"
+    },
+    {
+      "name": "func_0032CC90",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0032CC90",
+      "size": 516,
+      "tu": "src/cod/0032cc90.c"
+    },
+    {
+      "name": "func_00355F88",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00355F88",
+      "size": 788,
+      "tu": "src/cod/00355f88.c"
+    },
+    {
+      "name": "func_0036CF30",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0036CF30",
+      "size": 436,
+      "tu": "src/cod/0036cf30.c"
+    },
+    {
+      "name": "func_0036DFF0",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0036DFF0",
+      "size": 524,
+      "tu": "src/cod/0036dff0.c"
+    },
+    {
+      "name": "func_003336F8",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x003336F8",
+      "size": 392,
+      "tu": "src/cod/003336f8.c"
+    },
+    {
+      "name": "func_00327048",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00327048",
+      "size": 484,
+      "tu": "src/cod/00327048.c"
+    },
+    {
+      "name": "func_00334F90",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00334F90",
+      "size": 352,
+      "tu": "src/cod/00334f90.c"
+    },
+    {
+      "name": "func_003367F8",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x003367F8",
+      "size": 392,
+      "tu": "src/cod/003367f8.c"
+    },
+    {
+      "name": "func_00332C00",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00332C00",
+      "size": 376,
+      "tu": "src/cod/00332c00.c"
+    },
+    {
+      "name": "func_0034ADB8",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0034ADB8",
+      "size": 440,
+      "tu": "src/cod/0034adb8.c"
+    },
+    {
+      "name": "func_00323CF0",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00323CF0",
+      "size": 396,
+      "tu": "src/cod/00323cf0.c"
+    },
+    {
+      "name": "func_00326CB8",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00326CB8",
+      "size": 908,
+      "tu": "src/cod/00326cb8.c"
+    },
+    {
+      "name": "func_003448B0",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x003448B0",
+      "size": 68,
+      "tu": "src/cod/003448b0.c"
+    },
+    {
+      "name": "func_00327418",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00327418",
+      "size": 332,
+      "tu": "src/cod/00327418.c"
+    },
+    {
+      "name": "func_00332398",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00332398",
+      "size": 368,
+      "tu": "src/cod/00332398.c"
+    },
+    {
+      "name": "func_00324640",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00324640",
+      "size": 396,
+      "tu": "src/cod/00324640.c"
+    },
+    {
+      "name": "func_0034A5E0",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0034A5E0",
+      "size": 276,
+      "tu": "src/cod/0034a5e0.c"
+    },
+    {
+      "name": "func_0033C548",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0033C548",
+      "size": 436,
+      "tu": "src/cod/0033c548.c"
+    },
+    {
+      "name": "func_003398F8",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x003398F8",
+      "size": 412,
+      "tu": "src/cod/003398f8.c"
+    },
+    {
+      "name": "func_00334520",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00334520",
+      "size": 376,
+      "tu": "src/cod/00334520.c"
+    },
+    {
+      "name": "func_0036EE90",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0036EE90",
+      "size": 372,
+      "tu": "src/cod/0036ee90.c"
+    },
+    {
+      "name": "func_00354478",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00354478",
+      "size": 348,
+      "tu": "src/cod/00354478.c"
+    },
+    {
+      "name": "func_00348670",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00348670",
+      "size": 332,
+      "tu": "src/cod/00348670.c"
+    },
+    {
+      "name": "func_0034F4C0",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0034F4C0",
+      "size": 324,
+      "tu": "src/cod/0034f4c0.c"
+    },
+    {
+      "name": "func_00338478",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00338478",
+      "size": 444,
+      "tu": "src/cod/00338478.c"
+    },
+    {
+      "name": "func_00354650",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00354650",
+      "size": 348,
+      "tu": "src/cod/00354650.c"
+    },
+    {
+      "name": "func_0033D720",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0033D720",
+      "size": 336,
+      "tu": "src/cod/0033d720.c"
+    },
+    {
+      "name": "func_0036B888",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0036B888",
+      "size": 456,
+      "tu": "src/cod/0036b888.c"
+    },
+    {
+      "name": "func_0033FDC0",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0033FDC0",
+      "size": 868,
+      "tu": "src/cod/0033fdc0.c"
+    },
+    {
+      "name": "func_00333560",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00333560",
+      "size": 404,
+      "tu": "src/cod/00333560.c"
+    },
+    {
+      "name": "func_00354BD8",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00354BD8",
+      "size": 396,
+      "tu": "src/cod/00354bd8.c"
+    },
+    {
+      "name": "func_00333CE0",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00333CE0",
+      "size": 380,
+      "tu": "src/cod/00333ce0.c"
+    },
+    {
+      "name": "func_0033B218",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0033B218",
+      "size": 408,
+      "tu": "src/cod/0033b218.c"
+    },
+    {
+      "name": "func_0034EB98",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0034EB98",
+      "size": 368,
+      "tu": "src/cod/0034eb98.c"
+    },
+    {
+      "name": "func_00322C68",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00322C68",
+      "size": 684,
+      "tu": "src/cod/00322c68.c"
+    },
+    {
+      "name": "func_00332EA0",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00332EA0",
+      "size": 420,
+      "tu": "src/cod/00332ea0.c"
+    },
+    {
+      "name": "func_00348E18",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00348E18",
+      "size": 332,
+      "tu": "src/cod/00348e18.c"
+    },
+    {
+      "name": "func_00345BE0",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00345BE0",
+      "size": 304,
+      "tu": "src/cod/00345be0.c"
+    },
+    {
+      "name": "func_0034A818",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0034A818",
+      "size": 412,
+      "tu": "src/cod/0034a818.c"
+    },
+    {
+      "name": "func_00359848",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x00359848",
+      "size": 356,
+      "tu": "src/cod/00359848.c"
+    },
+    {
+      "name": "func_0033D3D0",
+      "unit": "asm/cod/000000",
+      "vaddr": "0x0033D3D0",
+      "size": 260,
+      "tu": "src/cod/0033d3d0.c"
     }
   ],
   "build_dir": "build",
