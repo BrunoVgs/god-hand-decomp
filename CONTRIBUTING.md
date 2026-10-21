@@ -228,6 +228,18 @@ A few things that make PRs easy to merge:
 
 Function matches and naming fixes are always welcome directly as PRs; no prior issue needed.
 
+### Using AI tools
+
+You may use AI tools (code assistants, chat models, agents) to help with a contribution. The rules below apply to every PR, whatever produced the code.
+
+1. **Readable code.** AI output gets the same bar as hand-written code. Use the typed structs and named constants from `include/`, give variables and functions real names, and replace raw offsets and magic numbers with named fields. Keep one short comment per function. Do not submit raw m2c or model output as it came.
+2. **No tool attribution.** Do not add `Co-authored-by` or `Co-Authored-By` trailers to commits. Do not add "Generated with ..." lines or tool logos to commits, PR descriptions, issues, or code comments. Do not commit tool config files (`CLAUDE.md`, `.cursor/`, and similar). This project is not a billboard for AI tools.
+3. **You are the author.** You must read and understand every line before you push. Build it, run `scripts/session_check.sh`, and be ready to explain any line in review.
+4. **The gate decides, not the tool.** A model saying a function "matches" is not evidence. The full-ELF sha256 gate and `scripts/session_check.sh` are. Never report a match you have not built and checked yourself.
+5. **The same rules apply.** No forced registers (§5.2), no hand-typed percentages, one focused change per PR. Assistants often reach for `register ... __asm__` pins. Remove them.
+6. **Licensing is yours.** Your contribution is MIT-licensed (see the top of this guide). Check that the tool did not copy code from another project under an incompatible license, and do not paste retail game data or Sony SDK material into a prompt or a commit.
+7. **Reviewer discretion.** Maintainers may close a PR that looks unreviewed by its author, such as bulk submissions, off-topic changes, or code the author cannot explain.
+
 ---
 
 ## 7. Measuring progress
