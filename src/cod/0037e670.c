@@ -52,7 +52,7 @@ void func_0037E670(char *self)
     String *e;
     char *cs;
 
-    if (func_00386640(*(void **)(self + 0x10)) != 0 && *(int *)(self + 0xC) == 0) {
+    if (StdString_pathDepth(*(void **)(self + 0x10)) != 0 && *(int *)(self + 0xC) == 0) {
         func_003863B8(*(void **)(self + 0x10));
         if (func_0037E8D8(self)) {
             *(char *)(self + 2) = 12;

@@ -5,8 +5,8 @@
 
 /* Size of the buffer section idx needs: one BLOCK_BYTES block per 24 items,
    rounded up, plus the buffer header. */
-__attribute__((section(".text.func_001551E0")))
-int func_001551E0(DataPackOwner *self, int idx) {
+__attribute__((section(".text.DataPack_calcBufSize90")))
+int DataPack_calcBufSize90(DataPackOwner *self, int idx) {
     DataPackRef ref;
     int count;
     int size;

@@ -3,8 +3,8 @@
 
 /* Bind an SMO data block to the reader. Returns 1 when the block is valid,
    else clears the reader and returns 0. */
-__attribute__((section(".text.func_001C3C58")))
-int func_001C3C58(SmoReader *rd, SmoHeader *hdr) {
+__attribute__((section(".text.SmoReader_bind")))
+int SmoReader_bind(SmoReader *rd, SmoHeader *hdr) {
     if (hdr == 0) return 0;
     rd->hdr = hdr;
     if (hdr->magic != SMO_MAGIC) {

@@ -9,7 +9,7 @@ extern void cSceAtUnit_getCenterPos(cSceAtUnit *unit, int out);
 extern void *func_002C0ED0(cSceAtUnit *unit, void *arg);
 extern cSceAtUnit *cSceAtManager_getUnitList(cSceAtManager *self);
 extern cSceAtUnit *cSceAtManager_getNextUnit(cSceAtManager *self, cSceAtUnit *e);
-extern void func_002C3058(cSceAtManager *self, unsigned int *list, cSceAtUnit *unit);
+extern void cSceAtManager_unlinkUnit(cSceAtManager *self, unsigned int *list, cSceAtUnit *unit);
 extern cSceAtUnit *cSceAtManager_getUnit(cSceAtManager *self, int id);
 extern int cSceAtManager_SetEnable_2C28F8(cSceAtManager *self, cSceAtUnit *unit);
 extern void cSceAtManager_AtDataSetExec(cSceAtManager *self, cSceAtUnit *unit, int a2, int a3, int a4, int a5);
@@ -110,6 +110,6 @@ void cSceAtManager_AtExecuteById(cSceAtManager *self, unsigned short id) {
 __attribute__((section(".text.cSceAtManager_delUnitData")))
 void cSceAtManager_delUnitData(cSceAtManager *self, cSceAtUnit *unit) {
     if (unit) {
-        func_002C3058(self, &self->unitList, unit);
+        cSceAtManager_unlinkUnit(self, &self->unitList, unit);
     }
 }

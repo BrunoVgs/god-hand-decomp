@@ -3,8 +3,8 @@
 
 /* Write the movie's draw offset to *x, *y: the base position, or base plus
    relative position, while playing; 0, 0 otherwise. */
-__attribute__((section(".text.func_00353EE0")))
-void func_00353EE0(SfdPlayCtx *ctx, SfdDrawObj *obj, int *x, int *y) {
+__attribute__((section(".text.SfdDraw_getOffset")))
+void SfdDraw_getOffset(SfdPlayCtx *ctx, SfdDrawObj *obj, int *x, int *y) {
     if (ctx->state == SFD_PLAY_STATE_PLAYING) {
         switch (obj->mode) {
         case SFD_DRAW_MODE_BASE:

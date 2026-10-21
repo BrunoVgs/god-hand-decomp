@@ -131,7 +131,7 @@ __attribute__((section(".text.func_0032EC78")))
 int func_0032EC78(int a0, int a1, int a2) {
     Obj33F8_NoOp_FCA0();
     Obj33F8_Tramp_0033B658_FC70();
-    func_0032ECD8(a0, a1, a2);
+    CriTrackSet_setTrackLevel(a0, a1, a2);
     Obj33F8_Tramp_0033B670_FC88();
     return Obj33F8_NoOp_FCA8();
 }

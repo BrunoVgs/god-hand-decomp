@@ -4,8 +4,8 @@
 extern SndEvent D_0076CF20[SND_EVENT_NUM];   /* event table */
 
 /* Apply request req to every active event whose group bits meet mask. */
-__attribute__((section(".text.func_0037D9B0")))
-void func_0037D9B0(unsigned char mask, unsigned short req) {
+__attribute__((section(".text.SndEvent_requestByGroup")))
+void SndEvent_requestByGroup(unsigned char mask, unsigned short req) {
     SndEvent *e;
     int i;
 

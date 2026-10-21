@@ -9,8 +9,8 @@ extern char D_00452FD8[];   /* "E2003052113 : The parameter 'trno' is out of ran
 /* Needs c_flags_drop -f=-freorder-blocks (like 0032dd18.c / 0032b7.c):
    with the global flag the self == 0 block is moved to the end. */
 /* Set the level of track trno and pass base + track level to its handle. */
-__attribute__((section(".text.func_0032ECD8")))
-void func_0032ECD8(CriTrackSet *self, int trno, int level) {
+__attribute__((section(".text.CriTrackSet_setTrackLevel")))
+void CriTrackSet_setTrackLevel(CriTrackSet *self, int trno, int level) {
     if (self == 0) {
         Obj33F8_Tramp_0033F130_FCB0(D_00452FB0);
         return;

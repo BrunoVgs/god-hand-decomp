@@ -3,8 +3,8 @@
 
 /* Return entry nth among the pack entries named *nameA or *nameB, counting
    from 0, or 0 when there are not that many. */
-__attribute__((section(".text.func_0031CDC0")))
-int func_0031CDC0(ResPack *pack, unsigned int *nameA, unsigned int *nameB, int nth) {
+__attribute__((section(".text.SearchDataByTwoNames")))
+int SearchDataByTwoNames(ResPack *pack, unsigned int *nameA, unsigned int *nameB, int nth) {
     int found;
     unsigned int i;
     unsigned int n;

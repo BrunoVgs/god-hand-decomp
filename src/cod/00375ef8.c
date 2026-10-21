@@ -9,7 +9,7 @@ __attribute__((section(".text.GetSoundEntryStatus_375EF8")))
 int GetSoundEntryStatus_375EF8(void *a0) {
     unsigned short *p;
     int r;
-    if (func_003769B0(a0) != 0) return 1;
+    if (SndVoice_find(a0) != 0) return 1;
     p = func_00376A90(a0);
     if (!p) return 0;
     r = 2;
@@ -25,12 +25,12 @@ void ClearEventFlagsPending_375FA0(void) {
     v = *p;
     if (v & 0x10) {
         *(unsigned short *)(base + 0x22) = v & 0xFFEF;
-        func_0037D9B0(4, 1);
+        SndEvent_requestByGroup(4, 1);
         v = *(unsigned short *)(base + 0x22);
     }
     if (v & 0x20) {
         *(unsigned short *)(base + 0x22) = v & 0xFFDF;
-        func_0037D9B0(4, 2);
+        SndEvent_requestByGroup(4, 2);
     }
 }
 

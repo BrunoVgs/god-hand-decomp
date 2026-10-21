@@ -3,8 +3,8 @@
 /* Round the n-digit decimal string digits to n - 1 digits: when the last digit is
    5 or more, zero it and carry into the digits before it. Returns 0 when the
    carry runs off a leading 9, else 1. */
-__attribute__((section(".text.func_003A9538")))
-int func_003A9538(char *digits, int n) {
+__attribute__((section(".text.RoundDigitString")))
+int RoundDigitString(char *digits, int n) {
     char *d;
 
     if (n > 0) {

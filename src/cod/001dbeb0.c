@@ -8,8 +8,8 @@
 #define CARD_OF_FLAGS(f)  ((BlackJackCard *)((char *)(f) - BLACKJACKCARD_OFFSET(flags)))
 
 /* Put all 52 cards back in the deck face down and empty the hand. */
-__attribute__((section(".text.func_001DBEB0")))
-void func_001DBEB0(Poker *self) {
+__attribute__((section(".text.Poker_resetDeck")))
+void Poker_resetDeck(Poker *self) {
     unsigned int *flags = &self->deck[0].flags;
     int i;
     int j;

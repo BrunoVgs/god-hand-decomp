@@ -5,8 +5,8 @@ extern int func_0034DD70(SfdHandle *self, int error);
 
 /* Write the object of track trno to *out. A track that is not set up raises
    SFD_ERR_TRACK_NOT_READY and leaves *out at 0. */
-__attribute__((section(".text.func_0034C890")))
-int func_0034C890(SfdHandle *self, int trno, void **out) {
+__attribute__((section(".text.SfdTrack_getObj")))
+int SfdTrack_getObj(SfdHandle *self, int trno, void **out) {
     SfdTrack *table = self->track;
     SfdTrack *tr = table + trno;
 

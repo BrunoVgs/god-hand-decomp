@@ -5,8 +5,8 @@ extern int D_003E0708;          /* pool size */
 extern PoolEntry D_003E0768[];  /* pool entries */
 
 /* Claim the first free pool entry and return it, or 0 when the pool is full. */
-__attribute__((section(".text.func_00337320")))
-PoolEntry *func_00337320(void) {
+__attribute__((section(".text.EntryPool_alloc")))
+PoolEntry *EntryPool_alloc(void) {
     int i;
     PoolEntry *e;
 

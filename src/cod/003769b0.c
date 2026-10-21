@@ -5,8 +5,8 @@ extern SndVoice D_0076F050[];   /* voice table, SND_VOICE_NUM entries */
 
 /* Return the first active voice with the given id (0 = any id), skipping
    voices flagged SND_VOICE_FLAG_SKIP, or 0 when there is none. */
-__attribute__((section(".text.func_003769B0")))
-SndVoice *func_003769B0(int id) {
+__attribute__((section(".text.SndVoice_find")))
+SndVoice *SndVoice_find(int id) {
     SndVoice *v = D_0076F050;
     int i;
 
