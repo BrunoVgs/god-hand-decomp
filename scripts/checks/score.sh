@@ -90,10 +90,14 @@ floor_code=""
 floor_data=""
 HEAD_REPORT="$(mktemp)"
 trap 'rm -f "$HEAD_REPORT"' EXIT
-if git -C "$ROOT" show HEAD:progress/report.json >"$HEAD_REPORT" 2>/dev/null \
-   && [[ -s "$HEAD_REPORT" ]]; then
-    floor_code=$(read_field "$HEAD_REPORT" matched_code)
-    floor_data=$(read_field "$HEAD_REPORT" matched_data)
+# git only when explicitly allowed (GODHAND_ALLOW_GIT=1, or CI). Agents never
+# run git; without it the local high-water mark below is the floor.
+if [[ "${GODHAND_ALLOW_GIT:-}" == 1 || "${GITHUB_ACTIONS:-}" == true ]] && [[ -d "$ROOT/.git" ]] && command -v git >/dev/null 2>&1; then
+    if git -C "$ROOT" show HEAD:progress/report.json >"$HEAD_REPORT" 2>/dev/null \
+       && [[ -s "$HEAD_REPORT" ]]; then
+        floor_code=$(read_field "$HEAD_REPORT" matched_code)
+        floor_data=$(read_field "$HEAD_REPORT" matched_data)
+    fi
 fi
 
 fail=0

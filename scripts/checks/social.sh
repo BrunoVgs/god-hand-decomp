@@ -16,7 +16,7 @@ cd "$ROOT"
 warns=()
 
 # --- no untracked files under asm/ -----------------------------------
-if git -C "$ROOT" rev-parse --git-dir >/dev/null 2>&1; then
+if [[ "${GODHAND_ALLOW_GIT:-}" == 1 || "${GITHUB_ACTIONS:-}" == true ]] && [[ -d "$ROOT/.git" ]] && command -v git >/dev/null 2>&1; then
     untracked=$(git -C "$ROOT" ls-files --others --exclude-standard -- 'asm/' 2>/dev/null || true)
     if [[ -n "$untracked" ]]; then
         warns+=("untracked files under asm/ (asm/ should come from splat only):")

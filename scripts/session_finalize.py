@@ -146,7 +146,7 @@ def report_is_canonical(root=ROOT) -> bool:
         return False
 
 
-def regen_report(root=ROOT, commit=True, revert_on_noncanonical=True) -> bool:
+def regen_report(root=ROOT, revert_on_noncanonical=True) -> bool:
     """Regenerate report.json to the regen fixed point (see report_is_canonical).
 
     progress.sh runs ``objdiff-cli report generate`` BEFORE ``mark_complete`` flags
@@ -156,11 +156,10 @@ def regen_report(root=ROOT, commit=True, revert_on_noncanonical=True) -> bool:
     the byte-stable fixed point (converges in 2; cap at 4) or session_check's own
     regen dirties the tree and breaks the ratchet.
 
-    commit=True  → commit report.json + objdiff.json (batch-integrate end).
-    commit=False → leave the regenerated report on disk for the human to review
-                   (``session_check --fix``).
-    revert_on_noncanonical=True  → a lean report reverts BOTH report.json and
-                   objdiff.json to HEAD (today's default safety net).
+    The regenerated report is always left on disk for the maintainer to review
+    and commit; this script never runs git (agents must not).
+    revert_on_noncanonical=True  → a lean report restores BOTH report.json and
+                   objdiff.json to their contents before this run.
     revert_on_noncanonical=False → a lean report is left as-is (the caller may
                    have just legitimately regenerated objdiff.json for a new
                    unit); the caller decides what to do with it instead.
@@ -168,6 +167,8 @@ def regen_report(root=ROOT, commit=True, revert_on_noncanonical=True) -> bool:
     Best-effort: a regen/commit failure must NEVER be fatal — log and move on."""
     root = Path(root)
     rj = root / "progress" / "report.json"
+    oj = root / "objdiff.json"
+    saved = {p: p.read_bytes() for p in (rj, oj) if p.exists()}
 
     def _progress():
         subprocess.run(["bash", "scripts/progress.sh"], cwd=root, check=True,
@@ -182,27 +183,15 @@ def regen_report(root=ROOT, commit=True, revert_on_noncanonical=True) -> bool:
             prev = cur
         if not report_is_canonical(root):
             print("session_finalize: report.json still lean after regen (no "
-                  "complete_units) — refusing to commit", file=sys.stderr)
+                  "complete_units)", file=sys.stderr)
             if revert_on_noncanonical:
-                subprocess.run(["git", "checkout", "--", "progress/report.json",
-                                "objdiff.json"], cwd=root)
-                print("session_finalize: reverted report.json + objdiff.json for "
-                      "a clean tree", file=sys.stderr)
+                for path, data in saved.items():
+                    path.write_bytes(data)
+                print("session_finalize: restored report.json + objdiff.json to "
+                      "their contents before this run", file=sys.stderr)
             return False
-        if not commit:
-            print("session_finalize: report.json regenerated (fixed point); left "
-                  "uncommitted for review.")
-            return True
-        st = subprocess.run(["git", "status", "--short", "progress/report.json",
-                             "objdiff.json"], cwd=root, capture_output=True, text=True)
-        if st.stdout.strip():
-            subprocess.run(["git", "add", "progress/report.json", "objdiff.json"],
-                           cwd=root, check=True)
-            subprocess.run(["git", "commit", "-q", "-m", "chore: regen report.json"],
-                           cwd=root, check=True)
-            print("session_finalize: regen + committed progress/report.json (fixed point)")
-        else:
-            print("session_finalize: report.json already current")
+        print("session_finalize: report.json regenerated (fixed point); left "
+              "for the maintainer to review and commit.")
         return True
     except subprocess.CalledProcessError as e:
         print(f"session_finalize: report.json regen skipped (non-fatal): {e}",
@@ -260,7 +249,7 @@ def reseed_status(root=ROOT, reseeded=None, ran=True) -> str:
     return "reseeded 0 mirror(s) — every mirror is fresh"
 
 
-def finalize(root=ROOT, commit=False, do_reseed=True):
+def finalize(root=ROOT, do_reseed=True):
     """Run the full repair set in dependency order and return a summary.
 
     do_reseed=False skips step 2 (when the caller already reseeded the mirrors
@@ -270,7 +259,7 @@ def finalize(root=ROOT, commit=False, do_reseed=True):
         result["reseeded"] = reseed_stale(root)
     result["reseed_status"] = reseed_status(
         root, result["reseeded"], ran=do_reseed)
-    regen_report(root, commit=commit)
+    regen_report(root)
     regen_struct_atlas(root)
     return result
 
@@ -279,17 +268,15 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(
         description="Canonical end-of-session artifact repair (reseed stale mirrors, "
                     "regen report.json to its fixed point, regen the struct atlas).")
-    ap.add_argument("--commit", action="store_true",
-                    help="commit the regenerated report.json (default: leave for review)")
     ap.add_argument("--no-reseed", action="store_true",
                     help="skip the expected-mirror reseed step")
     args = ap.parse_args(argv)
     try:
-        res = finalize(commit=args.commit, do_reseed=not args.no_reseed)
+        res = finalize(do_reseed=not args.no_reseed)
     except FinalizeError as e:
         print(f"session_finalize: ABORT — {e}", file=sys.stderr)
         return 1
-    tail = "" if args.commit else "  (report left uncommitted — review + commit)"
+    tail = "  (report left for the maintainer to commit)"
     print(f"session_finalize: {res['reseed_status']}; "
           f"report + struct atlas current.{tail}")
     return 0

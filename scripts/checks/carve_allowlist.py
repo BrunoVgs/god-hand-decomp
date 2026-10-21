@@ -23,6 +23,7 @@ Usage:
 """
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -31,7 +32,19 @@ ROOT = Path(__file__).resolve().parents[2]
 CARVE_DIR = "src/cod/"
 
 
+def git_allowed() -> bool:
+    """git runs only when explicitly allowed: GODHAND_ALLOW_GIT=1 or CI.
+    Agents never run git, so their checks see the files on disk instead."""
+    return (os.environ.get("GODHAND_ALLOW_GIT") == "1"
+            or os.environ.get("GITHUB_ACTIONS") == "true")
+
+
 def tracked_carves(root: Path) -> list[str]:
+    if not git_allowed():
+        # Every carve on disk: each one must be allowlisted before it can be
+        # committed, so checking the superset is the stricter test.
+        return sorted(p.relative_to(root).as_posix()
+                      for p in (root / CARVE_DIR).rglob("*.c"))
     out = subprocess.run(["git", "ls-files", CARVE_DIR],
                          cwd=root, capture_output=True, text=True, check=True).stdout
     return sorted(p for p in out.split("\n") if p.endswith(".c"))

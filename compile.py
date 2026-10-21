@@ -29,13 +29,16 @@ from __future__ import annotations
 import argparse
 import concurrent.futures
 import dataclasses
+import filecmp
 import hashlib
 import json
 import os
 import re
 import shutil
+import struct
 import subprocess
 import sys
+import threading
 import time
 from pathlib import Path
 from typing import Iterable, Optional, Sequence
@@ -69,12 +72,32 @@ from scripts.carver import (
     _NONMATCHING_RE,
 )
 DEFAULT_CONFIG = ROOT / "compile_config.json"
-# Compile workers.  Scales with the host instead of a fixed 8 — the sweep is
-# subprocess-bound (cpp0/cc1/ee-as), so it tracks core count.  Thread count
-# cannot affect the output: every unit writes a fixed .o path and link order
-# comes from the linker script, and `session_check.sh build` gates the result
-# on build/SLUS_215.03.elf being byte-identical to retail regardless.
-DEFAULT_PARALLELISM = max(1, (os.cpu_count() or 4) - 2)
+# Compile workers. A cold sweep on this 10-core container: 6 workers 313s,
+# 8 workers 262s, 10 workers 240s. Peak container memory stayed under 1 GiB,
+# so the extra workers are free. Thread count cannot affect the output:
+# every unit writes a fixed .o path and link order comes from the linker
+# script, and the link is gated on the retail ELF sha256.
+DEFAULT_PARALLELISM = max(1, os.cpu_count() or 4)
+# Object cache. A unit is reused when this key matches and the .o is eabi64.
+# --cold ignores the cache and rewrites it. The key covers the source bytes,
+# the effective flags, the compiler name plus the wrappers that invoke it,
+# and the headers those wrappers include.
+CACHE_PATH = ROOT / "build" / "compile-cache.json"
+CACHE_VERSION = 1
+_TOOL_FILES = (
+    "scripts/ee-cc-wrap.py",
+    "scripts/sn-cc-wrap.py",
+    "scripts/mipsel-as-wrap.py",
+    "scripts/ps2eeas_objfix.py",
+)
+EF_MIPS_ABI_MASK = 0x0000F000
+EF_MIPS_ABI_EABI64 = 0x00004000
+_STAGE_SAMPLES: list[tuple[str, float]] = []
+_FILE_HASHES: dict[str, str] = {}
+_HASH_LOCK = threading.Lock()
+_INCLUDE_RE = re.compile(
+    r"INCLUDE_(?:ASM|RODATA)\s*\(\s*\"([^\"]+)\"\s*,\s*([A-Za-z0-9_]+)\s*\)"
+)
 
 # Version registry. `config/versions.json` maps a short version key to its
 # build metadata, including which compile_config.json holds that version's
@@ -595,6 +618,229 @@ def _quote(s: str) -> str:
     return s
 
 
+def _file_hash(path: Path) -> str:
+    key = str(path)
+    with _HASH_LOCK:
+        cached = _FILE_HASHES.get(key)
+    if cached is not None:
+        return cached
+    digest = hashlib.sha256()
+    with path.open("rb") as fh:
+        for chunk in iter(lambda: fh.read(1 << 16), b""):
+            digest.update(chunk)
+    value = digest.hexdigest()
+    with _HASH_LOCK:
+        _FILE_HASHES[key] = value
+    return value
+
+
+def _tree_digest(paths: list[Path]) -> str:
+    files: list[Path] = []
+    for path in paths:
+        if path.is_file():
+            files.append(path)
+        elif path.is_dir():
+            files.extend(p for p in path.rglob("*") if p.is_file())
+    digest = hashlib.sha256()
+    for path in sorted(files, key=lambda p: p.as_posix()):
+        digest.update(path.relative_to(ROOT).as_posix().encode())
+        digest.update(b"\0")
+        digest.update(_file_hash(path).encode())
+        digest.update(b"\0")
+    return digest.hexdigest()
+
+
+def _include_digest(cfg: Config) -> str:
+    roots = [ROOT / inc for inc in cfg.include_dirs]
+    return _tree_digest(roots)
+
+
+def _toolchain_files() -> list[Path]:
+    """Compiler and assembler binaries the cache must notice.
+
+    Names, not store paths: the nix layout can move. Symlinks are resolved
+    by ``_file_hash`` via a normal open, which follows them.
+    """
+    names = {"cc1.real", "cpp0.real", "cc1plus.real", "cc1.exe", "ee-as"}
+    found: list[Path] = []
+    for root in (
+        ROOT / "compiler" / "linux" / "ee" / "gcc",
+        ROOT / "compiler" / "windows" / "ee" / "gcc",
+    ):
+        if not root.exists():
+            continue
+        for dirpath, _dirs, filenames in os.walk(root, followlinks=True):
+            for name in filenames:
+                if name in names:
+                    found.append(Path(dirpath) / name)
+    wibo = ROOT / "tools" / "wibo"
+    if wibo.exists():
+        found.append(wibo)
+    for cmd in (
+        "qemu-i386",
+        "mipsel-linux-gnu-as",
+        "mipsel-linux-gnu-ld",
+        "mipsel-linux-gnu-objcopy",
+    ):
+        resolved = shutil.which(cmd)
+        if resolved:
+            found.append(Path(resolved))
+    return found
+
+
+def _tool_digest(cfg: Config) -> str:
+    """Hash the wrappers, the binaries they run, the flake, this file,
+    the section-flag map, and the two env vars that retarget a binary.
+
+    ``which`` returns a nix-shell path under /tmp that changes every
+    container command. The digest uses the resolved store path, so two
+    runs with the same binaries share a key.
+    """
+    digest = hashlib.sha256()
+    digest.update(_tree_digest([ROOT / rel for rel in _TOOL_FILES]).encode())
+    digest.update(_tree_digest([
+        ROOT / "flake.nix",
+        ROOT / "flake.lock",
+        ROOT / "patches" / "ee-as",
+        Path(__file__).resolve(),
+    ]).encode())
+    resolved: dict[str, Path] = {}
+    for path in _toolchain_files():
+        try:
+            real = path.resolve()
+        except OSError:
+            real = path
+        resolved.setdefault(real.as_posix(), real)
+    for label in sorted(resolved):
+        digest.update(label.encode())
+        digest.update(b"\0")
+        try:
+            digest.update(_file_hash(resolved[label]).encode())
+        except OSError:
+            digest.update(b"unreadable")
+        digest.update(b"\0")
+    for cmd in (
+        "qemu-i386",
+        "mipsel-linux-gnu-as",
+        "mipsel-linux-gnu-ld",
+        "mipsel-linux-gnu-objcopy",
+    ):
+        if shutil.which(cmd) is None:
+            digest.update(f"missing:{cmd}".encode())
+            digest.update(b"\0")
+    digest.update(json.dumps(
+        cfg.section_flag_overrides, sort_keys=True
+    ).encode())
+    digest.update(b"\0MIPSEL_AS_REAL=")
+    digest.update(os.environ.get("MIPSEL_AS_REAL", "").encode())
+    digest.update(b"\0GH_SN_GCCLIB=")
+    digest.update(os.environ.get("GH_SN_GCCLIB", "").encode())
+    return digest.hexdigest()
+
+
+def _elf_abi(path: Path) -> Optional[int]:
+    """EF_MIPS_ABI nibble, or None when the file is not a 32-bit ELF."""
+    try:
+        data = path.read_bytes()[:52]
+    except OSError:
+        return None
+    if len(data) < 40 or data[:4] != b"\x7fELF" or data[4] != 1:
+        return None
+    endian = "<" if data[5] == 1 else ">"
+    flags = struct.unpack_from(endian + "I", data, 0x24)[0]
+    return flags & EF_MIPS_ABI_MASK
+
+
+def _object_ok(unit: CompileUnit) -> bool:
+    if not unit.obj.is_file() or unit.obj.stat().st_size < 52:
+        return False
+    if unit.kind == "vsm":
+        return True
+    return _elf_abi(unit.obj) == EF_MIPS_ABI_EABI64
+
+
+def _extra_inputs(unit: CompileUnit) -> list[Path]:
+    """Asm pulled in by INCLUDE_ASM / INCLUDE_RODATA. Headers are covered
+    by the include-tree digest, so they are not listed again here."""
+    if unit.kind != "c":
+        return []
+    text = unit.src.read_text(errors="replace")
+    found: list[Path] = []
+    for folder, name in _INCLUDE_RE.findall(text):
+        found.append(ROOT / "build" / "asm" / folder / f"{name}.s")
+    return found
+
+
+def _unit_key(unit: CompileUnit, cfg: Config, include_digest: str, tool_digest: str) -> str:
+    effective = [f for f in cfg.c_flags if f not in unit.c_flags_drop]
+    effective += list(unit.c_flags_add)
+    payload = {
+        "add": list(unit.c_flags_add),
+        "as_flags": list(cfg.as_flags),
+        "assembler": unit.assembler,
+        "c_flags": effective,
+        "call_loop_pad": unit.call_loop_pad,
+        "compiler": unit.compiler,
+        "defines": list(cfg.defines),
+        "drop": list(unit.c_flags_drop),
+        "dvp_as_flags": list(cfg.dvp_as_flags),
+        "extern_double": list(unit.extern_double),
+        "extern_jtbl": list(unit.extern_jtbl),
+        "fp_hazard_nops": unit.fp_hazard_nops,
+        "fp_hazard_rules": unit.fp_hazard_rules,
+        "g": _g_flag(unit, cfg),
+        "include_digest": include_digest,
+        "includes": list(cfg.include_dirs),
+        "kind": unit.kind,
+        "src": unit.rel.as_posix(),
+        "strip_cxx_frame": unit.strip_cxx_frame,
+        "strip_cxx_vtable": unit.strip_cxx_vtable,
+        "strip_eh_table": unit.strip_eh_table,
+        "tool_digest": tool_digest,
+        "unit_as_flags": list(unit.as_flags),
+    }
+    digest = hashlib.sha256(json.dumps(payload, sort_keys=True).encode())
+    digest.update(_file_hash(unit.src).encode())
+    for extra in _extra_inputs(unit):
+        digest.update(extra.relative_to(ROOT).as_posix().encode())
+        digest.update(_file_hash(extra).encode() if extra.is_file() else b"missing")
+    return digest.hexdigest()
+
+
+def _load_cache() -> dict[str, str]:
+    try:
+        raw = json.loads(CACHE_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return {}
+    if not isinstance(raw, dict) or raw.get("version") != CACHE_VERSION:
+        return {}
+    units = raw.get("units")
+    if not isinstance(units, dict):
+        return {}
+    return {str(k): v for k, v in units.items() if isinstance(v, str)}
+
+
+def _save_cache(keys: dict[str, str]) -> None:
+    CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    payload = {"version": CACHE_VERSION, "units": keys}
+    tmp = CACHE_PATH.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
+    tmp.replace(CACHE_PATH)
+
+
+def _log_stage_times(log: Logger) -> None:
+    if not _STAGE_SAMPLES:
+        return
+    totals: dict[str, float] = {}
+    counts: dict[str, int] = {}
+    for name, dt in _STAGE_SAMPLES:
+        totals[name] = totals.get(name, 0.0) + dt
+        counts[name] = counts.get(name, 0) + 1
+    order = sorted(totals, key=lambda name: -totals[name])
+    parts = [f"{name} {totals[name]:.1f}s/{counts[name]}" for name in order]
+    log.info("stages (summed across workers): " + ", ".join(parts))
+
+
 def run(
     argv: list[str],
     log: Logger,
@@ -603,24 +849,28 @@ def run(
     capture: bool = False,
 ) -> subprocess.CompletedProcess:
     log.cmd(argv)
+    started = time.perf_counter()
     try:
-        result = subprocess.run(
-            argv,
-            check=False,
-            stdout=subprocess.PIPE if capture else None,
-            stderr=subprocess.PIPE if capture else None,
-            text=True,
-        )
-    except FileNotFoundError as exc:
-        raise BuildError(f"{stage}: missing binary {exc.filename!r}") from exc
-    if result.returncode != 0:
-        out = (result.stdout or "") + (result.stderr or "")
-        raise BuildError(
-            f"{stage} failed (exit {result.returncode}): "
-            + " ".join(_quote(a) for a in argv)
-            + (f"\n--- output ---\n{out}" if out else "")
-        )
-    return result
+        try:
+            result = subprocess.run(
+                argv,
+                check=False,
+                stdout=subprocess.PIPE if capture else None,
+                stderr=subprocess.PIPE if capture else None,
+                text=True,
+            )
+        except FileNotFoundError as exc:
+            raise BuildError(f"{stage}: missing binary {exc.filename!r}") from exc
+        if result.returncode != 0:
+            out = (result.stdout or "") + (result.stderr or "")
+            raise BuildError(
+                f"{stage} failed (exit {result.returncode}): "
+                + " ".join(_quote(a) for a in argv)
+                + (f"\n--- output ---\n{out}" if out else "")
+            )
+        return result
+    finally:
+        _STAGE_SAMPLES.append((stage.split("[", 1)[0], time.perf_counter() - started))
 
 
 # `BuildError` lives in `scripts/carver.py` and is re-exported at the top
@@ -789,6 +1039,100 @@ _COD_TEXT_START_VADDR = 0x00100000
 # importing from `scripts.carver` directly.
 
 
+def _carve_fingerprint(monolithic: Path, lcf: Path, entries: list[CarveEntry]) -> str:
+    """Identity of every input ``maybe_carve`` turns into fragments.
+
+    The monolithic asm, the committed linker script, and the carve entries
+    are the whole input. A matching stamp means the files already on disk
+    are the files this call would write.
+    """
+    digest = hashlib.sha256()
+    digest.update(monolithic.read_bytes())
+    digest.update(b"\0")
+    digest.update(lcf.read_bytes())
+    digest.update(b"\0")
+    for entry in entries:
+        digest.update(
+            f"{entry.name}\0{entry.unit}\0{entry.vaddr}\0{entry.size}\0"
+            f"{entry.tu or ''}\0{int(entry.lib)}\n".encode()
+        )
+    return digest.hexdigest()
+
+
+def _load_carve_stamp(
+    cfg: "Config", fingerprint: str, entries: list[CarveEntry]
+) -> Optional[CarveState]:
+    stamp_path = cfg.build_dir / "carve.stamp.json"
+    if not stamp_path.is_file():
+        return None
+    try:
+        meta = json.loads(stamp_path.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+    # version 2: fragments named ``*.L{start_line}.s`` (stable across carve adds).
+    if meta.get("version") != 2 or meta.get("fingerprint") != fingerprint:
+        return None
+    fragments = [ROOT / rel for rel in meta.get("fragments", [])]
+    carved = {name: ROOT / rel for name, rel in meta.get("carved", {}).items()}
+    lcf_rel = meta.get("lcf")
+    if not isinstance(lcf_rel, str):
+        return None
+    lcf = ROOT / lcf_rel
+    if set(carved) != {entry.name for entry in entries}:
+        return None
+    if not fragments or not all(path.is_file() for path in fragments):
+        return None
+    if not all(path.is_file() for path in carved.values()) or not lcf.is_file():
+        return None
+    original_rel = Path(entries[0].unit + ".s")
+    return CarveState(
+        original_unit_src=(ROOT / original_rel).resolve(),
+        original_unit_rel=original_rel,
+        fragment_sources=fragments,
+        carved_sources=carved,
+        entries=entries,
+        lcf=lcf,
+    )
+
+
+def _write_carve_stamp(
+    cfg: "Config",
+    fingerprint: str,
+    state: CarveState,
+) -> None:
+    meta = {
+        "version": 2,
+        "fingerprint": fingerprint,
+        "fragments": [path.relative_to(ROOT).as_posix() for path in state.fragment_sources],
+        "carved": {
+            name: path.relative_to(ROOT).as_posix()
+            for name, path in state.carved_sources.items()
+        },
+        "lcf": state.lcf.relative_to(ROOT).as_posix(),
+    }
+    stamp_path = cfg.build_dir / "carve.stamp.json"
+    tmp = stamp_path.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(meta, indent=2) + "\n")
+    tmp.replace(stamp_path)
+
+
+def _write_if_changed(path: Path, text: str) -> bool:
+    """Write *text* to *path* only when the on-disk bytes differ.
+
+    Returns True when a write happened. Unchanged files keep their prior
+    mtime and content hash so the object cache stays warm.
+    """
+    if path.is_file():
+        try:
+            if path.read_text() == text:
+                return False
+        except OSError:
+            pass
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text)
+    return True
+
+
 def maybe_carve(cfg: "Config", log: Logger) -> Optional[CarveState]:
     """Pre-build carve step.  Returns ``None`` when ``carved_funcs`` is
     empty (no-op path; original tree is the baseline).  Otherwise emits
@@ -830,6 +1174,18 @@ def maybe_carve(cfg: "Config", log: Logger) -> Optional[CarveState]:
     if not original_abs.exists():
         raise BuildError(f"carve: monolithic source missing: {original_rel}")
 
+    source_lcf = ROOT / cfg.linker_scripts[0]
+    if source_lcf.is_file():
+        fingerprint = _carve_fingerprint(original_abs, source_lcf, entries)
+        cached = _load_carve_stamp(cfg, fingerprint, entries)
+        if cached is not None:
+            log.info(
+                f"carve: unchanged ({len(entries)} functions), skipped rewrite"
+            )
+            return cached
+    else:
+        fingerprint = ""
+
     monolithic_text = original_abs.read_text()
     names = [e.name for e in entries]
     # Use the public surface.
@@ -860,24 +1216,35 @@ def maybe_carve(cfg: "Config", log: Logger) -> Optional[CarveState]:
                 )
             break
 
-    # Write fragments alongside the carve unit (build/<unit-dir>/<name>.partN.s).
+    # Write fragments alongside the carve unit.  Names are keyed by the
+    # monolithic start line (``000000.L{line}.s``), not a dense part index,
+    # so adding a carve only rewrites the split fragment and creates one
+    # new neighbour — every other fragment path keeps identical bytes and
+    # stays cache-hot.  ``_write_if_changed`` skips the write when content
+    # already matches so mtimes stay put too.
     build_root = cfg.build_dir
     unit_rel = Path(carve_unit)               # asm/cod/000000 | asm/<ver>/cod/000000
     frag_dir = build_root / unit_rel.parent
     frag_dir.mkdir(parents=True, exist_ok=True)
+    # Fragment i starts at line 0, or at ranges[i-1].end+1.
+    frag_starts = [0] + [end + 1 for (_n, _s, end) in ranges]
     fragment_sources: list[Path] = []
-    for idx, frag_text in enumerate(fragments):
-        fp = frag_dir / f"{unit_rel.name}.part{idx}.s"
-        fp.write_text(frag_text)
+    frag_written = 0
+    for frag_text, start_line in zip(fragments, frag_starts):
+        fp = frag_dir / f"{unit_rel.name}.L{start_line}.s"
+        if _write_if_changed(fp, frag_text):
+            frag_written += 1
         fragment_sources.append(fp)
 
     # Write carved files under build/asm/nonmatching/.
     carve_dir = build_root / "asm" / "nonmatching"
     carve_dir.mkdir(parents=True, exist_ok=True)
     carved_sources: dict[str, Path] = {}
+    carve_written = 0
     for n, ctext in carved.items():
         cp = carve_dir / f"{n}.s"
-        cp.write_text(ctext)
+        if _write_if_changed(cp, ctext):
+            carve_written += 1
         carved_sources[n] = cp
 
     # Mirror build/asm/nonmatching → build/asm/permanent so the
@@ -904,7 +1271,7 @@ def maybe_carve(cfg: "Config", log: Logger) -> Optional[CarveState]:
         # Fall back to a regular directory mirror.
         permanent_link.mkdir(parents=True, exist_ok=True)
         for n, ctext in carved.items():
-            (permanent_link / f"{n}.s").write_text(ctext)
+            _write_if_changed(permanent_link / f"{n}.s", ctext)
 
     # Generate the build-time linker script.  Pass per-carve unit sizes
     # so the LCF advances its location counter past each carve's full
@@ -921,9 +1288,11 @@ def maybe_carve(cfg: "Config", log: Logger) -> Optional[CarveState]:
     log.info(
         f"carve: {len(entries)} function(s) carved out of {original_rel} "
         f"-> {len(fragment_sources)} fragments + {len(carved_sources)} carved .s "
+        f"(wrote {frag_written} frag, {carve_written} carve; "
+        f"{len(fragment_sources) - frag_written} frag cached on disk) "
         f"[{(_carve_t1 - _carve_t0) * 1000:.1f} ms]"
     )
-    return CarveState(
+    state = CarveState(
         original_unit_src=original_abs,
         original_unit_rel=original_rel,
         fragment_sources=fragment_sources,
@@ -931,6 +1300,9 @@ def maybe_carve(cfg: "Config", log: Logger) -> Optional[CarveState]:
         entries=entries,
         lcf=lcf_path,
     )
+    if fingerprint:
+        _write_carve_stamp(cfg, fingerprint, state)
+    return state
 
 
 def _emit_build_lcf(
@@ -1116,8 +1488,7 @@ def _emit_build_lcf(
         new_text = new_text.replace(old, new)
 
     out = cfg.build_dir / src_lcf.name
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(new_text)
+    _write_if_changed(out, new_text)
     return out
 
 
@@ -1234,8 +1605,24 @@ SUPPORTED_COMPILERS = frozenset(
 # to `jal __mulvsi3`, a libgcc helper this build does not link. cygnus-2.96
 # keeps `mult` and adds no call. Read the emitted `.s` for a `__mulv` or
 # `__addv` call before you land an ee-3.2 TU that carries the key.
-SUPPORTED_C_FLAG_ADDS = frozenset(
-    {"-f=-fno-gcse", "-f=-ffast-math", "-f=-fno-rtti", "-f=-ftrapv"})
+# `-fno-align-jumps` suppresses a single scheduler-inserted alignment nop in
+# the retail Cygnus exception helper `__uncatch_exception`.  It is scoped to
+# that byte-verified TU, paired with the existing `-freorder-blocks` drop.
+#
+# `-O0` is for the retail objects that were built unoptimised: frame-pointer
+# prologues (`daddu $fp,$sp,$zero`), every argument spilled to the frame, and
+# a `b` to the epilogue per `return` (the classFADE group). It comes after the
+# global `-O2`, and cc1 takes the last `-O`. Per-TU only, and only on a TU
+# whose functions compile byte-identical to retail with it; the hash gate
+# backs that up at every reseed.
+SUPPORTED_C_FLAG_ADDS = frozenset({
+    "-O0",
+    "-f=-fno-align-jumps",
+    "-f=-fno-gcse",
+    "-f=-ffast-math",
+    "-f=-fno-rtti",
+    "-f=-ftrapv",
+})
 
 # Closed vocabulary for the per-TU `c_flags_drop` key (Config.compile_units).
 #
@@ -1383,7 +1770,11 @@ def _foreign_version_roots(cfg: Config) -> set[Path]:
     return roots
 
 
-def discover(cfg: Config, carve: Optional[CarveState] = None) -> list[CompileUnit]:
+def discover(
+    cfg: Config,
+    carve: Optional[CarveState] = None,
+    log: Optional[Logger] = None,
+) -> list[CompileUnit]:
     """Return the full list of compile units the build owns.
 
     Object paths mirror the splat-generated linker script's expectations:
@@ -1440,12 +1831,27 @@ def discover(cfg: Config, carve: Optional[CarveState] = None) -> list[CompileUni
             obj = cp.with_suffix(".o")
             units.append(CompileUnit(src=cp, obj=obj, kind="asm", rel=rel))
 
+    # A C file the linker script does not name is not a unit. The four
+    # parked hard-tail sources under src/cod/ are the current case: the
+    # glob would compile them, and the link would ignore them. An empty
+    # script (unit tests, a config with no lcf yet) keeps the old behavior.
+    # Only the build-time lcf (carve state present) names C objects; the
+    # static script lists asm only, so without a carve every C unit would be
+    # dropped (callers like scripts/checks/c_flags_necessary.py pass none).
+    linked_objs = (
+        {p.resolve() for p in _ld_script_objects(cfg, carve)}
+        if carve is not None else set()
+    )
+    skipped_unlinked: list[str] = []
     compile_units_map = cfg.compile_units
     for src in _glob_all(cfg.c_globs):
         if _is_foreign(src):
             continue
         rel = src.relative_to(ROOT)
         obj = cfg.build_dir / rel.with_suffix(".o")
+        if linked_objs and obj.resolve() not in linked_objs:
+            skipped_unlinked.append(rel.as_posix())
+            continue
         entry = compile_units_map.get(str(rel), {})
         compiler = entry.get("compiler", DEFAULT_COMPILER)
         c_flags_drop = entry.get("c_flags_drop", ())
@@ -1464,6 +1870,12 @@ def discover(cfg: Config, carve: Optional[CarveState] = None) -> list[CompileUni
             fp_hazard_rules=entry.get("fp_hazard_rules"),
             call_loop_pad=bool(entry.get("call_loop_pad", False)),
         ))
+    if skipped_unlinked and log is not None:
+        log.info(
+            f"discover: skipping {len(skipped_unlinked)} C file(s) the "
+            f"linker script does not reference: "
+            + ", ".join(skipped_unlinked)
+        )
 
     for src in _glob_all(cfg.vsm_globs):
         if _is_foreign(src):
@@ -1546,6 +1958,16 @@ def _fix_carve_alignment(unit: CompileUnit, cfg: Config, log: Logger) -> None:
         rel_str.startswith("build/asm/cod/000000.part")
         or rel_str.startswith("build/asm/nonmatching/")
     ):
+        return
+    probe = subprocess.run(
+        ["mipsel-linux-gnu-readelf", "-SW", str(unit.obj)],
+        check=False, capture_output=True, text=True,
+    )
+    text_match = re.search(
+        r"\]\s+\.text\s+\S+\s+\S+\s+\S+\s+([0-9A-Fa-f]+)\s",
+        probe.stdout,
+    )
+    if text_match is not None and int(text_match.group(1), 16) == 0:
         return
     run(
         [
@@ -1925,8 +2347,10 @@ def _verify_main_elf_sha256(out: Path, log: Logger) -> None:
     intentional work-in-progress build).
     """
     if os.environ.get("GODHAND_SKIP_ELF_VERIFY"):
-        log.warn("main-ELF sha256 verify bypassed (GODHAND_SKIP_ELF_VERIFY set)")
-        return
+        raise BuildError(
+            "GODHAND_SKIP_ELF_VERIFY is set; matching builds refuse to "
+            "skip the retail sha256 check"
+        )
     retail = ROOT / "disc_extract" / "SLUS_215.03"
     if not retail.exists():
         log.warn(
@@ -2202,6 +2626,55 @@ def _objdiff_units(cfg: Config, carve: Optional[CarveState] = None) -> list[dict
     return _sorted_units(units)
 
 
+def _write_objdiff(cfg: Config, unit_entries: list[dict]) -> None:
+    objdiff_cfg = cfg.objdiff_cfg
+    out: dict = {
+        "min_version": objdiff_cfg.get("min_version", "2.0.0"),
+        "name": objdiff_cfg.get("name", "god-hand-decomp"),
+        "custom_make": objdiff_cfg.get("custom_make", "python"),
+        "custom_args": list(
+            objdiff_cfg.get("custom_args", ["compile.py", "--single-file"])
+        ),
+        "build_target": bool(objdiff_cfg.get("build_target", True)),
+        "watch_patterns": list(objdiff_cfg.get("watch_patterns", [])),
+        "progress_categories": list(objdiff_cfg.get("progress_categories", [])),
+        "units": unit_entries,
+    }
+    (ROOT / "objdiff.json").write_text(json.dumps(out, indent=2) + "\n")
+
+
+def _sync_expected_to_linked(
+    units: list[dict], log: Logger
+) -> tuple[int, int]:
+    """Make each expected object a byte copy of the object the link used.
+
+    Called only after the ELF and overlay sha256 checks have passed. A
+    unit whose expected file already matches is left untouched, so a
+    no-change link does not rewrite the baseline. A unit the linker did
+    not read is not in this list.
+    """
+    updated = 0
+    unchanged = 0
+    for u in units:
+        base = ROOT / u["base_path"]
+        target = ROOT / u["target_path"]
+        if not base.is_file():
+            raise BuildError(
+                f"expected mirror: linked object missing: {u['base_path']}"
+            )
+        if target.is_file() and filecmp.cmp(base, target, shallow=False):
+            unchanged += 1
+            continue
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(base, target)
+        updated += 1
+    log.info(
+        f"expected/build mirror: {updated} updated to the linked object, "
+        f"{unchanged} already matched"
+    )
+    return updated, unchanged
+
+
 def _mirror_expected(
     units: list[dict], log: Logger, *, force: Optional[set[str]] = None
 ) -> tuple[int, int, int]:
@@ -2275,7 +2748,7 @@ def do_objdiff_setup(cfg: Config, log: Logger) -> Path:
     """
     # 1. Build.
     carve = maybe_carve(cfg, log)
-    units = discover(cfg, carve)
+    units = discover(cfg, carve, log)
     log.info(
         f"objdiff setup: ensuring {len(units)} compile units are built"
     )
@@ -2328,30 +2801,25 @@ def do_objdiff_setup(cfg: Config, log: Logger) -> Path:
 # --------------------------------------------------------------------------- #
 # Reseed expected (carve pair, atomic)
 # --------------------------------------------------------------------------- #
-def do_reseed_expected(name: str, cfg: Config, log: Logger) -> None:
-    """Atomically refresh the expected/build mirror for the carve pair
-    associated with ``name``.
-
-    "Pair" is plural: every monolithic fragment .o plus the
-    new per-function carved .o is overwritten in lock-step.  Single-sided
-    reseed is rejected by this function — if you want to reseed *only*
-    the carved .o you almost certainly have a bug: the fragmentation
-    boundary likely just shifted, which means all monolithic fragments
-    also changed.
+def do_reseed_expected(
+    name: str,
+    cfg: Config,
+    log: Logger,
+    jobs: Optional[int] = None,
+    cold: bool = False,
+) -> None:
+    """Rebuild, link, and refresh expected/build from the objects just linked.
 
     Preconditions:
       * ``name`` appears in ``compile_config.json::carved_funcs``
-        (i.e. the carve has been declared in config).
-      * The build succeeds end-to-end (re-run internally; cheap).
+        (or is a declared REL name).
+      * The link succeeds and both the main ELF and every REL match
+        their retail sha256. A mismatch raises before any mirror write.
 
     Postconditions:
-      * Every ``build/asm/cod/000000.partN.o`` has its
-        ``expected/build/...`` mirror overwritten with the current bytes.
-      * ``build/asm/nonmatching/<name>.o`` has its mirror overwritten too.
-      * ``objdiff.json`` is regenerated (the per-unit list may have grown
-        relative to the previous run).
-      * No other ``expected/build/*.o`` is touched — pinning is preserved
-        for every non-carve-related unit.
+      * ``expected/build`` for every linker-script unit equals the object
+        the verified link read. Unchanged objects are not rewritten.
+      * ``objdiff.json`` is regenerated.
     """
     # REL name short-circuit: ``--reseed-expected r207`` means "rebuild
     # r207 and force-mirror every per-`.o` of that REL". REL names are
@@ -2378,52 +2846,25 @@ def do_reseed_expected(name: str, cfg: Config, log: Logger) -> None:
         )
 
     # Rebuild end-to-end so the .o files we mirror are fresh.
-    units = discover(cfg, carve)
-    log.info(f"reseed: rebuilding {len(units)} compile units")
-    _compile_many(units, cfg, log, jobs=DEFAULT_PARALLELISM)
-    link(units, cfg, log, carve)
-
-    # Identify the carve pair: all fragment .o + this carve's link-time .o
-    # (the C TU's .o when the carve has `tu` set, the standalone carved .o
-    # otherwise; carve_link_obj_rel encapsulates that selection so the
-    # mirror set matches whatever the lcf wires in).
-    fragment_base_paths = {
-        p.with_suffix(".o").relative_to(ROOT).as_posix()
-        for p in carve.fragment_sources
-    }
-    carved_obj_rel = carve.carve_link_obj_rel(name)
-    force = fragment_base_paths | {carved_obj_rel}
+    units = discover(cfg, carve, log)
+    workers = DEFAULT_PARALLELISM if jobs is None else jobs
+    log.info(f"reseed: checking {len(units)} compile units")
+    _compile_many(units, cfg, log, jobs=workers, cold=cold)
+    link_started = time.perf_counter()
+    out_elf = link(units, cfg, log, carve)
+    log.info(f"reseed link wall {time.perf_counter() - link_started:.2f}s")
+    # Same gate as the full compile path. The mirror below is the baseline
+    # objdiff scores against, so it moves only after both hashes match.
+    _verify_main_elf_sha256(out_elf, log)
+    for rel_desc in cfg.rels:
+        build_rel(rel_desc, cfg, log)
 
     unit_entries = _objdiff_units(cfg, carve)
-    _, _, forced = _mirror_expected(unit_entries, log, force=force)
-    if forced != len(force):
-        # Should never happen because the unit list is derived from the
-        # same lcf the carve state generated; flag loudly if it does.
-        raise BuildError(
-            f"reseed: expected to force {len(force)} units but only {forced} "
-            f"matched in objdiff.json; mismatch between lcf and carve state."
-        )
-
-    # Regenerate objdiff.json (units list may have grown).
-    objdiff_cfg = cfg.objdiff_cfg
-    out: dict = {
-        "min_version": objdiff_cfg.get("min_version", "2.0.0"),
-        "name": objdiff_cfg.get("name", "god-hand-decomp"),
-        "custom_make": objdiff_cfg.get("custom_make", "python"),
-        "custom_args": list(
-            objdiff_cfg.get("custom_args", ["compile.py", "--single-file"])
-        ),
-        "build_target": bool(objdiff_cfg.get("build_target", True)),
-        "watch_patterns": list(objdiff_cfg.get("watch_patterns", [])),
-        "progress_categories": list(objdiff_cfg.get("progress_categories", [])),
-        "units": unit_entries,
-    }
-    (ROOT / "objdiff.json").write_text(json.dumps(out, indent=2) + "\n")
-    log.info(
-        f"reseed: atomic refresh of {len(force)} expected .o(s) complete "
-        f"({len(fragment_base_paths)} fragment(s) + 1 carved); "
-        f"objdiff.json regenerated."
-    )
+    mirror_started = time.perf_counter()
+    _sync_expected_to_linked(unit_entries, log)
+    log.info(f"reseed mirror wall {time.perf_counter() - mirror_started:.2f}s")
+    _write_objdiff(cfg, unit_entries)
+    log.info("reseed: objdiff.json regenerated from the verified link")
 
 
 def do_reseed_expected_rel(
@@ -2549,7 +2990,13 @@ def _resolve_unit_entry(unit_name: str, unit_entries: list[dict]) -> dict:
     )
 
 
-def do_reseed_paths(unit_names: Sequence[str], cfg: Config, log: Logger) -> None:
+def do_reseed_paths(
+    unit_names: Sequence[str],
+    cfg: Config,
+    log: Logger,
+    jobs: Optional[int] = None,
+    cold: bool = False,
+) -> None:
     """Force-reseed the ``expected/build`` mirrors for N units in ONE build.
 
     The plural form of ``do_reseed_path``, and the code path both use: the
@@ -2577,12 +3024,13 @@ def do_reseed_paths(unit_names: Sequence[str], cfg: Config, log: Logger) -> None
             "one objdiff unit name."
         )
     carve = maybe_carve(cfg, log)
-    units = discover(cfg, carve)
+    units = discover(cfg, carve, log)
     log.info(
         f"reseed-path: rebuilding {len(units)} compile units so the "
         f"{len(names)} target mirror(s) are fresh"
     )
-    _compile_many(units, cfg, log, jobs=DEFAULT_PARALLELISM)
+    workers = DEFAULT_PARALLELISM if jobs is None else jobs
+    _compile_many(units, cfg, log, jobs=workers, cold=cold)
 
     unit_entries = _objdiff_units(cfg, carve)
     # Resolve EVERY name before writing ANY mirror: a half-applied reseed is
@@ -2608,7 +3056,13 @@ def do_reseed_paths(unit_names: Sequence[str], cfg: Config, log: Logger) -> None
     )
 
 
-def do_reseed_path(unit_name: str, cfg: Config, log: Logger) -> None:
+def do_reseed_path(
+    unit_name: str,
+    cfg: Config,
+    log: Logger,
+    jobs: Optional[int] = None,
+    cold: bool = False,
+) -> None:
     """Force-reseed the ``expected/build`` mirror for exactly one unit,
     bypassing the ``carved_funcs`` ∪ REL membership gate that guards
     ``--reseed-expected``.
@@ -2635,7 +3089,7 @@ def do_reseed_path(unit_name: str, cfg: Config, log: Logger) -> None:
     ``--reseed-paths``) instead of looping here: one build serves any number
     of mirrors, and a loop pays a full build per mirror.
     """
-    do_reseed_paths([unit_name], cfg, log)
+    do_reseed_paths([unit_name], cfg, log, jobs=jobs, cold=cold)
 
 
 # --------------------------------------------------------------------------- #
@@ -2760,7 +3214,7 @@ def do_single_file(target_arg: Path, cfg: Config, log: Logger) -> None:
     # unit topology, so a follow-up full link won't disagree with the
     # standalone .o this run produced.
     carve = maybe_carve(cfg, log)
-    units = discover(cfg, carve)
+    units = discover(cfg, carve, log)
     matches = _resolve_single_file_targets(target, carve, units, log)
     for m in matches:
         compile_unit(m, cfg, log)
@@ -2832,12 +3286,18 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
                    help="serial build, full command echo")
     p.add_argument("--jobs", "-j", type=int, default=DEFAULT_PARALLELISM,
                    help="parallel compile workers when not --verbose (default: %(default)s)")
+    p.add_argument("--cold", action="store_true",
+                   help="ignore the object cache and rebuild every unit")
     p.add_argument("--no-link", action="store_true",
                    help="compile sources but skip the final link step")
     return p.parse_args(argv)
 
 
-def _compile_many(units: list[CompileUnit], cfg: Config, log: Logger, jobs: int) -> None:
+def _compile_one_pass(
+    units: list[CompileUnit], cfg: Config, log: Logger, jobs: int
+) -> None:
+    if not units:
+        return
     if log.verbose or jobs <= 1:
         for u in units:
             compile_unit(u, cfg, log)
@@ -2864,6 +3324,65 @@ def _compile_many(units: list[CompileUnit], cfg: Config, log: Logger, jobs: int)
         raise BuildError(f"{len(errors)} unit(s) failed to compile: {errors[0]}")
 
 
+def _compile_many(
+    units: list[CompileUnit],
+    cfg: Config,
+    log: Logger,
+    jobs: int,
+    *,
+    cold: bool = False,
+) -> None:
+    """Compile units, reusing build/compile-cache.json unless cold is set.
+
+    After the pass, any object that is missing or still carries the O64
+    ABI flag (GNU as writes 0x20922001, and the eabi64 poke can miss) is
+    rebuilt once, serially. A second miss is a hard error.
+    """
+    started = time.perf_counter()
+    include_digest = _include_digest(cfg)
+    tool_digest = _tool_digest(cfg)
+    cache = {} if cold else _load_cache()
+
+    def keyed(unit: CompileUnit) -> tuple[str, str]:
+        return unit.rel.as_posix(), _unit_key(unit, cfg, include_digest, tool_digest)
+
+    workers = 1 if log.verbose or jobs <= 1 else jobs
+    with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
+        pairs = list(pool.map(keyed, units))
+    keys = dict(pairs)
+    todo: list[CompileUnit] = []
+    for unit in units:
+        rel = unit.rel.as_posix()
+        if not cold and cache.get(rel) == keys[rel] and _object_ok(unit):
+            continue
+        todo.append(unit)
+    log.info(
+        f"compile: {len(units)} units, {len(todo)} rebuilt, "
+        f"{len(units) - len(todo)} cached, jobs={jobs}"
+        + (" (cold)" if cold else "")
+    )
+    _compile_one_pass(todo, cfg, log, jobs)
+
+    bad = [unit for unit in units if not _object_ok(unit)]
+    if bad:
+        names = ", ".join(unit.rel.as_posix() for unit in bad[:8])
+        log.warn(
+            f"abi: {len(bad)} object(s) missing or not eabi64 "
+            f"({names}); rebuilding once"
+        )
+        _compile_one_pass(bad, cfg, log, jobs=1)
+        still = [unit for unit in bad if not _object_ok(unit)]
+        if still:
+            listed = ", ".join(unit.rel.as_posix() for unit in still[:8])
+            raise BuildError(
+                f"abi: {len(still)} object(s) still not eabi64 after retry: {listed}"
+            )
+    by_rel = {unit.rel.as_posix(): unit for unit in units}
+    saved = {rel: key for rel, key in keys.items() if _object_ok(by_rel[rel])}
+    _save_cache(saved)
+    log.info(f"compile wall {time.perf_counter() - started:.2f}s")
+
+
 def main(argv: list[str]) -> int:
     args = parse_args(argv)
     log = Logger(verbose=args.verbose)
@@ -2875,6 +3394,13 @@ def main(argv: list[str]) -> int:
     cfg = Config.load(config_path)
 
     try:
+        if os.environ.get("GODHAND_SKIP_ELF_VERIFY"):
+            log.error(
+                "GODHAND_SKIP_ELF_VERIFY is set; matching builds refuse "
+                "to skip the retail sha256 check"
+            )
+            return 2
+
         if args.clean:
             do_clean(cfg, log)
             return 0
@@ -2884,15 +3410,21 @@ def main(argv: list[str]) -> int:
             return 0
 
         if args.reseed_expected is not None:
-            do_reseed_expected(args.reseed_expected, cfg, log)
+            do_reseed_expected(
+                args.reseed_expected, cfg, log, jobs=args.jobs, cold=args.cold
+            )
             return 0
 
         if args.reseed_path is not None:
-            do_reseed_path(args.reseed_path, cfg, log)
+            do_reseed_path(
+                args.reseed_path, cfg, log, jobs=args.jobs, cold=args.cold
+            )
             return 0
 
         if args.reseed_paths is not None:
-            do_reseed_paths(args.reseed_paths, cfg, log)
+            do_reseed_paths(
+                args.reseed_paths, cfg, log, jobs=args.jobs, cold=args.cold
+            )
             return 0
 
         if args.single_file is not None:
@@ -2911,12 +3443,12 @@ def main(argv: list[str]) -> int:
             return 0
 
         carve = maybe_carve(cfg, log)
-        units = discover(cfg, carve)
+        units = discover(cfg, carve, log)
         log.info(f"discovered {len(units)} compile units "
                  f"(asm={sum(1 for u in units if u.kind == 'asm')}, "
                  f"c={sum(1 for u in units if u.kind == 'c')}, "
                  f"vsm={sum(1 for u in units if u.kind == 'vsm')})")
-        _compile_many(units, cfg, log, args.jobs)
+        _compile_many(units, cfg, log, args.jobs, cold=args.cold)
 
         if args.no_link:
             log.info("skipping link (--no-link)")
@@ -2938,11 +3470,16 @@ def main(argv: list[str]) -> int:
         for rel_desc in cfg.rels:
             build_rel(rel_desc, cfg, log)
 
+        unit_entries = _objdiff_units(cfg, carve)
+        _sync_expected_to_linked(unit_entries, log)
+        _write_objdiff(cfg, unit_entries)
         return 0
 
     except BuildError as exc:
         log.warn(str(exc))
         return 1
+    finally:
+        _log_stage_times(log)
 
 
 if __name__ == "__main__":

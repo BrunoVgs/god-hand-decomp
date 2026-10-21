@@ -57,20 +57,61 @@ def _patch_eabi64(obj_path: str) -> None:
             f.write(struct.pack(end + "I", new))
 
 
-def main(argv: list[str]) -> int:
-    args = ["-mabi=o64" if a == "-mabi=eabi" else a for a in argv]
+def _output_path(args: list[str]) -> str | None:
+    for i, arg in enumerate(args):
+        if arg == "-o" and i + 1 < len(args):
+            return args[i + 1]
+        if arg.startswith("-o") and len(arg) > 2:
+            return arg[2:]
+    return None
+
+
+def _abi(path: str) -> int | None:
+    try:
+        with open(path, "rb") as fh:
+            ident = fh.read(16)
+            if len(ident) < 16 or ident[:4] != b"\x7fELF" or ident[4] != 1:
+                return None
+            endian = "<" if ident[5] == 1 else ">"
+            fh.seek(0x24)
+            raw = fh.read(4)
+            if len(raw) != 4:
+                return None
+            flags = struct.unpack(endian + "I", raw)[0]
+    except OSError:
+        return None
+    return flags & EF_MIPS_ABI_MASK
+
+
+def _assemble_and_patch(args: list[str], out: str | None) -> int:
     rc = subprocess.run([REAL_AS, *args]).returncode
     if rc != 0:
         return rc
-    # locate -o OUTPUT and patch its ABI flag
-    out = None
-    for i, a in enumerate(args):
-        if a == "-o" and i + 1 < len(args):
-            out = args[i + 1]
-        elif a.startswith("-o") and len(a) > 2:
-            out = a[2:]
     if out and os.path.exists(out):
         _patch_eabi64(out)
+    return 0
+
+
+def main(argv: list[str]) -> int:
+    # GNU as is invoked as o64 so the O32 register names ($t0-$t7) survive.
+    # That writes EF_MIPS_ABI 0x2000 (e_flags 0x20922001). The poke below
+    # rewrites it to eabi64. A short read of the just-written object used to
+    # skip the poke and leave the O64 flag for the linker.
+    args = ["-mabi=o64" if a == "-mabi=eabi" else a for a in argv]
+    out = _output_path(args)
+    rc = _assemble_and_patch(args, out)
+    if rc != 0:
+        return rc
+    if out is None or _abi(out) == EF_MIPS_ABI_EABI64:
+        return 0
+    rc = _assemble_and_patch(args, out)
+    if rc != 0:
+        return rc
+    if _abi(out) != EF_MIPS_ABI_EABI64:
+        sys.stderr.write(
+            f"mipsel-as-wrap: {out} is not eabi64 after retry\n"
+        )
+        return 1
     return 0
 
 

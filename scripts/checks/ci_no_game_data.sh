@@ -57,8 +57,8 @@ if [[ $# -gt 0 ]]; then
     FILES=("$@")
     EXPLICIT_PATHS=1
 else
-    if ! git rev-parse --git-dir >/dev/null 2>&1; then
-        echo "ci_no_game_data: not a git repo and no paths given — skip."
+    if ! [[ "${GODHAND_ALLOW_GIT:-}" == 1 || "${GITHUB_ACTIONS:-}" == true ]] || ! git rev-parse --git-dir >/dev/null 2>&1; then
+        echo "ci_no_game_data: git not allowed here (set GODHAND_ALLOW_GIT=1) and no paths given — skip."
         exit 77
     fi
 
@@ -133,6 +133,11 @@ fi
 is_binary() {
     local f="$1" stat
     [[ -f "$f" ]] || return 1
+    if ! [[ "${GODHAND_ALLOW_GIT:-}" == 1 || "${GITHUB_ACTIONS:-}" == true ]]; then
+        # git-free: a NUL byte in the first 8 KiB, the same test git uses
+        python3 -c 'import sys; sys.exit(0 if b"\0" in open(sys.argv[1], "rb").read(8000) else 1)' "$f"
+        return
+    fi
     stat=$(git diff --numstat --no-index /dev/null "$f" 2>/dev/null)
     [[ "$stat" == "-"$'\t'"-"* ]]
 }

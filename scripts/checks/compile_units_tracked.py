@@ -11,6 +11,7 @@ the gap was invisible until a later commit ran the naming-sync scan.
 Exit 0 = pass, 1 = a unit is missing or untracked, 2 = examined nothing.
 """
 import json
+import os
 import pathlib
 import subprocess
 import sys
@@ -27,9 +28,17 @@ def main() -> int:
               file=sys.stderr)
         return 2
 
-    tracked = set(subprocess.run(
-        ["git", "ls-files"], cwd=ROOT, capture_output=True, text=True,
-        check=True).stdout.split())
+    if (os.environ.get("GODHAND_ALLOW_GIT") == "1"
+            or os.environ.get("GITHUB_ACTIONS") == "true"):
+        tracked = set(subprocess.run(
+            ["git", "ls-files"], cwd=ROOT, capture_output=True, text=True,
+            check=True).stdout.split())
+    else:
+        # Agents never run git. A unit with a `!<path>` allowlist line in the
+        # default-deny .gitignore is one a commit will pick up.
+        gi = ROOT / ".gitignore"
+        tracked = {ln[1:].strip() for ln in gi.read_text().splitlines()
+                   if ln.startswith("!")} if gi.exists() else set()
 
     missing = [p for p in units if not (ROOT / p).exists()]
     untracked = [p for p in units if p not in missing and p not in tracked]
@@ -40,8 +49,8 @@ def main() -> int:
     for p in untracked:
         print(f"  UNTRACKED in git:  {p}")
     if missing or untracked:
-        print("\nA registered unit must be committed in the SAME commit that "
-              "registers it.\n  git add -f <path>   then   "
+        print("\nA registered unit must be allowlisted (and committed by the "
+              "maintainer) together with its registration:\n  "
               "python3 scripts/checks/carve_allowlist.py --fix",
               file=sys.stderr)
         return 1

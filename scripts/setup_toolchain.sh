@@ -105,7 +105,7 @@ verify_sha() { # path expected_sha
 # -----------------------------------------------------------------------------
 log "Checking host prereqs"
 
-for cmd in curl tar python3 git; do
+for cmd in curl tar python3; do
     command -v "$cmd" >/dev/null 2>&1 || die "missing required tool: $cmd"
 done
 
@@ -312,31 +312,31 @@ log "Installing pytest (PyPI)"
 "$VENV_PIP" install --quiet 'pytest>=8,<10'
 ok "pytest $("$ROOT/.venv/bin/python" -c "import pytest; print(pytest.__version__)")"
 
-# m2c
-if [[ ! -d "$ROOT/tools/m2c/.git" ]]; then
-    log "Cloning matt-kempster/m2c"
-    git clone --depth=1 https://github.com/matt-kempster/m2c.git "$ROOT/tools/m2c"
-else
-    ok "m2c already cloned"
-fi
+# m2c, asm-differ, and decomp-permuter are source trees. Fetch a tarball
+# when one is missing; never invoke git.
+fetch_tool() { # dest marker url
+    local dest="$1" marker="$2" url="$3"
+    if [[ -e "$dest/$marker" ]]; then
+        ok "$(basename "$dest") already present"
+        return
+    fi
+    log "Downloading $(basename "$dest")"
+    mkdir -p "$dest"
+    curl -fL --progress-bar -o /tmp/god-hand-tool.tar.gz "$url"
+    tar -xzf /tmp/god-hand-tool.tar.gz -C "$dest" --strip-components=1
+    rm -f /tmp/god-hand-tool.tar.gz
+}
+
+fetch_tool "$ROOT/tools/m2c" m2c.py \
+    https://github.com/matt-kempster/m2c/archive/refs/heads/master.tar.gz
 [[ -f "$ROOT/tools/m2c/requirements.txt" ]] && \
     "$VENV_PIP" install --quiet -r "$ROOT/tools/m2c/requirements.txt"
 
-# asm-differ
-if [[ ! -d "$ROOT/tools/asm-differ/.git" ]]; then
-    log "Cloning simonlindholm/asm-differ"
-    git clone --depth=1 https://github.com/simonlindholm/asm-differ.git "$ROOT/tools/asm-differ"
-else
-    ok "asm-differ already cloned"
-fi
+fetch_tool "$ROOT/tools/asm-differ" diff.py \
+    https://github.com/simonlindholm/asm-differ/archive/refs/heads/master.tar.gz
 
-# decomp-permuter
-if [[ ! -d "$ROOT/tools/decomp-permuter/.git" ]]; then
-    log "Cloning simonlindholm/decomp-permuter"
-    git clone --depth=1 https://github.com/simonlindholm/decomp-permuter.git "$ROOT/tools/decomp-permuter"
-else
-    ok "decomp-permuter already cloned"
-fi
+fetch_tool "$ROOT/tools/decomp-permuter" permuter.py \
+    https://github.com/simonlindholm/decomp-permuter/archive/refs/heads/master.tar.gz
 
 # objdiff-cli (binary)
 OBJDIFF_BIN="$ROOT/tools/objdiff-cli"

@@ -1729,6 +1729,14 @@ def main(argv: list[str]) -> int:
         else:
             shutil.copy2(args.input, s_path)
 
+        # Local (decomp-lab regalloc): keep cc1 debug dumps such as -dlg's .lreg/.greg.
+        dump_dir = os.environ.get("EE_CC_DUMP_DIR")
+        if dump_dir:
+            Path(dump_dir).mkdir(parents=True, exist_ok=True)
+            for dump in td_path.glob(f"{stem}.*"):
+                if dump.suffix not in (".i", ".s", ".o"):
+                    shutil.copy2(dump, Path(dump_dir) / dump.name)
+
         # Stage 3: assemble
         if args.assembler == "gnu":
             # Route the cc1 .s through the GNU assembler (mipsel-linux-gnu-as
