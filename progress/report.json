@@ -359738,14 +359738,14 @@
           "metadata": {}
         },
         {
-          "name": ".text.DataPack_calcBufSize90",
+          "name": ".text.MdlObj_calcPktSize90",
           "fuzzy_match_percent": 100.0,
           "metadata": {}
         }
       ],
       "functions": [
         {
-          "name": "DataPack_calcBufSize90",
+          "name": "MdlObj_calcPktSize90",
           "size": "100",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
@@ -359795,14 +359795,14 @@
           "metadata": {}
         },
         {
-          "name": ".text.DataPack_calcBufSize70",
+          "name": ".text.MdlObj_calcPktSize70",
           "fuzzy_match_percent": 100.0,
           "metadata": {}
         }
       ],
       "functions": [
         {
-          "name": "DataPack_calcBufSize70",
+          "name": "MdlObj_calcPktSize70",
           "size": "100",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
@@ -480663,14 +480663,14 @@
           "metadata": {}
         },
         {
-          "name": ".text.func_0032ECD8",
+          "name": ".text.CriTrackSet_setTrackLevel",
           "fuzzy_match_percent": 100.0,
           "metadata": {}
         }
       ],
       "functions": [
         {
-          "name": "func_0032ECD8",
+          "name": "CriTrackSet_setTrackLevel",
           "size": "108",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
@@ -484928,7 +484928,7 @@
           "address": "0"
         },
         {
-          "name": "func_003352D0",
+          "name": "setDevName",
           "size": "100",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
@@ -486252,39 +486252,39 @@
           "metadata": {}
         },
         {
-          "name": ".text.func_00336E88",
+          "name": ".text.CriStm_allocEntry",
           "fuzzy_match_percent": 100.0,
           "metadata": {}
         }
       ],
       "functions": [
         {
+          "name": "CriStm_allocEntry",
+          "size": "116",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {},
+          "address": "0"
+        },
+        {
           "name": "func_00336E88",
           "size": "188",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
-          "address": "0"
+          "address": "120"
         },
         {
           "name": "func_00336F48",
           "size": "760",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
-          "address": "192"
+          "address": "312"
         },
         {
           "name": "func_00337240",
           "size": "224",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
-          "address": "952"
-        },
-        {
-          "name": "func_00337320",
-          "size": "116",
-          "fuzzy_match_percent": 100.0,
-          "metadata": {},
-          "address": "1176"
+          "address": "1072"
         }
       ],
       "metadata": {
@@ -501893,14 +501893,14 @@
           "metadata": {}
         },
         {
-          "name": ".text.func_0034C930",
+          "name": ".text.SfdTrack_callIfIdle",
           "fuzzy_match_percent": 100.0,
           "metadata": {}
         }
       ],
       "functions": [
         {
-          "name": "func_0034C930",
+          "name": "SfdTrack_callIfIdle",
           "size": "96",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
@@ -506436,25 +506436,25 @@
           "metadata": {}
         },
         {
-          "name": ".text.func_00353BD8",
+          "name": ".text.SfdWork_getPicOffset",
           "fuzzy_match_percent": 100.0,
           "metadata": {}
         }
       ],
       "functions": [
         {
-          "name": "func_00353BD8",
-          "size": "776",
+          "name": "SfdWork_getPicOffset",
+          "size": "132",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
           "address": "0"
         },
         {
-          "name": "func_00353EE0",
-          "size": "132",
+          "name": "func_00353BD8",
+          "size": "776",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
-          "address": "776"
+          "address": "136"
         },
         {
           "name": "func_00353F68",
@@ -525488,39 +525488,39 @@
           "metadata": {}
         },
         {
-          "name": ".text.func_0037D760",
+          "name": ".text.SeqNode_setSubByKind",
           "fuzzy_match_percent": 100.0,
           "metadata": {}
         }
       ],
       "functions": [
         {
+          "name": "SeqNode_setSubByKind",
+          "size": "120",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {},
+          "address": "0"
+        },
+        {
           "name": "func_0037D760",
           "size": "192",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
-          "address": "0"
+          "address": "120"
         },
         {
           "name": "func_0037D820",
           "size": "152",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
-          "address": "192"
+          "address": "312"
         },
         {
           "name": "func_0037D8B8",
           "size": "248",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
-          "address": "344"
-        },
-        {
-          "name": "func_0037D9B0",
-          "size": "120",
-          "fuzzy_match_percent": 100.0,
-          "metadata": {},
-          "address": "592"
+          "address": "464"
         }
       ],
       "metadata": {
@@ -528109,14 +528109,14 @@
           "metadata": {}
         },
         {
-          "name": ".text.func_00383DD0",
+          "name": ".text.MixChannel_isUniform",
           "fuzzy_match_percent": 100.0,
           "metadata": {}
         }
       ],
       "functions": [
         {
-          "name": "func_00383DD0",
+          "name": "MixChannel_isUniform",
           "size": "108",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
@@ -528971,14 +528971,14 @@
           "metadata": {}
         },
         {
-          "name": ".text.func_00386640",
+          "name": ".text.StdString_pathDepth",
           "fuzzy_match_percent": 100.0,
           "metadata": {}
         }
       ],
       "functions": [
         {
-          "name": "func_00386640",
+          "name": "StdString_pathDepth",
           "size": "120",
           "fuzzy_match_percent": 100.0,
           "metadata": {},
@@ -558886,14 +558886,14 @@
           "metadata": {}
         },
         {
-          "name": ".text.func_003BA900",
+          "name": ".text.CriServer_setFreq",
           "fuzzy_match_percent": 100.0,
           "metadata": {}
         }
       ],
       "functions": [
         {
-          "name": "func_003BA900",
+          "name": "CriServer_setFreq",
           "size": "116",
           "fuzzy_match_percent": 100.0,
           "metadata": {},

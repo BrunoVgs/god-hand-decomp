@@ -5,13 +5,13 @@ extern void func_001B6FB8(void *a0);
 __attribute__((section(".text.func_001551C0")))
 int func_001551C0(void *a0, int a1)
 {
-    return DataPack_calcBufSize90(a0, a1) + 0x40;
+    return MdlObj_calcPktSize90(a0, a1) + 0x40;
 }
 
 __attribute__((section(".text.func_001552D0")))
 int func_001552D0(void *a0, int a1)
 {
-    return DataPack_calcBufSize70(a0, a1) + 0x40;
+    return MdlObj_calcPktSize70(a0, a1) + 0x40;
 }
 
 __attribute__((section(".text.func_0017F5D0")))

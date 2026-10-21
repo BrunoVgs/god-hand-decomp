@@ -5,8 +5,8 @@
 
 /* Packet size for record idx of the model pack: one BLOCK_BYTES block per
    24 vertices, rounded up, plus the packet header. */
-__attribute__((section(".text.DataPack_calcBufSize70")))
-int DataPack_calcBufSize70(MdlObj *self, int idx) {
+__attribute__((section(".text.MdlObj_calcPktSize70")))
+int MdlObj_calcPktSize70(MdlObj *self, int idx) {
     PackRef ref;
     int nVtx;
     int size;

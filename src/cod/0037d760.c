@@ -72,8 +72,8 @@ void func_0037D8B8(SeqNode *n, short arg)
 }
 
 /* For every live node whose kind bits meet mask, set sub bits 9 (mode 1) or 10 (mode 2). */
-__attribute__((section(".text.func_0037D9B0")))
-void func_0037D9B0(unsigned char mask, unsigned short mode)
+__attribute__((section(".text.SeqNode_setSubByKind")))
+void SeqNode_setSubByKind(unsigned char mask, unsigned short mode)
 {
     int i;
     SeqNode *n;

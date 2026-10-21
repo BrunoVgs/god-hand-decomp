@@ -61,11 +61,11 @@ void func_00386D70(void) {
     v = *p;
     if (v & 0x1) {
         *(unsigned short *)(base + 0x22) = v & 0xFFFE;
-        func_0037D9B0(1, 1);
+        SeqNode_setSubByKind(1, 1);
         v = *(unsigned short *)(base + 0x22);
     }
     if (v & 0x2) {
         *(unsigned short *)(base + 0x22) = v & 0xFFFD;
-        func_0037D9B0(1, 2);
+        SeqNode_setSubByKind(1, 2);
     }
 }

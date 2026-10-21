@@ -3,8 +3,8 @@
 
 /* Return 1 when every channel level in the chosen array (levelB if useB)
    equals the level of the selected channel, else 0. */
-__attribute__((section(".text.func_00383DD0")))
-int func_00383DD0(void *owner, MixChannel *mix, unsigned char useB) {
+__attribute__((section(".text.MixChannel_isUniform")))
+int MixChannel_isUniform(void *owner, MixChannel *mix, unsigned char useB) {
     short *level;
     int i;
 
