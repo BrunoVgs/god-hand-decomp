@@ -1341,6 +1341,14 @@ def main(argv: list[str]) -> int:
                 sys.stderr.flush()
             die(f"cc1 failed (exit {result.returncode})", result.returncode)
 
+        # Local (decomp-lab regalloc, sched_explain): keep cc1 debug dumps, as ee-cc-wrap does.
+        dump_dir = os.environ.get("EE_CC_DUMP_DIR")
+        if dump_dir:
+            Path(dump_dir).mkdir(parents=True, exist_ok=True)
+            for dump in td_path.glob(f"{stem}.*"):
+                if dump.suffix not in (".i", ".s", ".o"):
+                    shutil.copy2(dump, Path(dump_dir) / dump.name)
+
         if args.asm_only:
             # Smoke-test mode: emit the raw cc1 .s (no numerization, no
             # ee-as round-trip). Used by setup_toolchain.sh \u00a7 5b to
