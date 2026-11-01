@@ -20,7 +20,7 @@ typedef struct ContinueCounters {
 extern ContinueCounters D_005CAC90;
 extern char D_005FEE00[];
 extern void func_002AC9B8(ContinueScreen *self, cIDBaseEnt *ent, short reset);
-extern void cIDBase_move(void *self);
+extern void cIDBase_move(cIDBaseObj *self);
 extern int cSnd_SeCall_2CB8A0(void *sound, int slot, int key, int idA, int idB, int a5, int a6);
 
 #define CONTINUE_INPUT_UP   0x0008000004000000UL
@@ -71,11 +71,11 @@ check_down:
         self->ent[9]->flags &= ~IDENT_FLAG_NO_TINT;
         func_002AC9B8(self, self->ent[9], 0);
         func_002AC9B8(self, self->ent[0], 0);
-        cIDBase_move(self);
+        cIDBase_move(&self->base);
         self->step++;
     }
     if ((unsigned short)self->ent[1]->jit[4] >= 16 && !(self->ent[1]->flags & IDENT_FLAG_NO_DRAW)) {
         self->ent[8]->flags &= ~IDENT_FLAG_NO_DRAW;
-        cIDBase_move(self);
+        cIDBase_move(&self->base);
     }
 }

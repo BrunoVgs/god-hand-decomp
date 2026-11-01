@@ -4806,3 +4806,7 @@
 !include/godhand/sndCmd.h
 !include/godhand/sndRamp.h
 !include/godhand/tim2.h
+!src/cod/sa_001ec388.c
+!src/cod/sa_003312b8.c
+!src/cod/sa_00333fd8.c
+!src/cod/sa_0036dce8.c
