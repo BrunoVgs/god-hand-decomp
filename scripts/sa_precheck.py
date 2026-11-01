@@ -9,7 +9,6 @@ Verdicts:
                   per-function file; check with match_check.py --as sn and register with
                   sa_register.py --as sn.
     SKIP epilogue symbol starts with the previous function's epilogue.
-    SKIP cvtws    retail cvt.w.s; every compiler emits trunc.w.s for (int) casts.
     HAND          VU0 or MMI instructions: m2c cannot draft them, write from the listing.
     M2C           m2c_draft.py should give a usable draft (notes list what the wrapper fixes up).
 """
@@ -78,7 +77,8 @@ def classify(ins) -> tuple[str, list[str]]:
     if first[1] in ("addiu", "daddiu") and first[2][:2] == ["$sp", "$sp"] and not first[2][2].startswith("-"):
         return "SKIP epilogue", notes
     if "cvt.w.s" in ops:
-        return "SKIP cvtws", ["cvt.w.s: every compiler emits trunc.w.s for (int) casts"]
+        # Same word 0x46000064 that objdump names trunc.w.s: 109 matched functions already contain it.
+        notes.append("cvt.w.s = (int) cast; match_check's objdump prints it trunc.w.s")
     hand = []
     if any(VU0_RE.match(o) for o in ops):
         hand.append("VU0")

@@ -44,7 +44,8 @@ ASM_PRELUDE = (
 )
 
 # Headers m2c's C parser cannot digest (inline asm bodies, intrinsics).
-CONTEXT_SKIP = {"mmi.h", "vu0.h", "sync.h", "eesyscall.h", "mul64.h", "gp.h"}
+CONTEXT_SKIP = {"mmi.h", "vu0.h", "sync.h", "eesyscall.h", "mul64.h", "gp.h",
+                "cObj21C0.h"}  # declares cGameObj() over the typedef, and sizeof(T) * 44 m2c cannot fold
 
 
 def in_container() -> bool:
@@ -304,6 +305,10 @@ def extract(name: str, raw: bool = False) -> Path:
         fold_unaligned(lines, notes)
         rename_arg_regs(lines, notes)
         body = "\n".join(lines) + "\n"
+        # The listing keeps the EE cvt.w.s (0x46000064, what objdump calls trunc.w.s) as a .word; m2c reads the mnemonic.
+        body, k = re.subn(r"\.word\s+0x[0-9A-Fa-f]+\s+# (cvt\.w\.s\s+[^#\n]*?)\s*#.*", r"\1", body)
+        if k:
+            notes.append(f"{k} cvt.w.s .word(s) restored for m2c: an (int) cast, any compiler emits it")
     for n in notes:
         print(f"/* m2c_draft: {n} */", flush=True)
     OUT.mkdir(parents=True, exist_ok=True)
