@@ -66,7 +66,7 @@
 # the LAST command's status, so `check.sh | tail` reports tail's 0 and turns
 # any failing gate green at the observation layer.  Use ${PIPESTATUS[0]},
 # `set -o pipefail`, or run the command unpiped.  The dispatcher below uses
-# command substitution (`out=$("$SCRIPT" 2>&1); rc=$?`), which is safe.
+# command substitution (`check_output=$("$SCRIPT" 2>&1); rc=$?`), which is safe.
 #
 set -uo pipefail
 
@@ -159,7 +159,7 @@ for c in "${selected[@]}"; do
         continue
     fi
     sub_start=$SECONDS
-    out=$("$SCRIPT" 2>&1)
+    check_output=$("$SCRIPT" 2>&1)
     rc=$?
     elapsed=$((SECONDS - sub_start))
     case $rc in
@@ -170,17 +170,17 @@ for c in "${selected[@]}"; do
         77)
             SKIPPED+=1
             printf "%b %-7s  %2ds  skipped\n" "$SKIP_MARK" "$c" "$elapsed"
-            printf "%s\n" "$out" | sed 's/^/        /'
+            printf "%s\n" "$check_output" | sed 's/^/        /'
             ;;
         78)
             WARNED+=1
             printf "%b %-7s  %2ds  pass-with-warnings\n" "$WARN_MARK" "$c" "$elapsed"
-            printf "%s\n" "$out" | sed 's/^/        /'
+            printf "%s\n" "$check_output" | sed 's/^/        /'
             ;;
         *)
             FAILED+=1
             printf "%b %-7s  %2ds  FAILED (rc=%d)\n" "$FAIL_MARK" "$c" "$elapsed" "$rc"
-            printf "%s\n" "$out" | sed 's/^/        /'
+            printf "%s\n" "$check_output" | sed 's/^/        /'
             ;;
     esac
 done
