@@ -4,6 +4,8 @@
 #include "godhand/cSnd.h"
 #include "godhand/cBgmData.h"
 #include "godhand/vu0.h"
+#include "godhand/heapArena.h"
+#include "godhand/heapList.h"
 
 extern int cDamageUnit_SetDamageCollActive(void *unit, int on);
 extern cMeshNode *cModel_getMeshPtr(void *model, int idx);
@@ -14,8 +16,8 @@ extern void cBgmData_UpdateLoad(cBgmData *bgm);
 extern void SetEffectPos(int kind, int effNo, int a2, void *pos, int a4, float scale);
 extern void func_002FBED0(void *self);
 extern void BufHolder_deletingDtor(int entry, int mode);
-extern void func_002A9790(void *pool);
 extern void cHeap_free(int heap, int *node);
+extern void *_MemoryAlloc(int a0, int a1, int a2);
 extern void func_001DBF18(void *self, unsigned short *a, unsigned short *b, unsigned short *c, unsigned short *d);
 
 #define MESH_DISP_HIDE      0x0001      /* node is not drawn */
@@ -42,11 +44,6 @@ void DamageObj_disableDamage(DamageObj *self)
 }
 
 #define CSND_BGM_DATA_NUM  2     /* BGM data slots, not named in cSnd.h */
-
-
-
-
-
 
 /* Per-frame load update of every sound-effect slot and every BGM data slot. */
 __attribute__((section(".text.cSnd_updateLoads")))
@@ -112,19 +109,18 @@ void ScrollObj_advanceScroll(ScrollObj *self)
     }
 }
 
-typedef struct EntList {
-    int *block;                         /* 0x00 heap block that holds the entries */
-} EntList;
+#define ENTLIST_ENTRY_SIZE  0x480
+#define ENTLIST_ALIGN       0x80
 
 /* Release every entry of the list in order, then reset the list and free its heap block. */
 __attribute__((section(".text.EntList_destroy")))
-void EntList_destroy(EntList *self)
+void EntList_destroy(HeapList *self)
 {
-    int cur = func_002A9860(self, 0);
+    int cur = func_002A9860((int)self, 0);
     int *block;
 
     while (cur != 0) {
-        int next = func_002A9860(self, cur);
+        int next = func_002A9860((int)self, cur);
         BufHolder_deletingDtor(cur, 2);
         cur = next;
     }
@@ -133,6 +129,22 @@ void EntList_destroy(EntList *self)
     if (block != 0) {
         cHeap_free(block[-8], block);
     }
+}
+
+/* Empty the list, then give it a fresh heap block for `num` entries. */
+__attribute__((section(".text.func_00149400")))
+void func_00149400(HeapList *self, int num)
+{
+    int size;
+
+    EntList_destroy(self);
+    size = func_002A96C0(ENTLIST_ENTRY_SIZE, num, ENTLIST_ALIGN);
+    func_002A96D8((int *)self, (int)_MemoryAlloc(size, ENTLIST_ALIGN, (int)D_003C3CF0),
+                  ENTLIST_ENTRY_SIZE, num, ENTLIST_ALIGN);
+    self->unk18 = num;
+    self->unk1C = num;
+    self->capacity = num;
+    self->size = size;
 }
 
 #define PART_NUM         5          /* parts held in the table */

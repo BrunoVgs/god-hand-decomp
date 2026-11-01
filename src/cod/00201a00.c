@@ -1,4 +1,5 @@
 /* sn-2.95.3-136 matched TU. */
+#include "godhand/messPanel.h"
 
 extern unsigned int D_00747A84[];
 extern char D_00752C00;
@@ -71,8 +72,8 @@ void cScenarioCursor_reinit(char *self) {
  * the factor c and add it back onto b, wrapping each step. */
 
 
-__attribute__((section(".text.Ang_blendLate")))
-float Ang_blendLate(float a, float b, float c) {
+__attribute__((section(".text.Ang_mult_late")))
+float Ang_mult_late(float a, float b, float c) {
     float base = Adjust_theta(b);
     float diff = Adjust_theta(Adjust_theta(a) - base);
     return Adjust_theta(base + diff * c);
@@ -96,34 +97,16 @@ void cTaskPool_killAll(TaskPool *self) {
         cTaskWork_kill(self->works + i * POOL_WORK_SIZE);
 }
 
-/* Reset a panel to its start pose: copy the saved position (0xA6/0xA8) to the
- * current one (0xAE/0xB0), set scale 1.0 at 0x54/0x58, counters 1 and -20 at
- * 0x5C/0x5E, then run the two init steps. */
-typedef struct Panel {
-    char unk00[0x54];
-    float scaleA;                       /* 0x54 */
-    float scaleB;                       /* 0x58 */
-    short step;                         /* 0x5C */
-    short wait;                         /* 0x5E */
-    char unk60[0x46];
-    unsigned short savedX;              /* 0xA6 */
-    unsigned short savedY;              /* 0xA8 */
-    char unkAA[4];
-    unsigned short curX;                /* 0xAE */
-    unsigned short curY;                /* 0xB0 */
-} Panel;
-
-extern void func_002B1C80(Panel *);
-extern void func_002B1890(Panel *);
-
+/* Reset a panel to its start pose: copy the saved position to the current one, set the text
+ * scale to 1.0 and the text offset to (1, -20), then draw the text and the frame. */
 __attribute__((section(".text.Panel_resetToStartPose")))
 void Panel_resetToStartPose(Panel *self) {
     self->curX = self->savedX;
     self->curY = self->savedY;
     self->scaleA = 1.0f;
     self->scaleB = 1.0f;
-    self->step = 1;
-    self->wait = -20;
+    self->ofsX = 1;
+    self->ofsY = -20;
     func_002B1C80(self);
     func_002B1890(self);
 }

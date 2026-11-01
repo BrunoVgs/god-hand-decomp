@@ -38,7 +38,9 @@ typedef struct cEmActorVt {
 } cEmActorVt;
 
 typedef struct cEmActor {
-    char unk000[0x100];
+    char unk000[0xF0];
+    struct cVec *pos;           /* 0x0F0 live position */
+    char unk0F4[0x100 - 0xF4];
     float rot[3];               /* 0x100 */
     char unk10C[0x214 - 0x10C];
     cEmActorVt *vt;             /* 0x214 */
@@ -63,9 +65,16 @@ typedef struct cEmActor {
 } cEmActor;
 
 typedef struct cEmWrap {
-    int unk00;
+    unsigned char entryNo;      /* 0x00 room table entry number, cEmManage_GetEm's key */
+    char unk01[3];
     cEmActor *actor;            /* 0x04 */
+    char unk08[8];
 } cEmWrap;
+
+int cEmWrap_isDead(cEmWrap *self);
+int cEmWrap_GetVital(cEmWrap *self);
+int cEmWrap_GetVitalMax(cEmWrap *self);
+void cEmWrap_setSuspend(cEmWrap *self, int flag);
 
 #define EMACTOR_OFFSET(field) ((int)&((cEmActor *)0)->field)
 typedef char cEmActor_chk_flags[EMACTOR_OFFSET(objFlags) == 0x250 ? 1 : -1];

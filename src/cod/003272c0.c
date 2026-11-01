@@ -25,9 +25,9 @@ extern void func_00335848(void *);
 extern int D_00454CD8;
 extern int GetD003EE078_3463F8();
 extern void mwrsc_WaitSprDmaEnd();
-extern void func_00346498(int a0, int a1, int *a2);
+extern int SprMem_save(int scratchpadOffset, int byteCount, void *destination);
 extern void MWDMA_WaitEnd(int a0);
-extern void func_00346578(int *a0, int a1, int a2);
+extern int SprMem_restore(void *source, int byteCount, int scratchpadOffset);
 extern int D_003EE080;
 extern int D_0075CC80;
 extern int D_00758C80;
@@ -252,9 +252,9 @@ void func_00346368(void)
         s0 = (int *)((char *)&D_003EE080);
         if (*s0 != 0) {
             mwrsc_WaitSprDmaEnd();
-            func_00346498(0, 0x4000, &D_0075CC80);
+            SprMem_save(0, 0x4000, &D_0075CC80);
             MWDMA_WaitEnd(8);
-            func_00346578((int *)&D_00758C80, 0x4000, 0);
+            SprMem_restore(&D_00758C80, 0x4000, 0);
             MWDMA_WaitEnd(9);
             *s0 = 0;
         }
@@ -652,7 +652,7 @@ int func_003579F0(char *a0) {
     int s2 = 0;
     Thunk_func_0033B658(local);
     if (s1[0x20/4] == 0) {
-        if (func_00357AA0(s0) != 0) {
+        if (sfply_CanStart(s0) != 0) {
             s1[0x20/4] = 1;
             s1[0x24/4] = s1[0x24/4] + 1;
             s2 = func_00356FD8(s0, 1);

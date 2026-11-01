@@ -8,7 +8,7 @@ extern char D_005FEE00[];
 extern void cOmBase_setMeshDispFromLayer(cOmBase *self, int layer, int on);
 extern int SetEffect(int effNo, int kind, void *obj, int a3, int a4, unsigned int a5);
 extern int cSnd_SeCall_2CBA48(void *snd, int a1, int a2, void *obj, int a4, int a5, int a6, int a7);
-extern void ForwardVec3At30_147C60(void *dst, void *src);
+#include "godhand/objField.h"
 extern void sceVu0ApplyMatrix(void *out, void *mtx, void *vec);
 extern float LengthPositionToGivenLine(void *line, void *pos, void *dir, int *flag);
 extern void func_003039E8(void *slot, int a0, int a1);
@@ -27,8 +27,8 @@ extern unsigned char D_0061B7C0[];      /* the 0x400 effect slots, 0x400 bytes e
 #define ESP_SLOT_SUBGRP  0x23C          /* offset of the slot's sub group number (unsigned short) */
 
 /* Run the kill handler of every effect slot that is in use, neither paused nor hidden, has flag 2 set and is not in group 0xD7. */
-__attribute__((section(".text.Esp_killFlaggedExceptEvent")))
-void Esp_killFlaggedExceptEvent(void) {
+__attribute__((section(".text.KillEventEsp")))
+void KillEventEsp(void) {
     unsigned char *p;
     int i;
     unsigned int bit;

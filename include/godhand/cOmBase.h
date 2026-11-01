@@ -29,6 +29,14 @@ static __inline__ void cVec_copy3(cVec *d, cVec *s) {
     }
 }
 
+/* Set all four components. */
+static __inline__ void cVec_set4(cVec *v, float x, float y, float z, float w) {
+    v->x = x;
+    v->y = y;
+    v->z = z;
+    v->w = w;
+}
+
 /* One node of the model's mesh list. A model owns a singly linked list of
  * nodes; each node carries the layer it belongs to. */
 typedef struct cMeshNode {
@@ -83,7 +91,9 @@ typedef struct cOmBase {
     cVec posPrev;                           /* 0x100 position last frame */
     char unk110[0x38];
     struct cOmBase *owner;                  /* 0x148 set on a child body to its weapon */
-    char unk14C[0x100];
+    char unk14C[0x214 - 0x14C];
+    struct cVtEnt *vtable;                  /* 0x214 g++ 2.x vtable, entries as cModel.h cVtEnt */
+    char unk218[0x24C - 0x218];
     float animRate;                         /* 0x24C 1.0 normal */
     int objFlags;                           /* 0x250 bit 4 (0x10) is cleared when a held object is let go */
     int texFlags;                           /* 0x254 bit 28 is set while a texture exchange is active */
@@ -113,7 +123,15 @@ typedef struct cOmBase {
     char unk550[0x10];
     int dropItem;                           /* 0x560 item id this object drops, 0xFFFF for the default drop, 0x9C3 for none */
     int actionId;                           /* 0x564 on a fighter: the current action */
-    char unk568[0x48];
+    char unk568[0x18];
+    int unk580;                             /* 0x580 cleared by the enemy setup at 0x1B90D0 */
+    int unk584;                             /* 0x584 */
+    int unk588;                             /* 0x588 */
+    char unk58C[0x14];
+    int flags5A0;                           /* 0x5A0 bit 0x10 set by the effect-registering setups */
+    char unk5A4[0x4];
+    float speedRate;                        /* 0x5A8 cEmManage_GetSpeedRate, stored each frame by the update */
+    char unk5AC[0x4];
     int flags0;                             /* 0x5B0 */
     int hitFlags;                           /* 0x5B4 bits COMBASE_HIT_* */
     int flags2;                             /* 0x5B8 */

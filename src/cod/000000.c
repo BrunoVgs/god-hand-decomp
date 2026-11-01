@@ -2,6 +2,7 @@
 #include "godhand/cObjSimple.h"
 #include "include_asm.h"
 #include "godhand/cEma2.h"
+#include "godhand/objField.h"
 
 /* ------------------------------------------------------------------ */
 /* Externs unified across the 7-function D_0044BED0 cluster.          */
@@ -54,8 +55,8 @@ void cObj_Release(void) {
 __attribute__((section(".text.cModel_Trans_Extra")))
 void cModel_Trans_Extra(void) {}
 
-__attribute__((section(".text.GetField_2B1_14B638")))
-unsigned char GetField_2B1_14B638(unsigned char *arg0) { return arg0[0x2B1]; }
+__attribute__((section(".text.cModel_getMeshNum")))
+unsigned char cModel_getMeshNum(unsigned char *arg0) { return arg0[0x2B1]; }
 
 __attribute__((section(".text.SetField_2F4_10BE10")))
 void SetField_2F4_10BE10(char *arg0) { arg0[0x2F4] = 0; }
@@ -245,8 +246,8 @@ unsigned char GetField_54_173900(unsigned char *a0) {
 }
 
 __attribute__((section(".text.Obj0000_Set_Field_50_173998")))
-void Obj0000_Set_Field_50_173998(int *a0, int a1) {
-    *(int *)((char *)a0 + 0x50) = a1;
+void Obj0000_Set_Field_50_173998(void *rec, void *value) {
+    *(void **)((char *)rec + 0x50) = value;
 }
 
 __attribute__((section(".text.NoOp_178978")))
@@ -589,8 +590,8 @@ unsigned char *Obj0000_Get_D_0045A478_36D0E8(void) {
 
 extern int D_0076A7A4;
 
-__attribute__((section(".text.Obj0000_Get_D_0076A7A4_3756F0")))
-int Obj0000_Get_D_0076A7A4_3756F0(void) {
+__attribute__((section(".text.SdeSystemOutModeGet")))
+int SdeSystemOutModeGet(void) {
     return D_0076A7A4;
 }
 
@@ -1038,8 +1039,8 @@ void func_003951D0(void) {
 }
 
 __attribute__((section(".text.Obj0000_Set_Byte_54")))
-void Obj0000_Set_Byte_54(char *arg0, int arg1) {
-    arg0[0x54] = arg1;
+void Obj0000_Set_Byte_54(void *rec, int value) {
+    ((char *)rec)[0x54] = value;
 }
 
 extern unsigned char D_0061B670;
@@ -1263,7 +1264,7 @@ __attribute__((section(".text.Tramp_001F7DF8_00101E28"))) void Tramp_001F7DF8_00
  do { capVu0Length(); } while (0);
 }
 
-__attribute__((section(".text.Tramp_func_0014EA50_0010B760"))) void Tramp_func_0014EA50_0010B760(void)
+__attribute__((section(".text.Tramp_cObjBase_R0_scenario_10B760"))) void Tramp_cObjBase_R0_scenario_10B760(void)
 {
  do { cObjBase_R0_scenario(); } while (0);
 }
@@ -2196,9 +2197,9 @@ extern int func_0033B568(int);
 __attribute__((section(".text.Forward33B568_33B658")))
 int Forward33B568_33B658(void) { return func_0033B568(1); }
 
-extern int func_0033B5C8(int);
+extern int svm_unlock(int);
 __attribute__((section(".text.Forward33B5C8_33B670")))
-int Forward33B5C8_33B670(void) { return func_0033B5C8(1); }
+int Forward33B5C8_33B670(void) { return svm_unlock(1); }
 
 extern int func_0033B568(int);
 __attribute__((section(".text.Forward33B568_33B688")))
@@ -2208,13 +2209,13 @@ extern int func_0033B568(int);
 __attribute__((section(".text.Forward33B568_33B6A0")))
 int Forward33B568_33B6A0(void) { return func_0033B568(4); }
 
-extern int func_0033B5C8(int);
+extern int svm_unlock(int);
 __attribute__((section(".text.Forward33B5C8_33B6B8")))
-int Forward33B5C8_33B6B8(void) { return func_0033B5C8(2); }
+int Forward33B5C8_33B6B8(void) { return svm_unlock(2); }
 
-extern int func_0033B5C8(int);
+extern int svm_unlock(int);
 __attribute__((section(".text.Forward33B5C8_33B6D0")))
-int Forward33B5C8_33B6D0(void) { return func_0033B5C8(4); }
+int Forward33B5C8_33B6D0(void) { return svm_unlock(4); }
 
 extern int func_0033BC48(int);
 __attribute__((section(".text.Forward33BC48_33BD18")))
@@ -2337,8 +2338,6 @@ __attribute__((section(".text.Forward348BE0_346BE0")))
 int Forward348BE0_346BE0(int a0, int a1) {
     return MWSFSVM_Error(a1);
 }
-INCLUDE_ASM("nonmatching", SetEv61HumanAlive);
-INCLUDE_ASM("nonmatching", Dest_ck);
 INCLUDE_ASM("nonmatching", displayOmLayer);
 
 INCLUDE_ASM("nonmatching", pl00_CkSubScreen);
@@ -2382,6 +2381,38 @@ void cObjSimple_R0_Init(cObjSimple *self) {
 INCLUDE_ASM("nonmatching", KeyStop);
 
 INCLUDE_ASM("nonmatching", SearchData);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

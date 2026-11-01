@@ -71,6 +71,7 @@ from scripts.carver import (
     _INSN_LINE_RE,
     _NONMATCHING_RE,
 )
+from scripts.mark_complete import is_complete_tu
 DEFAULT_CONFIG = ROOT / "compile_config.json"
 # Compile workers. A cold sweep on this 10-core container: 6 workers 313s,
 # 8 workers 262s, 10 workers 240s. Peak container memory stayed under 1 GiB,
@@ -1605,24 +1606,8 @@ SUPPORTED_COMPILERS = frozenset(
 # to `jal __mulvsi3`, a libgcc helper this build does not link. cygnus-2.96
 # keeps `mult` and adds no call. Read the emitted `.s` for a `__mulv` or
 # `__addv` call before you land an ee-3.2 TU that carries the key.
-# `-fno-align-jumps` suppresses a single scheduler-inserted alignment nop in
-# the retail Cygnus exception helper `__uncatch_exception`.  It is scoped to
-# that byte-verified TU, paired with the existing `-freorder-blocks` drop.
-#
-# `-O0` is for the retail objects that were built unoptimised: frame-pointer
-# prologues (`daddu $fp,$sp,$zero`), every argument spilled to the frame, and
-# a `b` to the epilogue per `return` (the classFADE group). It comes after the
-# global `-O2`, and cc1 takes the last `-O`. Per-TU only, and only on a TU
-# whose functions compile byte-identical to retail with it; the hash gate
-# backs that up at every reseed.
-SUPPORTED_C_FLAG_ADDS = frozenset({
-    "-O0",
-    "-f=-fno-align-jumps",
-    "-f=-fno-gcse",
-    "-f=-ffast-math",
-    "-f=-fno-rtti",
-    "-f=-ftrapv",
-})
+SUPPORTED_C_FLAG_ADDS = frozenset(
+    {"-f=-fno-gcse", "-f=-ffast-math", "-f=-fno-rtti", "-f=-ftrapv"})
 
 # Closed vocabulary for the per-TU `c_flags_drop` key (Config.compile_units).
 #
@@ -2586,15 +2571,20 @@ def _objdiff_units(cfg: Config, carve: Optional[CarveState] = None) -> list[dict
     for obj in _ld_script_objects(cfg, carve):
         rel = obj.relative_to(ROOT / build_root)
         name = str(rel.with_suffix("")).replace(os.sep, "/")
+        metadata = {
+            "auto_generated": True,
+            "progress_categories": _unit_categories(name, lib_categories),
+        }
+        # Every rewrite keeps the fully-linked flag, so a build after
+        # scripts/progress.sh cannot strip what mark_complete.py set.
+        if is_complete_tu(name, ROOT):
+            metadata["complete"] = True
         units.append(
             {
                 "name": name,
                 "target_path": (target_root / rel).as_posix(),
                 "base_path": (base_root / rel).as_posix(),
-                "metadata": {
-                    "auto_generated": True,
-                    "progress_categories": _unit_categories(name, lib_categories),
-                },
+                "metadata": metadata,
             }
         )
     # Per-REL units: one per asm part. The REL .o lives under

@@ -14,7 +14,10 @@
 
 /* Header of the effect data file the room loads; the offsets are from the header. */
 typedef struct EffDataHdr {
-    char unk00[0x14];
+    char unk00[4];
+    int block1;                 /* 0x04 offset of the first system block */
+    int block2;                 /* 0x08 offset of the second system block */
+    char unk0C[8];
     int unk14;                  /* 0x14 offset of the first effect table */
     char unk18[4];
     int unk1C;                  /* 0x1C offset of the second effect table */
@@ -22,29 +25,41 @@ typedef struct EffDataHdr {
 
 /* Room and pad fields use the names main gives them in cDoor.h and cE3.h. */
 typedef struct GameWork {
-    char pad000[0x1A0];
+    char pad000[0x08];
+    int padBtn;                 /* 0x08 face-button bits, 0x10-0x80 */
+    char pad00C[0x1A0 - 0x0C];
     long trg;                   /* 0x1A0 pad trigger bits */
     long unk1A8;                /* 0x1A8 */
     long rep;                   /* 0x1B0 pad repeat bits */
     char pad1B8[0x210 - 0x1B8];
     int frame;                  /* 0x210 bit 0 picks the packet buffer */
-    char pad214[0x550 - 0x214];
+    char pad214[0x270 - 0x214];
+    unsigned long long bgA : 15;     /* 0x270 background mode, 0x10 or 0x16 (Set_bg_mode) */
+    unsigned long long : 49;
+    char pad278[0x3E0 - 0x278];
+    unsigned long long bgB : 15;     /* 0x3E0 the same mode in the second packet buffer */
+    unsigned long long : 49;
+    char pad3E8[0x550 - 0x3E8];
     EffDataHdr *effData;        /* 0x550 effect data file */
     void *sysData;              /* 0x554 system data file */
     void *langData;             /* 0x558 language data file */
     char pad55C[0x564 - 0x55C];
     int padPort;                /* 0x564 controller port the vibration goes to */
-    char pad568[0x56C - 0x568];
-    unsigned int language;      /* 0x56C */
+    char pad568;
+    unsigned char unk569;       /* 0x569 */
+    char pad56A[2];
+    int language;               /* 0x56C */
     char pad570[0x574 - 0x570];
     float timeScale;            /* 0x574 speed multiplier, 1.0 at boot */
-    int mode;                   /* 0x578 */
-    char pad57C[0x584 - 0x57C];
+    int mode;                   /* 0x578 1 = PAL */
+    int unk57C;                 /* 0x57C */
+    int unk580;                 /* 0x580 */
     int flags;                  /* 0x584 GAMEWORK_* */
     char pad588[0x594 - 0x588];
     int debugFlags;             /* 0x594 */
     int flags598;               /* 0x598 */
-    char pad59C[0x5AC - 0x59C];
+    int flags59C;               /* 0x59C */
+    char pad5A0[0x5AC - 0x5A0];
     void *pack;                 /* 0x5AC room data pack */
     unsigned short room;        /* 0x5B0 current room id */
     char pad5B2[0x5B4 - 0x5B2];
@@ -54,13 +69,19 @@ typedef struct GameWork {
     float startPos[3];          /* 0x5C0 player start point */
     char pad5CC[4];
     float startAngle;           /* 0x5D0 */
-    char pad5D4[0x5E4 - 0x5D4];
+    char pad5D4[0x5D8 - 0x5D4];
+    unsigned int flags5D8;      /* 0x5D8 */
+    char pad5DC[0x5E0 - 0x5DC];
+    unsigned int flags5E0;      /* 0x5E0 */
     int flags5E4;               /* 0x5E4 */
     char pad5E8[0x5F4 - 0x5E8];
     void *playerObj;            /* 0x5F4 */
     char pad5F8[0x600 - 0x5F8];
     unsigned char pairNum;      /* 0x600 entries used in D_007558A8 */
-} GameWork;
+    char pad601[0x60C - 0x601];
+    int bgColor;                /* 0x60C background fill colour, r | g << 8 | b << 16 */
+    char pad610[0x620 - 0x610];
+} GameWork;                     /* 0x620 */
 
 extern GameWork D_007474A0;
 
@@ -91,7 +112,7 @@ typedef struct DmaPktSet {
 
 typedef struct cTaskWorkRef {
     int unk0;
-    int task;                   /* 0x4 */
+    struct cTaskWork *task;     /* 0x4 */
 } cTaskWorkRef;
 
 extern cTaskWorkRef D_00752C00;
@@ -101,6 +122,6 @@ extern void SetPackedFields10And18_14FF60(int pkt, int *next);
 extern int func_003950F8(int mode, int timeout);   /* GS path sync */
 extern void FlushCache(int op);
 extern void iFlushCache(int op);
-extern void cTaskWork_sleep(int task, int frames);
+extern void cTaskWork_sleep(struct cTaskWork *task, int frames);
 
 #endif

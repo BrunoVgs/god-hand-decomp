@@ -3,17 +3,17 @@
 
 extern void func_00326020(int a0);
 extern void func_003A6A20(const char *s);
-extern void func_003292D8(void *p);
+extern void ADX_InitHandlers(void *p);
 extern void func_003290B8(void *p);
 extern int ADXPS2_LoadFcacheDvd(void *p);
 extern void func_00325638(void *p);
 extern void Obj3260_Tramp_00336E88_D148(int a0, int a1);
-extern void func_00324950(void);
-extern void func_0032D1A0(void);
+extern void StmMgr_start(void);
+extern void ModuleStart_refCounted(void);
 extern void Obj3290_SetGlobal_D003D1400(int a0);
 extern void func_0032BAF0(const char *s);
 extern void Obj3290_Tramp_003313F0_9278(int a0);
-extern int Obj0000_Get_D_0076A7A4_3756F0(void);
+extern int SdeSystemOutModeGet(void);
 extern void func_0032BA30(int a0);
 extern char D_0044CDE0[];
 extern char D_0044CE00[];
@@ -46,7 +46,7 @@ void func_002CA220(void)
     func_003A52F0(&a, 0, sizeof(a));
     a.f0 = D_0044CE00;
     a.f4 = 0;
-    func_003292D8(&a);
+    ADX_InitHandlers(&a);
     func_003A52F0(&b, 0, sizeof(b));
     b.f0 = 0;
     b.f4 = 0;
@@ -69,12 +69,12 @@ void func_002CA220(void)
     d.f14 = 0x60;
     func_00325638(&d);
     Obj3260_Tramp_00336E88_D148(0xA, 0);
-    func_00324950();
-    func_0032D1A0();
+    StmMgr_start();
+    ModuleStart_refCounted();
     Obj3290_SetGlobal_D003D1400(1);
     func_0032BAF0(D_0044CE20);
     Obj3290_Tramp_003313F0_9278(1);
-    if (Obj0000_Get_D_0076A7A4_3756F0() == 0)
+    if (SdeSystemOutModeGet() == 0)
         func_0032BA30(1);
 }
 
