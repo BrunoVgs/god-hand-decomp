@@ -50680,3 +50680,9 @@ func_002AD108 = 0x002AD108; // type:func
 func_00382520 = 0x00382520; // type:func
 func_00387270 = 0x00387270; // type:func
 func_001B8030 = 0x001B8030; // type:func
+
+// Matched actor-slot ordering and busy-wait entries.
+func_001EC388 = 0x001EC388; // type:func
+func_003312B8 = 0x003312B8; // type:func
+func_00333FD8 = 0x00333FD8; // type:func
+func_0036DCE8 = 0x0036DCE8; // type:func
